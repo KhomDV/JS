@@ -117,7 +117,16 @@
 function createDreamTeam(members) {
     //Добавляет в массив только один элемент
     //sDream = [...new Set(members.filter(e => typeof (e) === "string").map(e => e.trim().substring(0,1).toUpperCase()))].sort().join('');
-    return (members.filter(e => typeof (e) === "string").map(e => e.trim().substring(0,1).toUpperCase()).sort().join('') );
+    //return (members.filter(e => typeof (e) === "string").map(e => e.trim().substring(0,1).toUpperCase()).sort().join('') );
+	
+    if ( !Array.isArray(members) || members.length === 0 ) return (false);
+
+    sDream = members.filter(e => typeof (e) === "string").map(e => e.trim().substring(0,1).toUpperCase()).sort().join('');
+    if (typeof (sDream) === "string") {
+        return (sDream);
+    } else {
+        return (false);
+    }
 }
 //.
 //---Test---
