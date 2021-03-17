@@ -29,7 +29,7 @@
 //    ['AA', 'dd', 'Oo'],
 //    ];
 //
-//---View---
+//---View solution---
 //let nCat = countCats(matrix);
 //document.write(nCat);
 //
@@ -37,7 +37,74 @@
 
 
 
+//---------------------------------------------------------------------------------------------------
+// carbon-dating
+//---------------------------------------------------------------------------------------------------
+//---Solution---
+const MODERN_ACTIVITY = 15; 
+const HALF_LIFE_PERIOD = 5730;
 
+function dateSample(sampleActivity) {
+    
+    const reg = new RegExp('^-?\\d+\\.?\\d*$'); // /^-?\d+\.?\d*$/
 
+    if (typeof sampleActivity !== "string" || !(reg.test(sampleActivity)) ) { return (false)};
+    //return (/^-?\d+\.?\d*$/.test(sampleActivity));
 
+    const nActivity = parseFloat(sampleActivity);
+  
+    if (nActivity <= 0 || nActivity > 15) {return (false)};
+  
+    return ( Math.ceil( Math.log(MODERN_ACTIVITY / nActivity) / (Math.log(2) / HALF_LIFE_PERIOD) ) );
+  
+};
+
+//---Test---
+const arrayTest = [
+    3,
+    3.312312,
+    false,
+    null,
+    undefined,
+    [3],
+    ['3'],
+    { '3.14': '3dec' },
+    'ACTIVITY OVER 9000',
+    'one',
+    '',
+    ' ',
+    ' \n\t\r',
+    '3',      //13305
+    '1',      //22387
+    '9',      //4223
+    '11',     //2564
+    '3.142',  //12923
+    '1.1',    //21599
+    '9.8888', //3445
+    '9.59383373526808',   //3695
+    '9.122605776326203',  //4111
+    '8.738732722522064',  //4467
+    '1.6196187736736514', //18401
+    '1.2790192613422384', //20353
+    '2.888875299486392',  //13617
+    '10.98064159551825',  //2579
+    '5.777957759163509',  //7887
+    '6.621137546046827',  //6761
+    '2.3428430852333437', //15349
+    '7.724878580528199',  //5486
+    '13.120235263248446', //1107
+    '8.324373471546389',  //4868
+    '1.7062450205046806'  //17970
+]
+
+//---View solution---
+for (let i=0;i<arrayTest.length;i++) {
+    let nYear = dateSample(arrayTest[i]);
+    document.write(nYear);
+    document.write('-');
+}
+//let nYear = dateSample();
+//document.write(nYear);
+//
+//=== End ( carbon-dating ) ===
 
