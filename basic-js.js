@@ -113,22 +113,34 @@
 //---------------------------------------------------------------------------------------------------
 // dream-team
 //---------------------------------------------------------------------------------------------------
+//---Task---
+//### **Команда мечты**
+//
+//Представьте себе, что вы с вашими друзьями решаете создать **команду мечты**. Эта команда должна иметь крутое секретное название, в котором зашифрована информация о ней. Например, это могут быть **первые буквы** имен ее членов **в верхнем регистре**, **отсортированные по алфавиту**.
+//Ваша задача — реализовать функцию `createDreamTeam(members)`, которая возвращает имя только что созданной команды (`string`), основанной на именах ее членов (`array`). Удачи!
+//Имена членов команды должны быть типа `string`. Значения другого типа должны быть **проигнорированы**. В случае неправильного **типа** аргумента `members` функция должна вернуть `false`.
+//NB! Имя члена команды может содержать **пробелы**.
+//Например:
+//`createDreamTeam(['Matt', 'Ann', 'Dmitry', 'Max'])` => `'ADMM'`
+//`createDreamTeam(['Olivia', 1111, 'Lily', 'Oscar', true, null])` => `'LOO'`
+//Напишите ваш код в `src/dream-team.js`.
+//
 //---Solution---
-function createDreamTeam(members) {
-    //Добавляет в массив только один элемент
-    //sDream = [...new Set(members.filter(e => typeof (e) === "string").map(e => e.trim().substring(0,1).toUpperCase()))].sort().join('');
-    //return (members.filter(e => typeof (e) === "string").map(e => e.trim().substring(0,1).toUpperCase()).sort().join('') );
-	
-    if ( !Array.isArray(members) || members.length === 0 ) return (false);
-
-    sDream = members.filter(e => typeof (e) === "string").map(e => e.trim().substring(0,1).toUpperCase()).sort().join('');
-    if (typeof (sDream) === "string") {
-        return (sDream);
-    } else {
-        return (false);
-    }
-}
-//.
+//function createDreamTeam(members) {
+//    //Добавляет в массив только один элемент
+//    //sDream = [...new Set(members.filter(e => typeof (e) === "string").map(e => e.trim().substring(0,1).toUpperCase()))].sort().join('');
+//    //return (members.filter(e => typeof (e) === "string").map(e => e.trim().substring(0,1).toUpperCase()).sort().join('') );
+//	
+//    if ( !Array.isArray(members) || members.length === 0 ) return (false);
+//
+//    sDream = members.filter(e => typeof (e) === "string").map(e => e.trim().substring(0,1).toUpperCase()).sort().join('');
+//    if (typeof (sDream) === "string") {
+//        return (sDream);
+//    } else {
+//        return (false);
+//    }
+//}
+//
 //---Test---
 //matrix = [
 //        '   William Alston ',
@@ -146,33 +158,33 @@ function createDreamTeam(members) {
 //        ]
 //        //'ADGJKMNPRSTW'
 //
-matrix = [
-    'Amelia',
-    null,
-    undefined,
-    'Ruby',
-    'Lily',
-    11,
-    'Grace',
-    22,
-    'Millie',
-    'Daisy',
-    true,
-    'Freya',
-    false,
-    'Erin',
-    new Set([1,2,3,4,5]),
-    'Megan',
-    {'John': 'Smith'},
-    'Jasmine',
-    1,
-    2,
-    3,
-    4,
-    5,
-    'Brooke'
-    ]
-    //'ABDEFGJLMMR'
+//matrix = [
+//    'Amelia',
+//    null,
+//    undefined,
+//    'Ruby',
+//    'Lily',
+//    11,
+//    'Grace',
+//    22,
+//    'Millie',
+//    'Daisy',
+//    true,
+//    'Freya',
+//    false,
+//    'Erin',
+//    new Set([1,2,3,4,5]),
+//    'Megan',
+//    {'John': 'Smith'},
+//    'Jasmine',
+//    1,
+//    2,
+//    3,
+//    4,
+//    5,
+//    'Brooke'
+//    ]
+//    //'ABDEFGJLMMR'
 //
 //matrix = [
 //    ['David Abram'],
@@ -186,23 +198,75 @@ matrix = [
 //    '  val_plumwood'
 //    ]
 //    //'BDETV'
-
+//
 //---View solution---
-let sDream = createDreamTeam(matrix);
-document.write(sDream);
+//let sDream = createDreamTeam(matrix);
+//document.write(sDream);
 //
 //=== End ( dream-team ) ===
 
 
 
-//### **Команда мечты**
+//---------------------------------------------------------------------------------------------------
+// extended-repeater
+//---------------------------------------------------------------------------------------------------
+//---Task---
+//### **Расширенный повторитель**
+//Ваша задача — реализовать функцию `repeater(str, options)`.
+//Эта функция возвращает повторяющуюся **строку**, основываясь на заданных параметрах:
+//*	`str` это **строка**, которая будет повторена
+//*	`options` это **объект** опций, который содержит следующие свойства:
+//  -	`repeatTimes` устанавливает число повторений `str`
+//  - `separator` это строка, разделяющая повторения `str`
+//  - `addition` это дополнительная строка, которая будет добавлена после каждого повторения `str`
+//  - `additionRepeatTimes` устанавливает число повторений `addition`
+//  - `additionSeparator` это строка, разделяющая повторения `addition`
 //
-//Представьте себе, что вы с вашими друзьями решаете создать **команду мечты**. Эта команда должна иметь крутое секретное название, в котором зашифрована информация о ней. Например, это могут быть **первые буквы** имен ее членов **в верхнем регистре**, **отсортированные по алфавиту**.
-//Ваша задача — реализовать функцию `createDreamTeam(members)`, которая возвращает имя только что созданной команды (`string`), основанной на именах ее членов (`array`). Удачи!
-//Имена членов команды должны быть типа `string`. Значения другого типа должны быть **проигнорированы**. В случае неправильного **типа** аргумента `members` функция должна вернуть `false`.
-//NB! Имя члена команды может содержать **пробелы**.
-//Например:
-//`createDreamTeam(['Matt', 'Ann', 'Dmitry', 'Max'])` => `'ADMM'`
-//`createDreamTeam(['Olivia', 1111, 'Lily', 'Oscar', true, null])` => `'LOO'`
-//Напишите ваш код в `src/dream-team.js`.
+//Параметры `str` и `addition` по умолчанию являются **строками**. В случае, если они другого типа, он должны быть преобразованы к строке.
+//Параметры `separator` и `additionSeparator` являются строками.
+//`repeatTimes` и `additionRepeatTimes` являются целыми числами (в случае отсутствия любого из них соответствующая строка не повторяется).
+//Единственный обязательный параметр — это `str`, остальные могут не быть переданы.
+//Значение `separator` по умолчанию это `'+'`. Значение `additionSeparator` по умолчанию это `'|'`.
+//Например: `repeater('STRING', { repeatTimes: 3, separator: '**', addition: 'PLUS', additionRepeatTimes: 3, additionSeparator: '00' })` => `'STRINGPLUS00PLUS00PLUS**STRINGPLUS00PLUS00PLUS**STRINGPLUS00PLUS00PLUS'`
+//
+//Напишите свой код в `src/extended-repeater.js`.
+//
+//---Solution---
+function repeater(str, options) {
+//    //Добавляет в массив только один элемент
+//    //sDream = [...new Set(members.filter(e => typeof (e) === "string").map(e => e.trim().substring(0,1).toUpperCase()))].sort().join('');
+//    //return (members.filter(e => typeof (e) === "string").map(e => e.trim().substring(0,1).toUpperCase()).sort().join('') );
+//	
+//    if ( !Array.isArray(members) || members.length === 0 ) return (false);
+//
+//    sDream = members.filter(e => typeof (e) === "string").map(e => e.trim().substring(0,1).toUpperCase()).sort().join('');
+//    if (typeof (sDream) === "string") {
+//        return (sDream);
+//    } else {
+//        return (false);
+//    }
+}
+
+//---Test---
+arrayTest = [
+    [9.234, { repeatTimes: 4, separator: '||', addition: {a: 5}, additionRepeatTimes: 3, additionSeparator: '&&' }], // '9.234[object Object]&&[object Object]&&[object Object]||9.234[object Object]&&[object Object]&&[object Object]||9.234[object Object]&&[object Object]&&[object Object]||9.234[object Object]&&[object Object]&&[object Object]')
+    [-222, { repeatTimes: 4, separator: '||', addition: new Map(), additionRepeatTimes: 3, additionSeparator: '&&' }], //'-222[object Map]&&[object Map]&&[object Map]||-222[object Map]&&[object Map]&&[object Map]||-222[object Map]&&[object Map]&&[object Map]||-222[object Map]&&[object Map]&&[object Map]');
+    [new Set(), { repeatTimes: 3, separator: '??? ', addition: [1, 2, 3, '4'], additionRepeatTimes: 2, additionSeparator: '!!!' }], //'[object Set]1,2,3,4!!!1,2,3,4??? [object Set]1,2,3,4!!!1,2,3,4??? [object Set]1,2,3,4!!!1,2,3,4');
+    [true, { repeatTimes: 3, separator: '??? ', addition: false, additionRepeatTimes: 2, additionSeparator: '!!!' }], //'truefalse!!!false??? truefalse!!!false??? truefalse!!!false');
+    [null, { repeatTimes: 3, separator: '??? ', addition: null, additionRepeatTimes: 3, additionSeparator: '!!!' }], //'nullnull!!!null!!!null??? nullnull!!!null!!!null??? nullnull!!!null!!!null');  
+    ['REPEATABLE_STRING', {repeatTimes: 2, addition: 'ADDITION', additionRepeatTimes: 3}], //'REPEATABLE_STRINGADDITION|ADDITION|ADDITION+REPEATABLE_STRINGADDITION|ADDITION|ADDITION');
+    ['REPEATABLE_STRING', {repeatTimes: 2, addition: 'ADDITION', additionSeparator: '222', additionRepeatTimes: 3}], //'REPEATABLE_STRINGADDITION222ADDITION222ADDITION+REPEATABLE_STRINGADDITION222ADDITION222ADDITION');
+    ['REPEATABLE_STRING', {repeatTimes: 2, separator: '222', addition: 'ADDITION', additionRepeatTimes: 3}] // 'REPEATABLE_STRINGADDITION|ADDITION|ADDITION222REPEATABLE_STRINGADDITION|ADDITION|ADDITION');
+]
+//
+//---View solution---
+for (let i=0;i<arrayTest.length;i++) {
+    let sRepeate = repeater(arrayTest[i,0],arrayTest[i,1]);
+    document.write(sRepeate);
+    document.write('-');
+}
+//let sRepeate = repeater(str, options);
+//document.write(sRepeate);
+//
+//=== End ( extended-repeater ) ===
 
