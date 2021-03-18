@@ -216,7 +216,7 @@
 //Эта функция возвращает повторяющуюся **строку**, основываясь на заданных параметрах:
 //*	`str` это **строка**, которая будет повторена
 //*	`options` это **объект** опций, который содержит следующие свойства:
-//  -	`repeatTimes` устанавливает число повторений `str`
+//  - `repeatTimes` устанавливает число повторений `str`
 //  - `separator` это строка, разделяющая повторения `str`
 //  - `addition` это дополнительная строка, которая будет добавлена после каждого повторения `str`
 //  - `additionRepeatTimes` устанавливает число повторений `addition`
@@ -233,22 +233,29 @@
 //
 //---Solution---
 function repeater(str, options) {
-//    //Добавляет в массив только один элемент
-//    //sDream = [...new Set(members.filter(e => typeof (e) === "string").map(e => e.trim().substring(0,1).toUpperCase()))].sort().join('');
-//    //return (members.filter(e => typeof (e) === "string").map(e => e.trim().substring(0,1).toUpperCase()).sort().join('') );
-//	
-//    if ( !Array.isArray(members) || members.length === 0 ) return (false);
-//
-//    sDream = members.filter(e => typeof (e) === "string").map(e => e.trim().substring(0,1).toUpperCase()).sort().join('');
-//    if (typeof (sDream) === "string") {
-//        return (sDream);
-//    } else {
-//        return (false);
-//    }
+    let sRepeater = "";
+    let addStr = "";
+
+    let repeatTimes = "repeatTimes" in options ? options.repeatTimes : (str === "" ? 0: 1);
+    let separator = "separator" in options ? options.separator : '+';
+    let addition = "addition" in options ? options.addition : "";
+    let additionRepeatTimes = "additionRepeatTimes" in options ? options.additionRepeatTimes : (addition === "" ? 0 : 1);
+    let additionSeparator = "additionSeparator" in options ? options.additionSeparator : '|';
+
+    for (i=1;i<=repeatTimes;i++) {
+        addStr = "";
+        for (j=1;j<=additionRepeatTimes;j++) {
+            addStr = addStr.concat((addStr !== "" ? additionSeparator : ""), addition);
+        }    
+        sRepeater = sRepeater.concat((sRepeater !== "" ? separator : ""), str, addStr);
+    }
+
+    return (sRepeater);
 }
 
 //---Test---
-arrayTest = [
+let arrayTest = [
+    ['TESTstr', { separator: 'ds', addition: 'ADD!', additionSeparator: ')))000' }], //'TESTstrADD!');
     [9.234, { repeatTimes: 4, separator: '||', addition: {a: 5}, additionRepeatTimes: 3, additionSeparator: '&&' }], // '9.234[object Object]&&[object Object]&&[object Object]||9.234[object Object]&&[object Object]&&[object Object]||9.234[object Object]&&[object Object]&&[object Object]||9.234[object Object]&&[object Object]&&[object Object]')
     [-222, { repeatTimes: 4, separator: '||', addition: new Map(), additionRepeatTimes: 3, additionSeparator: '&&' }], //'-222[object Map]&&[object Map]&&[object Map]||-222[object Map]&&[object Map]&&[object Map]||-222[object Map]&&[object Map]&&[object Map]||-222[object Map]&&[object Map]&&[object Map]');
     [new Set(), { repeatTimes: 3, separator: '??? ', addition: [1, 2, 3, '4'], additionRepeatTimes: 2, additionSeparator: '!!!' }], //'[object Set]1,2,3,4!!!1,2,3,4??? [object Set]1,2,3,4!!!1,2,3,4??? [object Set]1,2,3,4!!!1,2,3,4');
@@ -261,11 +268,15 @@ arrayTest = [
 //
 //---View solution---
 for (let i=0;i<arrayTest.length;i++) {
-    let sRepeate = repeater(arrayTest[i,0],arrayTest[i,1]);
+    let sRepeate = repeater(arrayTest[i][0],arrayTest[i][1]);
     document.write(sRepeate);
     document.write('-');
 }
-//let sRepeate = repeater(str, options);
+//
+//const objWithSpecificCoercion = {
+//    [Symbol.toPrimitive]: hint => hint !== 'number' ? 'STRING_OR_DEFAULT' : 'NUMBER'
+//};
+//let sRepeate = repeater(objWithSpecificCoercion, {repeatTimes: 2, addition: objWithSpecificCoercion});  //'STRING_OR_DEFAULTSTRING_OR_DEFAULT+STRING_OR_DEFAULTSTRING_OR_DEFAULT');
 //document.write(sRepeate);
 //
 //=== End ( extended-repeater ) ===
