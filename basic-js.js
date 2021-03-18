@@ -314,7 +314,17 @@
 //
 //---Solution---
 function calculateHanoi(disksNumber, turnsSpeed) {
+    let objHanoi = { turns: 0, seconds: 0 };
+    let turns = 0;
 
+    for (i=1;i<=disksNumber;i++) {
+        turns = (turns * 2) + 1;
+    }
+
+    objHanoi.turns   = turns;
+    objHanoi.seconds = Math.floor((3600/turnsSpeed) * turns);
+    
+    return (objHanoi);
 };
 
 //---Test---
@@ -339,8 +349,10 @@ let arrayTest = [
 //---View solution---
 for (let i=0;i<arrayTest.length;i++) {
     let objHanoi = calculateHanoi(arrayTest[i][0],arrayTest[i][1]);
-    document.write(objHanoi);
-    document.write('-');
+    document.write(objHanoi.turns);
+    document.write(':');
+    document.write(objHanoi.seconds);
+    document.write(' - ');
 }
 //
 //let objHanoi = calculateHanoi(5, 4074); //{turns: 31, seconds: 27})
