@@ -381,71 +381,22 @@
 //Напишите ваш код в `src/recursive-depth.js`.
 //
 //---Solution---
-
-//depthCalc = class DepthCalculator {
-//  static calculateDepth(arr, d = 1) {
-
-
-    // return d > 0 ? arr.reduce((acc, val) => acc.concat(Array.isArray(val) ? DepthCalculator.calculateDepth(val, d - 1) : val), [])
-    //                 : arr.slice();
-
-function calculateDepth(arr, d = 1) {
-    let acc = 10;
-    acc = arr.reduce(function(ac1, val) {
-            if (Array.isArray(val)) {
-              if (d > ac1) {
-                return ac1 + 1;
-              }
-              calculateDepth(val, d - 1);
-            } else {
-              return ac1 + 0;
+depthCalc = class DepthCalculator {
+    static calculateDepth(arr) {
+        let depth = 1;
+        let currentDepth = 1;
+        arr.map(element => {
+            if (Array.isArray(element)) {
+                currentDepth += this.calculateDepth(element);
+                if (depth < currentDepth) {
+                    depth = currentDepth;
+                }
             }
-          }, 0);
-    return acc;
-      
-      
+            currentDepth = 1;
+        })
+        return (depth);
+    }
 }
-    //return n;
-
-      // acc.concat(Array.isArray(val) ? DepthCalculator.calculateDepth(val, d - 1) : val), [])
-      //             : arr.slice();
-  //return arr;
-  
-
-//   calculateDepth() {
-
-//       const stack = [...this.name];
-//       const res = [];
-//       while (stack.length) {
-//         n = n + 1;
-//         // забираем последнее значение
-//         const next = stack.pop();
-//         if (Array.isArray(next)) {
-//           // добавляем к массиву элементы не модифицируя исходное значение
-//           stack.push(...next);
-//         } else {
-//           res.push(next);
-//         }
-//       }
-// return n;
-//    }
-
-  //   function flatDeep(arr, d = 1) {
-  //     return d > 0 ? arr.reduce((acc, val) => acc.concat(Array.isArray(val) ? flatDeep(val, d - 1) : val), [])
-  //                  : arr.slice();
-  //  };
-  //   };
-
-  //   function flatten(array) {
-  //     var flattend = [];
-  //     (function flat(array) {
-  //       array.forEach(function(el) {
-  //         if (Array.isArray(el)) flat(el);
-  //         else flattend.push(el);
-  //       });
-  //     })(array);
-  //     return flattend;
-
 //
 //---Test---
 let arrayTest = [
@@ -462,8 +413,7 @@ let arrayTest = [
 //
 //---View solution---
 for (let i=0;i<arrayTest.length;i++) {
-//    depth = depthCalc.calculateDepth(arrayTest[i]); //.calculateDepth(arrayTest[i]);
-depth = calculateDepth(arrayTest[i]); //.calculateDepth(arrayTest[i]);
+    depth = depthCalc.calculateDepth(arrayTest[i]);
     document.write(depth);
     document.write(' - ');
 }
