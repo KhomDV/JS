@@ -313,50 +313,290 @@
 // ---
 //
 //---Solution---
-function calculateHanoi(disksNumber, turnsSpeed) {
-    let objHanoi = { turns: 0, seconds: 0 };
-    let turns = 0;
-
-    // for (i=1;i<=disksNumber;i++) {
-    //     turns = (turns * 2) + 1;
-    // }
-    turns = Math.pow(2, disksNumber) - 1;
-    objHanoi.turns   = turns;
-    objHanoi.seconds = Math.floor((3600/turnsSpeed) * turns);
-    
-    return (objHanoi);
-};
-
+// function calculateHanoi(disksNumber, turnsSpeed) {
+//     let objHanoi = { turns: 0, seconds: 0 };
+//     let turns = 0;
+//
+//     // for (i=1;i<=disksNumber;i++) {
+//     //     turns = (turns * 2) + 1;
+//     // }
+//     turns = Math.pow(2, disksNumber) - 1;
+//     objHanoi.turns   = turns;
+//     objHanoi.seconds = Math.floor((3600/turnsSpeed) * turns);
+//    
+//     return (objHanoi);
+// };
+//
 //---Test---
-let arrayTest = [
-    [5, 4074],  //{turns: 31, seconds: 27});
-    [38, 4594], //{turns: 274877906943, seconds: 215402800390});
-    [34, 4005], //{turns: 17179869183, seconds: 15442579040});
-    [19, 4770], //{turns: 524287, seconds: 395688});
-    [23, 4344], //{turns: 8388607, seconds: 6951884});
-    [9, 4347],  //{turns: 511, seconds: 423});
-    [15, 4254], //{turns: 32767, seconds: 27729});
-    [14, 4681], //{turns: 16383, seconds: 12599});
-    [9, 4308],  //{turns: 511, seconds: 427});
-    [18, 4442], //{turns: 262143, seconds: 212452});
-    [10, 4159], //{turns: 1023, seconds: 885});
-    [44, 4685], //{turns: 17592186044415, seconds: 13518008486636});
-    [39, 4936], //{turns: 549755813887, seconds: 400956428280});
-    [44, 4468], //{turns: 17592186044415, seconds: 14174545604273});
-    [46, 4236]  //{turns: 70368744177663, seconds: 59803465306795});
-]
+// let arrayTest = [
+//     [5, 4074],  //{turns: 31, seconds: 27});
+//     [38, 4594], //{turns: 274877906943, seconds: 215402800390});
+//     [34, 4005], //{turns: 17179869183, seconds: 15442579040});
+//     [19, 4770], //{turns: 524287, seconds: 395688});
+//     [23, 4344], //{turns: 8388607, seconds: 6951884});
+//     [9, 4347],  //{turns: 511, seconds: 423});
+//     [15, 4254], //{turns: 32767, seconds: 27729});
+//     [14, 4681], //{turns: 16383, seconds: 12599});
+//     [9, 4308],  //{turns: 511, seconds: 427});
+//     [18, 4442], //{turns: 262143, seconds: 212452});
+//     [10, 4159], //{turns: 1023, seconds: 885});
+//     [44, 4685], //{turns: 17592186044415, seconds: 13518008486636});
+//     [39, 4936], //{turns: 549755813887, seconds: 400956428280});
+//     [44, 4468], //{turns: 17592186044415, seconds: 14174545604273});
+//     [46, 4236]  //{turns: 70368744177663, seconds: 59803465306795});
+// ]
 //
 //---View solution---
-for (let i=0;i<arrayTest.length;i++) {
-    let objHanoi = calculateHanoi(arrayTest[i][0],arrayTest[i][1]);
-    document.write(objHanoi.turns);
-    document.write(':');
-    document.write(objHanoi.seconds);
-    document.write(' - ');
-}
+// for (let i=0;i<arrayTest.length;i++) {
+//     let objHanoi = calculateHanoi(arrayTest[i][0],arrayTest[i][1]);
+//     document.write(objHanoi.turns);
+//     document.write(':');
+//     document.write(objHanoi.seconds);
+//     document.write(' - ');
+// }
 //
 //let objHanoi = calculateHanoi(5, 4074); //{turns: 31, seconds: 27})
 //document.write(objHanoi);
 // 
 //=== End ( hanoi-tower ) ===
 
+
+
+//---------------------------------------------------------------------------------------------------
+// recursive-depth
+//---------------------------------------------------------------------------------------------------
+//---Task---
+//### **Рекурсивный вычислитель глубины**
+//![Идти глубже](https://i.imgur.com/k7lADiM.jpg)
+//
+//Ваша задача — реализовать класс `DepthCalculator` с методом `calculateDepth`, который принимает массив и возвращает его **глубину**.
+//Метод `calculateDepth` должен проходить полученный массив **рекурсивно**. Глубина **плоского** массива — 1. Метод должен корректно работать с массивами,
+// не содержащими элементов или содержащими пустые массивы.
+//
+//Например:
+//`const depthCalc = new DepthCalculator();`
+//`depthCalc.calculateDepth([1, 2, 3, 4, 5])` => `1`
+//`depthCalc.calculateDepth([1, 2, 3, [4, 5]])` => `2`
+//`depthCalc.calculateDepth([[[]]])` => `3`
+//Напишите ваш код в `src/recursive-depth.js`.
+//
+//---Solution---
+
+//depthCalc = class DepthCalculator {
+//  static calculateDepth(arr, d = 1) {
+
+
+    // return d > 0 ? arr.reduce((acc, val) => acc.concat(Array.isArray(val) ? DepthCalculator.calculateDepth(val, d - 1) : val), [])
+    //                 : arr.slice();
+
+function calculateDepth(arr, d = 1) {
+    let acc = 10;
+    acc = arr.reduce(function(ac1, val) {
+            if (Array.isArray(val)) {
+              if (d > ac1) {
+                return ac1 + 1;
+              }
+              calculateDepth(val, d - 1);
+            } else {
+              return ac1 + 0;
+            }
+          }, 0);
+    return acc;
+      
+      
+}
+    //return n;
+
+      // acc.concat(Array.isArray(val) ? DepthCalculator.calculateDepth(val, d - 1) : val), [])
+      //             : arr.slice();
+  //return arr;
+  
+
+//   calculateDepth() {
+
+//       const stack = [...this.name];
+//       const res = [];
+//       while (stack.length) {
+//         n = n + 1;
+//         // забираем последнее значение
+//         const next = stack.pop();
+//         if (Array.isArray(next)) {
+//           // добавляем к массиву элементы не модифицируя исходное значение
+//           stack.push(...next);
+//         } else {
+//           res.push(next);
+//         }
+//       }
+// return n;
+//    }
+
+  //   function flatDeep(arr, d = 1) {
+  //     return d > 0 ? arr.reduce((acc, val) => acc.concat(Array.isArray(val) ? flatDeep(val, d - 1) : val), [])
+  //                  : arr.slice();
+  //  };
+  //   };
+
+  //   function flatten(array) {
+  //     var flattend = [];
+  //     (function flat(array) {
+  //       array.forEach(function(el) {
+  //         if (Array.isArray(el)) flat(el);
+  //         else flattend.push(el);
+  //       });
+  //     })(array);
+  //     return flattend;
+
+//
+//---Test---
+let arrayTest = [
+    [1, 2, 3, 4, 5, 1], // 1);
+    [1, 2, 3, 4, 5, [1]], // 2);
+    [1, 2, 3, [1], 4, 5, [1]], // 2);
+    [1, 2, 3, [8, [2]], 4, 5, []], // 3);
+    [1, [8, [[]]], 2, 3, [8, []], 4, 5, []], // 4);
+    [1, [8, [[]]], 2, 3, [8, []], 4, 5, ['6575',['adas', ['dfg', [0]]]]],  //5);
+    [1, [8, [[]]], 2, 3, [8, [[[[[[[[[[[[[]]]]]]]]]]]]]], 4, 5, ['6575',['adas', ['dfg', [0]]]]], // 15);
+    [1, [8, [[]]], 2, 3, [8, [[[[[[[[[[[[[]]]]]]]]]]]]]], [8, [[[[[[[[[[[[[[[[[[[[[[[]]]]]]]]]]]]]]]]]]]]]]]], 4, 5, ['6575',['adas', ['dfg', [0]]]]], // 25);
+    [1, [8, [[]]], [[[[[[[[[[[[[[[[[[[[[[[[[[[[[[]]]]]]], []]]], []]]]]]]]], []]]], []]]]]]]]]], 2, 3, [8, [[[[[[[[[[[[[[]]]]]]]]]]]]]]], [8, [[[[[[[[[[[[[[[[[[[[[[[]]]]]]]]]]]]]]]]]]]]]]]], 4, 5, ['6575',['adas', ['dfg', [0]]]]], //31);
+]
+//
+//---View solution---
+for (let i=0;i<arrayTest.length;i++) {
+//    depth = depthCalc.calculateDepth(arrayTest[i]); //.calculateDepth(arrayTest[i]);
+depth = calculateDepth(arrayTest[i]); //.calculateDepth(arrayTest[i]);
+    document.write(depth);
+    document.write(' - ');
+}
+//
+//let objHanoi = calculateHanoi(5, 4074); //{turns: 31, seconds: 27})
+//document.write(objHanoi);
+// 
+//=== End ( recursive-depth ) ===
+
+
+
+
+
+
+
+
+// ---
+
+// ### **Преобразование массива**
+
+// Ваша задача — реализовать функцию `transform(arr)`, которая принимает массив (тип `array`) и возвращает **преобразованный** массив, основываясь на **управляющих последовательностях**, которые содержит `arr`. **Управляющие последовательности** — это определенные строковые элементы вышеупомянутого массива:
+// * `--discard-next` исключает следующий за ней элемент исходного массива из преобразованного массива.
+// * `--discard-prev` исключает предшествующий ей элемент исходного массива из преобразованного массива.
+// * `--double-next` удваивает следующий за ней элемент исходного массива в преобразованном массиве.
+// * `--double-prev` удваивает предшествующий ей элемент исходного массива в преобразованном массиве.
+
+// Например:
+
+// `transform([1, 2, 3, '--double-next', 4, 5])` => `[1, 2, 3, 4, 4, 5]`
+
+// `transform([1, 2, 3, '--discard-prev', 4, 5])` => `[1, 2, 4, 5]`
+
+// Функция не должна изменять исходный массив. Управляющие последовательности применяются **последовательно, слева направо** к элементам из исходного массива. Управляющие последовательности **не попадают** в преобразованный массив. Управляющие последовательности в исходном массиве не встречаются подряд (не следуют одна за другой). Если около управляющей последовательности **нет элемента**, к которому она может быть применена в исходном массиве, либо он был удален в процессе преобразования массива, **она не делает ничего**. Функция должна выбросить ошибку, если `arr` не является массивом.
+
+// Напишите свой код в `src/transform-array.js`.
+
+// ---
+
+// ### **Чейнмейкер**
+
+// Давайте попрактикуемся в [чейнинге](https://en.wikipedia.org/wiki/Method_chaining)!
+
+// Ваша задача — реализовать объект `chainMaker`, который будет создавать цепочки. Оконченная цепочка это строка (тип `string`) и выглядит следующим образом: `'( value1 )~~( value2 )~~( value3 )'`.
+
+// `chainMaker` имееет несколько **методов** для создания цепочек и их модификации:
+// * `getLength` возвращает текущую длину цепи в виде числа;
+// * `addLink(value)` добавляет звено, содержащее строковое представление `value` к цепочке;
+// * `removeLink(position)` удаляет звено цепи, находящееся в заданном положении;
+// * `reverseChain` разворачивает цепь задом наперед;
+// * `finishChain` завершает цепь и **возвращает** ее.
+
+// Методы `addLink`, `reverseChain` и `removeLink` **чейнятся**, в то время как остальные – нет. Если `addLink` вызван без аргументов, он добавляет пустое звено (`'(  )'`) в цепочку. Если `removeLink` принимает **некорректную** позицию (например, не являющуюся числом, или дробное число, или ссылающуюся на несуществующее звено), он должен выбросить **ошибку**. После вызова метода `finishChain` существующая на данный момент цепь должна быть удалена, как и в случае, если была выброшена **ошибка**.
+
+// Например:
+
+// `chainMaker.addLink(1).addLink(2).addLink(3).finishChain()` => `'( 1 )~~( 2 )~~( 3 )'`
+
+// `chainMaker.addLink(1).addLink(2).removeLink(1).addLink(3).finishChain()` => `'( 2 )~~( 3 )'`
+
+// `chainMaker.addLink(1).addLink(2).reverseChain().addLink(3).finishChain()` => `'( 2 )~~( 1 )~~( 3 )'`
+
+// Напишите ваш код в `src/simple-chain.js`.
+
+// ---
+
+
+
+// ### **Шифр Виженера**
+
+// Криптография — это здорово! Давайте попробуем наладить производство шифровальных машин. Наши машины будут использовать один из методов шифрования, которые легки для понимания, но не могут быть разгаданы посредством простого криптоанализа — [**шифр Виженера**](https://en.wikipedia.org/wiki/Vigen%C3%A8re_cipher).
+
+// Наша машина будет иметь 2 модификации: **прямая** и **обратная** (тип машины определяется в момент создания). **Прямая** машина просто шифрует и дешифрует строку, переданную в нее, а **обратная** машина возвращает **перевернутую** задом наперед строку после шифрования и дешифрования.
+
+// Ваша задача — реализовать класс `VigenereCipheringMachine`. `constructor` этого класса принимает `true` (**или ничего**), чтобы создать **прямую** машину и `false`, чтобы создать **обратную** машину.
+// Каждый экземляр `VigenereCipheringMachine` должен иметь 2 метода: `encrypt` и `decrypt`.
+
+// Метод `encrypt` принимает 2 параметра: `message` (строка, чтобы ее зашифровать) и `key` (строку-кодовое слово).
+
+// Метод `decrypt` принимает 2 параметра: `message` (строка, чтобы ее расшифровать) и `key` (строку-кодовое слово)
+
+// Эти параметры для обоих методов являются **обязательными**. Если хотя бы один из них не был передан, должна быть выброшена ошибка. Машины шифруют и дешифруют **только символы латинского алфавита** (другие символы не изменяются). Строка, возвращаемая этими методами, должна иметь **верхний регистр**.
+
+// Вам не нужно валидировать значение, переданное в `contructor` и в методы `encrypt` и `decrypt` (за исключением выбрасывания ошибки при отсутствии аргумента для для этих методов).
+
+// Например:
+
+// `const directMachine = new VigenereCipheringMachine();`
+
+// `const reverseMachine = new VigenereCipheringMachine(false);`
+
+// `directMachine.encrypt('attack at dawn!', 'alphonse') => 'AEIHQX SX DLLU!'`
+
+// `directMachine.decrypt('AEIHQX SX DLLU!', 'alphonse') => 'ATTACK AT DAWN!'`
+
+// `reverseMachine.encrypt('attack at dawn!', 'alphonse') => '!ULLD XS XQHIEA'`
+
+// `reverseMachine.decrypt('AEIHQX SX DLLU!', 'alphonse') => '!NWAD TA KCATTA'`
+
+// Напишите свой код в `src/vigenere-cipher.js`.
+
+// ---
+
+
+
+
+// ### **Какая пора года??**
+
+// Ваша задача — реализовать функцию `getSeason(date)`, которая принимает объект `Date` и возвращает соответствующую ему пору года. Пора года должна быть типа `string`.
+
+// ---
+// <details>
+
+// <summary>Названия пор года в англиийском языке</summary>
+// В английском поры года имеют следующие наименования: весна — spring, лето — summer, осень — autumn (fall), зима — winter.
+
+// </details>
+
+// ---
+
+// Если аргумент `date` не был передан, функция должна вернуть строку `'Unable to determine the time of year!'` Если аргумент `date` **некорректный**, функция должна выбросить ошибку (`Error`).
+
+// Тссс! Среди аргументов, которые попадают в эту функцию, затесался вражеский агент.
+
+// ![Disguised](https://www.famousbirthdays.com/faces/disguised-toast-image.jpg)
+
+// Он руководствуется знаменитой поговоркой: "Если это выглядит как **утка**, плавает как **утка**, и крякает как **утка**, тогда это, скорее всего, **утка** (и неважно, что это **на самом деле**)". Он **искусно маскируется** под настоящую дату (`date`), но умелый javascript-разработчик может поймать его и выбросить ошибку как раз вовремя!
+
+// Например:
+
+// `const springDate = new Date(2020, 02, 31)`
+
+// `getSeason(springDate) => 'spring'`
+
+// Напишите ваш код в `src/what-season.js`.
+
+// ---
