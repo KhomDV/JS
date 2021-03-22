@@ -381,42 +381,42 @@
 //Напишите ваш код в `src/recursive-depth.js`.
 //
 //---Solution---
-depthCalc = class DepthCalculator {
-    static calculateDepth(arr) {
-        let depth = 1;
-        let currentDepth = 1;
-        arr.map(element => {
-            if (Array.isArray(element)) {
-                currentDepth += this.calculateDepth(element);
-                if (depth < currentDepth) {
-                    depth = currentDepth;
-                }
-            }
-            currentDepth = 1;
-        })
-        return (depth);
-    }
-}
+// depthCalc = class DepthCalculator {
+//     static calculateDepth(arr) {
+//         let depth = 1;
+//         let currentDepth = 1;
+//         arr.map(element => {
+//             if (Array.isArray(element)) {
+//                 currentDepth += this.calculateDepth(element);
+//                 if (depth < currentDepth) {
+//                     depth = currentDepth;
+//                 }
+//             }
+//             currentDepth = 1;
+//         })
+//         return (depth);
+//     }
+// }
 //
 //---Test---
-let arrayTest = [
-    [1, 2, 3, 4, 5, 1], // 1);
-    [1, 2, 3, 4, 5, [1]], // 2);
-    [1, 2, 3, [1], 4, 5, [1]], // 2);
-    [1, 2, 3, [8, [2]], 4, 5, []], // 3);
-    [1, [8, [[]]], 2, 3, [8, []], 4, 5, []], // 4);
-    [1, [8, [[]]], 2, 3, [8, []], 4, 5, ['6575',['adas', ['dfg', [0]]]]],  //5);
-    [1, [8, [[]]], 2, 3, [8, [[[[[[[[[[[[[]]]]]]]]]]]]]], 4, 5, ['6575',['adas', ['dfg', [0]]]]], // 15);
-    [1, [8, [[]]], 2, 3, [8, [[[[[[[[[[[[[]]]]]]]]]]]]]], [8, [[[[[[[[[[[[[[[[[[[[[[[]]]]]]]]]]]]]]]]]]]]]]]], 4, 5, ['6575',['adas', ['dfg', [0]]]]], // 25);
-    [1, [8, [[]]], [[[[[[[[[[[[[[[[[[[[[[[[[[[[[[]]]]]]], []]]], []]]]]]]]], []]]], []]]]]]]]]], 2, 3, [8, [[[[[[[[[[[[[[]]]]]]]]]]]]]]], [8, [[[[[[[[[[[[[[[[[[[[[[[]]]]]]]]]]]]]]]]]]]]]]]], 4, 5, ['6575',['adas', ['dfg', [0]]]]], //31);
-]
+// let arrayTest = [
+//     [1, 2, 3, 4, 5, 1], // 1);
+//     [1, 2, 3, 4, 5, [1]], // 2);
+//     [1, 2, 3, [1], 4, 5, [1]], // 2);
+//     [1, 2, 3, [8, [2]], 4, 5, []], // 3);
+//     [1, [8, [[]]], 2, 3, [8, []], 4, 5, []], // 4);
+//     [1, [8, [[]]], 2, 3, [8, []], 4, 5, ['6575',['adas', ['dfg', [0]]]]],  //5);
+//     [1, [8, [[]]], 2, 3, [8, [[[[[[[[[[[[[]]]]]]]]]]]]]], 4, 5, ['6575',['adas', ['dfg', [0]]]]], // 15);
+//     [1, [8, [[]]], 2, 3, [8, [[[[[[[[[[[[[]]]]]]]]]]]]]], [8, [[[[[[[[[[[[[[[[[[[[[[[]]]]]]]]]]]]]]]]]]]]]]]], 4, 5, ['6575',['adas', ['dfg', [0]]]]], // 25);
+//     [1, [8, [[]]], [[[[[[[[[[[[[[[[[[[[[[[[[[[[[[]]]]]]], []]]], []]]]]]]]], []]]], []]]]]]]]]], 2, 3, [8, [[[[[[[[[[[[[[]]]]]]]]]]]]]]], [8, [[[[[[[[[[[[[[[[[[[[[[[]]]]]]]]]]]]]]]]]]]]]]]], 4, 5, ['6575',['adas', ['dfg', [0]]]]], //31);
+// ]
 //
 //---View solution---
-for (let i=0;i<arrayTest.length;i++) {
-    depth = depthCalc.calculateDepth(arrayTest[i]);
-    document.write(depth);
-    document.write(' - ');
-}
+// for (let i=0;i<arrayTest.length;i++) {
+//     depth = depthCalc.calculateDepth(arrayTest[i]);
+//     document.write(depth);
+//     document.write(' - ');
+// }
 //
 //let objHanoi = calculateHanoi(5, 4074); //{turns: 31, seconds: 27})
 //document.write(objHanoi);
@@ -425,6 +425,75 @@ for (let i=0;i<arrayTest.length;i++) {
 
 
 
+//---------------------------------------------------------------------------------------------------
+// simple-chain.
+//---------------------------------------------------------------------------------------------------
+//---Task---
+// ### **Чейнмейкер**
+// Давайте попрактикуемся в [чейнинге](https://en.wikipedia.org/wiki/Method_chaining)!
+// Ваша задача — реализовать объект `chainMaker`, который будет создавать цепочки.
+// Оконченная цепочка это строка (тип `string`) и выглядит следующим образом: `'( value1 )~~( value2 )~~( value3 )'`.
+// `chainMaker` имееет несколько **методов** для создания цепочек и их модификации:
+// * `getLength` возвращает текущую длину цепи в виде числа;
+// * `addLink(value)` добавляет звено, содержащее строковое представление `value` к цепочке;
+// * `removeLink(position)` удаляет звено цепи, находящееся в заданном положении;
+// * `reverseChain` разворачивает цепь задом наперед;
+// * `finishChain` завершает цепь и **возвращает** ее.
+// Методы `addLink`, `reverseChain` и `removeLink` **чейнятся**, в то время как остальные – нет.
+// Если `addLink` вызван без аргументов, он добавляет пустое звено (`'(  )'`) в цепочку.
+// Если `removeLink` принимает **некорректную** позицию (например, не являющуюся числом,
+// или дробное число, или ссылающуюся на несуществующее звено), он должен выбросить **ошибку**.
+// После вызова метода `finishChain` существующая на данный момент цепь должна быть удалена,
+// как и в случае, если была выброшена **ошибка**.
+// Например:
+// `chainMaker.addLink(1).addLink(2).addLink(3).finishChain()` => `'( 1 )~~( 2 )~~( 3 )'`
+// `chainMaker.addLink(1).addLink(2).removeLink(1).addLink(3).finishChain()` => `'( 2 )~~( 3 )'`
+// `chainMaker.addLink(1).addLink(2).reverseChain().addLink(3).finishChain()` => `'( 2 )~~( 1 )~~( 3 )'`
+// Напишите ваш код в `src/simple-chain.js`.
+// ---
+//
+//---Solution---
+const chainMaker = {
+    getLength() {
+      throw new CustomError('Not implemented');
+      // remove line with error and write your code here
+    },
+    addLink(value) {
+      throw new CustomError('Not implemented');
+      // remove line with error and write your code here
+    },
+    removeLink(position) {
+      throw new CustomError('Not implemented');
+      // remove line with error and write your code here
+    },
+    reverseChain() {
+      throw new CustomError('Not implemented');
+      // remove line with error and write your code here
+    },
+    finishChain() {
+      throw new CustomError('Not implemented');
+      // remove line with error and write your code here
+    }
+  };
+//
+//---Test---
+// let arrayTest = []
+//
+//---View solution---
+// let objHanoi = chainMaker.addLink('GHI').addLink(null).reverseChain().addLink(333).reverseChain().reverseChain().addLink(0).reverseChain().reverseChain().addLink('GHI').finishChain(); //, '( null )~~( GHI )~~( 333 )~~( 0 )~~( GHI )');
+// let objHanoi = chainMaker.addLink('8.963').reverseChain().reverseChain().reverseChain().reverseChain().addLink({0: 'first', 1: 'second', 'length': 2}).reverseChain().addLink(3.14).addLink('DEF').reverseChain().finishChain(); //, '( DEF )~~( 3.14 )~~( 8.963 )~~( [object Object] )');
+// let objHanoi = chainMaker.addLink(false).reverseChain().reverseChain().reverseChain().addLink({0: 'first', 1: 'second', 'length': 2}).addLink(1.233).addLink(false).addLink(1).reverseChain().addLink(1).finishChain(); //, '( 1 )~~( false )~~( 1.233 )~~( [object Object] )~~( false )~~( 1 )');
+// let objHanoi = chainMaker.reverseChain().reverseChain().addLink(NaN).addLink({0: 'first', 1: 'second', 'length': 2}).addLink({0: 'first', 1: 'second', 'length': 2}).addLink({0: 'first', 1: 'second', 'length': 2}).reverseChain().reverseChain().addLink({0: 'first', 1: 'second', 'length': 2}).addLink(true).finishChain(); //, '( NaN )~~( [object Object] )~~( [object Object] )~~( [object Object] )~~( [object Object] )~~( true )');
+// let objHanoi = chainMaker.addLink(1).reverseChain().addLink(0).reverseChain().addLink(NaN).addLink(1.233).addLink(null).addLink({0: 'first', 1: 'second', 'length': 2}).reverseChain().addLink({0: 'first', 1: 'second', 'length': 2}).finishChain(); //, '( [object Object] )~~( null )~~( 1.233 )~~( NaN )~~( 1 )~~( 0 )~~( [object Object] )');
+// let objHanoi = chainMaker.addLink(NaN).addLink(null).addLink(Infinity).addLink(1).reverseChain().addLink(null).reverseChain().addLink({0: 'first', 1: 'second', 'length': 2}).addLink(22).addLink(333).finishChain(); //, '( null )~~( NaN )~~( null )~~( Infinity )~~( 1 )~~( [object Object] )~~( 22 )~~( 333 )');
+// let objHanoi = chainMaker.addLink(0).addLink(NaN).addLink(1).reverseChain().addLink(0).reverseChain().reverseChain().addLink(1).addLink(Infinity).reverseChain().finishChain(); //, '( Infinity )~~( 1 )~~( 0 )~~( 0 )~~( NaN )~~( 1 )');
+// let objHanoi = chainMaker.addLink('ABC').reverseChain().addLink(Infinity).addLink(null).addLink('8.963').addLink(false).addLink(Infinity).reverseChain().addLink(false).reverseChain().finishChain(); //, '( false )~~( ABC )~~( Infinity )~~( null )~~( 8.963 )~~( false )~~( Infinity )');
+// let objHanoi = chainMaker.reverseChain().addLink('DEF').reverseChain().reverseChain().reverseChain().addLink(333).addLink(null).addLink(0).reverseChain().reverseChain().finishChain(); //, '( DEF )~~( 333 )~~( null )~~( 0 )');
+// let objHanoi = chainMaker.addLink('DEF').reverseChain().addLink('8.963').reverseChain().reverseChain().reverseChain().addLink(3.14).reverseChain().reverseChain().reverseChain().finishChain();//, '( 3.14 )~~( DEF )~~( 8.963 )');
+// let objHanoi = chainMaker.reverseChain().reverseChain().addLink(false).addLink(true).reverseChain().addLink(null).addLink(0).addLink(3.14).addLink('8.963').addLink('GHI').finishChain(); //, '( true )~~( false )~~( null )~~( 0 )~~( 3.14 )~~( 8.963 )~~( GHI )');
+// document.write(objHanoi);
+// 
+//=== End ( simple-chain ) ===
 
 
 
@@ -452,32 +521,6 @@ for (let i=0;i<arrayTest.length;i++) {
 
 // ---
 
-// ### **Чейнмейкер**
-
-// Давайте попрактикуемся в [чейнинге](https://en.wikipedia.org/wiki/Method_chaining)!
-
-// Ваша задача — реализовать объект `chainMaker`, который будет создавать цепочки. Оконченная цепочка это строка (тип `string`) и выглядит следующим образом: `'( value1 )~~( value2 )~~( value3 )'`.
-
-// `chainMaker` имееет несколько **методов** для создания цепочек и их модификации:
-// * `getLength` возвращает текущую длину цепи в виде числа;
-// * `addLink(value)` добавляет звено, содержащее строковое представление `value` к цепочке;
-// * `removeLink(position)` удаляет звено цепи, находящееся в заданном положении;
-// * `reverseChain` разворачивает цепь задом наперед;
-// * `finishChain` завершает цепь и **возвращает** ее.
-
-// Методы `addLink`, `reverseChain` и `removeLink` **чейнятся**, в то время как остальные – нет. Если `addLink` вызван без аргументов, он добавляет пустое звено (`'(  )'`) в цепочку. Если `removeLink` принимает **некорректную** позицию (например, не являющуюся числом, или дробное число, или ссылающуюся на несуществующее звено), он должен выбросить **ошибку**. После вызова метода `finishChain` существующая на данный момент цепь должна быть удалена, как и в случае, если была выброшена **ошибка**.
-
-// Например:
-
-// `chainMaker.addLink(1).addLink(2).addLink(3).finishChain()` => `'( 1 )~~( 2 )~~( 3 )'`
-
-// `chainMaker.addLink(1).addLink(2).removeLink(1).addLink(3).finishChain()` => `'( 2 )~~( 3 )'`
-
-// `chainMaker.addLink(1).addLink(2).reverseChain().addLink(3).finishChain()` => `'( 2 )~~( 1 )~~( 3 )'`
-
-// Напишите ваш код в `src/simple-chain.js`.
-
-// ---
 
 
 
