@@ -454,27 +454,31 @@
 //
 //---Solution---
 const chainMaker = {
-    getLength() {
-      throw new CustomError('Not implemented');
-      // remove line with error and write your code here
-    },
-    addLink(value) {
-      throw new CustomError('Not implemented');
-      // remove line with error and write your code here
-    },
-    removeLink(position) {
-      throw new CustomError('Not implemented');
-      // remove line with error and write your code here
-    },
-    reverseChain() {
-      throw new CustomError('Not implemented');
-      // remove line with error and write your code here
-    },
-    finishChain() {
-      throw new CustomError('Not implemented');
-      // remove line with error and write your code here
-    }
-  };
+  chain: [],
+
+  getLength() {
+    return this.chain.length;
+  },
+  addLink(value="  ") {
+    this.chain.push(`( ${String(value)} )`);
+    return this;
+  },
+  removeLink(position) {
+    if ( position !== Number() || !isInteger(position) || position <= 0 || this.chain.length < (position-1) ) {
+      this.chain = [];
+      throw new Error('Error');
+    };
+    this.chain.splice(position-1, 1);
+    return this;
+  },
+  reverseChain() {
+    this.chain.reverse();
+    return this;
+  },
+  finishChain() {
+    return this.chain.join("~~");
+  }
+};
 //
 //---Test---
 // let arrayTest = []
@@ -491,7 +495,13 @@ const chainMaker = {
 // let objHanoi = chainMaker.reverseChain().addLink('DEF').reverseChain().reverseChain().reverseChain().addLink(333).addLink(null).addLink(0).reverseChain().reverseChain().finishChain(); //, '( DEF )~~( 333 )~~( null )~~( 0 )');
 // let objHanoi = chainMaker.addLink('DEF').reverseChain().addLink('8.963').reverseChain().reverseChain().reverseChain().addLink(3.14).reverseChain().reverseChain().reverseChain().finishChain();//, '( 3.14 )~~( DEF )~~( 8.963 )');
 // let objHanoi = chainMaker.reverseChain().reverseChain().addLink(false).addLink(true).reverseChain().addLink(null).addLink(0).addLink(3.14).addLink('8.963').addLink('GHI').finishChain(); //, '( true )~~( false )~~( null )~~( 0 )~~( 3.14 )~~( 8.963 )~~( GHI )');
-// document.write(objHanoi);
+
+//let objHanoi = chainMaker.addLink(function() {}).addLink('2nd').addLink('3rd').removeLink(2).reverseChain().finishChain(); //,'( 3rd )~~( function() {} )');
+let objHanoi = chainMaker.addLink(function() {}).addLink('2nd').addLink('3rd').removeLink(2).finishChain(); //,'( 3rd )~~( function() {} )');
+
+//let chainMaker.reverseChain().reverseChain().reverseChain().addLink(NaN).reverseChain().addLink(null).addLink(1.233).addLink(true).addLink(false).removeLink(3).addLink(1.233).finishChain(); //, '( NaN )~~( null )~~( true )~~( false )~~( 1.233 )');
+
+document.write(objHanoi);
 // 
 //=== End ( simple-chain ) ===
 
