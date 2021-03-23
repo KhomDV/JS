@@ -634,21 +634,57 @@ class VigenereCipheringMachine {
     encrypt(message, key) {
         if ( !message || !key) throw new Error();
 
+        let strCrypto = "";
 
 
+        let ap = [];
+
+        for (let i=0; i<message.length; i++) {
+            const char = message[i].toUpperCase();
+
+            if (char.charCodeAt(0) >= 65 && char.charCodeAt(0) <= 90) {
+                const i_key = 0;
+                if (message.length > key.length) {
+                    ap.push(message.length % key.length);
+                    //i_key = message.length % key.length;
+                }
+            } else {
+                strCrypto = strCrypto.concat(char);
+            }
+
+            Math.trunc();
+
+            //toUpperCase()
+
+        }
+
+        // if (message.length > key.length) {
+        //     strKey
+
+        // }
+        // strKey
+
+
+        // 'ABC'.charCodeAt(0);65
+
+
+        return (ap);
     }
 
 
     decrypt(message, key) {
         if ( !message || !key) throw new Error();
+        return 'Z'.charCodeAt(0);
 
-
+        return ("d");
     }
-    
 
-} 
+}
+directMachine = new VigenereCipheringMachine;
+
 //---Test---
 let arrayTest = [
+        [1, 'Windows', 'win'], //
         [1, 'attack at dawn!', 'alphonse'], //'AEIHQX SX DLLU!'
         [1, 'Example of sequence: 1, 2, 3, 4.', 'lilkey'], //'PFLWTJP WQ CIOFMYMI: 1, 2, 3, 4.'
         [1, 'cryptography', 'verylongkeyword'],  //'XVPNECTXKTFU'
@@ -662,10 +698,11 @@ let arrayTest = [
 //
 //---View solution---
 for (let i=0;i<arrayTest.length;i++) {
+    let strCrypt = "";
     if (arrayTest[i][0] === 1) {
-        const strCrypt = directMachine.encrypt(arrayTest[i][1], arrayTest[i][2]);
+        strCrypt = directMachine.encrypt(arrayTest[i][1], arrayTest[i][2]);
     } else {
-        const strCrypt = directMachine.decrypt(arrayTest[i][1], arrayTest[i][2]);
+        strCrypt = directMachine.decrypt(arrayTest[i][1], arrayTest[i][2]);
     }
     document.write(strCrypt);
     document.write(' - ');
@@ -682,40 +719,6 @@ for (let i=0;i<arrayTest.length;i++) {
 
 
 
-// ### **Шифр Виженера**
-
-// Криптография — это здорово! Давайте попробуем наладить производство шифровальных машин. Наши машины будут использовать один из методов шифрования, которые легки для понимания, но не могут быть разгаданы посредством простого криптоанализа — [**шифр Виженера**](https://en.wikipedia.org/wiki/Vigen%C3%A8re_cipher).
-
-// Наша машина будет иметь 2 модификации: **прямая** и **обратная** (тип машины определяется в момент создания). **Прямая** машина просто шифрует и дешифрует строку, переданную в нее, а **обратная** машина возвращает **перевернутую** задом наперед строку после шифрования и дешифрования.
-
-// Ваша задача — реализовать класс `VigenereCipheringMachine`. `constructor` этого класса принимает `true` (**или ничего**), чтобы создать **прямую** машину и `false`, чтобы создать **обратную** машину.
-// Каждый экземляр `VigenereCipheringMachine` должен иметь 2 метода: `encrypt` и `decrypt`.
-
-// Метод `encrypt` принимает 2 параметра: `message` (строка, чтобы ее зашифровать) и `key` (строку-кодовое слово).
-
-// Метод `decrypt` принимает 2 параметра: `message` (строка, чтобы ее расшифровать) и `key` (строку-кодовое слово)
-
-// Эти параметры для обоих методов являются **обязательными**. Если хотя бы один из них не был передан, должна быть выброшена ошибка. Машины шифруют и дешифруют **только символы латинского алфавита** (другие символы не изменяются). Строка, возвращаемая этими методами, должна иметь **верхний регистр**.
-
-// Вам не нужно валидировать значение, переданное в `contructor` и в методы `encrypt` и `decrypt` (за исключением выбрасывания ошибки при отсутствии аргумента для для этих методов).
-
-// Например:
-
-// `const directMachine = new VigenereCipheringMachine();`
-
-// `const reverseMachine = new VigenereCipheringMachine(false);`
-
-// `directMachine.encrypt('attack at dawn!', 'alphonse') => 'AEIHQX SX DLLU!'`
-
-// `directMachine.decrypt('AEIHQX SX DLLU!', 'alphonse') => 'ATTACK AT DAWN!'`
-
-// `reverseMachine.encrypt('attack at dawn!', 'alphonse') => '!ULLD XS XQHIEA'`
-
-// `reverseMachine.decrypt('AEIHQX SX DLLU!', 'alphonse') => '!NWAD TA KCATTA'`
-
-// Напишите свой код в `src/vigenere-cipher.js`.
-
-// ---
 
 
 
