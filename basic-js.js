@@ -453,34 +453,34 @@
 // ---
 //
 //---Solution---
-const chainMaker = {
-  chain: [],
-
-  getLength() {
-    return this.chain.length;
-  },
-  addLink(value="  ") {
-    this.chain.push(`( ${String(value)} )`);
-    return this;
-  },
-  removeLink(position) {
-    if (!position || typeof position !== 'number' || position < 0 ) {
-      this.chain = [];
-      throw new Error();
-    };
-    this.chain.splice(position-1, 1);
-    return this;
-  },
-  reverseChain() {
-    this.chain.reverse();
-    return this;
-  },
-  finishChain() {
-    this.chainStr = this.chain.join("~~");
-    this.chain = [];
-    return this.chainStr;
-  }
-};
+// const chainMaker = {
+//   chain: [],
+//
+//   getLength() {
+//     return this.chain.length;
+//   },
+//   addLink(value="  ") {
+//     this.chain.push(`( ${String(value)} )`);
+//     return this;
+//   },
+//   removeLink(position) {
+//     if (!position || typeof position !== 'number' || position < 0 ) {
+//       this.chain = [];
+//       throw new Error();
+//     };
+//     this.chain.splice(position-1, 1);
+//     return this;
+//   },
+//   reverseChain() {
+//     this.chain.reverse();
+//     return this;
+//   },
+//   finishChain() {
+//     this.chainStr = this.chain.join("~~");
+//     this.chain = [];
+//     return this.chainStr;
+//   }
+// };
 //
 //---Test---
 // let arrayTest = []
@@ -497,36 +497,90 @@ const chainMaker = {
 //let objHanoi = chainMaker.reverseChain().addLink('DEF').reverseChain().reverseChain().reverseChain().addLink(333).addLink(null).addLink(0).reverseChain().reverseChain().finishChain(); //, '( DEF )~~( 333 )~~( null )~~( 0 )');
 //let objHanoi = chainMaker.addLink('DEF').reverseChain().addLink('8.963').reverseChain().reverseChain().reverseChain().addLink(3.14).reverseChain().reverseChain().reverseChain().finishChain();//, '( 3.14 )~~( DEF )~~( 8.963 )');
 //let objHanoi = chainMaker.reverseChain().reverseChain().addLink(false).addLink(true).reverseChain().addLink(null).addLink(0).addLink(3.14).addLink('8.963').addLink('GHI').finishChain(); //, '( true )~~( false )~~( null )~~( 0 )~~( 3.14 )~~( 8.963 )~~( GHI )');
-let objHanoi = chainMaker.addLink(function() {}).addLink('2nd').addLink('3rd').removeLink(2).reverseChain().finishChain(); //,'( 3rd )~~( function() {} )');
-document.write(objHanoi);
+//let objHanoi = chainMaker.addLink(function() {}).addLink('2nd').addLink('3rd').removeLink(2).reverseChain().finishChain(); //,'( 3rd )~~( function() {} )');
+//document.write(objHanoi);
 // 
 //=== End ( simple-chain ) ===
 
 
 
-
-
-// ---
-
+//---------------------------------------------------------------------------------------------------
+// transform-array.
+//---------------------------------------------------------------------------------------------------
 // ### **Преобразование массива**
-
-// Ваша задача — реализовать функцию `transform(arr)`, которая принимает массив (тип `array`) и возвращает **преобразованный** массив, основываясь на **управляющих последовательностях**, которые содержит `arr`. **Управляющие последовательности** — это определенные строковые элементы вышеупомянутого массива:
+// Ваша задача — реализовать функцию `transform(arr)`, которая принимает массив (тип `array`)
+// и возвращает **преобразованный** массив, основываясь на **управляющих последовательностях**, которые содержит `arr`.
+// **Управляющие последовательности** — это определенные строковые элементы вышеупомянутого массива:
 // * `--discard-next` исключает следующий за ней элемент исходного массива из преобразованного массива.
 // * `--discard-prev` исключает предшествующий ей элемент исходного массива из преобразованного массива.
 // * `--double-next` удваивает следующий за ней элемент исходного массива в преобразованном массиве.
 // * `--double-prev` удваивает предшествующий ей элемент исходного массива в преобразованном массиве.
-
 // Например:
-
 // `transform([1, 2, 3, '--double-next', 4, 5])` => `[1, 2, 3, 4, 4, 5]`
-
 // `transform([1, 2, 3, '--discard-prev', 4, 5])` => `[1, 2, 4, 5]`
-
-// Функция не должна изменять исходный массив. Управляющие последовательности применяются **последовательно, слева направо** к элементам из исходного массива. Управляющие последовательности **не попадают** в преобразованный массив. Управляющие последовательности в исходном массиве не встречаются подряд (не следуют одна за другой). Если около управляющей последовательности **нет элемента**, к которому она может быть применена в исходном массиве, либо он был удален в процессе преобразования массива, **она не делает ничего**. Функция должна выбросить ошибку, если `arr` не является массивом.
-
+// Функция не должна изменять исходный массив.
+// Управляющие последовательности применяются **последовательно, слева направо** к элементам из исходного массива.
+// Управляющие последовательности **не попадают** в преобразованный массив.
+// Управляющие последовательности в исходном массиве не встречаются подряд (не следуют одна за другой).
+// Если около управляющей последовательности **нет элемента**, к которому она может быть применена в исходном массиве,
+// либо он был удален в процессе преобразования массива, **она не делает ничего**. Функция должна выбросить ошибку, если `arr` не является массивом.
 // Напишите свой код в `src/transform-array.js`.
-
 // ---
+//
+//---Solution---
+function transform(arr) {
+    if (!Array.isArray(arr)) return new Error();
+
+    arr.map( (e) => {
+        switch (e) {
+        case `--discard-next`:
+                
+
+            break;
+        case `--discard-prev`:
+            
+            break;
+        case `--double-next`:
+            
+            break;
+        case `--double-prev`:
+            
+            break;
+        }
+
+    })
+
+
+
+
+}    
+//
+//---Test---
+let arrayTest = [
+        ['--discard-prev', 1, 2, 3], //[1, 2, 3]
+        ['--double-prev', 1, 2, 3],  //[1, 2, 3]
+        [1, 2, 3, '--double-next'],  //[1, 2, 3]
+        [1, 2, 3, '--discard-next'], //[1, 2, 3]
+        [1, 2, 3, '--discard-next', 1337, '--double-prev', 4, 5],  //[1, 2, 3, 4, 5]
+        [1, 2, 3, '--double-next', 1337, '--double-prev', 4, 5],   //[1, 2, 3, 1337, 1337, 1337, 4, 5]
+        [1, 2, 3, '--discard-next', 1337, '--discard-prev', 4, 5], //[1, 2, 3, 4, 5]
+        [1, 2, 3, '--double-next', 1337, '--discard-prev', 4, 5],  //[1, 2, 3, 1337, 4, 5]
+    ];
+//
+//---View solution---
+for (let i=0;i<arrayTest.length;i++) {
+    const arrayTransform = transform(arrayTest[i]);
+    document.write(arrayTransform);
+    document.write(' - ');
+}
+//
+//let arrayTransform = transform(); //
+//document.write(arrayTransform);
+// 
+//=== End ( transform-array ) ===
+
+
+
 
 
 
