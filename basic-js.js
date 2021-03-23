@@ -529,34 +529,48 @@
 //
 //---Solution---
 function transform(arr) {
-    if (!Array.isArray(arr)) return new Error();
+    let result = [];
 
-    arr.map( (e) => {
-        switch (e) {
+    if (!Array.isArray(arr)) throw new Error();
+    if (arr.length === 0) return arr;
+  
+    for (let i=0; i<arr.length; i++) {
+        if (arr[i] === undefined) {
+            arr[i] = null;
+        }
+        switch (arr[i]) {
         case `--discard-next`:
-                
-
+            result.push(null);
+            i++;
             break;
         case `--discard-prev`:
-            
+            if (result.length > 0) {
+                result.pop();
+            }
             break;
         case `--double-next`:
-            
+            if (arr.length-1 > i) {
+                result.push(arr[i+1]);
+            }
             break;
         case `--double-prev`:
-            
+            if (result.length > 0) {
+                result.push(result[result.length-1]);
+            }
+            break;
+        default:
+            result.push(arr[i]);
             break;
         }
+    }
 
-    })
-
-
-
-
+    result = result.filter( (e) => e !== null);
+    return result;
 }    
 //
 //---Test---
 let arrayTest = [
+        [null, null, 1, 2, 3, null, 4, null, 5, null],
         ['--discard-prev', 1, 2, 3], //[1, 2, 3]
         ['--double-prev', 1, 2, 3],  //[1, 2, 3]
         [1, 2, 3, '--double-next'],  //[1, 2, 3]
