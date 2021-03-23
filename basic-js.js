@@ -464,9 +464,9 @@ const chainMaker = {
     return this;
   },
   removeLink(position) {
-    if ( position !== Number() || !isInteger(position) || position <= 0 || this.chain.length < (position-1) ) {
+    if (!position || typeof position !== 'number' || position < 0 ) {
       this.chain = [];
-      throw new Error('Error');
+      throw new Error();
     };
     this.chain.splice(position-1, 1);
     return this;
@@ -476,7 +476,9 @@ const chainMaker = {
     return this;
   },
   finishChain() {
-    return this.chain.join("~~");
+    this.chainStr = this.chain.join("~~");
+    this.chain = [];
+    return this.chainStr;
   }
 };
 //
@@ -484,23 +486,18 @@ const chainMaker = {
 // let arrayTest = []
 //
 //---View solution---
-// let objHanoi = chainMaker.addLink('GHI').addLink(null).reverseChain().addLink(333).reverseChain().reverseChain().addLink(0).reverseChain().reverseChain().addLink('GHI').finishChain(); //, '( null )~~( GHI )~~( 333 )~~( 0 )~~( GHI )');
-// let objHanoi = chainMaker.addLink('8.963').reverseChain().reverseChain().reverseChain().reverseChain().addLink({0: 'first', 1: 'second', 'length': 2}).reverseChain().addLink(3.14).addLink('DEF').reverseChain().finishChain(); //, '( DEF )~~( 3.14 )~~( 8.963 )~~( [object Object] )');
-// let objHanoi = chainMaker.addLink(false).reverseChain().reverseChain().reverseChain().addLink({0: 'first', 1: 'second', 'length': 2}).addLink(1.233).addLink(false).addLink(1).reverseChain().addLink(1).finishChain(); //, '( 1 )~~( false )~~( 1.233 )~~( [object Object] )~~( false )~~( 1 )');
-// let objHanoi = chainMaker.reverseChain().reverseChain().addLink(NaN).addLink({0: 'first', 1: 'second', 'length': 2}).addLink({0: 'first', 1: 'second', 'length': 2}).addLink({0: 'first', 1: 'second', 'length': 2}).reverseChain().reverseChain().addLink({0: 'first', 1: 'second', 'length': 2}).addLink(true).finishChain(); //, '( NaN )~~( [object Object] )~~( [object Object] )~~( [object Object] )~~( [object Object] )~~( true )');
-// let objHanoi = chainMaker.addLink(1).reverseChain().addLink(0).reverseChain().addLink(NaN).addLink(1.233).addLink(null).addLink({0: 'first', 1: 'second', 'length': 2}).reverseChain().addLink({0: 'first', 1: 'second', 'length': 2}).finishChain(); //, '( [object Object] )~~( null )~~( 1.233 )~~( NaN )~~( 1 )~~( 0 )~~( [object Object] )');
-// let objHanoi = chainMaker.addLink(NaN).addLink(null).addLink(Infinity).addLink(1).reverseChain().addLink(null).reverseChain().addLink({0: 'first', 1: 'second', 'length': 2}).addLink(22).addLink(333).finishChain(); //, '( null )~~( NaN )~~( null )~~( Infinity )~~( 1 )~~( [object Object] )~~( 22 )~~( 333 )');
-// let objHanoi = chainMaker.addLink(0).addLink(NaN).addLink(1).reverseChain().addLink(0).reverseChain().reverseChain().addLink(1).addLink(Infinity).reverseChain().finishChain(); //, '( Infinity )~~( 1 )~~( 0 )~~( 0 )~~( NaN )~~( 1 )');
-// let objHanoi = chainMaker.addLink('ABC').reverseChain().addLink(Infinity).addLink(null).addLink('8.963').addLink(false).addLink(Infinity).reverseChain().addLink(false).reverseChain().finishChain(); //, '( false )~~( ABC )~~( Infinity )~~( null )~~( 8.963 )~~( false )~~( Infinity )');
-// let objHanoi = chainMaker.reverseChain().addLink('DEF').reverseChain().reverseChain().reverseChain().addLink(333).addLink(null).addLink(0).reverseChain().reverseChain().finishChain(); //, '( DEF )~~( 333 )~~( null )~~( 0 )');
-// let objHanoi = chainMaker.addLink('DEF').reverseChain().addLink('8.963').reverseChain().reverseChain().reverseChain().addLink(3.14).reverseChain().reverseChain().reverseChain().finishChain();//, '( 3.14 )~~( DEF )~~( 8.963 )');
-// let objHanoi = chainMaker.reverseChain().reverseChain().addLink(false).addLink(true).reverseChain().addLink(null).addLink(0).addLink(3.14).addLink('8.963').addLink('GHI').finishChain(); //, '( true )~~( false )~~( null )~~( 0 )~~( 3.14 )~~( 8.963 )~~( GHI )');
-
-//let objHanoi = chainMaker.addLink(function() {}).addLink('2nd').addLink('3rd').removeLink(2).reverseChain().finishChain(); //,'( 3rd )~~( function() {} )');
-let objHanoi = chainMaker.addLink(function() {}).addLink('2nd').addLink('3rd').removeLink(2).finishChain(); //,'( 3rd )~~( function() {} )');
-
-//let chainMaker.reverseChain().reverseChain().reverseChain().addLink(NaN).reverseChain().addLink(null).addLink(1.233).addLink(true).addLink(false).removeLink(3).addLink(1.233).finishChain(); //, '( NaN )~~( null )~~( true )~~( false )~~( 1.233 )');
-
+//let objHanoi = chainMaker.addLink('GHI').addLink(null).reverseChain().addLink(333).reverseChain().reverseChain().addLink(0).reverseChain().reverseChain().addLink('GHI').finishChain(); //, '( null )~~( GHI )~~( 333 )~~( 0 )~~( GHI )');
+//let objHanoi = chainMaker.addLink('8.963').reverseChain().reverseChain().reverseChain().reverseChain().addLink({0: 'first', 1: 'second', 'length': 2}).reverseChain().addLink(3.14).addLink('DEF').reverseChain().finishChain(); //, '( DEF )~~( 3.14 )~~( 8.963 )~~( [object Object] )');
+//let objHanoi = chainMaker.addLink(false).reverseChain().reverseChain().reverseChain().addLink({0: 'first', 1: 'second', 'length': 2}).addLink(1.233).addLink(false).addLink(1).reverseChain().addLink(1).finishChain(); //, '( 1 )~~( false )~~( 1.233 )~~( [object Object] )~~( false )~~( 1 )');
+//let objHanoi = chainMaker.reverseChain().reverseChain().addLink(NaN).addLink({0: 'first', 1: 'second', 'length': 2}).addLink({0: 'first', 1: 'second', 'length': 2}).addLink({0: 'first', 1: 'second', 'length': 2}).reverseChain().reverseChain().addLink({0: 'first', 1: 'second', 'length': 2}).addLink(true).finishChain(); //, '( NaN )~~( [object Object] )~~( [object Object] )~~( [object Object] )~~( [object Object] )~~( true )');
+//let objHanoi = chainMaker.addLink(1).reverseChain().addLink(0).reverseChain().addLink(NaN).addLink(1.233).addLink(null).addLink({0: 'first', 1: 'second', 'length': 2}).reverseChain().addLink({0: 'first', 1: 'second', 'length': 2}).finishChain(); //, '( [object Object] )~~( null )~~( 1.233 )~~( NaN )~~( 1 )~~( 0 )~~( [object Object] )');
+//let objHanoi = chainMaker.addLink(NaN).addLink(null).addLink(Infinity).addLink(1).reverseChain().addLink(null).reverseChain().addLink({0: 'first', 1: 'second', 'length': 2}).addLink(22).addLink(333).finishChain(); //, '( null )~~( NaN )~~( null )~~( Infinity )~~( 1 )~~( [object Object] )~~( 22 )~~( 333 )');
+//let objHanoi = chainMaker.addLink(0).addLink(NaN).addLink(1).reverseChain().addLink(0).reverseChain().reverseChain().addLink(1).addLink(Infinity).reverseChain().finishChain(); //, '( Infinity )~~( 1 )~~( 0 )~~( 0 )~~( NaN )~~( 1 )');
+//let objHanoi = chainMaker.addLink('ABC').reverseChain().addLink(Infinity).addLink(null).addLink('8.963').addLink(false).addLink(Infinity).reverseChain().addLink(false).reverseChain().finishChain(); //, '( false )~~( ABC )~~( Infinity )~~( null )~~( 8.963 )~~( false )~~( Infinity )');
+//let objHanoi = chainMaker.reverseChain().addLink('DEF').reverseChain().reverseChain().reverseChain().addLink(333).addLink(null).addLink(0).reverseChain().reverseChain().finishChain(); //, '( DEF )~~( 333 )~~( null )~~( 0 )');
+//let objHanoi = chainMaker.addLink('DEF').reverseChain().addLink('8.963').reverseChain().reverseChain().reverseChain().addLink(3.14).reverseChain().reverseChain().reverseChain().finishChain();//, '( 3.14 )~~( DEF )~~( 8.963 )');
+//let objHanoi = chainMaker.reverseChain().reverseChain().addLink(false).addLink(true).reverseChain().addLink(null).addLink(0).addLink(3.14).addLink('8.963').addLink('GHI').finishChain(); //, '( true )~~( false )~~( null )~~( 0 )~~( 3.14 )~~( 8.963 )~~( GHI )');
+let objHanoi = chainMaker.addLink(function() {}).addLink('2nd').addLink('3rd').removeLink(2).reverseChain().finishChain(); //,'( 3rd )~~( function() {} )');
 document.write(objHanoi);
 // 
 //=== End ( simple-chain ) ===
