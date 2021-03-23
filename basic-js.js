@@ -528,71 +528,154 @@
 // ---
 //
 //---Solution---
-function transform(arr) {
-    let result = [];
-
-    if (!Array.isArray(arr)) throw new Error();
-    if (arr.length === 0) return arr;
-  
-    for (let i=0; i<arr.length; i++) {
-        if (arr[i] === undefined) {
-            arr[i] = null;
-        }
-        switch (arr[i]) {
-        case `--discard-next`:
-            result.push(null);
-            i++;
-            break;
-        case `--discard-prev`:
-            if (result.length > 0) {
-                result.pop();
-            }
-            break;
-        case `--double-next`:
-            if (arr.length-1 > i) {
-                result.push(arr[i+1]);
-            }
-            break;
-        case `--double-prev`:
-            if (result.length > 0) {
-                result.push(result[result.length-1]);
-            }
-            break;
-        default:
-            result.push(arr[i]);
-            break;
-        }
-    }
-
-    result = result.filter( (e) => e !== null);
-    return result;
-}    
+// function transform(arr) {
+//     let result = [];
+//
+//     if (!Array.isArray(arr)) throw new Error();
+//     if (arr.length === 0) return arr;
+//  
+//     for (let i=0; i<arr.length; i++) {
+//         if (arr[i] === undefined) {
+//             arr[i] = null;
+//         }
+//         switch (arr[i]) {
+//         case `--discard-next`:
+//             result.push(null);
+//             i++;
+//             break;
+//         case `--discard-prev`:
+//             if (result.length > 0) {
+//                 result.pop();
+//             }
+//             break;
+//         case `--double-next`:
+//             if (arr.length-1 > i) {
+//                 result.push(arr[i+1]);
+//             }
+//             break;
+//         case `--double-prev`:
+//             if (result.length > 0) {
+//                 result.push(result[result.length-1]);
+//             }
+//             break;
+//         default:
+//             result.push(arr[i]);
+//             break;
+//         }
+//     }
+//
+//     result = result.filter( (e) => e !== null);
+//     return result;
+// }    
 //
 //---Test---
-let arrayTest = [
-        [null, null, 1, 2, 3, null, 4, null, 5, null],
-        ['--discard-prev', 1, 2, 3], //[1, 2, 3]
-        ['--double-prev', 1, 2, 3],  //[1, 2, 3]
-        [1, 2, 3, '--double-next'],  //[1, 2, 3]
-        [1, 2, 3, '--discard-next'], //[1, 2, 3]
-        [1, 2, 3, '--discard-next', 1337, '--double-prev', 4, 5],  //[1, 2, 3, 4, 5]
-        [1, 2, 3, '--double-next', 1337, '--double-prev', 4, 5],   //[1, 2, 3, 1337, 1337, 1337, 4, 5]
-        [1, 2, 3, '--discard-next', 1337, '--discard-prev', 4, 5], //[1, 2, 3, 4, 5]
-        [1, 2, 3, '--double-next', 1337, '--discard-prev', 4, 5],  //[1, 2, 3, 1337, 4, 5]
-    ];
+// let arrayTest = [
+//         [null, null, 1, 2, 3, null, 4, null, 5, null],
+//         ['--discard-prev', 1, 2, 3], //[1, 2, 3]
+//         ['--double-prev', 1, 2, 3],  //[1, 2, 3]
+//         [1, 2, 3, '--double-next'],  //[1, 2, 3]
+//         [1, 2, 3, '--discard-next'], //[1, 2, 3]
+//         [1, 2, 3, '--discard-next', 1337, '--double-prev', 4, 5],  //[1, 2, 3, 4, 5]
+//         [1, 2, 3, '--double-next', 1337, '--double-prev', 4, 5],   //[1, 2, 3, 1337, 1337, 1337, 4, 5]
+//         [1, 2, 3, '--discard-next', 1337, '--discard-prev', 4, 5], //[1, 2, 3, 4, 5]
+//         [1, 2, 3, '--double-next', 1337, '--discard-prev', 4, 5],  //[1, 2, 3, 1337, 4, 5]
+//     ];
 //
 //---View solution---
-for (let i=0;i<arrayTest.length;i++) {
-    const arrayTransform = transform(arrayTest[i]);
-    document.write(arrayTransform);
-    document.write(' - ');
-}
+// for (let i=0;i<arrayTest.length;i++) {
+//     const arrayTransform = transform(arrayTest[i]);
+//     document.write(arrayTransform);
+//     document.write(' - ');
+// }
 //
 //let arrayTransform = transform(); //
 //document.write(arrayTransform);
 // 
 //=== End ( transform-array ) ===
 
+
+
+//---------------------------------------------------------------------------------------------------
+// vigenere-cipher.
+//---------------------------------------------------------------------------------------------------
+// ### **Шифр Виженера**
+// Криптография — это здорово! Давайте попробуем наладить производство шифровальных машин.
+// Наши машины будут использовать один из методов шифрования, которые легки для понимания,
+// но не могут быть разгаданы посредством простого криптоанализа — [**шифр Виженера**](https://en.wikipedia.org/wiki/Vigen%C3%A8re_cipher).
+// Наша машина будет иметь 2 модификации: **прямая** и **обратная** (тип машины определяется в момент создания).
+// **Прямая** машина просто шифрует и дешифрует строку, переданную в нее,
+// а **обратная** машина возвращает **перевернутую** задом наперед строку после шифрования и дешифрования.
+// Ваша задача — реализовать класс `VigenereCipheringMachine`.
+// `constructor` этого класса принимает `true` (**или ничего**), чтобы создать **прямую** машину и `false`, чтобы создать **обратную** машину.
+// Каждый экземляр `VigenereCipheringMachine` должен иметь 2 метода: `encrypt` и `decrypt`.
+// Метод `encrypt` принимает 2 параметра: `message` (строка, чтобы ее зашифровать) и `key` (строку-кодовое слово).
+// Метод `decrypt` принимает 2 параметра: `message` (строка, чтобы ее расшифровать) и `key` (строку-кодовое слово)
+// Эти параметры для обоих методов являются **обязательными**. Если хотя бы один из них не был передан,
+// должна быть выброшена ошибка. Машины шифруют и дешифруют **только символы латинского алфавита** (другие символы не изменяются).
+// Строка, возвращаемая этими методами, должна иметь **верхний регистр**.
+// Вам не нужно валидировать значение, переданное в `contructor` и в методы `encrypt` и `decrypt`
+// (за исключением выбрасывания ошибки при отсутствии аргумента для для этих методов).
+// Например:
+// `const directMachine = new VigenereCipheringMachine();`
+// `const reverseMachine = new VigenereCipheringMachine(false);`
+// `directMachine.encrypt('attack at dawn!', 'alphonse') => 'AEIHQX SX DLLU!'`
+// `directMachine.decrypt('AEIHQX SX DLLU!', 'alphonse') => 'ATTACK AT DAWN!'`
+// `reverseMachine.encrypt('attack at dawn!', 'alphonse') => '!ULLD XS XQHIEA'`
+// `reverseMachine.decrypt('AEIHQX SX DLLU!', 'alphonse') => '!NWAD TA KCATTA'`
+// Напишите свой код в `src/vigenere-cipher.js`.
+// ---
+//
+//---Solution---
+class VigenereCipheringMachine {
+    constructor(lineCrypt=true) {
+        this.lineCrypt = lineCrypt;
+    }
+
+    encrypt(message, key) {
+        if ( !message || !key) throw new Error();
+
+
+
+    }
+
+
+    decrypt(message, key) {
+        if ( !message || !key) throw new Error();
+
+
+    }
+    
+
+} 
+//---Test---
+let arrayTest = [
+        [1, 'attack at dawn!', 'alphonse'], //'AEIHQX SX DLLU!'
+        [1, 'Example of sequence: 1, 2, 3, 4.', 'lilkey'], //'PFLWTJP WQ CIOFMYMI: 1, 2, 3, 4.'
+        [1, 'cryptography', 'verylongkeyword'],  //'XVPNECTXKTFU'
+        [1, 'Samelengthkey', 'Samelengthkey'],   //'KAYIWIAMMOUIW'
+        [1, 'Same length key', 'Samelengthkey'], //'KAYI WIAMMO UIW'
+        [2, 'UWJJW XAGWLNFM VNNNDXHVWWL :)', 'js'],  //'LEARN FRONTEND DEVELOPMENT :)'
+        [2, 'ICWWQAM KECEIK JVZZT EADGG!', 'rollingscopes'],   //'ROLLING SCOPES SHOOL RULES!'
+        [2, 'TRVVFB VT JSUIFMYL!', 'learning'], //'INVEST IN YOURSELF!'
+        [2, 'HSVD AJAL ^^', 'behappy'],  //'GOOD LUCK ^^'
+    ];
+//
+//---View solution---
+for (let i=0;i<arrayTest.length;i++) {
+    if (arrayTest[i][0] === 1) {
+        const strCrypt = directMachine.encrypt(arrayTest[i][1], arrayTest[i][2]);
+    } else {
+        const strCrypt = directMachine.decrypt(arrayTest[i][1], arrayTest[i][2]);
+    }
+    document.write(strCrypt);
+    document.write(' - ');
+}
+//
+//let strCrypt = directMachine.encrypt('Same length key', 'Samelengthkey'); //'KAYI WIAMMO UIW'
+//let strCrypt = directMachine.decrypt('UWJJW XAGWLNFM VNNNDXHVWWL :)', 'js'); //'LEARN FRONTEND DEVELOPMENT :)'
+//document.write(strCrypt);
+// 
+//=== End ( vigenere-cipher ) ===
 
 
 
