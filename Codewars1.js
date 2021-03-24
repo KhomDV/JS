@@ -31,12 +31,15 @@
 // ---
 //
 //---Solution---
-disemvowel = (str) -> {
+disemvowel = (str) => {
   
-    if (char.length == 1)
-    {
-      return /[aeiou]/.test(char);
-    }
+
+    return str.split();
+    // result = str.filter(str => word.length > 6);    
+    // if (char.length == 1)
+    // {
+    //   return /[aeiou]/.test(char);
+    // }
     
 }
 //
