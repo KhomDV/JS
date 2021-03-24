@@ -748,35 +748,56 @@
 //
 //---Solution---
 function getSeason(date) {
+  if ( !date ) return ('Unable to determine the time of year!');
 
+  if (date.hasOwnProperty("getMonth")) throw new Error();
+ 
+  const month = date.getMonth();
+  if ( isNaN(month) ) throw new Error();
+
+  let season = "";
+  if(month >= 11 || month <= 1) {
+    season = 'winter';
+  }
+  if(month >= 2 && month <= 4) {
+    season = 'spring';
+  }
+  if(month >= 5 && month <= 7) {
+    season = 'summer';
+  }
+  if(month >= 8 && month <= 10) {
+    season = 'autumn';
+  } 
+
+  return (season);  
 }
 //
 //---Test---
-let arrayTest = [
-    new Date(380, 11, 30, 11, 2, 36, 275), //'winter'
-    new Date(2043, 2, 1, 22, 7, 42, 410),  // 'spring');
-    new Date(1116, 2, 29, 12, 1, 32, 470), //'spring');
-    new Date(687, 2, 5, 18, 24, 54, 380),  //'spring');
-    new Date(1885, 8, 13, 9, 36, 15, 807), //)).to.match(/autumn|fall/);
-    new Date(1126, 3, 6, 5, 9, 1, 724),    //'spring');
-    new Date(866, 8, 19, 6, 38, 15, 964),  //.to.match(/autumn|fall/);
-    new Date(1601, 0, 0, 16, 26, 37, 664), //'winter');
-    new Date(314, 0, 28, 6, 25, 23, 924),  //'winter');
-    new Date(1473, 1, 30, 3, 19, 48, 502), //'spring');
-    new Date(452, 3, 28, 5, 16, 23, 178),  //'spring');
-    new Date(2211, 8, 26, 21, 6, 7, 52),   //)).to.match(/autumn|fall/);
-    new Date(827, 5, 16, 22, 42, 16, 341), //'summer');
-    new Date(2205, 11, 11, 4, 40, 45, 325),// 'winter');
-    new Date(1155, 5, 23, 19, 40, 53, 534),// 'summer');
-    new Date(1092, 8, 18, 12, 23, 36, 32), //.to.match(/autumn|fall/);
-    new Date(79, 6, 8, 5, 34, 23, 738)     //, 'summer');
-  ]    
+//let arrayTest = [
+//    new Date(380, 11, 30, 11, 2, 36, 275), //'winter'
+//    new Date(2043, 2, 1, 22, 7, 42, 410),  // 'spring');
+//    new Date(1116, 2, 29, 12, 1, 32, 470), //'spring');
+//    new Date(687, 2, 5, 18, 24, 54, 380),  //'spring');
+//    new Date(1885, 8, 13, 9, 36, 15, 807), //)).to.match(/autumn|fall/);
+//    new Date(1126, 3, 6, 5, 9, 1, 724),    //'spring');
+//    new Date(866, 8, 19, 6, 38, 15, 964),  //.to.match(/autumn|fall/);
+//    new Date(1601, 0, 0, 16, 26, 37, 664), //'winter');
+//    new Date(314, 0, 28, 6, 25, 23, 924),  //'winter');
+//    new Date(1473, 1, 30, 3, 19, 48, 502), //'spring');
+//    new Date(452, 3, 28, 5, 16, 23, 178),  //'spring');
+//    new Date(2211, 8, 26, 21, 6, 7, 52),   //)).to.match(/autumn|fall/);
+//    new Date(827, 5, 16, 22, 42, 16, 341), //'summer');
+//    new Date(2205, 11, 11, 4, 40, 45, 325),// 'winter');
+//    new Date(1155, 5, 23, 19, 40, 53, 534),// 'summer');
+//    new Date(1092, 8, 18, 12, 23, 36, 32), //.to.match(/autumn|fall/);
+//    new Date(79, 6, 8, 5, 34, 23, 738)     //, 'summer');
+//  ]    
 //
 //---View solution---
-for (let i=0;i<arrayTest.length;i++) {
-    document.write(getSeason(arrayTest[i]));
-    document.write(' | ');
-}
+//for (let i=0;i<arrayTest.length;i++) {
+//    document.write(getSeason(arrayTest[i]));
+//    document.write(' | ');
+//}
 //
 //document.write(getSeason(new Date(79, 6, 8, 5, 34, 23, 738)));
 // 
