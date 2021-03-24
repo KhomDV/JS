@@ -158,37 +158,91 @@
 // ---
 //
 //---Solution---
-function isIsogram(str){
-    if (str.trim() === "" ) return true;
-    const arr = str.split('').map((e)=>e.toUpperCase());
-    return arr.length === Array.from(new Set(arr)).length ? true : false;
-    //best- return !/(\w).*\1/i.test(str)
-    //best- return new Set(str.toUpperCase()).size == str.length;
-}
+// function isIsogram(str){
+//     if (str.trim() === "" ) return true;
+//     const arr = str.split('').map((e)=>e.toUpperCase());
+//     return arr.length === Array.from(new Set(arr)).length ? true : false;
+//     //best- return !/(\w).*\1/i.test(str)
+//     //best- return new Set(str.toUpperCase()).size == str.length;
+// }
 //
 //---Test---
-let arrayTest = [
-    "Dermatoglyphics", //true );
-    "isogram", //true );
-    "aba", //false, "same chars may not be adjacent" );
-    "moOse", //false, "same chars may not be same case" );
-    "isIsogram", //false );
-    "" //, true, "an empty string is a valid isogram" );
-]
+// let arrayTest = [
+//     "Dermatoglyphics", //true );
+//     "isogram", //true );
+//     "aba", //false, "same chars may not be adjacent" );
+//     "moOse", //false, "same chars may not be same case" );
+//     "isIsogram", //false );
+//     "" //, true, "an empty string is a valid isogram" );
+// ]
 //
 //---View solution---
-for (let i=0;i<arrayTest.length;i++) {
-    document.write(isIsogram(arrayTest[i]));
-    document.write(' | ');
-}
+// for (let i=0;i<arrayTest.length;i++) {
+//     document.write(isIsogram(arrayTest[i]));
+//     document.write(' | ');
+// }
 // 
 //=== End ( Isograms ) ===
 
 
 //---------------------------------------------------------------------------------------------------
-// 
+// Char Code Calculation
 //7 kyu https://www.codewars.com/kata/char-code-calculation
 //---------------------------------------------------------------------------------------------------
+//---Task---
+//### **Char Code Calculation**
+//Given a string, turn each character into its ASCII character code and join them together
+// to create a number - let's call this number total1:
+//'ABC' --> 'A' = 65, 'B' = 66, 'C' = 67 --> 656667
+//Then replace any incidence of the number 7 with the number 1, and call this number 'total2':
+//total1 = 656667
+//              ^
+//total2 = 656661
+//              ^
+//Then return the difference between the sum of the digits in total1 and total2:
+//  (6 + 5 + 6 + 6 + 6 + 7)
+//- (6 + 5 + 6 + 6 + 6 + 1)
+//-------------------------
+//                       6
+//
+//### **Расчет кода символа**
+//Учитывая строку, превратите каждый символ в его код символа ASCII и соедините их вместе,
+// чтобы создать число - давайте назовем это число total1:
+//'ABC' --> 'A' = 65, 'B' = 66, 'C' = 67 --> 656667
+//Затем замените любую частоту числа 7на число 1и назовите это число 'total2':
+//total1 = 656667
+//              ^
+//total2 = 656661
+//              ^
+//Затем верните разницу между суммой цифр total1и total2:
+//  (6 + 5 + 6 + 6 + 6 + 7)
+//- (6 + 5 + 6 + 6 + 6 + 1)
+//-------------------------
+//                       6
+// ---
+//
+//---Solution---
+function calc(x){
+
+}
+//
+//---Test---
+let arrayTest = [
+    'ABC', //6
+    'abcdef', //6
+    'ifkhchlhfd', //6
+    'aaaaaddddr',  //30
+    'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ' // 96
+]
+//
+//---View solution---
+for (let i=0;i<arrayTest.length;i++) {
+    document.write(calc(arrayTest[i]));
+    document.write(' | ');
+}
+// 
+//=== End ( Char Code Calculation ) ===
+
 
 //---------------------------------------------------------------------------------------------------
 // 
