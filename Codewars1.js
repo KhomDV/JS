@@ -223,7 +223,9 @@
 //
 //---Solution---
 function calc(x){
-
+    const total1 = x.split('').map((e)=>e.charCodeAt()).join('');
+    const total2 = total1.replace(/[7]/g, '1');
+    return (total1.split('').reduce((a,b)=>a + Number(b), 0) - total2.split('').reduce((a,b)=>a + Number(b), 0));
 }
 //
 //---Test---
