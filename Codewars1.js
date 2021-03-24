@@ -121,28 +121,69 @@
 // ---
 //
 //---Solution---
-function highAndLow(numbers){
-    const sortnumb = numbers.split(' ').map(e => +e).sort((a,b)=>b-a);
-    return `${sortnumb[0]}  ${sortnumb[sortnumb.length-1]}`;
-}
+// function highAndLow(numbers){
+//     const sortnumb = numbers.split(' ').map(e => +e).sort((a,b)=>b-a);
+//     return `${sortnumb[0]}  ${sortnumb[sortnumb.length-1]}`;
+// }
 //
 //---Test---
 //let arrayTest = []
 //
 //---View solution---
-document.write(highAndLow("4 5 29 54 4 0 -214 542 -64 1 -3 6 -6")) //"542 -214"
+// document.write(highAndLow("4 5 29 54 4 0 -214 542 -64 1 -3 6 -6")) //"542 -214"
 // 
 //=== End ( Highest and Lowest ) ===
 
 
-
-
-
-
 //---------------------------------------------------------------------------------------------------
-// 
+// Isograms
 //7 kyu https://www.codewars.com/kata/isograms/
 //---------------------------------------------------------------------------------------------------
+//---Task---
+//### **Isograms**
+//An isogram is a word that has no repeating letters, consecutive or non-consecutive.
+//Implement a function that determines whether a string that contains only letters is an isogram.
+//Assume the empty string is an isogram. Ignore letter case.
+//isIsogram "Dermatoglyphics" == true
+//isIsogram "aba" == false
+//isIsogram "moOse" == false -- ignore letter case
+//
+//### **Изограммы**
+//Изограмма - это слово, в котором нет повторяющихся букв, последовательных или непоследовательных.
+//Реализуйте функцию, которая определяет, является ли строка, содержащая только буквы, изограммой.
+//Предположим, что пустая строка является изограммой. Игнорировать регистр букв.
+//isIsogram "Dermatoglyphics" == true
+//isIsogram "aba" == false
+//isIsogram "moOse" == false -- ignore letter case
+// ---
+//
+//---Solution---
+function isIsogram(str){
+    if (str.trim() === "" ) return true;
+    const arr = str.split('').map((e)=>e.toUpperCase());
+    return arr.length === Array.from(new Set(arr)).length ? true : false;
+    //best- return !/(\w).*\1/i.test(str)
+    //best- return new Set(str.toUpperCase()).size == str.length;
+}
+//
+//---Test---
+let arrayTest = [
+    "Dermatoglyphics", //true );
+    "isogram", //true );
+    "aba", //false, "same chars may not be adjacent" );
+    "moOse", //false, "same chars may not be same case" );
+    "isIsogram", //false );
+    "" //, true, "an empty string is a valid isogram" );
+]
+//
+//---View solution---
+for (let i=0;i<arrayTest.length;i++) {
+    document.write(isIsogram(arrayTest[i]));
+    document.write(' | ');
+}
+// 
+//=== End ( Isograms ) ===
+
 
 //---------------------------------------------------------------------------------------------------
 // 
