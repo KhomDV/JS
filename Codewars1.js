@@ -122,7 +122,8 @@
 //
 //---Solution---
 function highAndLow(numbers){
-    // ...
+    const sortnumb = numbers.split(' ').map(e => +e).sort((a,b)=>b-a);
+    return `${sortnumb[0]}  ${sortnumb[sortnumb.length-1]}`;
 }
 //
 //---Test---
@@ -131,7 +132,7 @@ function highAndLow(numbers){
 //---View solution---
 document.write(highAndLow("4 5 29 54 4 0 -214 542 -64 1 -3 6 -6")) //"542 -214"
 // 
-//=== End ( Mumbling ) ===
+//=== End ( Highest and Lowest ) ===
 
 
 
