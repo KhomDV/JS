@@ -68,26 +68,68 @@
 // ---
 //
 //---Solution---
-accum = (str) => {
-    return str.split('').map((e,i)=>e.toUpperCase() + e.repeat(i).toLowerCase()).join('-');
+//accum = (str) => {
+//    return str.split('').map((e,i)=>e.toUpperCase() + e.repeat(i).toLowerCase()).join('-');
+//}
+//
+//---Test---
+//let arrayTest = [
+//    'ZpglnRxqenU', //'Z-Pp-Ggg-Llll-Nnnnn-Rrrrrr-Xxxxxxx-Qqqqqqqq-Eeeeeeeee-Nnnnnnnnnn-Uuuuuuuuuuu'
+//    'NyffsGeyylB', //'N-Yy-Fff-Ffff-Sssss-Gggggg-Eeeeeee-Yyyyyyyy-Yyyyyyyyy-Llllllllll-Bbbbbbbbbbb'
+//    'MjtkuBovqrU', //'M-Jj-Ttt-Kkkk-Uuuuu-Bbbbbb-Ooooooo-Vvvvvvvv-Qqqqqqqqq-Rrrrrrrrrr-Uuuuuuuuuuu'
+//    'EvidjUnokmM', //'E-Vv-Iii-Dddd-Jjjjj-Uuuuuu-Nnnnnnn-Oooooooo-Kkkkkkkkk-Mmmmmmmmmm-Mmmmmmmmmmm'
+//    'HbideVbxncC'  //'H-Bb-Iii-Dddd-Eeeee-Vvvvvv-Bbbbbbb-Xxxxxxxx-Nnnnnnnnn-Cccccccccc-Ccccccccccc'
+//    ]
+//
+//---View solution---
+//for (let i=0;i<arrayTest.length;i++) {
+//
+//    document.write(accum(arrayTest[i]));
+//    document.write(' | ');
+//
+//}
+// 
+//=== End ( Mumbling ) ===
+
+
+//---------------------------------------------------------------------------------------------------
+// Highest and Lowest
+//7 kyu https://www.codewars.com/kata/highest-and-lowest/
+//---------------------------------------------------------------------------------------------------
+//---Task---
+//### **Highest and Lowest**
+//In this little assignment you are given a string of space separated numbers, and have to return the highest and lowest number.
+//Example:
+//highAndLow("1 2 3 4 5");  // return "5 1"
+//highAndLow("1 2 -3 4 5"); // return "5 -3"
+//highAndLow("1 9 3 4 -5"); // return "9 -5"
+//Notes:
+//All numbers are valid Int32, no need to validate them.
+//There will always be at least one number in the input string.
+//Output string must be two numbers separated by a single space, and highest number is first.
+//
+//### **Самый высокий и самый низкий**
+//В этом небольшом задании вам дается строка чисел, разделенных пробелами, и вы должны возвращать наибольшее и наименьшее числа.
+//Пример:
+//highAndLow("1 2 3 4 5");  // return "5 1"
+//highAndLow("1 2 -3 4 5"); // return "5 -3"
+//highAndLow("1 9 3 4 -5"); // return "9 -5"
+//Примечания:
+//Все числа действительны Int32, подтверждать их не нужно .
+//Во входной строке всегда будет хотя бы одно число.
+//Строка вывода должна состоять из двух чисел, разделенных одним пробелом, при этом наибольшее число должно быть первым.
+// ---
+//
+//---Solution---
+function highAndLow(numbers){
+    // ...
 }
 //
 //---Test---
-let arrayTest = [
-    'ZpglnRxqenU', //'Z-Pp-Ggg-Llll-Nnnnn-Rrrrrr-Xxxxxxx-Qqqqqqqq-Eeeeeeeee-Nnnnnnnnnn-Uuuuuuuuuuu'
-    'NyffsGeyylB', //'N-Yy-Fff-Ffff-Sssss-Gggggg-Eeeeeee-Yyyyyyyy-Yyyyyyyyy-Llllllllll-Bbbbbbbbbbb'
-    'MjtkuBovqrU', //'M-Jj-Ttt-Kkkk-Uuuuu-Bbbbbb-Ooooooo-Vvvvvvvv-Qqqqqqqqq-Rrrrrrrrrr-Uuuuuuuuuuu'
-    'EvidjUnokmM', //'E-Vv-Iii-Dddd-Jjjjj-Uuuuuu-Nnnnnnn-Oooooooo-Kkkkkkkkk-Mmmmmmmmmm-Mmmmmmmmmmm'
-    'HbideVbxncC'  //'H-Bb-Iii-Dddd-Eeeee-Vvvvvv-Bbbbbbb-Xxxxxxxx-Nnnnnnnnn-Cccccccccc-Ccccccccccc'
-    ]
+//let arrayTest = []
 //
 //---View solution---
-for (let i=0;i<arrayTest.length;i++) {
-
-    document.write(accum(arrayTest[i]));
-    document.write(' | ');
-
-}
+document.write(highAndLow("4 5 29 54 4 0 -214 542 -64 1 -3 6 -6")) //"542 -214"
 // 
 //=== End ( Mumbling ) ===
 
@@ -95,10 +137,6 @@ for (let i=0;i<arrayTest.length;i++) {
 
 
 
-//---------------------------------------------------------------------------------------------------
-// 
-//7 kyu https://www.codewars.com/kata/highest-and-lowest/
-//---------------------------------------------------------------------------------------------------
 
 //---------------------------------------------------------------------------------------------------
 // 
