@@ -69,8 +69,7 @@
 //
 //---Solution---
 accum = (str) => {
-    return str.split('').filter((e) => !/[aeiou]/.test(e.toLowerCase()) ).join('');
-    //best - str.replace(/[aeiou]/gi, '')
+    return str.split('').map((e,i)=>e.toUpperCase() + e.repeat(i).toLowerCase()).join('-');
 }
 //
 //---Test---
