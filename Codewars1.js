@@ -31,28 +31,70 @@
 // ---
 //
 //---Solution---
-disemvowel = (str) => {
-    return str.split('').filter((e) => !/[aeiou]/.test(e.toLowerCase()) ).join('');
-    //best - str.replace(/[aeiou]/gi, '')
-}
+//disemvowel = (str) => {
+//    return str.split('').filter((e) => !/[aeiou]/.test(e.toLowerCase()) ).join('');
+//    //best - str.replace(/[aeiou]/gi, '')
+//}
 //
 //---Test---
 // let arrayTest = []
 //
 //---View solution---
-    document.write(disemvowel("This website is for losers LOL!")); //"Ths wbst s fr lsrs LL!"
+//    document.write(disemvowel("This website is for losers LOL!")); //"Ths wbst s fr lsrs LL!"
 // 
-//=== End ( hanoi-tower ) ===
-
-
-
-
+//=== End ( Disemvowel Trolls ) ===
 
 
 //---------------------------------------------------------------------------------------------------
-// 
+// Mumbling
 // 7 kyu https://www.codewars.com/kata/mumbling/
 //---------------------------------------------------------------------------------------------------
+//---Task---
+//### **Mumbling**
+//This time no story, no theory. The examples below show you how to write function accum:
+//Examples:
+//accum("abcd") -> "A-Bb-Ccc-Dddd"
+//accum("RqaEzty") -> "R-Qq-Aaa-Eeee-Zzzzz-Tttttt-Yyyyyyy"
+//accum("cwAt") -> "C-Ww-Aaa-Tttt"
+//The parameter of accum is a string which includes only letters from a..z and A..Z.
+//
+//### **Бормотание**
+//На этот раз ни рассказа, ни теории. В приведенных ниже примерах показано, как писать функцию accum:
+//Примеры:
+//accum("abcd") -> "A-Bb-Ccc-Dddd"
+//accum("RqaEzty") -> "R-Qq-Aaa-Eeee-Zzzzz-Tttttt-Yyyyyyy"
+//accum("cwAt") -> "C-Ww-Aaa-Tttt"
+//Параметр аккумулятора - это строка, состоящая только из букв от a..zи A..Z.
+// ---
+//
+//---Solution---
+accum = (str) => {
+    return str.split('').filter((e) => !/[aeiou]/.test(e.toLowerCase()) ).join('');
+    //best - str.replace(/[aeiou]/gi, '')
+}
+//
+//---Test---
+let arrayTest = [
+    'ZpglnRxqenU', //'Z-Pp-Ggg-Llll-Nnnnn-Rrrrrr-Xxxxxxx-Qqqqqqqq-Eeeeeeeee-Nnnnnnnnnn-Uuuuuuuuuuu'
+    'NyffsGeyylB', //'N-Yy-Fff-Ffff-Sssss-Gggggg-Eeeeeee-Yyyyyyyy-Yyyyyyyyy-Llllllllll-Bbbbbbbbbbb'
+    'MjtkuBovqrU', //'M-Jj-Ttt-Kkkk-Uuuuu-Bbbbbb-Ooooooo-Vvvvvvvv-Qqqqqqqqq-Rrrrrrrrrr-Uuuuuuuuuuu'
+    'EvidjUnokmM', //'E-Vv-Iii-Dddd-Jjjjj-Uuuuuu-Nnnnnnn-Oooooooo-Kkkkkkkkk-Mmmmmmmmmm-Mmmmmmmmmmm'
+    'HbideVbxncC'  //'H-Bb-Iii-Dddd-Eeeee-Vvvvvv-Bbbbbbb-Xxxxxxxx-Nnnnnnnnn-Cccccccccc-Ccccccccccc'
+    ]
+//
+//---View solution---
+for (let i=0;i<arrayTest.length;i++) {
+
+    document.write(accum(arrayTest[i]));
+    document.write(' | ');
+
+}
+// 
+//=== End ( Mumbling ) ===
+
+
+
+
 
 //---------------------------------------------------------------------------------------------------
 // 
