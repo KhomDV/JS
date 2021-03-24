@@ -32,15 +32,8 @@
 //
 //---Solution---
 disemvowel = (str) => {
-  
-
-    return str.split();
-    // result = str.filter(str => word.length > 6);    
-    // if (char.length == 1)
-    // {
-    //   return /[aeiou]/.test(char);
-    // }
-    
+    return str.split('').filter((e) => !/[aeiou]/.test(e.toLowerCase()) ).join('');
+    //best - str.replace(/[aeiou]/gi, '')
 }
 //
 //---Test---
