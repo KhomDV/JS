@@ -626,92 +626,92 @@
 // ---
 //
 //---Solution---
-class VigenereCipheringMachine {
-    constructor(lineCrypt=true) {
-        this.lineCrypt = lineCrypt;
-    }
-
-    encrypt(message, key) {
-        if ( !message || !key) throw new Error();
-
-        let strCrypto = "";
-        let i_key = 0;
-
-        for (let i=0; i<message.length; i++) {
-          const char = message[i].toUpperCase();
-          if (char.charCodeAt(0) >= 65 && char.charCodeAt(0) <= 90) {
-            const charKey = key[i_key].toUpperCase();
-            let charCode = (char.charCodeAt(0)-65) + (charKey.charCodeAt(0)-65);
-            if (charCode > 25 ) {
-              charCode = charCode - 26;
-            }
-            strCrypto = strCrypto + String.fromCharCode(charCode + 65);
-            i_key++;
-            if (i_key > key.length-1) {
-              i_key = 0;
-            }
-          } else {
-            strCrypto = strCrypto + message[i];
-          }
-        }
-        return ( this.lineCrypt ? strCrypto : strCrypto.split('').reverse().join('') );
-    }
-
-
-    decrypt(message, key) {
-        if ( !message || !key) throw new Error();
-
-        let strDeCrypto = "";
-        let i_key = 0;
-
-        for (let i=0; i<message.length; i++) {
-          const charCrypto = message[i].toUpperCase();
-          if (charCrypto.charCodeAt(0) >= 65 && charCrypto.charCodeAt(0) <= 90) {
-            const charKey = key[i_key].toUpperCase();
-            let charCode = (charCrypto.charCodeAt(0)-65) - (charKey.charCodeAt(0)-65);
-            if ( charCode < 0 ) {
-              charCode = 26 + charCode;
-            }
-            strDeCrypto = strDeCrypto + String.fromCharCode(charCode + 65);
-            i_key++;
-            if (i_key > key.length-1) {
-              i_key = 0;
-            }
-          } else {
-            strDeCrypto = strDeCrypto + message[i];
-          }
-      }
-      return ( this.lineCrypt ? strDeCrypto : strDeCrypto.split('').reverse().join('') );
-    }  
-
-}
-directMachine = new VigenereCipheringMachine;
-
+// class VigenereCipheringMachine {
+//     constructor(lineCrypt=true) {
+//         this.lineCrypt = lineCrypt;
+//     }
+//
+//     encrypt(message, key) {
+//         if ( !message || !key) throw new Error();
+//
+//         let strCrypto = "";
+//         let i_key = 0;
+//
+//         for (let i=0; i<message.length; i++) {
+//           const char = message[i].toUpperCase();
+//           if (char.charCodeAt(0) >= 65 && char.charCodeAt(0) <= 90) {
+//             const charKey = key[i_key].toUpperCase();
+//             let charCode = (char.charCodeAt(0)-65) + (charKey.charCodeAt(0)-65);
+//             if (charCode > 25 ) {
+//               charCode = charCode - 26;
+//             }
+//             strCrypto = strCrypto + String.fromCharCode(charCode + 65);
+//             i_key++;
+//             if (i_key > key.length-1) {
+//               i_key = 0;
+//             }
+//           } else {
+//             strCrypto = strCrypto + message[i];
+//           }
+//         }
+//         return ( this.lineCrypt ? strCrypto : strCrypto.split('').reverse().join('') );
+//     }
+//
+//
+//     decrypt(message, key) {
+//         if ( !message || !key) throw new Error();
+//
+//         let strDeCrypto = "";
+//         let i_key = 0;
+//
+//         for (let i=0; i<message.length; i++) {
+//           const charCrypto = message[i].toUpperCase();
+//           if (charCrypto.charCodeAt(0) >= 65 && charCrypto.charCodeAt(0) <= 90) {
+//             const charKey = key[i_key].toUpperCase();
+//             let charCode = (charCrypto.charCodeAt(0)-65) - (charKey.charCodeAt(0)-65);
+//             if ( charCode < 0 ) {
+//               charCode = 26 + charCode;
+//             }
+//             strDeCrypto = strDeCrypto + String.fromCharCode(charCode + 65);
+//             i_key++;
+//             if (i_key > key.length-1) {
+//               i_key = 0;
+//             }
+//           } else {
+//             strDeCrypto = strDeCrypto + message[i];
+//           }
+//       }
+//       return ( this.lineCrypt ? strDeCrypto : strDeCrypto.split('').reverse().join('') );
+//     }  
+//
+// }
+// directMachine = new VigenereCipheringMachine;
+//
 //---Test---
-let arrayTest = [
-        [1, 'Windows', 'win'], //
-        [1, 'attack at dawn!', 'alphonse'], //'AEIHQX SX DLLU!'
-        [1, 'Example of sequence: 1, 2, 3, 4.', 'lilkey'], //'PFLWTJP WQ CIOFMYMI: 1, 2, 3, 4.'
-        [1, 'cryptography', 'verylongkeyword'],  //'XVPNECTXKTFU'
-        [1, 'Samelengthkey', 'Samelengthkey'],   //'KAYIWIAMMOUIW'
-        [1, 'Same length key', 'Samelengthkey'], //'KAYI WIAMMO UIW'
-        [2, 'UWJJW XAGWLNFM VNNNDXHVWWL :)', 'js'],  //'LEARN FRONTEND DEVELOPMENT :)'
-        [2, 'ICWWQAM KECEIK JVZZT EADGG!', 'rollingscopes'],   //'ROLLING SCOPES SHOOL RULES!'
-        [2, 'TRVVFB VT JSUIFMYL!', 'learning'], //'INVEST IN YOURSELF!'
-        [2, 'HSVD AJAL ^^', 'behappy'],  //'GOOD LUCK ^^'
-    ];
+// let arrayTest = [
+//         [1, 'Windows', 'win'], //
+//         [1, 'attack at dawn!', 'alphonse'], //'AEIHQX SX DLLU!'
+//         [1, 'Example of sequence: 1, 2, 3, 4.', 'lilkey'], //'PFLWTJP WQ CIOFMYMI: 1, 2, 3, 4.'
+//         [1, 'cryptography', 'verylongkeyword'],  //'XVPNECTXKTFU'
+//         [1, 'Samelengthkey', 'Samelengthkey'],   //'KAYIWIAMMOUIW'
+//         [1, 'Same length key', 'Samelengthkey'], //'KAYI WIAMMO UIW'
+//         [2, 'UWJJW XAGWLNFM VNNNDXHVWWL :)', 'js'],  //'LEARN FRONTEND DEVELOPMENT :)'
+//         [2, 'ICWWQAM KECEIK JVZZT EADGG!', 'rollingscopes'],   //'ROLLING SCOPES SHOOL RULES!'
+//         [2, 'TRVVFB VT JSUIFMYL!', 'learning'], //'INVEST IN YOURSELF!'
+//         [2, 'HSVD AJAL ^^', 'behappy'],  //'GOOD LUCK ^^'
+//     ];
 //
 //---View solution---
-for (let i=0;i<arrayTest.length;i++) {
-    let strCrypt = "";
-    if (arrayTest[i][0] === 1) {
-        strCrypt = directMachine.encrypt(arrayTest[i][1], arrayTest[i][2]);
-    } else {
-        strCrypt = directMachine.decrypt(arrayTest[i][1], arrayTest[i][2]);
-    }
-    document.write(strCrypt);
-    document.write(' - ');
-}
+// for (let i=0;i<arrayTest.length;i++) {
+//     let strCrypt = "";
+//     if (arrayTest[i][0] === 1) {
+//         strCrypt = directMachine.encrypt(arrayTest[i][1], arrayTest[i][2]);
+//     } else {
+//         strCrypt = directMachine.decrypt(arrayTest[i][1], arrayTest[i][2]);
+//     }
+//     document.write(strCrypt);
+//     document.write(' - ');
+// }
 //
 //let strCrypt = directMachine.encrypt('Same length key', 'Samelengthkey'); //'KAYI WIAMMO UIW'
 //let strCrypt = directMachine.decrypt('UWJJW XAGWLNFM VNNNDXHVWWL :)', 'js'); //'LEARN FRONTEND DEVELOPMENT :)'
@@ -721,41 +721,65 @@ for (let i=0;i<arrayTest.length;i++) {
 
 
 
-
-
-
-
-
-
-
+//---------------------------------------------------------------------------------------------------
+// what-season.
+//---------------------------------------------------------------------------------------------------
 // ### **Какая пора года??**
-
-// Ваша задача — реализовать функцию `getSeason(date)`, которая принимает объект `Date` и возвращает соответствующую ему пору года. Пора года должна быть типа `string`.
-
+// Ваша задача — реализовать функцию `getSeason(date)`, которая принимает объект `Date` и возвращает соответствующую ему пору года.
+// Пора года должна быть типа `string`.
 // ---
 // <details>
-
 // <summary>Названия пор года в англиийском языке</summary>
 // В английском поры года имеют следующие наименования: весна — spring, лето — summer, осень — autumn (fall), зима — winter.
-
 // </details>
-
 // ---
-
-// Если аргумент `date` не был передан, функция должна вернуть строку `'Unable to determine the time of year!'` Если аргумент `date` **некорректный**, функция должна выбросить ошибку (`Error`).
-
+// Если аргумент `date` не был передан, функция должна вернуть строку `'Unable to determine the time of year!'`
+// Если аргумент `date` **некорректный**, функция должна выбросить ошибку (`Error`).
 // Тссс! Среди аргументов, которые попадают в эту функцию, затесался вражеский агент.
-
 // ![Disguised](https://www.famousbirthdays.com/faces/disguised-toast-image.jpg)
-
-// Он руководствуется знаменитой поговоркой: "Если это выглядит как **утка**, плавает как **утка**, и крякает как **утка**, тогда это, скорее всего, **утка** (и неважно, что это **на самом деле**)". Он **искусно маскируется** под настоящую дату (`date`), но умелый javascript-разработчик может поймать его и выбросить ошибку как раз вовремя!
-
+// Он руководствуется знаменитой поговоркой: "Если это выглядит как **утка**, плавает как **утка**,
+// и крякает как **утка**, тогда это, скорее всего, **утка** (и неважно, что это **на самом деле**)".
+// Он **искусно маскируется** под настоящую дату (`date`), но умелый javascript-разработчик может поймать его и выбросить ошибку как раз вовремя!
 // Например:
-
 // `const springDate = new Date(2020, 02, 31)`
-
 // `getSeason(springDate) => 'spring'`
-
 // Напишите ваш код в `src/what-season.js`.
-
 // ---
+//
+//---Solution---
+function getSeason(date) {
+
+}
+//
+//---Test---
+let arrayTest = [
+    new Date(380, 11, 30, 11, 2, 36, 275), //'winter'
+    new Date(2043, 2, 1, 22, 7, 42, 410),  // 'spring');
+    new Date(1116, 2, 29, 12, 1, 32, 470), //'spring');
+    new Date(687, 2, 5, 18, 24, 54, 380),  //'spring');
+    new Date(1885, 8, 13, 9, 36, 15, 807), //)).to.match(/autumn|fall/);
+    new Date(1126, 3, 6, 5, 9, 1, 724),    //'spring');
+    new Date(866, 8, 19, 6, 38, 15, 964),  //.to.match(/autumn|fall/);
+    new Date(1601, 0, 0, 16, 26, 37, 664), //'winter');
+    new Date(314, 0, 28, 6, 25, 23, 924),  //'winter');
+    new Date(1473, 1, 30, 3, 19, 48, 502), //'spring');
+    new Date(452, 3, 28, 5, 16, 23, 178),  //'spring');
+    new Date(2211, 8, 26, 21, 6, 7, 52),   //)).to.match(/autumn|fall/);
+    new Date(827, 5, 16, 22, 42, 16, 341), //'summer');
+    new Date(2205, 11, 11, 4, 40, 45, 325),// 'winter');
+    new Date(1155, 5, 23, 19, 40, 53, 534),// 'summer');
+    new Date(1092, 8, 18, 12, 23, 36, 32), //.to.match(/autumn|fall/);
+    new Date(79, 6, 8, 5, 34, 23, 738)     //, 'summer');
+  ]    
+//
+//---View solution---
+for (let i=0;i<arrayTest.length;i++) {
+    document.write(getSeason(arrayTest[i]));
+    document.write(' | ');
+}
+//
+//document.write(getSeason(new Date(79, 6, 8, 5, 34, 23, 738)));
+// 
+//=== End ( what-season ) ===
+
+
