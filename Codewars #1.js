@@ -14,6 +14,42 @@
 // Disemvowel Trolls
 // 7 kyu https://www.codewars.com/kata/disemvowel-trolls/
 //---------------------------------------------------------------------------------------------------
+//---Task---
+//### **Disemvowel Trolls**
+//Trolls are attacking your comment section!
+//A common way to deal with this situation is to remove all of the vowels from the trolls' comments, neutralizing the threat.
+//Your task is to write a function that takes a string and return a new string with all vowels removed.
+//For example, the string "This website is for losers LOL!" would become "Ths wbst s fr lsrs LL!".
+//Note: for this kata y isn't considered a vowel.
+//
+//### **Дисемгласные тролли**
+//Тролли атакуют ваш раздел комментариев!
+//Обычный способ справиться с этой ситуацией - удалить все гласные из комментариев троллей, нейтрализуя угрозу.
+//Ваша задача - написать функцию, которая принимает строку и возвращает новую строку с удаленными гласными.
+//Например, строка «Этот сайт для неудачников LOL!» станет "Ths wbst s fr lsrs LL!".
+//Примечание: для этого ката yне считается гласной.
+// ---
+//
+//---Solution---
+disemvowel = (str) -> {
+  
+    if (char.length == 1)
+    {
+      return /[aeiou]/.test(char);
+    }
+    
+}
+//
+//---Test---
+// let arrayTest = []
+//
+//---View solution---
+    document.write(disemvowel("This website is for losers LOL!")); //"Ths wbst s fr lsrs LL!"
+// 
+//=== End ( hanoi-tower ) ===
+
+
+
 
 
 
