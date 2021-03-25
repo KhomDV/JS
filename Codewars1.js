@@ -294,9 +294,43 @@
 //
 //---Solution---
 function catMouse(map,moves){
-    //coding and coding...
-    return map;
+    //Локальное решение
+    if ( !map.includes("C") || !map.includes("m") ) return ('boring without two animals');
+
+    map = map.trim();
+
+    let arr = [];
+    while (true) {
+        const nInd = map.indexOf(' ');
+        if (nInd === -1) {
+            arr.push(map);
+            break;
+        }
+        arr.push(map.substring(0,nInd-1));
+        map = map.substring(nInd).trim();
+    }
+
+    let posC;
+    let posM;
+    arr.forEach((e,i)=> e.indexOf('C')>-1 ? posC = Array(i,e.indexOf('C')) : '');
+    arr.forEach((e,i)=> e.indexOf('m')>-1 ? posM = Array(i,e.indexOf('m')) : '');
+    const nStep = Math.abs(posC[0] - posM[0]) + Math.abs(posC[1] - posM[1]);
     
+    return (nStep <= moves ? "Caught!" : "Escaped!");
+    
+
+    // Решение на Codewars
+    if ( !map.includes("C") || !map.includes("m") ) return ('boring without two animals');
+
+    const arr = map.split('\n');
+
+    let posC;
+    let posM;
+    arr.forEach((e,i)=> e.indexOf('C')>-1 ? posC = Array(i,e.indexOf('C')) : '');
+    arr.forEach((e,i)=> e.indexOf('m')>-1 ? posM = Array(i,e.indexOf('m')) : '');
+    const nStep = Math.abs(posC[0] - posM[0]) + Math.abs(posC[1] - posM[1]);
+    
+    return (nStep <= moves ? "Caught!" : "Escaped!");
 }
 //
 //---Test---
@@ -305,9 +339,10 @@ function catMouse(map,moves){
 //---View solution---
 //for (let i=0;i<arrayTest.length;i++) {
     let map=
-    `..C......
-    .........
-    ....m....` //'Caught!'
+ `..C......
+ .........
+ ....m....`
+      //'Caught!'
     document.write(catMouse(map,5));
     document.write(' | ');
         
