@@ -453,31 +453,31 @@
 // ---
 //
 //---Solution---
-function squares(x, n) {
-    if ( n <= 0 ) return ([]);
-    let arr = [x];
-    for (let i=1; i<n; i++) {
-        arr.push(Math.pow(arr[i-1], 2));
-    }
-    return (arr);
-}
+// function squares(x, n) {
+//     if ( n <= 0 ) return ([]);
+//     let arr = [x];
+//     for (let i=1; i<n; i++) {
+//         arr.push(Math.pow(arr[i-1], 2));
+//     }
+//     return (arr);
+// }
 //
 //---Test---
 //let arrayTest = []
 //
 //---View solution---
-document.write(squares(2,5)); //,[2,4,16,256,65536]);
-document.write(' | ');
-document.write(squares(3,3)); //,[3,9,81]);  
-document.write(' | ');
-document.write(squares(5,3)); //,[5,25,625]);  
-document.write(' | ');
-document.write(squares(10,4)); //,[10,100,10000,100000000]);  
-document.write(' | ');
-document.write(squares(2,0)); //,[]);
-document.write(' | ');
-document.write(squares(2,-5)); //,[]);
-document.write(' | ');
+// document.write(squares(2,5)); //,[2,4,16,256,65536]);
+// document.write(' | ');
+// document.write(squares(3,3)); //,[3,9,81]);  
+// document.write(' | ');
+// document.write(squares(5,3)); //,[5,25,625]);  
+// document.write(' | ');
+// document.write(squares(10,4)); //,[10,100,10000,100000000]);  
+// document.write(' | ');
+// document.write(squares(2,0)); //,[]);
+// document.write(' | ');
+// document.write(squares(2,-5)); //,[]);
+// document.write(' | ');
 // for (let i=0;i<arrayTest.length;i++) {
 //      document.write(duplicateEncode(arrayTest[i]));
 //      document.write(' | ');
@@ -486,11 +486,60 @@ document.write(' | ');
 //=== End ( Squares sequence ) ===
 
 
-
 //---------------------------------------------------------------------------------------------------
-// 
+// Concatenated Sum
 //7 kyu https://www.codewars.com/kata/concatenated-sum
 //---------------------------------------------------------------------------------------------------
+//---Task---
+//### **Concatenated Sum**
+//The number 198 has the property that 198 = 11 + 99 + 88, i.e.,
+//if each of its digits is concatenated twice and then summed,
+//the result will be the original number.
+//It turns out that 198 is the only number with this property.
+//However, the property can be generalized so that each digit is concatenated n times and then summed.
+//eg:-
+//original number =2997 , n=3
+//2997 = 222+999+999+777 and here each digit is concatenated three times.
+//original number=-2997 , n=3
+//-2997 = -222-999-999-777 and here each digit is concatenated three times.
+//Write afunction named check_concatenated_sum that tests if a number has this generalized property.
+//
+//
+//### **Конкатенированная сумма**
+//Номер 198имеет свойство, что 198 = 11 + 99 + 88, i.e.,
+//if each of its digits is concatenated twice and then summed,
+//the result will be the original number.
+//Оказывается, это 198единственный номер с таким свойством. Однако это свойство можно обобщить так, чтобы каждая цифра объединялась несколько nраз, а затем суммировалась.
+//например:-
+//original number =2997 , n=3
+//2997 = 222+999+999+777 and here each digit is concatenated three times.
+//original number=-2997 , n=3
+//-2997 = -222-999-999-777 and here each digit is concatenated three times.
+//Напишите функцию с именем, check_concatenated_sumкоторая проверяет, обладает ли число этим обобщенным свойством.
+// ---
+//
+//---Solution---
+function checkConcatenatedSum(inputs,repeated){
+  
+  
+}//
+//---Test---
+//let arrayTest = []
+//
+//---View solution---
+document.write(checkConcatenatedSum(2997,3); //,true)
+document.write(' | ');
+document.write(checkConcatenatedSum(-2997,3); //,true)
+document.write(' | ');
+// for (let i=0;i<arrayTest.length;i++) {
+//      document.write(duplicateEncode(arrayTest[i]));
+//      document.write(' | ');
+// }
+//
+//=== End ( Concatenated Sum ) ===
+
+
+
 
 //---------------------------------------------------------------------------------------------------
 // 
