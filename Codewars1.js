@@ -222,34 +222,112 @@
 // ---
 //
 //---Solution---
-function calc(x){
-    const total1 = x.split('').map((e)=>e.charCodeAt()).join('');
-    const total2 = total1.replace(/[7]/g, '1');
-    return (total1.split('').reduce((a,b)=>a + Number(b), 0) - total2.split('').reduce((a,b)=>a + Number(b), 0));
-}
+//function calc(x){
+//    const total1 = x.split('').map((e)=>e.charCodeAt()).join('');
+//    const total2 = total1.replace(/[7]/g, '1');
+//    return (total1.split('').reduce((a,b)=>a + Number(b), 0) - total2.split('').reduce((a,b)=>a + Number(b), 0));
+//}
 //
 //---Test---
-let arrayTest = [
-    'ABC', //6
-    'abcdef', //6
-    'ifkhchlhfd', //6
-    'aaaaaddddr',  //30
-    'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ' // 96
-]
+//let arrayTest = [
+//    'ABC', //6
+//    'abcdef', //6
+//    'ifkhchlhfd', //6
+//    'aaaaaddddr',  //30
+//    'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ' // 96
+//]
 //
 //---View solution---
-for (let i=0;i<arrayTest.length;i++) {
-    document.write(calc(arrayTest[i]));
-    document.write(' | ');
-}
+//for (let i=0;i<arrayTest.length;i++) {
+//    document.write(calc(arrayTest[i]));
+//    document.write(' | ');
+//}
 // 
 //=== End ( Char Code Calculation ) ===
 
 
 //---------------------------------------------------------------------------------------------------
-// 
+// Cat and Mouse - 2D Version
 //7 kyu https://www.codewars.com/kata/cat-and-mouse-2d-version/
 //---------------------------------------------------------------------------------------------------
+//---Task---
+//### **Cat and Mouse - 2D Version**
+//You will be given a string (map) featuring a cat "C" and a mouse "m".
+//The rest of the string will be made up of dots (".")
+//The cat can move the given number of moves up, down, left or right, but not diagonally.
+//You need to find out if the cat can catch the mouse from it's current position and return "Caught!" or "Escaped!" respectively.
+//Finally, if one of two animals are not present, return "boring without two animals".
+//Examples
+//moves = 5
+//map =
+//..C......
+//.........
+//....m....
+//returns "Caught!" because the cat can catch the mouse in 4 moves
+//moves = 5
+//map =
+//.C.......
+//.........
+//......m..
+//returns "Escaped!" because the cat cannot catch the mouse in  5 moves
+//
+//### **Кошка и Мышь - 2D версия**
+//Вам дадут веревочку ( map) с изображением кота "C"и мышки "m".
+//Остальная часть строки будет состоять из точек ( ".").
+//Кошка может перемещаться на указанное количество movesвверх, вниз, влево или вправо, но не по диагонали .
+//Вам нужно выяснить, может ли кошка поймать мышь из текущей позиции и вернуться "Caught!"или "Escaped!"соответственно.
+//Наконец, если одного из двух животных нет, вернитесь "boring without two animals".
+//Примеры
+//moves = 5
+//map =
+//..C......
+//.........
+//....m....
+//returns "Caught!" because the cat can catch the mouse in 4 moves
+//moves = 5
+//map =
+//.C.......
+//.........
+//......m..
+//returns "Escaped!" because the cat cannot catch the mouse in  5 moves
+// ---
+//
+//---Solution---
+function catMouse(map,moves){
+    //coding and coding...
+    return map;
+    
+}
+//
+//---Test---
+//let arrayTest = []
+//
+//---View solution---
+//for (let i=0;i<arrayTest.length;i++) {
+    let map=
+    `..C......
+    .........
+    ....m....` //'Caught!'
+    document.write(catMouse(map,5));
+    document.write(' | ');
+        
+    map=
+    `.C.......
+    .........
+    ......m..` //'Escaped!'
+    document.write(catMouse(map,5));
+    document.write(' | ');
+    
+    map=
+    `..C......
+    .........
+    .........` //'boring without two animals'
+    document.write(catMouse(map,5));
+    document.write(' | ');
+//}
+// 
+//=== End ( Cat and Mouse - 2D Version ) ===
+
 
 //---------------------------------------------------------------------------------------------------
 // 
