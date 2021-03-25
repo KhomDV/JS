@@ -293,81 +293,136 @@
 // ---
 //
 //---Solution---
-function catMouse(map,moves){
-    //Локальное решение
-    if ( !map.includes("C") || !map.includes("m") ) return ('boring without two animals');
-
-    map = map.trim();
-
-    let arr = [];
-    while (true) {
-        const nInd = map.indexOf(' ');
-        if (nInd === -1) {
-            arr.push(map);
-            break;
-        }
-        arr.push(map.substring(0,nInd-1));
-        map = map.substring(nInd).trim();
-    }
-
-    let posC;
-    let posM;
-    arr.forEach((e,i)=> e.indexOf('C')>-1 ? posC = Array(i,e.indexOf('C')) : '');
-    arr.forEach((e,i)=> e.indexOf('m')>-1 ? posM = Array(i,e.indexOf('m')) : '');
-    const nStep = Math.abs(posC[0] - posM[0]) + Math.abs(posC[1] - posM[1]);
-    
-    return (nStep <= moves ? "Caught!" : "Escaped!");
-    
-
-    // Решение на Codewars
-    if ( !map.includes("C") || !map.includes("m") ) return ('boring without two animals');
-
-    const arr = map.split('\n');
-
-    let posC;
-    let posM;
-    arr.forEach((e,i)=> e.indexOf('C')>-1 ? posC = Array(i,e.indexOf('C')) : '');
-    arr.forEach((e,i)=> e.indexOf('m')>-1 ? posM = Array(i,e.indexOf('m')) : '');
-    const nStep = Math.abs(posC[0] - posM[0]) + Math.abs(posC[1] - posM[1]);
-    
-    return (nStep <= moves ? "Caught!" : "Escaped!");
-}
+// function catMouse(map,moves){
+//     //Локальное решение
+//     if ( !map.includes("C") || !map.includes("m") ) return ('boring without two animals');
+//
+//     map = map.trim();
+//
+//     let arr = [];
+//     while (true) {
+//         const nInd = map.indexOf(' ');
+//         if (nInd === -1) {
+//             arr.push(map);
+//             break;
+//         }
+//         arr.push(map.substring(0,nInd-1));
+//         map = map.substring(nInd).trim();
+//     }
+//
+//     let posC;
+//     let posM;
+//     arr.forEach((e,i)=> e.indexOf('C')>-1 ? posC = Array(i,e.indexOf('C')) : '');
+//     arr.forEach((e,i)=> e.indexOf('m')>-1 ? posM = Array(i,e.indexOf('m')) : '');
+//     const nStep = Math.abs(posC[0] - posM[0]) + Math.abs(posC[1] - posM[1]);
+//    
+//     return (nStep <= moves ? "Caught!" : "Escaped!");
+//    
+//
+//     // Решение на Codewars
+//     if ( !map.includes("C") || !map.includes("m") ) return ('boring without two animals');
+//
+//     const arr = map.split('\n');
+//
+//     let posC;
+//     let posM;
+//     arr.forEach((e,i)=> e.indexOf('C')>-1 ? posC = Array(i,e.indexOf('C')) : '');
+//     arr.forEach((e,i)=> e.indexOf('m')>-1 ? posM = Array(i,e.indexOf('m')) : '');
+//     const nStep = Math.abs(posC[0] - posM[0]) + Math.abs(posC[1] - posM[1]);
+//    
+//     return (nStep <= moves ? "Caught!" : "Escaped!");
+// }
 //
 //---Test---
 //let arrayTest = []
 //
 //---View solution---
 //for (let i=0;i<arrayTest.length;i++) {
-    let map=
- `..C......
- .........
- ....m....`
-      //'Caught!'
-    document.write(catMouse(map,5));
-    document.write(' | ');
-        
-    map=
-    `.C.......
-    .........
-    ......m..` //'Escaped!'
-    document.write(catMouse(map,5));
-    document.write(' | ');
-    
-    map=
-    `..C......
-    .........
-    .........` //'boring without two animals'
-    document.write(catMouse(map,5));
-    document.write(' | ');
+//     let map=
+//  `..C......
+//  .........
+//  ....m....`
+//       //'Caught!'
+//     document.write(catMouse(map,5));
+//     document.write(' | ');
+//        
+//     map=
+//     `.C.......
+//     .........
+//     ......m..` //'Escaped!'
+//     document.write(catMouse(map,5));
+//     document.write(' | ');
+//    
+//     map=
+//     `..C......
+//     .........
+//     .........` //'boring without two animals'
+//     document.write(catMouse(map,5));
+//     document.write(' | ');
 //}
 // 
 //=== End ( Cat and Mouse - 2D Version ) ===
 
 
 //---------------------------------------------------------------------------------------------------
-// 
+// Duplicate Encoder
 //6 kyu https://www.codewars.com/kata/duplicate-encoder
 //---------------------------------------------------------------------------------------------------
+//---Task---
+//### **Duplicate Encoder**
+//The goal of this exercise is to convert a string to a new string where each character
+// in the new string is "(" if that character appears only once in the original string,
+// or ")" if that character appears more than once in the original string.
+// Ignore capitalization when determining if a character is a duplicate.
+//Examples
+//"din"      =>  "((("
+//"recede"   =>  "()()()"
+//"Success"  =>  ")())())"
+//"(( @"     =>  "))((" 
+//Notes
+//Assertion messages may be unclear about what they display in some languages.
+//If you read "...It Should encode XXX", the "XXX" is the expected result, not the input!
+//
+//### **Дубликат кодировщика**
+//Цель этого упражнения - преобразовать строку в новую строку,
+//где каждый символ в новой строке соответствует тому,
+//"("если этот символ появляется только один раз в исходной строке или ")"если этот символ появляется более одного раза в исходной строке.
+//Игнорируйте использование заглавных букв при определении дубликата символа.
+//Примеры
+//"din"      =>  "((("
+//"recede"   =>  "()()()"
+//"Success"  =>  ")())())"
+//"(( @"     =>  "))((" 
+//Примечания
+//В сообщениях с утверждениями может быть неясно, что они отображают на некоторых языках.
+//Если вы читаете "...It Should encode XXX", "XXX"это ожидаемый результат, а не ввод!
+// ---
+//
+//---Solution---
+function duplicateEncode(word){
+    const arrWord = word.toUpperCase().split('');
+    const strCode = arrWord.reduce((strCode,b)=>{
+        return strCode + ( arrWord.filter((e)=>e===b).length > 1 ? ')' : '(' );
+    }, "");
+    return strCode;
+}
+//
+//---Test---
+let arrayTest = [
+    "din",      //"(((");
+    "recede",   //"()()()");
+    "Success",  //")())())","should ignore case");
+    "(( @"      //"))((");
+]
+//
+//---View solution---
+for (let i=0;i<arrayTest.length;i++) {
+     document.write(duplicateEncode(arrayTest[i]));
+     document.write(' | ');
+}
+//
+//=== End ( Duplicate Encoder ) ===
+
 //===================================================================================================
 
 
