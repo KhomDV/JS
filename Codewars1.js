@@ -519,22 +519,23 @@
 // ---
 //
 //---Solution---
-function checkConcatenatedSum(number,n){
-    //my
-    const sum = String(Math.abs(number)).split('').reduce((sum,e)=>sum + Number(e.repeat(n)),0);
-    return ( Math.abs(number) === sum ? true : false);
-    //best
-    //var abs = Math.abs(sum);
-    //return abs === [...abs+""].reduce((s, d) => +d.repeat(n) + s, 0);
-}//
+// function checkConcatenatedSum(number,n){
+//     //my
+//     const sum = String(Math.abs(number)).split('').reduce((sum,e)=>sum + Number(e.repeat(n)),0);
+//     return ( Math.abs(number) === sum ? true : false);
+//     //best
+//     //var abs = Math.abs(sum);
+//     //return abs === [...abs+""].reduce((s, d) => +d.repeat(n) + s, 0);
+// }
+//
 //---Test---
 //let arrayTest = []
 //
 //---View solution---
-document.write(checkConcatenatedSum(2997,3)); //,true)
-document.write(' | ');
-document.write(checkConcatenatedSum(-2997,3)); //,true)
-document.write(' | ');
+// document.write(checkConcatenatedSum(2997,3)); //,true)
+// document.write(' | ');
+// document.write(checkConcatenatedSum(-2997,3)); //,true)
+// document.write(' | ');
 // for (let i=0;i<arrayTest.length;i++) {
 //      document.write(duplicateEncode(arrayTest[i]));
 //      document.write(' | ');
@@ -543,12 +544,62 @@ document.write(' | ');
 //=== End ( Concatenated Sum ) ===
 
 
-
-
 //---------------------------------------------------------------------------------------------------
-// 
+// Filter the number
 //7 kyu https://www.codewars.com/kata/filter-the-number
 //---------------------------------------------------------------------------------------------------
+//---Task---
+//### **Filter the number**
+//Oh no! The number has been mixed up with the text.
+//Your goal is to retreive the number from the text,
+//can you return the number back to it's original state?
+//Task
+//Your task is to return a number from a string.
+//Details
+//You will be given a string of numbers and letters mixed up,
+//you have to return all the numbers in that string in the order they occur.
+//
+//### **Отфильтровать число**
+//Отфильтровать число
+//о нет! Число перепутано с текстом.
+//Ваша цель - получить номер из текста, можете ли вы вернуть номер в исходное состояние?
+//Задача
+//Ваша задача - вернуть число из строки.
+//Подробности
+//Вам будет предоставлена ​​строка из смешанных цифр и букв,
+//вы должны вернуть все числа в этой строке в том порядке, в котором они встречаются.
+// ---
+//
+//---Solution---
+var FilterString = function(value) {
+    
+}
+// function checkConcatenatedSum(number,n){
+//     //my
+//     const sum = String(Math.abs(number)).split('').reduce((sum,e)=>sum + Number(e.repeat(n)),0);
+//     return ( Math.abs(number) === sum ? true : false);
+//     //best
+//     //var abs = Math.abs(sum);
+//     //return abs === [...abs+""].reduce((s, d) => +d.repeat(n) + s, 0);
+// }
+//
+//---Test---
+let arrayTest = [
+    "123", //123, 'Just return the numbers');
+    "a1b2c3", //123, 'Just return the numbers');
+    "aa1bb2cc3dd" //123, 'Just return the numbers');
+    ]
+//
+//---View solution---
+for (let i=0;i<arrayTest.length;i++) {
+    document.write(FilterString(arrayTest[i]));
+    document.write(' | ');
+}
+//
+//=== End ( Filter the number ) ===
+
+
+
 
 //---------------------------------------------------------------------------------------------------
 // 
