@@ -519,17 +519,21 @@
 // ---
 //
 //---Solution---
-function checkConcatenatedSum(inputs,repeated){
-  
-  
+function checkConcatenatedSum(number,n){
+    //my
+    const sum = String(Math.abs(number)).split('').reduce((sum,e)=>sum + Number(e.repeat(n)),0);
+    return ( Math.abs(number) === sum ? true : false);
+    //best
+    //var abs = Math.abs(sum);
+    //return abs === [...abs+""].reduce((s, d) => +d.repeat(n) + s, 0);
 }//
 //---Test---
 //let arrayTest = []
 //
 //---View solution---
-document.write(checkConcatenatedSum(2997,3); //,true)
+document.write(checkConcatenatedSum(2997,3)); //,true)
 document.write(' | ');
-document.write(checkConcatenatedSum(-2997,3); //,true)
+document.write(checkConcatenatedSum(-2997,3)); //,true)
 document.write(' | ');
 // for (let i=0;i<arrayTest.length;i++) {
 //      document.write(duplicateEncode(arrayTest[i]));
