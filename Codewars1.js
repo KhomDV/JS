@@ -399,32 +399,30 @@
 // ---
 //
 //---Solution---
-function duplicateEncode(word){
-    const arrWord = word.toUpperCase().split('');
-    const strCode = arrWord.reduce((strCode,b)=>{
-        return strCode + ( arrWord.filter((e)=>e===b).length > 1 ? ')' : '(' );
-    }, "");
-    return strCode;
-}
+// function duplicateEncode(word){
+//     const arrWord = word.toUpperCase().split('');
+//     const strCode = arrWord.reduce((strCode,b)=>{
+//         return strCode + ( arrWord.filter((e)=>e===b).length > 1 ? ')' : '(' );
+//     }, "");
+//     return strCode;
+// }
 //
 //---Test---
-let arrayTest = [
-    "din",      //"(((");
-    "recede",   //"()()()");
-    "Success",  //")())())","should ignore case");
-    "(( @"      //"))((");
-]
+// let arrayTest = [
+//     "din",      //"(((");
+//     "recede",   //"()()()");
+//     "Success",  //")())())","should ignore case");
+//     "(( @"      //"))((");
+// ]
 //
 //---View solution---
-for (let i=0;i<arrayTest.length;i++) {
-     document.write(duplicateEncode(arrayTest[i]));
-     document.write(' | ');
-}
+// for (let i=0;i<arrayTest.length;i++) {
+//      document.write(duplicateEncode(arrayTest[i]));
+//      document.write(' | ');
+// }
 //
 //=== End ( Duplicate Encoder ) ===
-
 //===================================================================================================
-
 
 
 
@@ -433,9 +431,61 @@ for (let i=0;i<arrayTest.length;i++) {
 //---------------------------------------------------------------------------------------------------
 
 //---------------------------------------------------------------------------------------------------
-// 
+// Squares sequence
 //7 kyu https://www.codewars.com/kata/squares-sequence
 //---------------------------------------------------------------------------------------------------
+//---Task---
+//### **Squares sequence**
+//Complete the function that returns an array of length n,
+//starting with the given number x and the squares of the previous number.
+//If n is negative or zero, return an empty array/list.
+//Examples
+//2, 5  -->  [2, 4, 16, 256, 65536]
+//3, 3  -->  [3, 9, 81]
+//
+//### **Последовательность квадратов**
+//Завершите функцию, которая возвращает массив длины n,
+//начиная с данного числа xи квадратов предыдущего числа.
+//Если nотрицательное значение или ноль, вернуть пустой массив / список.
+//Примеры
+//2, 5  -->  [2, 4, 16, 256, 65536]
+//3, 3  -->  [3, 9, 81]
+// ---
+//
+//---Solution---
+function squares(x, n) {
+    if ( n <= 0 ) return ([]);
+    let arr = [x];
+    for (let i=1; i<n; i++) {
+        arr.push(Math.pow(arr[i-1], 2));
+    }
+    return (arr);
+}
+//
+//---Test---
+//let arrayTest = []
+//
+//---View solution---
+document.write(squares(2,5)); //,[2,4,16,256,65536]);
+document.write(' | ');
+document.write(squares(3,3)); //,[3,9,81]);  
+document.write(' | ');
+document.write(squares(5,3)); //,[5,25,625]);  
+document.write(' | ');
+document.write(squares(10,4)); //,[10,100,10000,100000000]);  
+document.write(' | ');
+document.write(squares(2,0)); //,[]);
+document.write(' | ');
+document.write(squares(2,-5)); //,[]);
+document.write(' | ');
+// for (let i=0;i<arrayTest.length;i++) {
+//      document.write(duplicateEncode(arrayTest[i]));
+//      document.write(' | ');
+// }
+//
+//=== End ( Squares sequence ) ===
+
+
 
 //---------------------------------------------------------------------------------------------------
 // 
