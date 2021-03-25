@@ -571,40 +571,73 @@
 // ---
 //
 //---Solution---
-var FilterString = function(value) {
-    return +value.replace(/[^+\d]/g, '');
-}
-// function checkConcatenatedSum(number,n){
-//     //my
-//     const sum = String(Math.abs(number)).split('').reduce((sum,e)=>sum + Number(e.repeat(n)),0);
-//     return ( Math.abs(number) === sum ? true : false);
-//     //best
-//     //var abs = Math.abs(sum);
-//     //return abs === [...abs+""].reduce((s, d) => +d.repeat(n) + s, 0);
+// var FilterString = function(value) {
+//     return +value.replace(/[^+\d]/g, '');
 // }
 //
 //---Test---
-let arrayTest = [
-    "123", //123, 'Just return the numbers');
-    "a1b2c3", //123, 'Just return the numbers');
-    "aa1bb2cc3dd" //123, 'Just return the numbers');
-    ]
+// let arrayTest = [
+//     "123", //123, 'Just return the numbers');
+//     "a1b2c3", //123, 'Just return the numbers');
+//     "aa1bb2cc3dd" //123, 'Just return the numbers');
+//     ]
 //
 //---View solution---
-for (let i=0;i<arrayTest.length;i++) {
-    document.write(FilterString(arrayTest[i]));
-    document.write(' | ');
-}
+// for (let i=0;i<arrayTest.length;i++) {
+//     document.write(FilterString(arrayTest[i]));
+//     document.write(' | ');
+// }
 //
 //=== End ( Filter the number ) ===
 
 
-
-
 //---------------------------------------------------------------------------------------------------
-// 
+// N-th Fibonacci
 //6 kyu https://www.codewars.com/kata/n-th-fibonacci
 //---------------------------------------------------------------------------------------------------
+//---Task---
+//### **N-th Fibonacci**
+//I love Fibonacci numbers in general, but I must admit I love some more than others.
+//I would like for you to write me a function that when given a number (n) returns the n-th number
+// in the Fibonacci Sequence.
+//For example:
+//   nthFibo(4) == 2
+//Because 2 is the 4th number in the Fibonacci Sequence.
+//For reference, the first two numbers in the Fibonacci sequence are 0 and 1,
+// and each subsequent number is the sum of the previous two.
+//
+//### **N-й уровень Фибоначчи**
+//В целом я люблю числа Фибоначчи, но должен признать, что одни люблю больше, чем другие.
+//Я хотел бы, чтобы вы написали мне функцию, которая при задании числа (n) возвращает n-е число
+// в последовательности Фибоначчи.
+//Например:
+//   nthFibo(4) == 2
+//Потому что 2 - это 4-е число в последовательности Фибоначчи.
+//Для справки: первые два числа в последовательности Фибоначчи - это 0 и 1,
+// а каждое последующее число является суммой двух предыдущих.
+// ---
+//
+//---Solution---
+function nthFibo(n) {
+    // Return the n-th number in the Fibonacci Sequence
+}
+//
+//---Test---
+let arrayTest = [
+    1, //0,"1-st Fibo");
+    2, //1,"2-nd Fibo");
+    3, //1,"3-rd Fibo");
+    4  //2,"4-th Fibo");
+    ]
+//
+//---View solution---
+for (let i=0;i<arrayTest.length;i++) {
+    document.write(nthFibo(arrayTest[i]));
+    document.write(' | ');
+}
+//
+//=== End ( N-th Fibonacci ) ===
+
 //===================================================================================================
 
 
