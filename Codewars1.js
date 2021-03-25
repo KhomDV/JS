@@ -572,7 +572,7 @@
 //
 //---Solution---
 var FilterString = function(value) {
-    
+    return +value.replace(/[^+\d]/g, '');
 }
 // function checkConcatenatedSum(number,n){
 //     //my
