@@ -847,11 +847,32 @@
 //
 //---Solution---
 function findOutlier(integers){
+
+    arr = integers.map((e)=>e%2);
+
+    s1 = arr.reduce((acc, el) => {
+        acc[el] = (acc[el] || 0) + 1;
+        return acc;
+    }, {})
+    return s1;
+    
+//     let arr = [...new Set(x)];
+
+//     for (i=0; i<arr.length; i++) {
+//         if ( (x.filter((e) => e===arr[i] ).length % 2) !== 0 ) {
+//             result = arr[i];
+//         }    
+//     }
+
+
+//    return new Map([...new Set(integers)].map(
+//        x => [x, integers.filter(y => y === x).length]
+//    ));
     //your code here
 }
 //
 //---Test---
-// let arrayTest = [
+let arrayTest = [
     [0, 1, 2], //1)
     [1, 2, 3], //2)
     [2,6,8,10,3], //3)
