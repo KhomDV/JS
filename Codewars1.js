@@ -692,7 +692,16 @@
 //
 //---Solution---
 function inter(s1, s2){
-    return s1;
+    //my
+    var s3 = new Set();
+    for (var elem of s2) {
+        if (s1.has(elem)) {
+            s3.add(elem);
+        }
+    }
+    return s3;
+    //best
+    //return new Set( [...s1].filter( e => s2.has(e) ) )
 }
 //
 //---Test---
