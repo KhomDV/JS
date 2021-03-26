@@ -846,53 +846,25 @@
 // ---
 //
 //---Solution---
-function findOutlier(integers){
-
-    arr = integers.map((e)=>Math.abs(e)%2);
-    return integers[arr.indexOf( (arr.reduce((sum, e)=>sum+e,0) > 1) ? 0 : 1)];
-
-    // s1 = arr.reduce((acc, el) => {
-    //     acc[el] = (acc[el] || 0) + 1;
-    //     return acc;
-    // }, {})
-    // return s1;
-    //     let result = 0;
-//     let arr = [...new Set(x)];
-//     for (i=0; i<arr.length; i++) {
-//         if ( (x.filter((e) => e===arr[i] ).length % 2) !== 0 ) {
-//             result = arr[i];
-//         }    
-//     }
-
-//     let arr = [...new Set(x)];
-
-//     for (i=0; i<arr.length; i++) {
-//         if ( (x.filter((e) => e===arr[i] ).length % 2) !== 0 ) {
-//             result = arr[i];
-//         }    
-//     }
-
-
-//    return new Map([...new Set(integers)].map(
-//        x => [x, integers.filter(y => y === x).length]
-//    ));
-    //your code here
-}
+// function findOutlier(integers){
+//     arr = integers.map((e)=>Math.abs(e)%2);
+//     return integers[arr.indexOf( (arr.reduce((sum, e)=>sum+e,0) > 1) ? 0 : 1)];
+// }
 //
 //---Test---
-let arrayTest = [
-    [0, 1, 2], //1)
-    [1, 2, 3], //2)
-    [2,6,8,10,3], //3)
-    [0,0,3,0,0], //3)
-    [1,1,0,1,1] // 0)    
-]    
+// let arrayTest = [
+//     [0, 1, 2], //1)
+//     [1, 2, 3], //2)
+//     [2,6,8,10,3], //3)
+//     [0,0,3,0,0], //3)
+//     [1,1,0,1,1] // 0)    
+// ]    
 //
 //---View solution---
-for (let i=0;i<arrayTest.length;i++) {
-    document.write(findOutlier(arrayTest[i]));
-    document.write(' | ');
-}
+// for (let i=0;i<arrayTest.length;i++) {
+//     document.write(findOutlier(arrayTest[i]));
+//     document.write(' | ');
+// }
 //
 //=== End ( Find The Parity Outlier ) ===
 
@@ -900,9 +872,65 @@ for (let i=0;i<arrayTest.length;i++) {
 
 
 //---------------------------------------------------------------------------------------------------
-// 
+// zipWith
 //6 kyu https://www.codewars.com/kata/zipwith
 //---------------------------------------------------------------------------------------------------
+//---Task---
+//### **zipWith**
+//zipWith takes a function and two arrays and zips the arrays together, applying the function to every pair of values.
+//The function value is one new array.
+//If the arrays are of unequal length, the output will only be as long as the shorter one.
+//(Values of the longer array are simply not used.)
+//Inputs should not be modified.
+//Examples
+//zipWith( Math.pow, [10,10,10,10], [0,1,2,3] )      =>  [1,10,100,1000]
+//zipWith( Math.max, [1,4,7,1,4,7], [4,7,1,4,7,1] )  =>  [4,7,7,4,7,7]
+//zipWith( function(a,b) { return a+b; }, [0,1,2,3], [0,1,2,3] )  =>  [0,2,4,6]  Both forms are valid.
+//zipWith( (a,b) => a+b,                  [0,1,2,3], [0,1,2,3] )  =>  [0,2,4,6]  Both are functions.
+//Input validation
+//Assume all input is valid.
+//
+//### **Воплощать в жизнь zipWith**
+//zipWithпринимает функцию и два массива и объединяет их вместе, применяя функцию к каждой паре значений.
+//Значение функции - один новый массив.
+//Если массивы имеют неодинаковую длину, результат будет такой же длины, как и самый короткий.
+//(Значения более длинного массива просто не используются.)
+//Входные данные не должны изменяться.
+//Примеры
+//zipWith( Math.pow, [10,10,10,10], [0,1,2,3] )      =>  [1,10,100,1000]
+//zipWith( Math.max, [1,4,7,1,4,7], [4,7,1,4,7,1] )  =>  [4,7,7,4,7,7]
+//zipWith( function(a,b) { return a+b; }, [0,1,2,3], [0,1,2,3] )  =>  [0,2,4,6]  Both forms are valid.
+//zipWith( (a,b) => a+b,                  [0,1,2,3], [0,1,2,3] )  =>  [0,2,4,6]  Both are functions.
+//Проверка ввода
+//Предположим, что все введенные данные действительны.
+// ---
+//
+//---Solution---
+function zipWith(fn,a0,a1) {
+  
+  return eval("+fn(a0,a1)");
+  //return [];
+}
+//
+//---Test---
+let arrayTest = [
+      [plus, [0,1,2,3,4,5], [6,5,4,3,2,1]], // [6,6,6,6,6,6]);
+      [plus, [0,1,2,3,4  ], [6,5,4,3,2,1]], //[6,6,6,6,6  ]);
+      [plus, [0,1,2,3,4,5], [6,5,4,3,2  ]], //[6,6,6,6,6  ]);
+      [Math.pow, [10,10,10,10], [0,1,2,3]], //[1,10,100,1000]);
+      [Math.max, [1,4,7,1,4,7], [4,7,1,4,7,1], //[4,7,7,4,7,7]);
+      [function(a,b) { return a+b; }, [0,1,2,3], [0,1,2,3]], //[0,2,4,6]);
+      [(a,b) => a+b, [0,1,2,3], [0,1,2,3]] // [0,2,4,6]);
+]
+//
+//---View solution---
+for (let i=0;i<arrayTest.length;i++) {
+    document.write(findOutlier(arrayTest[i][0],arrayTest[i][1],arrayTest[i][2]));
+    document.write(' | ');
+}
+//
+//=== End ( zipWith ) ===
+
 //===================================================================================================
 
 
