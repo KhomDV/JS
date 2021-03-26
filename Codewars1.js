@@ -907,25 +907,30 @@
 //
 //---Solution---
 function zipWith(fn,a0,a1) {
-  
-  return eval("+fn(a0,a1)");
-  //return [];
+  if (!Array.isArray(a0) || !Array.isArray(a1)) return [];
+  let result = []; 
+  const nlength = Math.min(a0.length, a1.length);
+  for (let i=0; i<nlength; i++) {
+    result.push(fn(a0[i],a1[i]));
+  }
+  return result;
 }
 //
 //---Test---
+const plus = (a,b) => a+b ;
 let arrayTest = [
       [plus, [0,1,2,3,4,5], [6,5,4,3,2,1]], // [6,6,6,6,6,6]);
       [plus, [0,1,2,3,4  ], [6,5,4,3,2,1]], //[6,6,6,6,6  ]);
       [plus, [0,1,2,3,4,5], [6,5,4,3,2  ]], //[6,6,6,6,6  ]);
       [Math.pow, [10,10,10,10], [0,1,2,3]], //[1,10,100,1000]);
-      [Math.max, [1,4,7,1,4,7], [4,7,1,4,7,1], //[4,7,7,4,7,7]);
+      [Math.max, [1,4,7,1,4,7], [4,7,1,4,7,1]], //[4,7,7,4,7,7]);
       [function(a,b) { return a+b; }, [0,1,2,3], [0,1,2,3]], //[0,2,4,6]);
       [(a,b) => a+b, [0,1,2,3], [0,1,2,3]] // [0,2,4,6]);
 ]
 //
 //---View solution---
 for (let i=0;i<arrayTest.length;i++) {
-    document.write(findOutlier(arrayTest[i][0],arrayTest[i][1],arrayTest[i][2]));
+  document.write(zipWith(arrayTest[i][0],arrayTest[i][1],arrayTest[i][2]));
     document.write(' | ');
 }
 //
