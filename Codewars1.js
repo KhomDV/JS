@@ -848,14 +848,22 @@
 //---Solution---
 function findOutlier(integers){
 
-    arr = integers.map((e)=>e%2);
+    arr = integers.map((e)=>Math.abs(e)%2);
+    return integers[arr.indexOf( (arr.reduce((sum, e)=>sum+e,0) > 1) ? 0 : 1)];
 
-    s1 = arr.reduce((acc, el) => {
-        acc[el] = (acc[el] || 0) + 1;
-        return acc;
-    }, {})
-    return s1;
-    
+    // s1 = arr.reduce((acc, el) => {
+    //     acc[el] = (acc[el] || 0) + 1;
+    //     return acc;
+    // }, {})
+    // return s1;
+    //     let result = 0;
+//     let arr = [...new Set(x)];
+//     for (i=0; i<arr.length; i++) {
+//         if ( (x.filter((e) => e===arr[i] ).length % 2) !== 0 ) {
+//             result = arr[i];
+//         }    
+//     }
+
 //     let arr = [...new Set(x)];
 
 //     for (i=0; i<arr.length; i++) {
