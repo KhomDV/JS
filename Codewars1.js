@@ -739,7 +739,20 @@
 //
 //---Solution---
 function divCon(x){
-
+    //my
+    let sumString = 0;
+    let sumNumber = 0;
+    x.forEach(element => {
+        if (typeof(element)==='string') {
+            sumString += Number(element);
+        } else {
+            sumNumber += element;
+        }
+    });
+    return (sumNumber - sumString);
+    //best
+    //return x.reduce((acc, cur) => typeof cur === 'number'? acc + cur : acc - Number(cur),0)
+    //const divCon=x=>x.reduce((a,b)=>a+(0+b==b?b:-+b),0)
 }
 //
 //---Test---
