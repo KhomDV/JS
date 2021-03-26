@@ -425,7 +425,6 @@
 //===================================================================================================
 
 
-
 //---------------------------------------------------------------------------------------------------
 //  Number
 //---------------------------------------------------------------------------------------------------
@@ -618,31 +617,31 @@
 // ---
 //
 //---Solution---
-function nthFibo(n) {
-  if (n <= 1) return 0;
-  let a = 0;
-  let b = 1;
-  for (let i = 3; i <= n; i++) {
-    let c = a + b;
-    a = b;
-    b = c;
-  }
-  return b;
-}
+// function nthFibo(n) {
+//   if (n <= 1) return 0;
+//   let a = 0;
+//   let b = 1;
+//   for (let i = 3; i <= n; i++) {
+//     let c = a + b;
+//     a = b;
+//     b = c;
+//   }
+//   return b;
+// }
 //
 //---Test---
-let arrayTest = [
-    1, //0,"1-st Fibo");
-    2, //1,"2-nd Fibo");
-    3, //1,"3-rd Fibo");
-    4  //2,"4-th Fibo");
-    ]
+// let arrayTest = [
+//     1, //0,"1-st Fibo");
+//     2, //1,"2-nd Fibo");
+//     3, //1,"3-rd Fibo");
+//     4  //2,"4-th Fibo");
+//     ]
 //
 //---View solution---
-for (let i=0;i<arrayTest.length;i++) {
-    document.write(nthFibo(arrayTest[i]));
-    document.write(' | ');
-}
+// for (let i=0;i<arrayTest.length;i++) {
+//     document.write(nthFibo(arrayTest[i]));
+//     document.write(' | ');
+// }
 //
 //=== End ( N-th Fibonacci ) ===
 
@@ -654,9 +653,64 @@ for (let i=0;i<arrayTest.length;i++) {
 //---------------------------------------------------------------------------------------------------
 
 //---------------------------------------------------------------------------------------------------
-// 
+// Playing with Sets : Intersection
 //7 kyu https://www.codewars.com/kata/playing-with-sets-intersection
 //---------------------------------------------------------------------------------------------------
+//---Task---
+//### **Playing with Sets : Intersection**
+//Set objects are new JavaScript built-in objects defined since ECMAScript 2015
+//A Set lets you store unique values of any type.
+//It comes with some useful methods like .add, .clear, .has . . . BUT some "Set operations" are missing, like . . .
+//Intersection
+//A new set can be constructed by determining which members two sets have "in common".
+//The intersection of A and B, denoted by A ∩ B, is the set of all things that are members of both A and B.
+//If A ∩ B = ∅, then A and B are said to be disjoint.
+//Examples:
+//  {1, 2} ∩ {1, 2} = {1, 2}.
+//  {1, 2} ∩ {2, 3} = {2}.
+//Task
+//Create function inter getting 2 sets as arguments and returning a new Set as result of intersection of these 2 sets.
+//Examples:
+//A = new Set([1,2]);
+//B = new Set([2,3]);
+//C = inter(A,B) // -> {2}
+//
+//### **Игра с множествами: пересечение**
+//Новый набор можно построить, определив, какие элементы у двух наборов «общие».
+//Пересечение А и В, обозначим через А П В, есть множество всех вещей , которые являются членами А и B.
+//Если A ∩ B = ∅, то А и В , как говорят, не пересекаются .
+//Примеры:
+//  {1, 2} ∩ {1, 2} = {1, 2}.
+//  {1, 2} ∩ {2, 3} = {2}.
+//Задача
+//Создайте функцию, interполучающую 2 набора в качестве аргументов и возвращающую новый набор в результате пересечения этих двух наборов.
+//Примеры:
+//A = new Set([1,2]);
+//B = new Set([2,3]);
+//C = inter(A,B) // -> {2}
+// ---
+//
+//---Solution---
+function inter(s1, s2){
+    return s1;
+}
+//
+//---Test---
+let arrayTest = [
+    [[1,2],[2,3]],
+    [[1,2],[3,4]],
+    [[1,2],[]],
+    [[],[3,4]]
+]
+//
+//---View solution---
+for (let i=0;i<arrayTest.length;i++) {
+    document.write(inter(arrayTest[i][0],arrayTest[i][1]));
+    document.write(' | ');
+}
+//
+//=== End ( Playing with Sets : Intersection ) ===
+
 
 //---------------------------------------------------------------------------------------------------
 // 
