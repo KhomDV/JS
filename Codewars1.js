@@ -691,40 +691,72 @@
 // ---
 //
 //---Solution---
-function inter(s1, s2){
-    //my
-    var s3 = new Set();
-    for (var elem of s2) {
-        if (s1.has(elem)) {
-            s3.add(elem);
-        }
-    }
-    return s3;
-    //best
-    //return new Set( [...s1].filter( e => s2.has(e) ) )
-}
+// function inter(s1, s2){
+//     //my
+//     var s3 = new Set();
+//     for (var elem of s2) {
+//         if (s1.has(elem)) {
+//             s3.add(elem);
+//         }
+//     }
+//     return s3;
+//     //best
+//     //return new Set( [...s1].filter( e => s2.has(e) ) )
+// }
 //
 //---Test---
-let arrayTest = [
-    [[1,2],[2,3]],
-    [[1,2],[3,4]],
-    [[1,2],[]],
-    [[],[3,4]]
-]
+// let arrayTest = [
+//     [[1,2],[2,3]],
+//     [[1,2],[3,4]],
+//     [[1,2],[]],
+//     [[],[3,4]]
+// ]
 //
 //---View solution---
-for (let i=0;i<arrayTest.length;i++) {
-    document.write(inter(arrayTest[i][0],arrayTest[i][1]));
-    document.write(' | ');
-}
+// for (let i=0;i<arrayTest.length;i++) {
+//     document.write(inter(arrayTest[i][0],arrayTest[i][1]));
+//     document.write(' | ');
+// }
 //
 //=== End ( Playing with Sets : Intersection ) ===
 
 
 //---------------------------------------------------------------------------------------------------
-// 
+// Divide and Conquer
 //7 kyu https://www.codewars.com/kata/divide-and-conquer
 //---------------------------------------------------------------------------------------------------
+//---Task---
+//### **Divide and Conquer**
+//Given a mixed array of number and string representations of integers,
+//add up the string integers and subtract this from the total of the non-string integers.
+//Return as a number.
+//
+//### **Разделяй и властвуй**
+//Учитывая смешанный массив числовых и строковых представлений целых чисел,
+//сложите строковые целые числа и вычтите это из общего количества целых чисел, не являющихся строковыми.
+//Возврат в виде числа.
+// ---
+//
+//---Solution---
+function divCon(x){
+
+}
+//
+//---Test---
+let arrayTest = [
+    [9, 3, '7', '3'], // 2);
+    ['5', '0', 9, 3, 2, 1, '9', 6, 7], //14); 
+    ['3', 6, 6, 0, '5', 8, 5, '6', 2,'0'] //13);
+]    
+//
+//---View solution---
+for (let i=0;i<arrayTest.length;i++) {
+    document.write(divCon(arrayTest[i]));
+    document.write(' | ');
+}
+//
+//=== End ( Divide and Conquer ) ===
+
 
 //---------------------------------------------------------------------------------------------------
 // 
