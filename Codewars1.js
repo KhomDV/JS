@@ -738,28 +738,75 @@
 // ---
 //
 //---Solution---
+// function divCon(x){
+//     //my
+//     let sumString = 0;
+//     let sumNumber = 0;
+//     x.forEach(element => {
+//         if (typeof(element)==='string') {
+//             sumString += Number(element);
+//         } else {
+//             sumNumber += element;
+//         }
+//     });
+//     return (sumNumber - sumString);
+//     //best
+//     //return x.reduce((acc, cur) => typeof cur === 'number'? acc + cur : acc - Number(cur),0)
+//     //const divCon=x=>x.reduce((a,b)=>a+(0+b==b?b:-+b),0)
+// }
+//
+//---Test---
+// let arrayTest = [
+//     [9, 3, '7', '3'], // 2);
+//     ['5', '0', 9, 3, 2, 1, '9', 6, 7], //14); 
+//     ['3', 6, 6, 0, '5', 8, 5, '6', 2,'0'] //13);
+// ]    
+//
+//---View solution---
+// for (let i=0;i<arrayTest.length;i++) {
+//     document.write(divCon(arrayTest[i]));
+//     document.write(' | ');
+// }
+//
+//=== End ( Divide and Conquer ) ===
+
+
+//---------------------------------------------------------------------------------------------------
+// Find the odd int
+//6 kyu https://www.codewars.com/kata/find-the-odd-int/
+//---------------------------------------------------------------------------------------------------
+//---Task---
+//### **Find the odd int**
+//Given an array of integers, find the one that appears an odd number of times.
+//There will always be only one integer that appears an odd number of times.
+//
+//### **Найдите нечетное число**
+//Дан массив целых чисел, найдите тот, который встречается нечетное количество раз.
+//Всегда будет только одно целое число, которое встречается нечетное количество раз.
+// ---
+//
+//---Solution---
 function divCon(x){
-    //my
-    let sumString = 0;
-    let sumNumber = 0;
-    x.forEach(element => {
-        if (typeof(element)==='string') {
-            sumString += Number(element);
-        } else {
-            sumNumber += element;
-        }
-    });
-    return (sumNumber - sumString);
-    //best
-    //return x.reduce((acc, cur) => typeof cur === 'number'? acc + cur : acc - Number(cur),0)
-    //const divCon=x=>x.reduce((a,b)=>a+(0+b==b?b:-+b),0)
+    let result = 0;
+    let arr = [...new Set(x)];
+    for (i=0; i<arr.length; i++) {
+        if ( (x.filter((e) => e===arr[i] ).length % 2) !== 0 ) {
+            result = arr[i];
+        }    
+    }
+    return result;
+    //оригинально!!!
+    //return x.reduce((a, b) => a ^ b);
 }
 //
 //---Test---
 let arrayTest = [
-    [9, 3, '7', '3'], // 2);
-    ['5', '0', 9, 3, 2, 1, '9', 6, 7], //14); 
-    ['3', 6, 6, 0, '5', 8, 5, '6', 2,'0'] //13);
+    [20,1,-1,2,-2,3,3,5,5,1,2,4,20,4,-1,-2,5], // 5);
+    [1,1,2,-2,5,2,4,4,-1,-2,5],// -1);
+    [20,1,1,2,2,3,3,5,5,4,20,4,5], //5);
+    [10], //10);
+    [1,1,1,1,1,1,10,1,1,1,1], //10);
+    [5,4,3,2,1,5,4,3,2,10,10] //1);
 ]    
 //
 //---View solution---
@@ -768,13 +815,9 @@ for (let i=0;i<arrayTest.length;i++) {
     document.write(' | ');
 }
 //
-//=== End ( Divide and Conquer ) ===
+//=== End ( Find the odd int ) ===
 
 
-//---------------------------------------------------------------------------------------------------
-// 
-//6 kyu https://www.codewars.com/kata/find-the-odd-int/
-//---------------------------------------------------------------------------------------------------
 
 //---------------------------------------------------------------------------------------------------
 // 
