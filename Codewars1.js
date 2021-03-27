@@ -1252,30 +1252,30 @@
 // ---
 //
 //---Solution---
-function validateUsr(username) {
-  res =  /^[a-z_0-9]{4,16}$/.test(username) 
-  return res
-}
+// function validateUsr(username) {
+//   res =  /^[a-z_0-9]{4,16}$/.test(username) 
+//   return res
+// }
 //
 //---Test---
-let arrayTest = [
-    'asddsa', //true);
-    'a', //false);
-    'Hass', //false);
-    'Hasd_12assssssasasasasasaasasasasas', //false);
-    '', //false);
-    '____', //true);
-    '012', //false);
-    'p1pp1', //true);
-    'asd43 34', //false);
-    'asd43_34' //true);
-]
+// let arrayTest = [
+//     'asddsa', //true);
+//     'a', //false);
+//     'Hass', //false);
+//     'Hasd_12assssssasasasasasaasasasasas', //false);
+//     '', //false);
+//     '____', //true);
+//     '012', //false);
+//     'p1pp1', //true);
+//     'asd43 34', //false);
+//     'asd43_34' //true);
+// ]
 //
 //---View solution---
-for (let i=0;i<arrayTest.length;i++) {
-    document.write(validateUsr(arrayTest[i]));
-    document.write(' | ');
-}
+// for (let i=0;i<arrayTest.length;i++) {
+//     document.write(validateUsr(arrayTest[i]));
+//     document.write(' | ');
+// }
 //
 //--- https://jex.im/regulex/ ---
 //--- https://regexr.com/ ---
@@ -1303,29 +1303,29 @@ for (let i=0;i<arrayTest.length;i++) {
 // ---
 //
 //---Solution---
-function validPass(password){
-  const reg = new RegExp('^(?=.*[a-z])(?=.*\\d)[a-z\\d]{4,19}$','i');
-  return reg.test(password) ? "VALID" : "INVALID";
-  //return /^(?=.*[a-z])(?=.*\d)[a-z\d]{4,19}$/i.test(password) ? "VALID" : "INVALID";
-}
+// function validPass(password){
+//   const reg = new RegExp('^(?=.*[a-z])(?=.*\\d)[a-z\\d]{4,19}$','i');
+//   return reg.test(password) ? "VALID" : "INVALID";
+//   //return /^(?=.*[a-z])(?=.*\d)[a-z\d]{4,19}$/i.test(password) ? "VALID" : "INVALID";
+// }
 //
 //---Test---
-let arrayTest = [
-  'Username123', //'VALID' );
-  'Username', //'INVALID' );
-  '1Username', //'VALID' );
-  '123', //'INVALID' );
-  'a12', //'INVALID' );
-  'Username123!', //'INVALID' );
-  'Username123n', //'INVALID' );
-  'ThisPasswordIsTooLong1234' //, 'INVALID' )  
-]
+// let arrayTest = [
+//   'Username123', //'VALID' );
+//   'Username', //'INVALID' );
+//   '1Username', //'VALID' );
+//   '123', //'INVALID' );
+//   'a12', //'INVALID' );
+//   'Username123!', //'INVALID' );
+//   'Username123n', //'INVALID' );
+//   'ThisPasswordIsTooLong1234' //, 'INVALID' )  
+// ]
 //
 //---View solution---
-for (let i=0;i<arrayTest.length;i++) {
-    document.write(validPass(arrayTest[i]));
-    document.write(' | ');
-}
+// for (let i=0;i<arrayTest.length;i++) {
+//     document.write(validPass(arrayTest[i]));
+//     document.write(' | ');
+// }
 //
 //--- https://jex.im/regulex/ ---
 //--- https://regexr.com/ ---
