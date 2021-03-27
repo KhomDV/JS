@@ -990,61 +990,120 @@
 // ---
 //
 //---Solution---
-function starSign(date) {
-  const dDate = new Date(date);
-  const numbDate = String(dDate.getMonth()+1) + String(dDate.getDate()).padStart(2,"0");
-  let stars = "";
-  if (numbDate >= 121 && numbDate <= 219) {
-      stars = 'Aquarius'; // ------ 21 January - 19 February
-  } else if (numbDate >= 220 && numbDate <= 320) {
-      stars = 'Pisces'; // ------ 20 February - 20 March
-  } else if (numbDate >= 321 && numbDate <= 420) {
-      stars = 'Aries'; // ------ 21 March - 20 April
-  } else if (numbDate >= 421 && numbDate <= 521) {
-      stars = 'Taurus'; // ------ 21 April - 21 May
-  } else if (numbDate >= 522 && numbDate <= 621) {
-      stars = 'Gemini'; // ------ 22 May - 21 June
-  } else if (numbDate >= 622 && numbDate <= 722) {
-      stars = 'Cancer'; // ------ 22 June - 22 July
-  } else if (numbDate >= 723 && numbDate <= 823) {
-      stars = 'Leo'; // ------ 23 July - 23 August
-  } else if (numbDate >= 824 && numbDate <= 923) {
-      stars = 'Virgo'; // ------ 24 August - 23 September
-  } else if (numbDate >= 924 && numbDate <= 1023) {
-      stars = 'Libra'; // ------ 24 September - 23 October
-  } else if (numbDate >= 1024 && numbDate <= 1122) {
-      stars = 'Scorpio'; // ------ 24 October - 22 November
-  } else if (numbDate >= 1123 && numbDate <= 1221) {
-      stars = 'Sagittarius'; // ------ 23 November - 21 December
-  } else if (numbDate >= 1222 || numbDate <= 120) {
-      stars = 'Capricorn'; // ------ 22 December - 20 January
-  }
-
-  return stars;
-}
+// function starSign(date) {
+//   const dDate = new Date(date);
+//   const numbDate = String(dDate.getMonth()+1) + String(dDate.getDate()).padStart(2,"0");
+//   let stars = "";
+//   if (numbDate >= 121 && numbDate <= 219) {
+//       stars = 'Aquarius'; // ------ 21 January - 19 February
+//   } else if (numbDate >= 220 && numbDate <= 320) {
+//       stars = 'Pisces'; // ------ 20 February - 20 March
+//   } else if (numbDate >= 321 && numbDate <= 420) {
+//       stars = 'Aries'; // ------ 21 March - 20 April
+//   } else if (numbDate >= 421 && numbDate <= 521) {
+//       stars = 'Taurus'; // ------ 21 April - 21 May
+//   } else if (numbDate >= 522 && numbDate <= 621) {
+//       stars = 'Gemini'; // ------ 22 May - 21 June
+//   } else if (numbDate >= 622 && numbDate <= 722) {
+//       stars = 'Cancer'; // ------ 22 June - 22 July
+//   } else if (numbDate >= 723 && numbDate <= 823) {
+//       stars = 'Leo'; // ------ 23 July - 23 August
+//   } else if (numbDate >= 824 && numbDate <= 923) {
+//       stars = 'Virgo'; // ------ 24 August - 23 September
+//   } else if (numbDate >= 924 && numbDate <= 1023) {
+//       stars = 'Libra'; // ------ 24 September - 23 October
+//   } else if (numbDate >= 1024 && numbDate <= 1122) {
+//       stars = 'Scorpio'; // ------ 24 October - 22 November
+//   } else if (numbDate >= 1123 && numbDate <= 1221) {
+//       stars = 'Sagittarius'; // ------ 23 November - 21 December
+//   } else if (numbDate >= 1222 || numbDate <= 120) {
+//       stars = 'Capricorn'; // ------ 22 December - 20 January
+//   }
+//   return stars;
+// }
 //
 //---Test---
-let arrayTest = [
-  [new Date(1970, 5, 5)], // 'Gemini');
-  [new Date(2000, 1, 15)], // 'Aquarius');
-  [new Date(1987, 7, 23)] // 'Leo');
-]
+// let arrayTest = [
+//   [new Date(1970, 5, 5)], // 'Gemini');
+//   [new Date(2000, 1, 15)], // 'Aquarius');
+//   [new Date(1987, 7, 23)] // 'Leo');
+// ]
 //
 //---View solution---
-for (let i=0;i<arrayTest.length;i++) {
-    document.write(starSign(arrayTest[i]));
-    document.write(' | ');
-}
+// for (let i=0;i<arrayTest.length;i++) {
+//     document.write(starSign(arrayTest[i]));
+//     document.write(' | ');
+// }
 //
 //=== End ( It is written in the stars ) ===
 
 
-
-
 //---------------------------------------------------------------------------------------------------
-// 
+// Friday the 13ths
 //6 kyu https://www.codewars.com/kata/friday-the-13ths
 //---------------------------------------------------------------------------------------------------
+//---Task---
+//### **Friday the 13ths**
+//Create the function fridayTheThirteenths that accepts a start year and an end year (inclusive),
+//and returns all of the dates where the 13th of a month lands on a Friday in the given range of year(s).
+//The return value should be a string where each date is seperated by a space.
+//The date should be formatted like 9/13/2014 where months do not have leading zeroes
+//and are separated with forward slashes.
+//If no end year is given, only return friday the thirteenths during the start year.
+//Examples
+//fridayTheThirteenths(1999, 2000) // returns "8/13/1999 10/13/2000"
+//fridayTheThirteenths(2014, 2015) // returns "6/13/2014 2/13/2015 3/13/2015 11/13/2015"
+//fridayTheThirteenths(2000) // returns "10/13/2000"
+//This kata was designed to use the built-in Date object.
+//Dates can often be finicky, so while there are other methods to get the correct dates,
+//I can't gurantee they will work.
+//
+//### **Пятница 13-е**
+//Создайте функцию, fridayTheThirteenthsкоторая принимает startгод и endгод ( включительно )
+//и возвращает все даты, когда 13-е число месяца приходится на пятницу в заданном диапазоне лет (лет).
+//Возвращаемое значение должно быть строкой, в которой каждая дата разделена пробелом.
+//Дата должна быть отформатирована так, как 9/13/2014если бы месяцы не начинались с нулей и разделялись косой чертой.
+//Если endгод не указан, верните только пятницу тринадцатого числа в течение startгода.
+//Примеры
+//fridayTheThirteenths(1999, 2000) // returns "8/13/1999 10/13/2000"
+//fridayTheThirteenths(2014, 2015) // returns "6/13/2014 2/13/2015 3/13/2015 11/13/2015"
+//fridayTheThirteenths(2000) // returns "10/13/2000"
+//Это ката было разработано для использования встроенного Dateобъекта.
+//Сроки часто бывают привередливыми, поэтому, хотя есть и другие способы получить правильные даты,
+//я не могу гарантировать, что они сработают.
+// ---
+//
+//---Solution---
+function fridayTheThirteenths(start, end) {
+  if (end === undefined) end = start;
+  let strFriday = "";
+  for (i=start;i<=end;i++) {
+    for (m=0;m<12;m++) {
+      const dDate = new Date(i,m,13);
+      if ( dDate.getDay() === 5 ) {
+        strFriday = strFriday + (strFriday === "" ? "" : " ") + ((dDate.getMonth()+1)+"/13/"+dDate.getFullYear());
+      }
+    }
+  }
+  return strFriday;
+}
+//
+//---Test---
+// let arrayTest = [
+  // document.write(fridayTheThirteenths(1999, 2000));//, "8/13/1999 10/13/2000");
+  // document.write(' | ');
+  document.write(fridayTheThirteenths(2112));//, "10/13/2000");
+  document.write(' | ');
+// ]
+//
+//---View solution---
+// for (let i=0;i<arrayTest.length;i++) {
+//     document.write(starSign(arrayTest[i]));
+//     document.write(' | ');
+// }
+//
+//=== End ( Friday the 13ths ) ===
+
 //===================================================================================================
 
 
