@@ -1127,14 +1127,14 @@
 // ---
 //
 //---Solution---
-function count(array){
-  return array.reduce((acc, n) => (acc[n] = (acc[n] || 0) + 1, acc), {});
-}
+// function count(array){
+//   return array.reduce((acc, n) => (acc[n] = (acc[n] || 0) + 1, acc), {});
+// }
 //
 //---Test---
 // let arrayTest = [
-  document.write(count(['a', 'a', 'b', 'b', 'b'])); //, { 'a': 2, 'b': 3 }));
-  document.write(' | ');
+// document.write(count(['a', 'a', 'b', 'b', 'b'])); //, { 'a': 2, 'b': 3 }));
+// document.write(' | ');
 // ]
 //
 //---View solution---
@@ -1148,9 +1148,60 @@ function count(array){
 
 
 //---------------------------------------------------------------------------------------------------
-// 
+// Who is the killer?
 //7 kyu https://www.codewars.com/kata/who-is-the-killer-1
 //---------------------------------------------------------------------------------------------------
+//---Task---
+//### **Who is the killer?**
+//Who is the killer?
+//Some people have been killed!
+//You have managed to narrow the suspects down to just a few. Luckily,
+//you know every person who those suspects have seen on the day of the murders.
+//Task.
+//Given a dictionary with all the names of the suspects and everyone that they have seen on that day which
+//may look like this:
+//{'James': ['Jacob', 'Bill', 'Lucas'],
+// 'Johnny': ['David', 'Kyle', 'Lucas'],
+// 'Peter': ['Lucy', 'Kyle']}
+//and also a list of the names of the dead people:
+//['Lucas', 'Bill']
+//return the name of the one killer, in our case 'James' because he is the only person that saw both 'Lucas' and 'Bill'
+//
+//### **Кто убийца?**
+//Кто убийца?
+//Некоторые люди были убиты!
+//Вам удалось сузить круг подозреваемых до нескольких.
+//К счастью, вы знаете каждого человека, которого подозреваемые видели в день убийства.
+//Задача.
+//Учитывая словарь со всеми именами подозреваемых и всех, кого они видели в тот день, который может выглядеть так:
+//{'James': ['Jacob', 'Bill', 'Lucas'],
+// 'Johnny': ['David', 'Kyle', 'Lucas'],
+// 'Peter': ['Lucy', 'Kyle']}
+//а также список имен погибших:
+//['Lucas', 'Bill']
+//вернуть имя одного убийцы, в нашем случае,
+//'James'потому что он единственный человек, который видел и то, 'Lucas'и другое.'Bill'
+// ---
+//
+//---Solution---
+function killer(suspectInfo, dead) {
+  //your code here...
+}
+//
+//---Test---
+let arrayTest = [
+  [{'James': ['Jacob', 'Bill', 'Lucas'], 'Johnny': ['David', 'Kyle', 'Lucas'], 'Peter': ['Lucy', 'Kyle']}, ['Lucas', 'Bill']], //'James');
+  [{'Brad': [], 'Megan': ['Ben', 'Kevin'], 'Finn': []}, ['Ben'] // 'Megan');
+];
+//
+//---View solution---
+for (let i=0;i<arrayTest.length;i++) {
+    document.write(starSign(arrayTest[i][0],arrayTest[i][1]));
+    document.write(' | ');
+}
+//
+//=== End ( Who is the killer? ) ===
+
 //===================================================================================================
 
 
