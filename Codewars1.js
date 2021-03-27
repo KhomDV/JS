@@ -1185,18 +1185,33 @@
 //
 //---Solution---
 function killer(suspectInfo, dead) {
-  //your code here...
+  let killer = "";
+  for (let key in suspectInfo) {
+    const arr = suspectInfo[key];
+    if ( arr.filter(item => dead.includes(item)).length === dead.length ) {
+      killer = key;
+    }
+  }
+  return (killer);
+  //best
+  //return Object.keys(suspectInfo).find(x => dead.every(y => suspectInfo[x].includes(y)))
+  //
+  //for (let name in suspectInfo) {
+  //  if (dead.every(deadPerson => suspectInfo[name].includes(deadPerson))) {
+  //    return name;
+  //  }
+  //}
 }
 //
 //---Test---
 let arrayTest = [
   [{'James': ['Jacob', 'Bill', 'Lucas'], 'Johnny': ['David', 'Kyle', 'Lucas'], 'Peter': ['Lucy', 'Kyle']}, ['Lucas', 'Bill']], //'James');
-  [{'Brad': [], 'Megan': ['Ben', 'Kevin'], 'Finn': []}, ['Ben'] // 'Megan');
-];
+  [{'Brad': [], 'Megan': ['Ben', 'Kevin'], 'Finn': []}, ['Ben']] // 'Megan');
+]
 //
 //---View solution---
 for (let i=0;i<arrayTest.length;i++) {
-    document.write(starSign(arrayTest[i][0],arrayTest[i][1]));
+    document.write(killer(arrayTest[i][0],arrayTest[i][1]));
     document.write(' | ');
 }
 //
