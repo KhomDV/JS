@@ -1184,36 +1184,36 @@
 // ---
 //
 //---Solution---
-function killer(suspectInfo, dead) {
-  let killer = "";
-  for (let key in suspectInfo) {
-    const arr = suspectInfo[key];
-    if ( arr.filter(item => dead.includes(item)).length === dead.length ) {
-      killer = key;
-    }
-  }
-  return (killer);
-  //best
-  //return Object.keys(suspectInfo).find(x => dead.every(y => suspectInfo[x].includes(y)))
-  //
-  //for (let name in suspectInfo) {
-  //  if (dead.every(deadPerson => suspectInfo[name].includes(deadPerson))) {
-  //    return name;
-  //  }
-  //}
-}
+// function killer(suspectInfo, dead) {
+//   let killer = "";
+//   for (let key in suspectInfo) {
+//     const arr = suspectInfo[key];
+//     if ( arr.filter(item => dead.includes(item)).length === dead.length ) {
+//       killer = key;
+//     }
+//   }
+//   return (killer);
+//  //best
+//  //return Object.keys(suspectInfo).find(x => dead.every(y => suspectInfo[x].includes(y)))
+//  //
+//  //for (let name in suspectInfo) {
+//  //  if (dead.every(deadPerson => suspectInfo[name].includes(deadPerson))) {
+//  //    return name;
+//  //  }
+//  //}
+//}
 //
 //---Test---
-let arrayTest = [
-  [{'James': ['Jacob', 'Bill', 'Lucas'], 'Johnny': ['David', 'Kyle', 'Lucas'], 'Peter': ['Lucy', 'Kyle']}, ['Lucas', 'Bill']], //'James');
-  [{'Brad': [], 'Megan': ['Ben', 'Kevin'], 'Finn': []}, ['Ben']] // 'Megan');
-]
+// let arrayTest = [
+//   [{'James': ['Jacob', 'Bill', 'Lucas'], 'Johnny': ['David', 'Kyle', 'Lucas'], 'Peter': ['Lucy', 'Kyle']}, ['Lucas', 'Bill']], //'James');
+//   [{'Brad': [], 'Megan': ['Ben', 'Kevin'], 'Finn': []}, ['Ben']] // 'Megan');
+// ]
 //
 //---View solution---
-for (let i=0;i<arrayTest.length;i++) {
-    document.write(killer(arrayTest[i][0],arrayTest[i][1]));
-    document.write(' | ');
-}
+// for (let i=0;i<arrayTest.length;i++) {
+//     document.write(killer(arrayTest[i][0],arrayTest[i][1]));
+//     document.write(' | ');
+// }
 //
 //=== End ( Who is the killer? ) ===
 
@@ -1222,21 +1222,115 @@ for (let i=0;i<arrayTest.length;i++) {
 
 //---------------------------------------------------------------------------------------------------
 //  Regular expression
+//
+//--- https://jex.im/regulex/ ---
+//--- https://regexr.com/ ---
+//
 //---------------------------------------------------------------------------------------------------
 
+//--- https://jex.im/regulex/ ---
+//--- https://regexr.com/ ---
+
 //---------------------------------------------------------------------------------------------------
-// 
+// Simple validation of a username with regex
 //8 kyu https://www.codewars.com/kata/simple-validation-of-a-username-with-regex
 //---------------------------------------------------------------------------------------------------
+//---Task---
+//### **Simple validation of a username with regex**
+//Write a simple regex to validate a username. Allowed characters are:
+//lowercase letters,
+//numbers,
+//underscore
+//Length should be between 4 and 16 characters (both included).
+//
+//### **Простая проверка имени пользователя с помощью регулярного выражения**
+//Напишите простое регулярное выражение для проверки имени пользователя. Допустимые символы:
+//строчные буквы,
+//числа
+//нижнее подчеркивание
+//Длина должна быть от 4 до 16 символов (включая оба символа).
+// ---
+//
+//---Solution---
+function validateUsr(username) {
+  res =  /^[a-z_0-9]{4,16}$/.test(username) 
+  return res
+}
+//
+//---Test---
+let arrayTest = [
+    'asddsa', //true);
+    'a', //false);
+    'Hass', //false);
+    'Hasd_12assssssasasasasasaasasasasas', //false);
+    '', //false);
+    '____', //true);
+    '012', //false);
+    'p1pp1', //true);
+    'asd43 34', //false);
+    'asd43_34' //true);
+]
+//
+//---View solution---
+for (let i=0;i<arrayTest.length;i++) {
+    document.write(validateUsr(arrayTest[i]));
+    document.write(' | ');
+}
+//
+//--- https://jex.im/regulex/ ---
+//--- https://regexr.com/ ---
+//=== End ( Simple validation of a username with regex ) ===
+
 
 //---------------------------------------------------------------------------------------------------
-// 
+// Validate my Password
 //6 kyu https://www.codewars.com/kata/validate-my-password
 //---------------------------------------------------------------------------------------------------
+//---Task---
+//### **Validate my Password**
+//I will give you a string. You respond with "VALID" if the string meets the requirements or "INVALID" if it does not.
+//Passwords must abide by the following requirements:
+//More than 3 characters but less than 20.
+//Must contain only alphanumeric characters.
+//Must contain letters and numbers.
+//
+//### **Подтвердите мой пароль**
+//Я дам тебе веревочку. Вы отвечаете «VALID», если строка соответствует требованиям, или «INVALID», если нет.
+//Пароли должны соответствовать следующим требованиям:
+//Более 3 символов, но менее 20.
+//Должен содержать только буквенно-цифровые символы.
+//Должен содержать буквы и цифры.
+// ---
+//
+//---Solution---
+function validPass(password){
+  const reg = new RegExp('^(?=.*[a-z])(?=.*\\d)[a-z\\d]{4,19}$','i');
+  return reg.test(password) ? "VALID" : "INVALID";
+  //return /^(?=.*[a-z])(?=.*\d)[a-z\d]{4,19}$/i.test(password) ? "VALID" : "INVALID";
+}
+//
+//---Test---
+let arrayTest = [
+  'Username123', //'VALID' );
+  'Username', //'INVALID' );
+  '1Username', //'VALID' );
+  '123', //'INVALID' );
+  'a12', //'INVALID' );
+  'Username123!', //'INVALID' );
+  'Username123n', //'INVALID' );
+  'ThisPasswordIsTooLong1234' //, 'INVALID' )  
+]
+//
+//---View solution---
+for (let i=0;i<arrayTest.length;i++) {
+    document.write(validPass(arrayTest[i]));
+    document.write(' | ');
+}
+//
+//--- https://jex.im/regulex/ ---
+//--- https://regexr.com/ ---
+//=== End ( Validate my Password ) ===
 //===================================================================================================
-
-
-
 
 
 //---------------------------------------------------------------------------------------------------
