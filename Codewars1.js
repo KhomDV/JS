@@ -1074,26 +1074,26 @@
 // ---
 //
 //---Solution---
-function fridayTheThirteenths(start, end) {
-  if (end === undefined) end = start;
-  let strFriday = "";
-  for (i=start;i<=end;i++) {
-    for (m=0;m<12;m++) {
-      const dDate = new Date(i,m,13);
-      if ( dDate.getDay() === 5 ) {
-        strFriday = strFriday + (strFriday === "" ? "" : " ") + ((dDate.getMonth()+1)+"/13/"+dDate.getFullYear());
-      }
-    }
-  }
-  return strFriday;
-}
+// function fridayTheThirteenths(start, end) {
+//   if (end === undefined) end = start;
+//   let strFriday = "";
+//   for (i=start;i<=end;i++) {
+//     for (m=0;m<12;m++) {
+//       const dDate = new Date(i,m,13);
+//       if ( dDate.getDay() === 5 ) {
+//         strFriday = strFriday + (strFriday === "" ? "" : " ") + ((dDate.getMonth()+1)+"/13/"+dDate.getFullYear());
+//       }
+//     }
+//   }
+//   return strFriday;
+// }
 //
 //---Test---
 // let arrayTest = [
   // document.write(fridayTheThirteenths(1999, 2000));//, "8/13/1999 10/13/2000");
   // document.write(' | ');
-  document.write(fridayTheThirteenths(2112));//, "10/13/2000");
-  document.write(' | ');
+  // document.write(fridayTheThirteenths(2112));//, "10/13/2000");
+  // document.write(' | ');
 // ]
 //
 //---View solution---
@@ -1103,7 +1103,6 @@ function fridayTheThirteenths(start, end) {
 // }
 //
 //=== End ( Friday the 13ths ) ===
-
 //===================================================================================================
 
 
@@ -1112,9 +1111,41 @@ function fridayTheThirteenths(start, end) {
 //---------------------------------------------------------------------------------------------------
 
 //---------------------------------------------------------------------------------------------------
-// 
+// Counting Array Elements
 //7 kyu https://www.codewars.com/kata/counting-array-elements
 //---------------------------------------------------------------------------------------------------
+//---Task---
+//### **Counting Array Elements**
+//Write a function that takes an array and counts the number of each unique element present.
+//count(['james', 'james', 'john']) 
+//#=> { 'james': 2, 'john': 1}
+//
+//### **Подсчет элементов массива**
+//Напишите функцию, которая принимает массив и подсчитывает количество каждого присутствующего уникального элемента.
+//count(['james', 'james', 'john']) 
+//#=> { 'james': 2, 'john': 1}
+// ---
+//
+//---Solution---
+function count(array){
+  return array.reduce((acc, n) => (acc[n] = (acc[n] || 0) + 1, acc), {});
+}
+//
+//---Test---
+// let arrayTest = [
+  document.write(count(['a', 'a', 'b', 'b', 'b'])); //, { 'a': 2, 'b': 3 }));
+  document.write(' | ');
+// ]
+//
+//---View solution---
+// for (let i=0;i<arrayTest.length;i++) {
+//     document.write(starSign(arrayTest[i]));
+//     document.write(' | ');
+// }
+//
+//=== End ( Counting Array Elements ) ===
+
+
 
 //---------------------------------------------------------------------------------------------------
 // 
