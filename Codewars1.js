@@ -991,7 +991,36 @@
 //
 //---Solution---
 function starSign(date) {
-  return ; //code here
+  const dDate = new Date(date);
+  const numbDate = String(dDate.getMonth()+1) + String(dDate.getDate()).padStart(2,"0");
+  let stars = "";
+  if (numbDate >= 121 && numbDate <= 219) {
+      stars = 'Aquarius'; // ------ 21 January - 19 February
+  } else if (numbDate >= 220 && numbDate <= 320) {
+      stars = 'Pisces'; // ------ 20 February - 20 March
+  } else if (numbDate >= 321 && numbDate <= 420) {
+      stars = 'Aries'; // ------ 21 March - 20 April
+  } else if (numbDate >= 421 && numbDate <= 521) {
+      stars = 'Taurus'; // ------ 21 April - 21 May
+  } else if (numbDate >= 522 && numbDate <= 621) {
+      stars = 'Gemini'; // ------ 22 May - 21 June
+  } else if (numbDate >= 622 && numbDate <= 722) {
+      stars = 'Cancer'; // ------ 22 June - 22 July
+  } else if (numbDate >= 723 && numbDate <= 823) {
+      stars = 'Leo'; // ------ 23 July - 23 August
+  } else if (numbDate >= 824 && numbDate <= 923) {
+      stars = 'Virgo'; // ------ 24 August - 23 September
+  } else if (numbDate >= 924 && numbDate <= 1023) {
+      stars = 'Libra'; // ------ 24 September - 23 October
+  } else if (numbDate >= 1024 && numbDate <= 1122) {
+      stars = 'Scorpio'; // ------ 24 October - 22 November
+  } else if (numbDate >= 1123 && numbDate <= 1221) {
+      stars = 'Sagittarius'; // ------ 23 November - 21 December
+  } else if (numbDate >= 1222 || numbDate <= 120) {
+      stars = 'Capricorn'; // ------ 22 December - 20 January
+  }
+
+  return stars;
 }
 //
 //---Test---
