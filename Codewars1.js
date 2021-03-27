@@ -906,33 +906,33 @@
 // ---
 //
 //---Solution---
-function zipWith(fn,a0,a1) {
-  if (!Array.isArray(a0) || !Array.isArray(a1)) return [];
-  let result = []; 
-  const nlength = Math.min(a0.length, a1.length);
-  for (let i=0; i<nlength; i++) {
-    result.push(fn(a0[i],a1[i]));
-  }
-  return result;
-}
+// function zipWith(fn,a0,a1) {
+//   if (!Array.isArray(a0) || !Array.isArray(a1)) return [];
+//   let result = []; 
+//   const nlength = Math.min(a0.length, a1.length);
+//   for (let i=0; i<nlength; i++) {
+//     result.push(fn(a0[i],a1[i]));
+//   }
+//   return result;
+// }
 //
 //---Test---
-const plus = (a,b) => a+b ;
-let arrayTest = [
-      [plus, [0,1,2,3,4,5], [6,5,4,3,2,1]], // [6,6,6,6,6,6]);
-      [plus, [0,1,2,3,4  ], [6,5,4,3,2,1]], //[6,6,6,6,6  ]);
-      [plus, [0,1,2,3,4,5], [6,5,4,3,2  ]], //[6,6,6,6,6  ]);
-      [Math.pow, [10,10,10,10], [0,1,2,3]], //[1,10,100,1000]);
-      [Math.max, [1,4,7,1,4,7], [4,7,1,4,7,1]], //[4,7,7,4,7,7]);
-      [function(a,b) { return a+b; }, [0,1,2,3], [0,1,2,3]], //[0,2,4,6]);
-      [(a,b) => a+b, [0,1,2,3], [0,1,2,3]] // [0,2,4,6]);
-]
+// const plus = (a,b) => a+b ;
+// let arrayTest = [
+//       [plus, [0,1,2,3,4,5], [6,5,4,3,2,1]], // [6,6,6,6,6,6]);
+//       [plus, [0,1,2,3,4  ], [6,5,4,3,2,1]], //[6,6,6,6,6  ]);
+//       [plus, [0,1,2,3,4,5], [6,5,4,3,2  ]], //[6,6,6,6,6  ]);
+//       [Math.pow, [10,10,10,10], [0,1,2,3]], //[1,10,100,1000]);
+//       [Math.max, [1,4,7,1,4,7], [4,7,1,4,7,1]], //[4,7,7,4,7,7]);
+//       [function(a,b) { return a+b; }, [0,1,2,3], [0,1,2,3]], //[0,2,4,6]);
+//       [(a,b) => a+b, [0,1,2,3], [0,1,2,3]] // [0,2,4,6]);
+// ]
 //
 //---View solution---
-for (let i=0;i<arrayTest.length;i++) {
-  document.write(zipWith(arrayTest[i][0],arrayTest[i][1],arrayTest[i][2]));
-    document.write(' | ');
-}
+// for (let i=0;i<arrayTest.length;i++) {
+//   document.write(zipWith(arrayTest[i][0],arrayTest[i][1],arrayTest[i][2]));
+//     document.write(' | ');
+// }
 //
 //=== End ( zipWith ) ===
 
@@ -944,9 +944,73 @@ for (let i=0;i<arrayTest.length;i++) {
 //---------------------------------------------------------------------------------------------------
 
 //---------------------------------------------------------------------------------------------------
-// 
+// It is written in the stars
 //7 kyu https://www.codewars.com/kata/it-is-written-in-the-stars
 //---------------------------------------------------------------------------------------------------
+//---Task---
+//### **It is written in the stars**
+//Were you ever interested in the phenomena of astrology, star signs, tarot, voodoo ? (ok not voodoo that's too spooky)...
+//Task:
+//Your job for today is to finish the starSign function by finding the astrological sign,
+//given the birth details as a Date object.
+//Start and end dates for zodiac signs vary on different resources so we will use this table to get consistent results:
+//Aquarius ------ 21 January - 19 February
+//Pisces --------- 20 February - 20 March
+//Aries ---------- 21 March - 20 April
+//Taurus -------- 21 April - 21 May
+//Gemini -------- 22 May - 21 June
+//Cancer -------- 22 June - 22 July
+//Leo ------------- 23 July - 23 August
+//Virgo ----------- 24 August - 23 September
+//Libra ----------- 24 September - 23 October
+//Scorpio -------- 24 October - 22 November
+//Sagittarius ---- 23 November - 21 December
+//Capricorn ----- 22 December - 20 January
+//Test info: 100 random tests (dates range from January 1st 1940 until now)
+//
+//### **Это написано в звездах**
+//Вы когда-нибудь интересовались феноменами астрологии, звездных знаков, Таро, вуду ? (хорошо, не вуду, это слишком жутко) ...
+//Задача:
+//твоя задача на сегодня - завершить starSignфункцию, найдя астрологический знак, учитывая данные о рождении как Dateобъект.
+//Даты начала и окончания для знаков зодиака различаются в зависимости от ресурсов,
+//поэтому мы будем использовать эту таблицу, чтобы получить согласованные результаты:
+//Водолей ------ 21 января - 19 февраля
+//Рыбы --------- 20 февраля - 20 марта
+//Овен ---------- 21 марта - 20 апреля
+//Телец -------- 21 апреля - 21 мая
+//Близнецы -------- 22 мая - 21 июня
+//Рак -------- 22 июня - 22 июля
+//Лев ------------- 23 июля - 23 августа
+//Дева ----------- 24 августа - 23 сентября
+//Весы ----------- 24 сентября - 23 октября
+//Скорпион -------- 24 октября - 22 ноября
+//Стрелец - 23 ноября - 21 декабря.
+//Козерог ----- 22 декабря - 20 января
+//Информация о тестах: 100 случайных тестов (диапазон дат с 1 января 1940 года по настоящее время)
+// ---
+//
+//---Solution---
+function starSign(date) {
+  return ; //code here
+}
+//
+//---Test---
+let arrayTest = [
+  [new Date(1970, 5, 5)], // 'Gemini');
+  [new Date(2000, 1, 15)], // 'Aquarius');
+  [new Date(1987, 7, 23)] // 'Leo');
+]
+//
+//---View solution---
+for (let i=0;i<arrayTest.length;i++) {
+    document.write(starSign(arrayTest[i]));
+    document.write(' | ');
+}
+//
+//=== End ( It is written in the stars ) ===
+
+
+
 
 //---------------------------------------------------------------------------------------------------
 // 
