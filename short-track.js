@@ -236,29 +236,65 @@
 // ---
 //
 //---Solution---
-function deleteDigit(n) {
-  const str = String(n);
-  let result = str.substring(str.length-1,0);
-  for (i=0; i < str.length-1; i++) {
-    if (+str[i] < +str[i+1]) {
-      result = str.substring(0,i) + str.substring(i+1);
-      break;
-    }
-  }
-  return Number(result);
+// function deleteDigit(n) {
+//   const str = String(n);
+//   let result = str.substring(str.length-1,0);
+//   for (i=0; i < str.length-1; i++) {
+//     if (+str[i] < +str[i+1]) {
+//       result = str.substring(0,i) + str.substring(i+1);
+//       break;
+//     }
+//   }
+//   return Number(result);
+// }
+//
+//---Test---
+// let arrayTest = [
+//   152,
+//   7272,
+//   221,
+//   929991919,
+//   45678541
+// ]
+//---View solution---
+// for (let i=0;i<arrayTest.length;i++) {
+//   document.write(deleteDigit(arrayTest[i]));
+//   document.write(' | ');
+// }
+//=== End ( 05-delete-digit ) ===
+
+
+//---------------------------------------------------------------------------------------------------
+// 06-mac-address
+//---------------------------------------------------------------------------------------------------
+//---Task---
+// The MAC-48 address is six groups of two hexadecimal digits (0 to 9 or A to F),
+// separated by hyphens.
+// Your task is to check by given string inputString
+// whether it's a MAC-48 address or not.
+// @param {Number} inputString
+// @return {Number}
+// @example
+// For 00-1B-63-84-45-E6, the output should be true.
+// ---
+//
+//---Solution---
+function isMAC48Address(n) {
+  return n.split("-");
 }
 //
 //---Test---
 let arrayTest = [
-  152,
-  7272,
-  221,
-  929991919,
-  45678541
+  '00-1B-63-84-45-E6', //true);
+  'Z1-1B-63-84-45-E6', //false);
+  'not a MAC-48 address', //false);
+  'FF-FF-FF-FF-FF-FF', //true);
+  'G0-00-00-00-00-00' //false);
 ]
 //---View solution---
 for (let i=0;i<arrayTest.length;i++) {
-  document.write(deleteDigit(arrayTest[i]));
+  document.write(isMAC48Address(arrayTest[i]));
   document.write(' | ');
 }
-//=== End ( 05-delete-digit ) ===
+//=== End ( 06-mac-address ) ===
+
