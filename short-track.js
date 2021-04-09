@@ -182,48 +182,83 @@
 // ---
 //
 //---Solution---
-function minesweeper(matrix) {
+// function minesweeper(matrix) {
+//   let aMine = Array(matrix.length);
+//   for (i=0; i < matrix.length; i++) {
+//     aMine[i] = Array(matrix[i].length);
+//   }
+//   for (let i=0; i < matrix.length; i++) {
+//     for (let j=0; j < matrix[i].length; j++) {
+//       const nStartX = (i-1) < 0 ? 0 : (i-1);
+//       const nEndX = (i+1) > (matrix.length-1) ? (matrix.length-1) : (i+1);
+//       const nStartY = (j-1) < 0 ? 0 : (j-1);
+//       const nEndY = (j+1) > (matrix[i].length-1) ? (matrix[i].length-1) : (j+1);
+//       let nMine = 0;
+//       for (let k=nStartX; k <= nEndX; k++) {
+//         for (let q=nStartY; q <= nEndY; q++) {
+//           if (i !== k || j !== q) {
+//             if (matrix[k][q] === true) {
+//               nMine++;
+//             }
+//           }
+//         }
+//       }
+//       aMine[i][j] = nMine;
+//     }
+//   }
+//   return aMine;
+// }
+//
+//---Test---
+// let arrayTest = [
+//   [true, false, false],
+//   [false, true, false],
+//   [false, false, false]
+// ]
+//---View solution---
+// for (let i=0;i<arrayTest.length;i++) {
+//   document.write(minesweeper(arrayTest));
+//   document.write(' | ');
+// }
+//=== End ( 04-mine-sweeper ) ===
 
-  let aMine = Array(matrix.length);
-  for (i=0; i < matrix.length; i++) {
-    aMine[i] = Array(matrix[i].length);
-  }
 
-  for (let i=0; i < matrix.length; i++) {
-    for (let j=0; j < matrix[i].length; j++) {
-
-      const nStartX = (i-1) < 0 ? 0 : (i-1);
-      const nEndX = (i+1) > (matrix.length-1) ? (matrix.length-1) : (i+1);
-
-      const nStartY = (j-1) < 0 ? 0 : (j-1);
-      const nEndY = (j+1) > (matrix[i].length-1) ? (matrix[i].length-1) : (j+1);
-
-      let nMine = 0;
-      for (let k=nStartX; k <= nEndX; k++) {
-        for (let q=nStartY; q <= nEndY; q++) {
-          if (i !== k || j !== q) {
-            if (matrix[k][q] === true) {
-              nMine++;
-            }
-          }
-        }
-      }
-      aMine[i][j] = nMine;
+//---------------------------------------------------------------------------------------------------
+// 05-delete-digit
+//---------------------------------------------------------------------------------------------------
+//---Task---
+// * Given some integer, find the maximal number you can obtain
+// * by deleting exactly one digit of the given number.
+// * @param {Number} n
+// * @return {Number}
+// * @example
+// * For n = 152, the output should be 52
+// ---
+//
+//---Solution---
+function deleteDigit(n) {
+  const str = String(n);
+  let result = str.substring(str.length-1,0);
+  for (i=0; i < str.length-1; i++) {
+    if (+str[i] < +str[i+1]) {
+      result = str.substring(0,i) + str.substring(i+1);
+      break;
     }
   }
-  return aMine;
+  return Number(result);
 }
 //
 //---Test---
 let arrayTest = [
-  [true, false, false],
-  [false, true, false],
-  [false, false, false]
+  152,
+  7272,
+  221,
+  929991919,
+  45678541
 ]
 //---View solution---
 for (let i=0;i<arrayTest.length;i++) {
-  document.write(minesweeper(arrayTest));
+  document.write(deleteDigit(arrayTest[i]));
   document.write(' | ');
 }
-//=== End ( 04-mine-sweeper ) ===
-
+//=== End ( 05-delete-digit ) ===
