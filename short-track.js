@@ -115,48 +115,87 @@
 // ---
 //
 //---Solution---
-function sortByHeight(arr) {
+// function sortByHeight(arr) {
+//   let nLen = arr.length - 1;
+//   let numbMax = 0;
+//   for (let i=0; i < nLen; i++) {
+//     let j = 0;
+//     while (j < (nLen - i)) {
+//       if (arr[j] !== -1) {
+//         let k = j + 1;
+//         while (k <= nLen) {
+//           if (arr[k] !== -1) {
+//             if (arr[j] > arr[k]) {
+//               numbMax = arr[j];
+//               arr[j] = arr[k];
+//               arr[k] = numbMax;
+//             }
+//             break;
+//           } else {
+//             k++;
+//           }
+//         }
+//         j = k;
+//       } else {
+//         j++;
+//       }
+//     }
+//   }
+//   return arr;
+// }
+//
+//---Test---
+// let arrayTest = [
+//   [-1, 150, 190, 170, -1, -1, 160, 180] //[-1, 150, 160, 170, -1, -1, 180, 190]
+// ]
+//---View solution---
+// for (let i=0;i<arrayTest.length;i++) {
+//   document.write(sortByHeight(arrayTest[i]));
+//   document.write(' | ');
+// }
+//=== End ( 03-sort-by-height ) ===
 
-  let nLen = arr.length - 1;
-  let numbMax = 0;
-  
-  for (let i=0; i < nLen; i++) {
-    let j = 0;
-    while (j < (nLen - i)) {
-      if (arr[j] !== -1) {
-        let k = j + 1;
-        while (k <= nLen) {
-          if (arr[k] !== -1) {
-            if (arr[j] > arr[k]) {
-              numbMax = arr[j];
-              arr[j] = arr[k];
-              arr[k] = numbMax;
-            }
-            break;
-          } else {
-            k++;
-          }
-        }
-        j = k;
-      } else {
-        j++;
-      }
-    }
-  }
 
-  return arr;
+//---------------------------------------------------------------------------------------------------
+// 04-mine-sweeper
+//---------------------------------------------------------------------------------------------------
+//---Task---
+//
+// In the popular Minesweeper game you have a board with some mines and those cells
+// that don't contain a mine have a number in it that indicates the total number of mines
+// in the neighboring cells. Starting off with some arrangement of mines
+// we want to create a Minesweeper game setup.
+// @param {Array<Array>} matrix
+// @return {Array<Array>}
+// @example
+// matrix = [
+//  [true, false, false],
+//  [false, true, false],
+//  [false, false, false]
+//]
+// The result should be following:
+// [
+//  [1, 2, 1],
+//  [2, 1, 1],
+//  [1, 1, 1]
+// ]
+// ---
+//
+//---Solution---
+function minesweeper(matrix) {
+
 }
 //
 //---Test---
 let arrayTest = [
-  [-1, 150, 190, 170, -1, -1, 160, 180] //[-1, 150, 160, 170, -1, -1, 180, 190]
+  [true, false, false],
+  [false, true, false],
+  [false, false, false]
 ]
 //---View solution---
 for (let i=0;i<arrayTest.length;i++) {
-  document.write(sortByHeight(arrayTest[i]));
+  document.write(minesweeper(arrayTest));
   document.write(' | ');
 }
-//=== End ( 03-sort-by-height ) ===
-
-
+//=== End ( 04-mine-sweeper ) ===
 
