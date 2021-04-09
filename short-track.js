@@ -117,33 +117,33 @@
 //---Solution---
 function sortByHeight(arr) {
 
-  var m = [1, 2, 2, 4, 10, 6, 8, 8, 9, 8];
   let nLen = arr.length - 1;
-  let numbSort = 0;
   let numbMax = 0;
   
-  for (let i = 0; i < nLen; i++) {
-    for (let j = 0; j < nLen - i; j++) {
+  for (let i=0; i < nLen; i++) {
+    let j = 0;
+    while (j < (nLen - i)) {
       if (arr[j] !== -1) {
-        while 
-        indexSort = j + 1;
-        if arr
-
-
-        if 
-        numbSort = arr[j];
-        const indexSort = j;
-        
-        if (arr[j + 1] !== -1) {
-          if (numbSort > arr[j + 1]) {
-            numbMax = numbSort;
-            arr[indexSort] = arr[j + 1];
-            arr[j + 1] = numbMax;
-          }  
+        let k = j + 1;
+        while (k <= nLen) {
+          if (arr[k] !== -1) {
+            if (arr[j] > arr[k]) {
+              numbMax = arr[j];
+              arr[j] = arr[k];
+              arr[k] = numbMax;
+            }
+            break;
+          } else {
+            k++;
+          }
         }
+        j = k;
+      } else {
+        j++;
       }
     }
-  }    
+  }
+
   return arr;
 }
 //
@@ -157,4 +157,6 @@ for (let i=0;i<arrayTest.length;i++) {
   document.write(' | ');
 }
 //=== End ( 03-sort-by-height ) ===
+
+
 
