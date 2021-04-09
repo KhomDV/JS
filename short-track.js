@@ -73,30 +73,88 @@
 // ---
 //
 //---Solution---
-function getCommonCharacterCount(s1, s2) {
-  let result = 0;
+// function getCommonCharacterCount(s1, s2) {
+//   let result = 0;
+//
+//   //let aStr = [...new Set([...( s1.length < s2.length ? s1 : s2)])];
+//
+//   const aStr = [...new Set(s1)].filter(item => s2.includes(item));
+//   return [...new Set(s1)].filter(item => s2.includes(item)).reduce((sum, item) => sum + Math.min(s1.split('').filter((e)=>e===item).length, s2.split('').filter((e)=>e===item).length), 0);
+// }
+//
+//---Test---
+// let arrayTest = [
+//   ['aabcc', 'adcaa'], //3);
+//   ['zzzz', 'zzzzzzz'], //4);
+//   ['abca', 'xyzbac'], //3);
+//   ['', 'abc'], //0);
+//   ['a', 'b'] //0);
+// ]
+//
+//---View solution---
+// for (let i=0;i<arrayTest.length;i++) {
+//
+//     document.write(getCommonCharacterCount(arrayTest[i][0],arrayTest[i][1]));
+//     document.write(' | ');
+//
+// }
+//=== End ( 02-common-character-count ) ===
 
-  //let aStr = [...new Set([...( s1.length < s2.length ? s1 : s2)])];
 
-  const aStr = [...new Set(s1)].filter(item => s2.includes(item));
-  return [...new Set(s1)].filter(item => s2.includes(item)).reduce((sum, item) => sum + Math.min(s1.split('').filter((e)=>e===item).length, s2.split('').filter((e)=>e===item).length), 0);
+//---------------------------------------------------------------------------------------------------
+// 03-sort-by-height
+//---------------------------------------------------------------------------------------------------
+//---Task---
+//
+// Given an array with heights, sort them except if the value is -1.
+// @param {Array} arr
+// @return {Array}
+// @example
+// arr = [-1, 150, 190, 170, -1, -1, 160, 180]
+// The result should be [-1, 150, 160, 170, -1, -1, 180, 190]
+// ---
+//
+//---Solution---
+function sortByHeight(arr) {
+
+  var m = [1, 2, 2, 4, 10, 6, 8, 8, 9, 8];
+  let nLen = arr.length - 1;
+  let numbSort = 0;
+  let numbMax = 0;
+  
+  for (let i = 0; i < nLen; i++) {
+    for (let j = 0; j < nLen - i; j++) {
+      if (arr[j] !== -1) {
+        while 
+        indexSort = j + 1;
+        if arr
+
+
+        if 
+        numbSort = arr[j];
+        const indexSort = j;
+        
+        if (arr[j + 1] !== -1) {
+          if (numbSort > arr[j + 1]) {
+            numbMax = numbSort;
+            arr[indexSort] = arr[j + 1];
+            arr[j + 1] = numbMax;
+          }  
+        }
+      }
+    }
+  }    
+  return arr;
 }
 //
 //---Test---
 let arrayTest = [
-  ['aabcc', 'adcaa'], //3);
-  ['zzzz', 'zzzzzzz'], //4);
-  ['abca', 'xyzbac'], //3);
-  ['', 'abc'], //0);
-  ['a', 'b'] //0);
+  [-1, 150, 190, 170, -1, -1, 160, 180] //[-1, 150, 160, 170, -1, -1, 180, 190]
 ]
-//
 //---View solution---
 for (let i=0;i<arrayTest.length;i++) {
-
-    document.write(getCommonCharacterCount(arrayTest[i][0],arrayTest[i][1]));
-    document.write(' | ');
-
+  document.write(sortByHeight(arrayTest[i]));
+  document.write(' | ');
 }
-//=== End ( 02-common-character-count ) ===
+//=== End ( 03-sort-by-height ) ===
 
