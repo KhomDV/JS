@@ -418,27 +418,62 @@
 //For 91, the result should be 1 (9 + 1 = 10, 1 + 0 = 1)
 // ---
 //---Solution---
-function getSumOfDigits(n) {
-  n = String(n).split('').reduce((sum, item)=> sum + (+item),0);
-  if (n >= 10) {
-    n = getSumOfDigits(n);
-  };
-  return n;
+// function getSumOfDigits(n) {
+//   n = String(n).split('').reduce((sum, item)=> sum + (+item),0);
+//   if (n >= 10) {
+//     n = getSumOfDigits(n);
+//   };
+//   return n;
+// }
+//
+//---Test---
+// let arrayTest = [
+//   100, // 1
+//   91,  // 1
+//   89,  // 8
+//   35,  //8);
+//   99,  //9);
+//   123 //6);
+// ]
+//---View solution---
+// for (let i=0;i<arrayTest.length;i++) {
+//   document.write(getSumOfDigits(arrayTest[i]));
+//   document.write(' | ');
+// }
+//=== End ( 09-sum-digits ) ===
+
+
+//---------------------------------------------------------------------------------------------------
+// 10-find-index
+//---------------------------------------------------------------------------------------------------
+//---Task---
+//Given a sorted array, find the index of the element with the given value.
+//Time complexity should be O(logN)
+//@param {Array} array
+//@param {Number} value
+//@return {Number}
+//@example
+//For ([1, 2, 3], 1) should return 0
+//For ([1, 2, 3], 2) should return 1
+// ---
+//---Solution---
+function findIndex(array, value) {
+  return array.findIndex((item)=>item===value);
 }
 //
 //---Test---
 let arrayTest = [
-  100, // 1
-  91,  // 1
-  89,  // 8
-  35,  //8);
-  99,  //9);
-  123 //6);
+  [[1, 2, 3, 4, 5], 5], //4);
+  [[1, 2, 3, 4, 5], 3], //2);
+  [[1, 2, 3, 4, 5], 1], //0);
+  [[5, 6, 7], 7], //2);
+  [[5, 6, 7], 5]  //0);
 ]
 //---View solution---
 for (let i=0;i<arrayTest.length;i++) {
-  document.write(getSumOfDigits(arrayTest[i]));
+  document.write(findIndex(arrayTest[i][0],arrayTest[i][1]));
   document.write(' | ');
 }
-//=== End ( 09-sum-digits ) ===
+//=== End ( 10-find-index ) ===
+
 
