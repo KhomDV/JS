@@ -488,32 +488,83 @@
 //For aabbbc should return 2a3bc
 // ---
 //---Solution---
-function encodeLine(str) {
-  //Object.fromEntries(Object.entries(obj).sort())
-  oStr = str.split('').reduce((sum, item) => {
-    sum[item] = (sum[item] || 0) + 1;
-    return sum;
-  }, {});
-  str = "";
-  for (key in oStr) {
-    str = str + ((oStr[key] > 1) ? oStr[key] : "") + key;
+// function encodeLine(str) {
+//   //Object.fromEntries(Object.entries(obj).sort())
+//   oStr = str.split('').reduce((sum, item) => {
+//     sum[item] = (sum[item] || 0) + 1;
+//     return sum;
+//   }, {});
+//   str = "";
+//   for (key in oStr) {
+//     str = str + ((oStr[key] > 1) ? oStr[key] : "") + key;
+//   }
+//   return str;
+// }
+//
+//---Test---
+// let arrayTest = [
+//   'aaaatttt', //'4a4t');
+//   'aabbccc', //'2a2b3c');
+//   'abbcca', //'a2b2ca');
+//   'xyz', //'xyz');
+//   '' // '');
+// ]
+//---View solution---
+// for (let i=0;i<arrayTest.length;i++) {
+//   document.write(encodeLine(arrayTest[i]));
+//   document.write(' | ');
+// }
+//=== End ( 11-encode-line ) ===
+
+
+//---------------------------------------------------------------------------------------------------
+// 12-dns-stats
+//---------------------------------------------------------------------------------------------------
+//---Task---
+//Given an array of domains, return the object with the appearances of the DNS.
+//@param {Array} domains
+//@return {Object}
+//@example
+//domains = [
+//  'code.yandex.ru',
+//  'music.yandex.ru',
+//  'yandex.ru'
+//]
+//The result should be the following:
+//{
+//   '.ru': 3,
+//   '.ru.yandex': 3,
+//   '.ru.yandex.code': 1,
+//   '.ru.yandex.music': 1,
+// }
+// ---
+//---Solution---
+function getDNSStats(domains) {
+  DNSStats = {};
+  for (let i=0; i < domains.length; i++) {
+    let strDomains = "";
+    domains[i].split('.').reverse().reduce((DNSStats, item) => {
+      strDomains = strDomains +"."+ item;
+      DNSStats[strDomains] = (DNSStats[strDomains] || 0) + 1;
+      return DNSStats;
+    }, DNSStats);
   }
-  return str;
+  return DNSStats;
 }
 //
 //---Test---
 let arrayTest = [
-  'aaaatttt', //'4a4t');
-  'aabbccc', //'2a2b3c');
-  'abbcca', //'a2b2ca');
-  'xyz', //'xyz');
-  '' // '');
+  ['epam.com'], //{ '.com': 1, '.com.epam': 1 });
+  ['epam.com', 'info.epam.com'], //{ '.com': 2, '.com.epam': 2, '.com.epam.info': 1 });
+  ['code.yandex.ru', 'music.yandex.ru', 'yandex.ru'], //'.ru': 3, '.ru.yandex': 3, '.ru.yandex.code': 1, '.ru.yandex.music': 1,
+  [] // {});
 ]
 //---View solution---
 for (let i=0;i<arrayTest.length;i++) {
-  document.write(encodeLine(arrayTest[i]));
+  document.write(getDNSStats(arrayTest[i]));
   document.write(' | ');
 }
-//=== End ( 11-encode-line ) ===
+//=== End ( 12-dns-stats ) ===
+
 
 
