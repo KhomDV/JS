@@ -290,7 +290,26 @@
 //
 //---Solution---
 function isMAC48Address(n) {
-  return n.split("-");
+
+  //const reg = new RegExp('\\^(?=.*[a-z])(?=.*\\d)[a-z\\d]{4,19}$','i');
+  //const reg = new RegExp('[0-9A-F]-[0-9A-F]-[0-9A-F]-[0-9A-F]-[0-9A-F]','i');
+  //const reg = new RegExp('^[0-9A-F]{0,2}','i');
+
+//   const reg = new RegExp('^(?=.*[a-z])(?=.*\\d)[a-z\\d]{4,19}$','i');
+
+  macAddress = n.split("-");
+  let lResult = true;
+  for (let i=0; i < macAddress.length-1; i++) {
+    // if (macAddress[i].length !== 2) {
+    //   lResult = false;
+    //   break;
+    // }
+    if (!/^[0-9A-F]{2,2}$/.test(macAddress[i])) {
+      lResult = false;
+      break;
+    }
+  }
+  return lResult;
 }
 //
 //---Test---
