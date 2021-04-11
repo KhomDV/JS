@@ -419,14 +419,21 @@
 // ---
 //---Solution---
 function getSumOfDigits(n) {
-  throw new Error('Not implemented');
+  n = String(n).split('').reduce((sum, item)=> sum + (+item),0);
+  if (n >= 10) {
+    n = getSumOfDigits(n);
+  };
+  return n;
 }
 //
 //---Test---
 let arrayTest = [
   100, // 1
   91,  // 1
-  89   // 
+  89,  // 8
+  35,  //8);
+  99,  //9);
+  123 //6);
 ]
 //---View solution---
 for (let i=0;i<arrayTest.length;i++) {
