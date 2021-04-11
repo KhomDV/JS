@@ -337,7 +337,21 @@
 // ---
 //---Solution---
 function renameFiles(names) {
-  throw new Error('Not implemented');
+  oCounter = {};
+  names = names.map(function(item) {
+    let itemName = item;
+    if (item in oCounter) {
+      itemName = item+"("+oCounter[item]+")";
+      oCounter[item] += 1;
+      if (!(itemName in oCounter)) {
+        oCounter[itemName] = 1;
+      }
+    } else {
+      oCounter[item] = 1;
+    }
+    return itemName;
+  });
+  return names;
 }
 //
 //---Test---
@@ -346,7 +360,7 @@ let arrayTest = [
 ]
 //---View solution---
 for (let i=0;i<arrayTest.length;i++) {
-  document.write(isMAC48Address(arrayTest[i]));
+  document.write(renameFiles(arrayTest[i]));
   document.write(' | ');
 }
 //=== End ( 07-file-names ) ===
