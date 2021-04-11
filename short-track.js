@@ -238,11 +238,19 @@
 //---Solution---
 // function deleteDigit(n) {
 //   const str = String(n);
-//   let result = str.substring(str.length-1,0);
+//   result = "";
 //   for (i=0; i < str.length-1; i++) {
 //     if (+str[i] < +str[i+1]) {
 //       result = str.substring(0,i) + str.substring(i+1);
 //       break;
+//     } else {
+//       if (i === str.length-2) {
+//         if (+str[i] < +str[i+1]) {
+//           result = str.substring(0,i) + str.substring(i+1);  
+//         } else {
+//           result = str.substring(str.length-1,0);
+//         }
+//       }
 //     }
 //   }
 //   return Number(result);
@@ -253,8 +261,10 @@
 //   152,
 //   7272,
 //   221,
-//   929991919,
-//   45678541
+//   929919,
+//   45678541,
+//   449,
+//   441
 // ]
 //---View solution---
 // for (let i=0;i<arrayTest.length;i++) {
@@ -279,22 +289,22 @@
 // ---
 //
 //---Solution---
-function isMAC48Address(n) {
-  return n.split("-");
-}
+// function isMAC48Address(n) {
+//   return n.split("-");
+// }
 //
 //---Test---
-let arrayTest = [
-  '00-1B-63-84-45-E6', //true);
-  'Z1-1B-63-84-45-E6', //false);
-  'not a MAC-48 address', //false);
-  'FF-FF-FF-FF-FF-FF', //true);
-  'G0-00-00-00-00-00' //false);
-]
+// let arrayTest = [
+//   '00-1B-63-84-45-E6', //true);
+//   'Z1-1B-63-84-45-E6', //false);
+//   'not a MAC-48 address', //false);
+//   'FF-FF-FF-FF-FF-FF', //true);
+//   'G0-00-00-00-00-00' //false);
+// ]
 //---View solution---
-for (let i=0;i<arrayTest.length;i++) {
-  document.write(isMAC48Address(arrayTest[i]));
-  document.write(' | ');
-}
+// for (let i=0;i<arrayTest.length;i++) {
+//   document.write(isMAC48Address(arrayTest[i]));
+//   document.write(' | ');
+// }
 //=== End ( 06-mac-address ) ===
 
