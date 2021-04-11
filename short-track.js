@@ -289,22 +289,22 @@
 // ---
 //
 //---Solution---
-// function isMAC48Address(n) {
-//   return n.split("-");
-// }
+function isMAC48Address(n) {
+  return n.split("-");
+}
 //
 //---Test---
-// let arrayTest = [
-//   '00-1B-63-84-45-E6', //true);
-//   'Z1-1B-63-84-45-E6', //false);
-//   'not a MAC-48 address', //false);
-//   'FF-FF-FF-FF-FF-FF', //true);
-//   'G0-00-00-00-00-00' //false);
-// ]
+let arrayTest = [
+  '00-1B-63-84-45-E6', //true);
+  'Z1-1B-63-84-45-E6', //false);
+  'not a MAC-48 address', //false);
+  'FF-FF-FF-FF-FF-FF', //true);
+  'G0-00-00-00-00-00' //false);
+]
 //---View solution---
-// for (let i=0;i<arrayTest.length;i++) {
-//   document.write(isMAC48Address(arrayTest[i]));
-//   document.write(' | ');
-// }
+for (let i=0;i<arrayTest.length;i++) {
+  document.write(isMAC48Address(arrayTest[i]));
+  document.write(' | ');
+}
 //=== End ( 06-mac-address ) ===
 
