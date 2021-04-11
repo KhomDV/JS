@@ -388,19 +388,50 @@
 //}
 // ---
 //---Solution---
-function removeKFromList(l, k) {
-  result = l.filter(item => item !== k);
-  return result;
+// function removeKFromList(l, k) {
+//   result = l.filter(item => item !== k);
+//   return result;
+// }
+//
+//---Test---
+// let arrayTest = [
+//   [[3, 1, 2, 3, 4, 5], 3] //[1, 2, 4, 5]);
+// ]
+//---View solution---
+// for (let i=0;i<arrayTest.length;i++) {
+//   document.write(removeKFromList(arrayTest[i][0],arrayTest[i][1]));
+//   document.write(' | ');
+// }
+//=== End ( 08-remove-from-list ) ===
+
+
+//---------------------------------------------------------------------------------------------------
+// 09-sum-digits
+//---------------------------------------------------------------------------------------------------
+//---Task---
+//Given a number, replace this number with
+//the sum of its digits until we get to a one digit number.
+//@param {Number} n
+//@return {Number}
+//@example
+//For 100, the result should be 1 (1 + 0 + 0 = 1)
+//For 91, the result should be 1 (9 + 1 = 10, 1 + 0 = 1)
+// ---
+//---Solution---
+function getSumOfDigits(n) {
+  throw new Error('Not implemented');
 }
 //
 //---Test---
 let arrayTest = [
-  [[3, 1, 2, 3, 4, 5], 3] //[1, 2, 4, 5]);
+  100, // 1
+  91,  // 1
+  89   // 
 ]
 //---View solution---
 for (let i=0;i<arrayTest.length;i++) {
-  document.write(removeKFromList(arrayTest[i][0],arrayTest[i][1]));
+  document.write(getSumOfDigits(arrayTest[i]));
   document.write(' | ');
 }
-//=== End ( 08-remove-from-list ) ===
+//=== End ( 09-sum-digits ) ===
 
