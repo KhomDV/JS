@@ -336,35 +336,71 @@
 //the output should be ["file", "file(1)", "image", "file(1)(1)", "file(2)"]
 // ---
 //---Solution---
-function renameFiles(names) {
-  oCounter = {};
-  names = names.map(function(item) {
-    let itemName = item;
-    if (item in oCounter) {
-      itemName = item+"("+oCounter[item]+")";
-      oCounter[item] += 1;
-      if (!(itemName in oCounter)) {
-        oCounter[itemName] = 1;
-      }
-    } else {
-      oCounter[item] = 1;
-    }
-    return itemName;
-  });
-  return names;
+// function renameFiles(names) {
+//   oCounter = {};
+//   names = names.map(function(item) {
+//     let itemName = item;
+//     if (item in oCounter) {
+//       itemName = item+"("+oCounter[item]+")";
+//       oCounter[item] += 1;
+//       if (!(itemName in oCounter)) {
+//         oCounter[itemName] = 1;
+//       }
+//     } else {
+//       oCounter[item] = 1;
+//     }
+//     return itemName;
+//   });
+//   return names;
+// }
+//
+//---Test---
+// let arrayTest = [
+//   ["file", "file", "image", "file(1)", "file"], //["file", "file(1)", "image", "file(1)(1)", "file(2)"]
+//   ['doc', 'doc', 'image', 'doc(1)', 'doc'], //), ['doc', 'doc(1)', 'image', 'doc(1)(1)', 'doc(2)']);
+//   ['a', 'b', 'cd', 'b ', 'a(3)'], //), ['a', 'b', 'cd', 'b ', 'a(3)']);
+//   [] //), []);
+// ]
+//---View solution---
+// for (let i=0;i<arrayTest.length;i++) {
+//   document.write(renameFiles(arrayTest[i]));
+//   document.write(' | ');
+// }
+//=== End ( 07-file-names ) ===
+
+
+//---------------------------------------------------------------------------------------------------
+// 08-remove-from-list
+//---------------------------------------------------------------------------------------------------
+//---Task---
+//Given a singly linked list of integers l and an integer k,
+//remove all elements from list l that have a value equal to k.
+//@param {List} l
+//@param {Number} k
+//@return {List}
+//@example
+//For l = [3, 1, 2, 3, 4, 5] and l = 3,
+//the output should be [1, 2, 4, 5]
+//Singly - linked lists are already defined with this interface
+//function ListNode(x) {
+//  this.value = x;
+//  this.next = null;
+//}
+// ---
+//---Solution---
+function removeKFromList(l, k) {
+  result = l.filter(item => item !== k);
+  return result;
 }
 //
 //---Test---
 let arrayTest = [
-  ["file", "file", "image", "file(1)", "file"], //["file", "file(1)", "image", "file(1)(1)", "file(2)"]
-  ['doc', 'doc', 'image', 'doc(1)', 'doc'], //), ['doc', 'doc(1)', 'image', 'doc(1)(1)', 'doc(2)']);
-  ['a', 'b', 'cd', 'b ', 'a(3)'], //), ['a', 'b', 'cd', 'b ', 'a(3)']);
-  [] //), []);
+  [[3, 1, 2, 3, 4, 5], 3] //[1, 2, 4, 5]);
 ]
 //---View solution---
 for (let i=0;i<arrayTest.length;i++) {
-  document.write(renameFiles(arrayTest[i]));
+  document.write(removeKFromList(arrayTest[i][0],arrayTest[i][1]));
   document.write(' | ');
 }
-//=== End ( 07-file-names ) ===
+//=== End ( 08-remove-from-list ) ===
 
