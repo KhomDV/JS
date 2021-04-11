@@ -539,32 +539,75 @@
 // }
 // ---
 //---Solution---
-function getDNSStats(domains) {
-  DNSStats = {};
-  for (let i=0; i < domains.length; i++) {
-    let strDomains = "";
-    domains[i].split('.').reverse().reduce((DNSStats, item) => {
-      strDomains = strDomains +"."+ item;
-      DNSStats[strDomains] = (DNSStats[strDomains] || 0) + 1;
-      return DNSStats;
-    }, DNSStats);
-  }
-  return DNSStats;
-}
+// function getDNSStats(domains) {
+//   DNSStats = {};
+//   for (let i=0; i < domains.length; i++) {
+//     let strDomains = "";
+//     domains[i].split('.').reverse().reduce((DNSStats, item) => {
+//       strDomains = strDomains +"."+ item;
+//       DNSStats[strDomains] = (DNSStats[strDomains] || 0) + 1;
+//       return DNSStats;
+//     }, DNSStats);
+//   }
+//   return DNSStats;
+// }
 //
 //---Test---
-let arrayTest = [
-  ['epam.com'], //{ '.com': 1, '.com.epam': 1 });
-  ['epam.com', 'info.epam.com'], //{ '.com': 2, '.com.epam': 2, '.com.epam.info': 1 });
-  ['code.yandex.ru', 'music.yandex.ru', 'yandex.ru'], //'.ru': 3, '.ru.yandex': 3, '.ru.yandex.code': 1, '.ru.yandex.music': 1,
-  [] // {});
-]
+// let arrayTest = [
+//   ['epam.com'], //{ '.com': 1, '.com.epam': 1 });
+//   ['epam.com', 'info.epam.com'], //{ '.com': 2, '.com.epam': 2, '.com.epam.info': 1 });
+//   ['code.yandex.ru', 'music.yandex.ru', 'yandex.ru'], //'.ru': 3, '.ru.yandex': 3, '.ru.yandex.code': 1, '.ru.yandex.music': 1,
+//   [] // {});
+// ]
 //---View solution---
-for (let i=0;i<arrayTest.length;i++) {
-  document.write(getDNSStats(arrayTest[i]));
-  document.write(' | ');
-}
+// for (let i=0;i<arrayTest.length;i++) {
+//   document.write(getDNSStats(arrayTest[i]));
+//   document.write(' | ');
+// }
 //=== End ( 12-dns-stats ) ===
 
 
+//---------------------------------------------------------------------------------------------------
+// 13-stack
+//---------------------------------------------------------------------------------------------------
+//---Task---
+// Implement the Stack with a given interface via array.
+// @example
+// const stack = new Stack();
+// stack.push(1); // adds the element to the stack
+// stack.peek(); // returns the peek, but doesn't delete it, returns 1
+// stack.pop(); // returns the top element from stack and deletes it, returns 1
+// stack.pop(); // undefined
+// ---
+//---Solution---
+class Stack {
+  push(element) {
+    throw new Error('Not implemented');
+  }
+
+  pop() {
+    throw new Error('Not implemented');
+  }
+
+  peek() {
+    throw new Error('Not implemented');
+  }
+}
+//
+//---Test---
+// let arrayTest = [
+// ]
+//---View solution---
+const stack = new Stack();
+stack.push(5);
+stack.push(6);
+stack.push(7);
+stack.peek(); //, 7);
+stack.pop(); //, 7);
+stack.peek(); //, 6);
+// for (let i=0;i<arrayTest.length;i++) {
+//   document.write(getDNSStats(arrayTest[i]));
+//   document.write(' | ');
+// }
+//=== End ( 13-stack ) ===
 
