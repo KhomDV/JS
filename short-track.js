@@ -489,16 +489,25 @@
 // ---
 //---Solution---
 function encodeLine(str) {
-  throw new Error('Not implemented');
+  //Object.fromEntries(Object.entries(obj).sort())
+  oStr = str.split('').reduce((sum, item) => {
+    sum[item] = (sum[item] || 0) + 1;
+    return sum;
+  }, {});
+  str = "";
+  for (key in oStr) {
+    str = str + ((oStr[key] > 1) ? oStr[key] : "") + key;
+  }
+  return str;
 }
 //
 //---Test---
 let arrayTest = [
-  ['aaaatttt'], //'4a4t');
-  ['aabbccc'], //'2a2b3c');
-  ['abbcca'], //'a2b2ca');
-  ['xyz'], //'xyz');
-  [''] // '');
+  'aaaatttt', //'4a4t');
+  'aabbccc', //'2a2b3c');
+  'abbcca', //'a2b2ca');
+  'xyz', //'xyz');
+  '' // '');
 ]
 //---View solution---
 for (let i=0;i<arrayTest.length;i++) {
