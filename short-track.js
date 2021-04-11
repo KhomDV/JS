@@ -457,23 +457,54 @@
 //For ([1, 2, 3], 2) should return 1
 // ---
 //---Solution---
-function findIndex(array, value) {
-  return array.findIndex((item)=>item===value);
+// function findIndex(array, value) {
+//   return array.findIndex((item)=>item===value);
+// }
+//
+//---Test---
+// let arrayTest = [
+//   [[1, 2, 3, 4, 5], 5], //4);
+//   [[1, 2, 3, 4, 5], 3], //2);
+//   [[1, 2, 3, 4, 5], 1], //0);
+//   [[5, 6, 7], 7], //2);
+//   [[5, 6, 7], 5]  //0);
+// ]
+//---View solution---
+// for (let i=0;i<arrayTest.length;i++) {
+//   document.write(findIndex(arrayTest[i][0],arrayTest[i][1]));
+//   document.write(' | ');
+// }
+//=== End ( 10-find-index ) ===
+
+
+//---------------------------------------------------------------------------------------------------
+// 11-encode-line
+//---------------------------------------------------------------------------------------------------
+//---Task---
+//Given a string, return its encoding version.
+//@param {String} str
+//@return {String}
+//@example
+//For aabbbc should return 2a3bc
+// ---
+//---Solution---
+function encodeLine(str) {
+  throw new Error('Not implemented');
 }
 //
 //---Test---
 let arrayTest = [
-  [[1, 2, 3, 4, 5], 5], //4);
-  [[1, 2, 3, 4, 5], 3], //2);
-  [[1, 2, 3, 4, 5], 1], //0);
-  [[5, 6, 7], 7], //2);
-  [[5, 6, 7], 5]  //0);
+  ['aaaatttt'], //'4a4t');
+  ['aabbccc'], //'2a2b3c');
+  ['abbcca'], //'a2b2ca');
+  ['xyz'], //'xyz');
+  [''] // '');
 ]
 //---View solution---
 for (let i=0;i<arrayTest.length;i++) {
-  document.write(findIndex(arrayTest[i][0],arrayTest[i][1]));
+  document.write(encodeLine(arrayTest[i]));
   document.write(' | ');
 }
-//=== End ( 10-find-index ) ===
+//=== End ( 11-encode-line ) ===
 
 
