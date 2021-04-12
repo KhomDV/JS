@@ -580,41 +580,91 @@
 // stack.pop(); // undefined
 // ---
 //---Solution---
-class Stack {
-  constructor() {
-    this.arr = [];
-  }
-  push(element) {
-    this.arr.push(element);
-  }
-
-  pop() {
-    const element = this.arr[this.arr.length-1];
-    this.arr.pop();
-    return element;
-  }
-
-  peek() {
-    return this.arr[this.arr.length-1];
-  }
-}
+// class Stack {
+//   constructor() {
+//     this.arr = [];
+//   }
+//   push(element) {
+//     this.arr.push(element);
+//   }
+//
+//   pop() {
+//     const element = this.arr[this.arr.length-1];
+//     this.arr.pop();
+//     return element;
+//   }
+//
+//   peek() {
+//     return this.arr[this.arr.length-1];
+//   }
+// }
 //
 //---Test---
 // let arrayTest = [
 // ]
 //---View solution---
-const stack = new Stack();
-stack.push(5);
-stack.push(6);
-stack.push(7);
-  document.write(stack.peek()); //, 7);
-  document.write(' | ');
-  document.write(stack.pop()); //, 7);
-  document.write(' | ');
-  document.write(stack.peek()); //, 6);
+// const stack = new Stack();
+// stack.push(5);
+// stack.push(6);
+// stack.push(7);
+//   document.write(stack.peek()); //, 7);
+//   document.write(' | ');
+//   document.write(stack.pop()); //, 7);
+//   document.write(' | ');
+//   document.write(stack.peek()); //, 6);
 // for (let i=0;i<arrayTest.length;i++) {
 //   document.write(getDNSStats(arrayTest[i]));
 //   document.write(' | ');
 // }
 //=== End ( 13-stack ) ===
+
+
+//---------------------------------------------------------------------------------------------------
+// 14-queue
+//---------------------------------------------------------------------------------------------------
+//---Task---
+// const ListNode = require('../extensions/list-node');
+// Implement the Queue with a given interface via linked list (use ListNode extension above).
+// @example
+// const queue = new Queue();
+// queue.enqueue(1); // adds the element to the queue
+// queue.enqueue(3); // adds the element to the queue
+// queue.dequeue(); // returns the top element from queue and deletes it, returns 1
+//---
+//---Solution---
+//
+// class Queue {
+//   get size() {
+//     throw new Error('Not implemented');
+//   }
+//
+//   enqueue(/* element */) {
+//     throw new Error('Not implemented');
+//   }
+//
+//   dequeue() {
+//     throw new Error('Not implemented');
+//   }
+// }
+//
+//---Test---
+// let arrayTest = [
+// ]
+//---View solution---
+//const ListNode = require('../extensions/list-node');
+//document.write(ListNode); //, 7);
+// const stack = new Stack();
+// stack.push(5);
+// stack.push(6);
+// stack.push(7);
+//   document.write(stack.peek()); //, 7);
+//   document.write(' | ');
+//   document.write(stack.pop()); //, 7);
+//   document.write(' | ');
+//   document.write(stack.peek()); //, 6);
+// for (let i=0;i<arrayTest.length;i++) {
+//   document.write(getDNSStats(arrayTest[i]));
+//   document.write(' | ');
+// }
+//=== End ( 14-queue ) ===
 
