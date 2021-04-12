@@ -668,3 +668,35 @@
 // }
 //=== End ( 14-queue ) ===
 
+
+//---------------------------------------------------------------------------------------------------
+// 15-get-email-domain
+//---------------------------------------------------------------------------------------------------
+//---Task---
+// * Given an email address, return it's domain.
+// * @param {String} email
+// * @return {String}
+// * @example
+// * For the input 'prettyandsimple@example.com', the output should be 'example.com'
+//---
+//---Solution---
+function getEmailDomain(email) {
+  return email.substring(email.length - email.split('').reverse().findIndex((item)=>item==="@"));
+}
+//
+//---Test---
+let arrayTest = [
+  'prettyandsimple@example.com', //'example.com');
+  'someaddress@yandex.ru', //'yandex.ru');
+  'very.unusual.@.unusual.com@usual.com', //'usual.com');
+  'admin@mailserver2.ru', //'mailserver2.ru');
+  'example-indeed@strange-example.com' //, 'strange-example.com');
+]
+//---View solution---
+for (let i=0;i<arrayTest.length;i++) {
+  document.write(getEmailDomain(arrayTest[i]));
+  document.write(' | ');
+}
+//=== End ( 15-get-email-domain ) ===
+
+
