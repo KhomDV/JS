@@ -581,16 +581,21 @@
 // ---
 //---Solution---
 class Stack {
+  constructor() {
+    this.arr = [];
+  }
   push(element) {
-    throw new Error('Not implemented');
+    this.arr.push(element);
   }
 
   pop() {
-    throw new Error('Not implemented');
+    const element = this.arr[this.arr.length-1];
+    this.arr.pop();
+    return element;
   }
 
   peek() {
-    throw new Error('Not implemented');
+    return this.arr[this.arr.length-1];
   }
 }
 //
@@ -602,9 +607,11 @@ const stack = new Stack();
 stack.push(5);
 stack.push(6);
 stack.push(7);
-stack.peek(); //, 7);
-stack.pop(); //, 7);
-stack.peek(); //, 6);
+  document.write(stack.peek()); //, 7);
+  document.write(' | ');
+  document.write(stack.pop()); //, 7);
+  document.write(' | ');
+  document.write(stack.peek()); //, 6);
 // for (let i=0;i<arrayTest.length;i++) {
 //   document.write(getDNSStats(arrayTest[i]));
 //   document.write(' | ');
