@@ -388,16 +388,66 @@
 //}
 // ---
 //---Solution---
-// function removeKFromList(l, k) {
-//   result = l.filter(item => item !== k);
-//   return result;
-// }
+function removeKFromList(l, k) {
+    //while (true) {
+        if (l.next !== null) {
+            acc = removeKFromList(l.next, k);
+            if ( l.value !== k ) {
+                const node = new ListNode(l.value);
+                node.next = acc;
+                return node;
+            }
+            //break;
+        } else {
+            if ( l.value !== k ) {
+                return new ListNode(l.value);
+            }
+            //break;
+        }
+    //}
+
+    return acc;
+}
 //
 //---Test---
 // let arrayTest = [
 //   [[3, 1, 2, 3, 4, 5], 3] //[1, 2, 4, 5]);
 // ]
 //---View solution---
+
+
+
+function ListNode(x) {
+    this.value = x;
+    this.next = null;
+  }
+  
+function convertArrayToList(arr) {
+  return arr.reverse().reduce((acc, cur) => {
+    if (acc) {
+      const node = new ListNode(cur);
+      node.next = acc;
+      return node;
+    }
+
+    return new ListNode(cur);
+  }, null);
+}
+
+const initial = convertArrayToList([3, 1, 2, 3, 4, 5]);
+//document.write(removeKFromList(initial, 3));
+
+let ini = removeKFromList(initial, 3);
+
+document.write(ini.value);
+ini = ini.next;
+document.write(ini.value);
+ini = ini.next;
+document.write(ini.value);
+ini = ini.next;
+document.write(ini.value);
+
+
 // for (let i=0;i<arrayTest.length;i++) {
 //   document.write(removeKFromList(arrayTest[i][0],arrayTest[i][1]));
 //   document.write(' | ');
@@ -459,6 +509,17 @@
 //---Solution---
 // function findIndex(array, value) {
 //   return array.findIndex((item)=>item===value);
+
+let ind = false;
+const qw = array.some((item, index) => {
+  ind = index;
+  return item === value;
+});
+
+if (qw) {
+  return ind;
+}
+
 // }
 //
 //---Test---
