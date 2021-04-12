@@ -680,23 +680,23 @@
 // * For the input 'prettyandsimple@example.com', the output should be 'example.com'
 //---
 //---Solution---
-function getEmailDomain(email) {
-  return email.substring(email.length - email.split('').reverse().findIndex((item)=>item==="@"));
-}
+// function getEmailDomain(email) {
+//   return email.substring(email.length - email.split('').reverse().findIndex((item)=>item==="@"));
+// }
 //
 //---Test---
-let arrayTest = [
-  'prettyandsimple@example.com', //'example.com');
-  'someaddress@yandex.ru', //'yandex.ru');
-  'very.unusual.@.unusual.com@usual.com', //'usual.com');
-  'admin@mailserver2.ru', //'mailserver2.ru');
-  'example-indeed@strange-example.com' //, 'strange-example.com');
-]
+// let arrayTest = [
+//   'prettyandsimple@example.com', //'example.com');
+//   'someaddress@yandex.ru', //'yandex.ru');
+//   'very.unusual.@.unusual.com@usual.com', //'usual.com');
+//   'admin@mailserver2.ru', //'mailserver2.ru');
+//   'example-indeed@strange-example.com' //, 'strange-example.com');
+// ]
 //---View solution---
-for (let i=0;i<arrayTest.length;i++) {
-  document.write(getEmailDomain(arrayTest[i]));
-  document.write(' | ');
-}
+// for (let i=0;i<arrayTest.length;i++) {
+//   document.write(getEmailDomain(arrayTest[i]));
+//   document.write(' | ');
+// }
 //=== End ( 15-get-email-domain ) ===
 
 
