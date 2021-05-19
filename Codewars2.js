@@ -216,22 +216,105 @@
 
 
 //---------------------------------------------------------------------------------------------------
-// 
+// Fun with ES6 Classes #4 - Cubes and Setters
 // (7 kyu) https://www.codewars.com/kata/fun-with-es6-classes-number-4-cubes-and-setters
 //---------------------------------------------------------------------------------------------------
 //---Task---
-//### ****
+//### **Fun with ES6 Classes #4 - Cubes and Setters**
+//Overview
+//In Fun with ES6 Classes #3 - Cuboids, Cubes and Getters, we learned that if we knew all the dimensions (i.e. length, width, height) of a cuboid,
+// we could easily work out its corresponding volume and surface area.
+// The way we achieved this in our code was by the use of getters which automatically computed the volume and surface area of the cuboid whenever
+// either one of length, width, height changed. However, in the previouos exercise,
+// one thing we could not do is define setters for surface area or volume of a cuboid because for a given volume/SA, there were an infinite number
+// of possibilities to the dimensions of the cuboid.
+//However, for cubes (a special type of cuboid), since their length, width and height are always the same,
+// it is possible to figure out the side length of a cube given its surface area and/or volume.
+// Therefore, in this Kata, you will be asked to define setters as well as getters for both the surface area and volume of a cube.
+//Task
+//Define a class Cube whose constructor function takes exactly one parameter length and stores the value of the argument into this.length.
+// You will then define both a getter and a setter for the surfaceArea and volume of the cube.
+//No initial code will be given. You are free to use whatever syntax you like to complete this Kata but it is highly recommended that you use ES6 syntax
+// and features to complete this Kata.
+//Articles of Interest
+//Below are some articles of interest that may help you complete this Kata:
+//Setters - Mozilla Developer
+//What are getters and setters? - Stack Overflow
+//ES6 Classes Intro (includes section on getters and setters)
 //
 //### ****
-//---
+//Обзор
+//На занятиях №3 «Развлечения с ES6» - кубоидами, кубами и геттерами мы узнали, что если бы мы знали все размеры (т.е. length, width, height) кубоида,
+// мы могли бы легко вычислить соответствующий ему объем и площадь поверхности.
+// Мы достигли этого в нашем коде с помощью геттеров, которые автоматически вычисляли объем и площадь поверхности кубоида при изменении
+// любого из них length, width, height. Однако в предыдущем упражнении одна вещь, которую мы не могли сделать, - это определить сеттеры для площади поверхности или объема кубоида,
+// потому что для данного объема / SA существовало бесконечное количество возможностей для размеров кубоида.
+//Однако для кубов (особый тип кубоида), поскольку их length, widthи heightвсегда одинаковы,
+// можно вычислить длину стороны куба с учетом его площади поверхности и / или объема.
+// Поэтому в этом Ката вам будет предложено определить сеттеры, а также геттеры как для площади поверхности, так и для объема куба.
+//Задача
+//Определите, class Cubeчья функция-конструктор принимает ровно один параметр lengthи сохраняет значение аргумента this.length.
+// Затем определит как геттер и сеттер для surfaceAreaи volumeкубы.
+//Первоначальный код не будет предоставлен. Вы можете использовать любой синтаксис для выполнения этого Ката,
+// но настоятельно рекомендуется использовать синтаксис и функции ES6 для выполнения этого Ката .
+//Интересные статьи
+//Ниже приведены некоторые интересные статьи, которые могут помочь вам выполнить это Ката:
+//-Сеттеры - разработчик Mozilla
+//-Что такое геттеры и сеттеры? - Переполнение стека
+//-Введение в классы ES6 (включает раздел о геттерах и сеттерах)
+//----------
 //
 //---Solution---
-//
+class Cube {
+  constructor(length) {
+    this.length = length;
+  }
+  get length() {
+    return this._length;
+  }
+  set length(length) {
+    this._length = length;
+    this._surfaceArea = (this._length * 3) * (this._length * 2);
+    this._volume = Math.pow(this._length, 3);
+  }
+  get surfaceArea() {
+    return this._surfaceArea;
+  }
+  set surfaceArea(surfaceArea) {
+    this._surfaceArea = surfaceArea;
+    this.length = this.surfaceArea / 3;
+  }
+  get volume() {
+    return this._volume;
+  }
+  set volume(volume) {
+    this._volume = volume;
+  }
+}
 //---Test---
 //let arrayTest = []
 //
 //---View solution---
-// document.write(highAndLow("4 5 29 54 4 0 -214 542 -64 1 -3 6 -6")) //"542 -214"
+var cube = new Cube(1);
+console.log( cube.length ); // , 1);
+console.log( cube.surfaceArea ); //, 6);
+console.log( cube.volume ); //, 1);
+cube.length = 2;
+console.log( cube.surfaceArea ); //, 24);
+console.log( cube.volume ); //, 8);
+cube.surfaceArea = 54;
+console.log( cube.length ); //, 3);
+console.log( cube.volume ); //, 27);
+cube.surfaceArea = 96;
+console.log( cube.length ); //, 4);
+console.log( cube.volume ); //, 64);
+cube.volume = 125;
+console.log( Math.roundTo(cube.length, 5) ); //, 5);
+console.log( Math.roundTo(cube.surfaceArea, 5) ); //, 150);
+cube.volume = 1000;
+console.log( Math.roundTo(cube.length, 5) ); //, 10);
+console.log( Math.roundTo(cube.surfaceArea, 5) ); //, 600);
+// document.write() //
 // 
 //=== End ( Highest and Lowest ) ===
 
