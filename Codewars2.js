@@ -265,67 +265,67 @@
 //----------
 //
 //---Solution---
-class Cube {
-  constructor(length) {
-    this.length = length;
-  }
-  get length() {
-    return this._length;
-  }
-  set length(length) {
-    this._length = length;
-    this._surfaceArea = Math.pow(this._length, 2) * 2 * 3;
-    this._volume = Math.pow(this._length, 3);
-  }
-  get surfaceArea() {
-    return this._surfaceArea;
-  }
-  set surfaceArea(surfaceArea) {
-    this._surfaceArea = surfaceArea;
-    this.length = Math.sqrt( ((this._surfaceArea / 3) / 2) );
-  }
-  get volume() {
-    return this._volume;
-  }
-  set volume(volume) {
-    this._volume = volume;
-    this.length = Math.cbrt(this._volume);
-  }
-}
+// class Cube {
+//   constructor(length) {
+//     this.length = length;
+//   }
+//   get length() {
+//     return this._length;
+//   }
+//   set length(length) {
+//     this._length = length;
+//     this._surfaceArea = Math.pow(this._length, 2) * 2 * 3;
+//     this._volume = Math.pow(this._length, 3);
+//   }
+//   get surfaceArea() {
+//     return this._surfaceArea;
+//   }
+//   set surfaceArea(surfaceArea) {
+//     this._surfaceArea = surfaceArea;
+//     this.length = Math.sqrt( ((this._surfaceArea / 3) / 2) );
+//   }
+//   get volume() {
+//     return this._volume;
+//   }
+//   set volume(volume) {
+//     this._volume = volume;
+//     this.length = Math.cbrt(this._volume);
+//   }
+// }
 //---Test---
 //let arrayTest = []
 //
 //---View solution---
-var cube = new Cube(1);
-console.log( cube.length ); // , 1);
-console.log( cube.surfaceArea ); //, 6);
-console.log( cube.volume ); //, 1);
-cube.length = 2;
-console.log( cube.surfaceArea ); //, 24);
-console.log( cube.volume ); //, 8);
-cube.surfaceArea = 54;
-console.log( cube.length ); //, 3);
-console.log( cube.volume ); //, 27);
-cube.surfaceArea = 96;
-console.log( cube.length ); //, 4);
-console.log( cube.volume ); //, 64);
-cube.volume = 125;
-console.log( Math.roundTo(cube.length, 5) ); //, 5);
-console.log( Math.roundTo(cube.surfaceArea, 5) ); //, 150);
-cube.volume = 1000;
-console.log( Math.roundTo(cube.length, 5) ); //, 10);
-console.log( Math.roundTo(cube.surfaceArea, 5) ); //, 600);
+// var cube = new Cube(1);
+// console.log( cube.length ); // , 1);
+// console.log( cube.surfaceArea ); //, 6);
+// console.log( cube.volume ); //, 1);
+// cube.length = 2;
+// console.log( cube.surfaceArea ); //, 24);
+// console.log( cube.volume ); //, 8);
+// cube.surfaceArea = 54;
+// console.log( cube.length ); //, 3);
+// console.log( cube.volume ); //, 27);
+// cube.surfaceArea = 96;
+// console.log( cube.length ); //, 4);
+// console.log( cube.volume ); //, 64);
+// cube.volume = 125;
+// console.log( Math.roundTo(cube.length, 5) ); //, 5);
+// console.log( Math.roundTo(cube.surfaceArea, 5) ); //, 150);
+// cube.volume = 1000;
+// console.log( Math.roundTo(cube.length, 5) ); //, 10);
+// console.log( Math.roundTo(cube.surfaceArea, 5) ); //, 600);
 // document.write() //
 // 
-//=== End ( Highest and Lowest ) ===
+//=== End ( Fun with ES6 Classes #4 - Cubes and Setters ) ===
 
 
 //---------------------------------------------------------------------------------------------------
-// 
+// Fun with ES6 Classes #6 - Fake Files (Basic)
 // (6 kyu) https://www.codewars.com/kata/fun-with-es6-classes-number-6-fake-files-basic
 //---------------------------------------------------------------------------------------------------
 //---Task---
-//### ****
+//### **Fun with ES6 Classes #6 - Fake Files (Basic)**
 //
 //### ****
 //----------
