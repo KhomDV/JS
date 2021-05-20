@@ -274,7 +274,7 @@ class Cube {
   }
   set length(length) {
     this._length = length;
-    this._surfaceArea = (this._length * 3) * (this._length * 2);
+    this._surfaceArea = Math.pow(this._length, 2) * 2 * 3;
     this._volume = Math.pow(this._length, 3);
   }
   get surfaceArea() {
@@ -282,13 +282,14 @@ class Cube {
   }
   set surfaceArea(surfaceArea) {
     this._surfaceArea = surfaceArea;
-    this.length = this.surfaceArea / 3;
+    this.length = Math.sqrt( ((this._surfaceArea / 3) / 2) );
   }
   get volume() {
     return this._volume;
   }
   set volume(volume) {
     this._volume = volume;
+    this.length = Math.cbrt(this._volume);
   }
 }
 //---Test---
