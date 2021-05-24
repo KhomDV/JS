@@ -507,139 +507,139 @@
 //----------
 //
 //---Solution---
-class File {
-  constructor(fullName, contents) {
-    this._fullName = fullName;
-    this.contents = contents;
-    this._filename = this._fullName.split('.').reverse().slice(1).reverse().join('.'); //edit
-    this._extension = this._fullName.split('.').pop();
-    this.row = 0;
-    this.col = 0;
-  }
-
-  get fullName() {
-    return this._fullName;
-  }
-  get filename() {
-    return this._filename;
-  }
-  get extension() {
-    return this._extension;
-  }
-  getContents() {
-    return this.contents;
-  }
-  write(str) {
-    if ( this.contents !== "" ) {
-      this.contents = this.contents + "\n";
-    }
-    this.contents = this.contents + str;
-  }
-  gets() {
-    return this.contents.split('\n')[this.row++];
-  }
-  getc() {
-    return this.contents[this.col++];
-  }
-}
+// class File {
+//   constructor(fullName, contents) {
+//     this._fullName = fullName;
+//     this.contents = contents;
+//     this._filename = this._fullName.split('.').reverse().slice(1).reverse().join('.'); //edit
+//     this._extension = this._fullName.split('.').pop();
+//     this.row = 0;
+//     this.col = 0;
+//   }
+//
+//   get fullName() {
+//     return this._fullName;
+//   }
+//   get filename() {
+//     return this._filename;
+//   }
+//   get extension() {
+//     return this._extension;
+//   }
+//   getContents() {
+//     return this.contents;
+//   }
+//   write(str) {
+//     if ( this.contents !== "" ) {
+//       this.contents = this.contents + "\n";
+//     }
+//     this.contents = this.contents + str;
+//   }
+//   gets() {
+//     return this.contents.split('\n')[this.row++];
+//   }
+//   getc() {
+//     return this.contents[this.col++];
+//   }
+// }
 //---Test---
 // let arrayTest = []
 //---View solution---
-var myFile = new File("hello.txt", "Hello World");
-console.log(myFile.fullName); // hello.txt
-myFile.fullName = "goodbye.txt"; // Reassignment should fail
-console.log(myFile.fullName); // still "hello.txt"
-console.log(myFile.filename); // still "hello.txt"
-
-var file1 = new File("hello_world.txt", "Hello World");
-console.log(file1.filename); // "hello_world"
-file1.filename = "goodbye_world"; // Reassignment should fail
-console.log(file1.filename); // still "hello_world"
-
-var file2 = new File("class.phptester.php", "<?php /* Some PHP code here */ ?>");
-console.log(file2.filename); // "class.phptester" 
-
-var fileWithComplexName = new File("alpha.beta.gamma.delta.txt", "alpha beta gamma delta");
-console.log(fileWithComplexName.extension); // "txt"
-fileWithComplexName.extension = "js"; // Reassignment should fail
-console.log(fileWithComplexName.extension); // still "txt"
-
-var myFile = new File("hello.txt", "Hello World\nHello World");
-console.log(myFile.getContents()); // "Hello World\nHello World"
-
-var myFile = new File("example.txt", "");
-console.log(myFile.getContents()); // ""
-myFile.write("Line 1");
-console.log(myFile.getContents()); // "Line 1"
-myFile.write("Line 2");
-console.log(myFile.getContents()); // "Line 1\nLine 2"
-myFile.write("Line 3");
-console.log(myFile.getContents()); // "Line 1\nLine 2\nLine 3"
-
-var myFile = new File("example.txt", "Line 1\nLine 2\nLine 3\nLine 4\nLine 5");
-console.log(myFile.gets()); // "Line 1"
-console.log(myFile.gets()); // "Line 2"
-console.log(myFile.gets()); // "Line 3"
-console.log(myFile.gets()); // "Line 4"
-console.log(myFile.gets()); // "Line 5"
-console.log(myFile.gets()); // undefined
-console.log(myFile.gets()); // undefined
-console.log(myFile.gets()); // undefined
-
-var myFile = new File("Lorem Ipsum.txt", "Lorem ipsum dolor sit amet, adispicing eu.");
-console.log(myFile.getc()); // "L"
-console.log(myFile.getc()); // "o"
-console.log(myFile.getc()); // "r"
-console.log(myFile.getc()); // "e"
-console.log(myFile.getc()); // "m"
-console.log(myFile.getc()); // " "
-console.log(myFile.getc()); // "i"
-console.log(myFile.getc()); // "p"
-console.log(myFile.getc());
-console.log(myFile.getc());
-console.log(myFile.getc());
-console.log(myFile.getc());
-console.log(myFile.getc());
-console.log(myFile.getc());
-console.log(myFile.getc());
-console.log(myFile.getc());
-console.log(myFile.getc());
-console.log(myFile.getc());
-console.log(myFile.getc());
-console.log(myFile.getc());
-console.log(myFile.getc());
-console.log(myFile.getc());
-console.log(myFile.getc());
-console.log(myFile.getc());
-console.log(myFile.getc());
-console.log(myFile.getc());
-console.log(myFile.getc());
-console.log(myFile.getc());
-console.log(myFile.getc());
-console.log(myFile.getc());
-console.log(myFile.getc());
-console.log(myFile.getc());
-console.log(myFile.getc());
-console.log(myFile.getc());
-console.log(myFile.getc());
-console.log(myFile.getc());
-console.log(myFile.getc());
-console.log(myFile.getc());
-console.log(myFile.getc());
-console.log(myFile.getc());
-console.log(myFile.getc());
-console.log(myFile.getc());
-console.log(myFile.getc());
-console.log(myFile.getc());
-console.log(myFile.getc());
-console.log(myFile.getc());
-console.log(myFile.getc());
-console.log(myFile.getc());
-console.log(myFile.getc());
-console.log(myFile.getc());
-console.log(myFile.getc());
-console.log(myFile.getc());
-console.log(myFile.getc());
+// var myFile = new File("hello.txt", "Hello World");
+// console.log(myFile.fullName); // hello.txt
+// myFile.fullName = "goodbye.txt"; // Reassignment should fail
+// console.log(myFile.fullName); // still "hello.txt"
+// console.log(myFile.filename); // still "hello.txt"
+//
+// var file1 = new File("hello_world.txt", "Hello World");
+// console.log(file1.filename); // "hello_world"
+// file1.filename = "goodbye_world"; // Reassignment should fail
+// console.log(file1.filename); // still "hello_world"
+//
+// var file2 = new File("class.phptester.php", "<?php /* Some PHP code here */ ?>");
+// console.log(file2.filename); // "class.phptester" 
+//
+// var fileWithComplexName = new File("alpha.beta.gamma.delta.txt", "alpha beta gamma delta");
+// console.log(fileWithComplexName.extension); // "txt"
+// fileWithComplexName.extension = "js"; // Reassignment should fail
+// console.log(fileWithComplexName.extension); // still "txt"
+//
+// var myFile = new File("hello.txt", "Hello World\nHello World");
+// console.log(myFile.getContents()); // "Hello World\nHello World"
+//
+// var myFile = new File("example.txt", "");
+// console.log(myFile.getContents()); // ""
+// myFile.write("Line 1");
+// console.log(myFile.getContents()); // "Line 1"
+// myFile.write("Line 2");
+// console.log(myFile.getContents()); // "Line 1\nLine 2"
+// myFile.write("Line 3");
+// console.log(myFile.getContents()); // "Line 1\nLine 2\nLine 3"
+//
+// var myFile = new File("example.txt", "Line 1\nLine 2\nLine 3\nLine 4\nLine 5");
+// console.log(myFile.gets()); // "Line 1"
+// console.log(myFile.gets()); // "Line 2"
+// console.log(myFile.gets()); // "Line 3"
+// console.log(myFile.gets()); // "Line 4"
+// console.log(myFile.gets()); // "Line 5"
+// console.log(myFile.gets()); // undefined
+// console.log(myFile.gets()); // undefined
+// console.log(myFile.gets()); // undefined
+//
+// var myFile = new File("Lorem Ipsum.txt", "Lorem ipsum dolor sit amet, adispicing eu.");
+// console.log(myFile.getc()); // "L"
+// console.log(myFile.getc()); // "o"
+// console.log(myFile.getc()); // "r"
+// console.log(myFile.getc()); // "e"
+// console.log(myFile.getc()); // "m"
+// console.log(myFile.getc()); // " "
+// console.log(myFile.getc()); // "i"
+// console.log(myFile.getc()); // "p"
+// console.log(myFile.getc());
+// console.log(myFile.getc());
+// console.log(myFile.getc());
+// console.log(myFile.getc());
+// console.log(myFile.getc());
+// console.log(myFile.getc());
+// console.log(myFile.getc());
+// console.log(myFile.getc());
+// console.log(myFile.getc());
+// console.log(myFile.getc());
+// console.log(myFile.getc());
+// console.log(myFile.getc());
+// console.log(myFile.getc());
+// console.log(myFile.getc());
+// console.log(myFile.getc());
+// console.log(myFile.getc());
+// console.log(myFile.getc());
+// console.log(myFile.getc());
+// console.log(myFile.getc());
+// console.log(myFile.getc());
+// console.log(myFile.getc());
+// console.log(myFile.getc());
+// console.log(myFile.getc());
+// console.log(myFile.getc());
+// console.log(myFile.getc());
+// console.log(myFile.getc());
+// console.log(myFile.getc());
+// console.log(myFile.getc());
+// console.log(myFile.getc());
+// console.log(myFile.getc());
+// console.log(myFile.getc());
+// console.log(myFile.getc());
+// console.log(myFile.getc());
+// console.log(myFile.getc());
+// console.log(myFile.getc());
+// console.log(myFile.getc());
+// console.log(myFile.getc());
+// console.log(myFile.getc());
+// console.log(myFile.getc());
+// console.log(myFile.getc());
+// console.log(myFile.getc());
+// console.log(myFile.getc());
+// console.log(myFile.getc());
+// console.log(myFile.getc());
+// console.log(myFile.getc());
 //// ... (many calls to myFile.getc())
 //console.log(myFile.getc()); // undefined 
 //
@@ -648,29 +648,66 @@ console.log(myFile.getc());
 //     document.write(' | ');
 // }
 // 
-//=== End (  ) ===
+//=== End ( Fun with ES6 Classes #6 - Fake Files (Basic) ) ===
 
 //---------------------------------------------------------------------------------------------------
-// 
+// Using closures to share class state
 // (5 kyu) https://www.codewars.com/kata/using-closures-to-share-class-state
 //---------------------------------------------------------------------------------------------------
 //---Task---
-//### ****
+//### **Using closures to share class state**
+//In object-oriented programming, it is sometimes useful to have private shared state among all instances of a class; in other languages, like ruby,
+// this shared state would be tracked with a class variable. In javascript we achieve this through closures and immediately-invoked function expressions.
+//In this kata, I want you to write make a Cat constructor that takes arguments name and weight to instantiate a new cat object.
+// The constructor should also have an averageWeight method that returns the average weight of cats created with the constructor.
+//garfield = new Cat('garfield', 25);
+//Cat.averageWeight(); // 25
+//felix = new Cat('felix', 15);
+//Cat.averageWeight();   // now 20
+//But that's not all. Cats can change weight. Use Object.defineProperty to write custom setters and getters for the weight property so that the following works properly
+// even as instances change their weight value:
+//felix.weight = 25;
+//felix.weight // 25
+//Cat.averageWeight(); // now 25
+//Object.defineProperty must be used to pass all tests. Storing a reference to all instances and recalculating the average weight each time is easier,
+// but would prevent garbage collection from working properly if used in a production environment.
+//Finally, since average weight is an aggregate statistic it's important that we validate constructor arguments so that no cats are created without a specified weight;
+// so, make sure to throw an error if both arguments are not recieved by the constructor.
+//Summary of requirements:
+//-Cat constructor, requiring arguments for name and weight
+//-Throw an error if name or weight not specified when invoking the constructor.
+//-Cat.averageWeight() method should give the average weight of all cat instances created with Cat, even after if the instance's properties have changed.
+//-Must use Object.defineProperty
 //
-//### ****
+//### **Использование замыканий для разделения состояния класса**
+//В объектно-ориентированном программировании иногда полезно иметь частное общее состояние для всех экземпляров класса; на других языках, таких как ruby,
+// это общее состояние будет отслеживаться с помощью переменной класса. В javascript мы достигаем этого с помощью замыканий и немедленно вызываемых функциональных выражений.
+//В этом ката я хочу, чтобы вы написали Catконструктор, который принимает аргументы nameи weightсоздает экземпляр нового объекта cat.
+// Конструктор также должен иметь averageWeightметод, который возвращает средний вес кошек, созданных с помощью конструктора.
+//garfield = new Cat('garfield', 25);
+//Cat.averageWeight(); // 25
+//felix = new Cat('felix', 15);
+//Cat.averageWeight();   // now 20
+//Но это не все. Кошки могут менять вес. Используется Object.definePropertyдля написания пользовательских методов установки и получения для свойства веса,
+// чтобы следующее работало правильно, даже когда экземпляры изменяют свое значение веса:
+//felix.weight = 25;
+//felix.weight // 25
+//Cat.averageWeight(); // now 25
+//Object.definePropertyнеобходимо использовать для прохождения всех тестов. Хранить ссылку на все экземпляры и каждый раз пересчитывать средний вес проще,
+// но это помешает правильной работе сборки мусора при использовании в производственной среде.
+//Наконец, поскольку средний вес является совокупной статистикой, важно, чтобы мы проверяли аргументы конструктора, чтобы кошки не создавались без указанного веса;
+// поэтому не забудьте выдать ошибку, если оба аргумента не получены конструктором.
+//Краткое изложение требований:
+//-Catконструктор, требующий аргументов для nameиweight
+//-Бросьте ошибку , если nameили weightне заданы при вызове конструктора.
+//-Cat.averageWeight()должен давать средний вес всех экземпляров cat, созданных с помощью Cat, даже после того, как свойства экземпляра изменились.
+//-Должен использовать Object.defineProperty
 //----------
 //
 //---Solution---
 //
 //---Test---
-// let arrayTest = [
-//     "Dermatoglyphics", //true );
-//     "isogram", //true );
-//     "aba", //false, "same chars may not be adjacent" );
-//     "moOse", //false, "same chars may not be same case" );
-//     "isIsogram", //false );
-//     "" //, true, "an empty string is a valid isogram" );
-// ]
+// let arrayTest = []
 //
 //---View solution---
 // for (let i=0;i<arrayTest.length;i++) {
@@ -678,7 +715,7 @@ console.log(myFile.getc());
 //     document.write(' | ');
 // }
 // 
-//=== End (  ) ===
+//=== End ( Using closures to share class state ) ===
 
 
 //===================================================================================================
