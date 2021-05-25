@@ -710,60 +710,60 @@
 //// ... your code here.
 //}());
 //---My
-var Cat = (function () {
-  const cats = []
-  const constructor = function (name, weight) {
-    if (!name || !weight) throw Error('Error');
-    Object.defineProperty(this, 'name', {
-      get: () => name
-    });
-    Object.defineProperty(this, 'weight', {
-      get: () => weight,
-      set: value => weight = value
-    })
-    cats.push(this)
-  }
-  constructor.averageWeight = () => cats.reduce((acc, cat) => (acc + cat.weight), 0) / cats.length;
-  return constructor
-}());
-//---Best
-var Cat = (function () {
-  var cats = {
-    count: 0,
-    totalWeight: 0,
-    avgWeight: 0
-  }
-  function Cat (name, weight) {
-    if (!name || !weight) {
-      throw new Error('Both `name` and `weight` should be provided');
-    }
-    cats.count++;
-    this.name = name;
-    Object.defineProperty(this, 'weight', {
-      get: function () {
-        return this._weight || 0;
-      },
-      set: function (val) {
-        cats.totalWeight = cats.totalWeight - this.weight + val;
-        cats.avgWeight =  cats.totalWeight / cats.count;
-        return this._weight = val;
-      }
-    });
-    this.weight = weight;
-  }
-  Cat.averageWeight = function () {
-    return cats.avgWeight;
-  }
-  return Cat;
-}());
+// var Cat = (function () {
+//   const cats = []
+//   const constructor = function (name, weight) {
+//     if (!name || !weight) throw Error('Error');
+//     Object.defineProperty(this, 'name', {
+//       get: () => name
+//     });
+//     Object.defineProperty(this, 'weight', {
+//       get: () => weight,
+//       set: value => weight = value
+//     })
+//     cats.push(this)
+//   }
+//   constructor.averageWeight = () => cats.reduce((acc, cat) => (acc + cat.weight), 0) / cats.length;
+//   return constructor
+// }());
+// //---Best
+// var Cat = (function () {
+//   var cats = {
+//     count: 0,
+//     totalWeight: 0,
+//     avgWeight: 0
+//   }
+//   function Cat (name, weight) {
+//     if (!name || !weight) {
+//       throw new Error('Both `name` and `weight` should be provided');
+//     }
+//     cats.count++;
+//     this.name = name;
+//     Object.defineProperty(this, 'weight', {
+//       get: function () {
+//         return this._weight || 0;
+//       },
+//       set: function (val) {
+//         cats.totalWeight = cats.totalWeight - this.weight + val;
+//         cats.avgWeight =  cats.totalWeight / cats.count;
+//         return this._weight = val;
+//       }
+//     });
+//     this.weight = weight;
+//   }
+//   Cat.averageWeight = function () {
+//     return cats.avgWeight;
+//   }
+//   return Cat;
+// }());
 //---Test---
 // let arrayTest = []
 //
 //---View solution---
-garfield = new Cat('garfield', 25);
-console.log(Cat.averageWeight()); // 25
-felix = new Cat('felix', 15);
-console.log(Cat.averageWeight());   // now 20
+// garfield = new Cat('garfield', 25);
+// console.log(Cat.averageWeight()); // 25
+// felix = new Cat('felix', 15);
+// console.log(Cat.averageWeight());   // now 20
 // for (let i=0;i<arrayTest.length;i++) {
 //     document.write(isIsogram(arrayTest[i]));
 //     document.write(' | ');
@@ -780,57 +780,67 @@ console.log(Cat.averageWeight());   // now 20
 //---------------------------------------------------------------------------------------------------
 
 //---------------------------------------------------------------------------------------------------
-// 
+// Currying functions: multiply all elements in an array
 // (7 kyu) https://www.codewars.com/kata/currying-functions-multiply-all-elements-in-an-array
 //---------------------------------------------------------------------------------------------------
 //---Task---
 //### ****
-//
 //### ****
 //----------
 //
 //---Solution---
-//
+// Была решена раньше
 //---Test---
-// let arrayTest = [
-//     "Dermatoglyphics", //true );
-//     "isogram", //true );
-//     "aba", //false, "same chars may not be adjacent" );
-//     "moOse", //false, "same chars may not be same case" );
-//     "isIsogram", //false );
-//     "" //, true, "an empty string is a valid isogram" );
-// ]
-//
+// let arrayTest = []
 //---View solution---
 // for (let i=0;i<arrayTest.length;i++) {
 //     document.write(isIsogram(arrayTest[i]));
 //     document.write(' | ');
 // }
 // 
-//=== End (  ) ===
+//=== End ( Currying functions: multiply all elements in an array ) ===
 
 
 //---------------------------------------------------------------------------------------------------
-// 
+// The wheat/rice and chessboard problem
 // (7 kyu) https://www.codewars.com/kata/the-wheat-slash-rice-and-chessboard-problem
 //---------------------------------------------------------------------------------------------------
 //---Task---
-//### ****
-//
-//### ****
+//### **The wheat/rice and chessboard problem**
+//I assume most of you are familiar with the ancient legend of the rice (but I see wikipedia suggests wheat, for some reason) problem,
+// but a quick recap for you: a young man asks as a compensation only 1 grain of rice for the first square,
+// 2 grains for the second, 4 for the third, 8 for the fourth and so on, always doubling the previous.
+//Your task is pretty straightforward (but not necessarily easy): given an amount of grains, you need to return up to which square of the chessboard
+// one should count in order to get at least as many.
+//As usual, a few examples might be way better than thousands of words from me:
+//squaresNeeded(0) === 0
+//squaresNeeded(1) === 1
+//squaresNeeded(2) === 2
+//squaresNeeded(3) === 2
+//squaresNeeded(4) === 3
+//Input is always going to be valid/reasonable: ie: a non negative number; extra cookie for not using a loop to compute square-by-square (at least not directly)
+// and instead trying a smarter approach [hint: some peculiar operator]; a trick converting the number might also work: impress me!
+//### **Проблема пшеницы / риса и шахматной доски**
+//Я полагаю, что большинство из вас знакомы с древней легендой о рисе (но я вижу, что википедия по какой-то причине предлагает пшеницу ) проблема,
+// но краткий итог: молодой человек просит в качестве компенсации только 1рисовое зерно за первый квадрат , 2зерна для второго, 4третьего, 8четвертого и так далее,
+// всегда удваивая предыдущее.
+//Ваша задача довольно проста (но не обязательно проста): учитывая количество зерен, вам нужно вернуться к тому, на какое поле шахматной доски нужно посчитать,
+// чтобы получить как минимум столько же.
+//Как обычно, несколько примеров могут быть лучше моих тысяч слов:
+//squaresNeeded(0) === 0
+//squaresNeeded(1) === 1
+//squaresNeeded(2) === 2
+//squaresNeeded(3) === 2
+//squaresNeeded(4) === 3
+//Ввод всегда будет действительным / разумным: то есть: неотрицательное число; дополнительный cookie, чтобы не использовать цикл для вычисления
+// квадрата за квадратом (по крайней мере, не напрямую), а вместо этого попробовать более умный подход [подсказка: какой-то особенный оператор];
+// также может сработать трюк с преобразованием числа: произведите на меня впечатление!
 //----------
 //
 //---Solution---
 //
 //---Test---
-// let arrayTest = [
-//     "Dermatoglyphics", //true );
-//     "isogram", //true );
-//     "aba", //false, "same chars may not be adjacent" );
-//     "moOse", //false, "same chars may not be same case" );
-//     "isIsogram", //false );
-//     "" //, true, "an empty string is a valid isogram" );
-// ]
+// let arrayTest = []
 //
 //---View solution---
 // for (let i=0;i<arrayTest.length;i++) {
@@ -838,7 +848,7 @@ console.log(Cat.averageWeight());   // now 20
 //     document.write(' | ');
 // }
 // 
-//=== End (  ) ===
+//=== End ( The wheat/rice and chessboard problem ) ===
 
 
 //---------------------------------------------------------------------------------------------------
