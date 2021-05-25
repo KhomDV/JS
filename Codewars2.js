@@ -705,11 +705,65 @@
 //----------
 //
 //---Solution---
-//
+//Let's make a Cat constructor!
+//var Cat = (function () {
+//// ... your code here.
+//}());
+//---My
+var Cat = (function () {
+  const cats = []
+  const constructor = function (name, weight) {
+    if (!name || !weight) throw Error('Error');
+    Object.defineProperty(this, 'name', {
+      get: () => name
+    });
+    Object.defineProperty(this, 'weight', {
+      get: () => weight,
+      set: value => weight = value
+    })
+    cats.push(this)
+  }
+  constructor.averageWeight = () => cats.reduce((acc, cat) => (acc + cat.weight), 0) / cats.length;
+  return constructor
+}());
+//---Best
+var Cat = (function () {
+  var cats = {
+    count: 0,
+    totalWeight: 0,
+    avgWeight: 0
+  }
+  function Cat (name, weight) {
+    if (!name || !weight) {
+      throw new Error('Both `name` and `weight` should be provided');
+    }
+    cats.count++;
+    this.name = name;
+    Object.defineProperty(this, 'weight', {
+      get: function () {
+        return this._weight || 0;
+      },
+      set: function (val) {
+        cats.totalWeight = cats.totalWeight - this.weight + val;
+        cats.avgWeight =  cats.totalWeight / cats.count;
+        return this._weight = val;
+      }
+    });
+    this.weight = weight;
+  }
+  Cat.averageWeight = function () {
+    return cats.avgWeight;
+  }
+  return Cat;
+}());
 //---Test---
 // let arrayTest = []
 //
 //---View solution---
+garfield = new Cat('garfield', 25);
+console.log(Cat.averageWeight()); // 25
+felix = new Cat('felix', 15);
+console.log(Cat.averageWeight());   // now 20
 // for (let i=0;i<arrayTest.length;i++) {
 //     document.write(isIsogram(arrayTest[i]));
 //     document.write(' | ');
