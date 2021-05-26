@@ -838,15 +838,15 @@
 //----------
 //
 //---Solution---
-//
+function squaresNeeded(grains){
+  return (grains === 0 ? 0 : Math.trunc(Math.log2(grains))+1 );
+}
 //---Test---
-// let arrayTest = []
-//
-//---View solution---
-// for (let i=0;i<arrayTest.length;i++) {
-//     document.write(isIsogram(arrayTest[i]));
-//     document.write(' | ');
-// }
+console.log(squaresNeeded(0)); // === 0
+console.log(squaresNeeded(1)); // === 1
+console.log(squaresNeeded(2)); // === 2
+console.log(squaresNeeded(3)); // === 2
+console.log(squaresNeeded(4)); // === 3
 // 
 //=== End ( The wheat/rice and chessboard problem ) ===
 
