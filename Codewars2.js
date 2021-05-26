@@ -838,32 +838,75 @@
 //----------
 //
 //---Solution---
-function squaresNeeded(grains){
-  return (grains === 0 ? 0 : Math.trunc(Math.log2(grains))+1 );
-}
+// function squaresNeeded(grains){
+//   return (grains === 0 ? 0 : Math.trunc(Math.log2(grains))+1 );
+// }
 //---Test---
-console.log(squaresNeeded(0)); // === 0
-console.log(squaresNeeded(1)); // === 1
-console.log(squaresNeeded(2)); // === 2
-console.log(squaresNeeded(3)); // === 2
-console.log(squaresNeeded(4)); // === 3
+// console.log(squaresNeeded(0)); // === 0
+// console.log(squaresNeeded(1)); // === 1
+// console.log(squaresNeeded(2)); // === 2
+// console.log(squaresNeeded(3)); // === 2
+// console.log(squaresNeeded(4)); // === 3
 // 
 //=== End ( The wheat/rice and chessboard problem ) ===
 
 
 //---------------------------------------------------------------------------------------------------
-// 
+// Function composition
 // (6 kyu) https://www.codewars.com/kata/function-composition-1
 //---------------------------------------------------------------------------------------------------
 //---Task---
-//### ****
+//### **Function composition**
+//Javascript functions can be combined to form new functions. For example the functions addOne and multTwo can be combined to form a new function which first
+// adds one and then multiplies by two, as follows:
+//const addOne = (a) => a + 1
+//const multTwo = (b) => b * 2
+//const addOneMultTwo = (c) => multTwo(addOne(c))
+//addOneMultTwo(5) // returns 12
+//Combining functions like this is called function composition. Functional programming libraries in Javascript such as Ramda include a generic compose function
+// which does the heavy lifting of combining functions for you. So you could implement addOneMultTwo as follows:
+//const addOneMultTwo = compose(multTwo, addOne)
+//addOneMultTwo(5) // returns 12
+//A simple implementation of compose, could work as follows:
+//const compose = (f, g) => (a) => f(g(a))
+//The arguments f and g are unary functions (i.e. functions which take one argument). The problem with this compose function is that it only composes two functions.
+// Your task is to write a compose function which can compose any number of functions together.
 //
-//### ****
+//### **Состав функций**
+//Функции Javascript можно комбинировать для создания новых функций. Например, функции addOne и multTwo можно объединить, чтобы сформировать новую функцию,
+// которая сначала добавляет единицу, а затем умножает ее на два, как показано ниже:
+//const addOne = (a) => a + 1
+//const multTwo = (b) => b * 2
+//const addOneMultTwo = (c) => multTwo(addOne(c))
+//addOneMultTwo(5) // returns 12
+//Подобное объединение функций называется композицией функций. Библиотеки функционального программирования в Javascript, такие как Ramda,
+// включают общую функцию компоновки, которая выполняет за вас тяжелую работу по объединению функций. Итак, вы можете реализовать addOneMultTwo следующим образом:
+//const addOneMultTwo = compose(multTwo, addOne)
+//addOneMultTwo(5) // returns 12
+//Простая реализация compose может работать следующим образом:
+//const compose = (f, g) => (a) => f(g(a))
+//Аргументы f и g являются унарными функциями (то есть функциями, которые принимают один аргумент).
+// Проблема с этой функцией compose состоит в том, что она объединяет только две функции. Ваша задача - написать функцию компоновки,
+// которая может составлять любое количество функций вместе.
 //----------
 //
 //---Solution---
-//
+function compose() {
+  // Your solution
+  const arg = arguments;
+
+  const fun = (...fns) => x => fns.reduce((v, f) => f(v), x);
+
+  return fun;
+
+}
 //---Test---
+const addOne = (a) => a + 1
+const multTwo = (b) => b * 2
+console.log( compose(multTwo, addOne)(5) ); //, 12, 'compose two functions')
+console.log( compose(addOne, multTwo, addOne, addOne)(2) ); //, 9, 'compose four functions')
+console.log( compose(addOne)(3) ); //, 4, 'compose one function')
+console.log( compose()(10) ); //, 10, 'compose no functions')
 // let arrayTest = [
 //     "Dermatoglyphics", //true );
 //     "isogram", //true );
