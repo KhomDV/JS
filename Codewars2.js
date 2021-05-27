@@ -1144,7 +1144,16 @@
 //
 //---Solution---
 function antiOptimizeAsync(task) {
-  // Let's make this inefficient
+  const wait = ms => new Promise(resolve => setTimeout(resolve, ms));
+
+  return wait(10000).then(() => task());  
+  
+  
+  //return new Promise(resolve => {
+  //    setTimeout(() => {
+  //      resolve(task);
+  //    }, 11000);
+  //  })
 }
 //---Test---
 // let arrayTest = [
