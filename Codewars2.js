@@ -986,57 +986,59 @@
 //----------
 //
 //---Solution---
-function createFunctions(n) {
-  var callbacks = [];
-
-  for (var i=0; i<n; i++) {
-    const j = i;
-    callbacks.push(function() {
-      return j;
-    });
-  }
-  
-  return callbacks;
-}
-
+// function createFunctions(n) {
+//   var callbacks = [];
+//   for (var i=0; i<n; i++) {
+//     const j = i;
+//     callbacks.push(function() {
+//       return j;
+//     });
+//   }
+//   return callbacks;
+// }
 //---Test---
-var callbacks = createFunctions(5); // create an array, containing 5 functions
-console.log( callbacks[0]() ); // must return 0
-console.dir( callbacks[3]() ); // must return 3
+// var callbacks = createFunctions(5); // create an array, containing 5 functions
+// console.log( callbacks[0]() ); // must return 0
+// console.dir( callbacks[3]() ); // must return 3
 // 
-
 //=== End ( Closures and Scopes ) ===
 
 
 //---------------------------------------------------------------------------------------------------
-// 
+// Can you keep a secret?
 // (6 kyu) https://www.codewars.com/kata/can-you-keep-a-secret
 //---------------------------------------------------------------------------------------------------
 //---Task---
-//### ****
-//
-//### ****
+//### **Can you keep a secret?**
+//There's no such thing as private properties on a coffeescript object! But, maybe there are?
+//Implement a function createSecretHolder(secret) which accepts any value as secret and returns an object with ONLY two methods
+//getSecret() which returns the secret
+//setSecret() which sets the secret
+//obj = createSecretHolder(5)
+//obj.getSecret() # returns 5
+//obj.setSecret(2)
+//obj.getSecret() # returns 2
+//### **Вы можете сохранить в тайне?**
+//Для объекта coffeescript не существует такой вещи, как частные свойства! Но, может быть, есть?
+//Реализуйте функцию, createSecretHolder(secret)которая принимает любое значение как секретное и возвращает объект ТОЛЬКО двумя методами.
+//getSecret() который возвращает секрет
+//setSecret() который устанавливает секрет
+//obj = createSecretHolder(5)
+//obj.getSecret() # returns 5
+//obj.setSecret(2)
+//obj.getSecret() # returns 2
 //----------
 //
 //---Solution---
-//
+
+
 //---Test---
-// let arrayTest = [
-//     "Dermatoglyphics", //true );
-//     "isogram", //true );
-//     "aba", //false, "same chars may not be adjacent" );
-//     "moOse", //false, "same chars may not be same case" );
-//     "isIsogram", //false );
-//     "" //, true, "an empty string is a valid isogram" );
-// ]
-//
-//---View solution---
-// for (let i=0;i<arrayTest.length;i++) {
-//     document.write(isIsogram(arrayTest[i]));
-//     document.write(' | ');
-// }
+obj = createSecretHolder(5)
+console.log( obj.getSecret() );// # returns 5
+obj.setSecret(2)
+console.log( obj.getSecret() ); //# returns 2
 // 
-//=== End (  ) ===
+//=== End ( Can you keep a secret? ) ===
 
 
 //---------------------------------------------------------------------------------------------------
