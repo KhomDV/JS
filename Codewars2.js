@@ -1076,23 +1076,23 @@
 //----------
 //
 //---Solution---
-function cache(func) {
-  const cacheObj = {};
-  return (...args) => {
-    const key = JSON.stringify(args);
-    if (!(key in cacheObj)) {
-      const result = func.apply(null, args);
-      cacheObj[key] = result;
-    }
-    return cacheObj[key];
-  };
-}
+// function cache(func) {
+//   const cacheObj = {};
+//   return (...args) => {
+//     const key = JSON.stringify(args);
+//     if (!(key in cacheObj)) {
+//       const result = func.apply(null, args);
+//       cacheObj[key] = result;
+//     }
+//     return cacheObj[key];
+//   };
+// }
 //---Test---
-var complexFunction = function(arg1, arg2) { return arg1 + arg2 };
-var cachedFunction = cache(complexFunction);
-console.log( cachedFunction('foo', 'bar') ); // complex function should be executed
-console.log( cachedFunction('foo', 'bar') ); // complex function should not be invoked again, instead the cached result should be returned
-console.log( cachedFunction('foo', 'baz') );
+// var complexFunction = function(arg1, arg2) { return arg1 + arg2 };
+// var cachedFunction = cache(complexFunction);
+// console.log( cachedFunction('foo', 'bar') ); // complex function should be executed
+// console.log( cachedFunction('foo', 'bar') ); // complex function should not be invoked again, instead the cached result should be returned
+// console.log( cachedFunction('foo', 'baz') );
 // 
 //=== End ( Function Cache ) ===
 
@@ -1100,23 +1100,52 @@ console.log( cachedFunction('foo', 'baz') );
 
 //===================================================================================================
 
-
 //---------------------------------------------------------------------------------------------------
 //  Asynchronous
 //---------------------------------------------------------------------------------------------------
 
 //---------------------------------------------------------------------------------------------------
-// 
+// I Promise Not To Optimize
 // (6 kyu) https://www.codewars.com/kata/i-promise-not-to-optimize
 //---------------------------------------------------------------------------------------------------
 //---Task---
-//### ****
-//
-//### ****
+//### **I Promise Not To Optimize**
+//This kata is inspired by @Voile's anti-optimizer kata, so you might want to do that one first.
+// In that kata, you task yourself to be as inefficient as possible, and delay returning the result
+// of a function for at least 11 seconds (to fit into Codewars' 12-second timeout limit).
+//After you successfully implement your antiOptimize function, the second phase of your evil plot kicks into gear,
+// and you deploy anti-optimized code everywhere in your production server.
+// But the higher-ups are catching on! -- they demand that functions return their result as quickly as possible,
+// or else you risk being fired.
+//You wallow in despair, unable to bring your dream of inefficiency to reality,
+// but finally realize there's a way you can keep everything woefully inneficient,
+// while still immediately returning values from functions -- Promises!
+//So now your task is to write the function antiOptimizeAsync, which takes a single parameter task (a function),
+// and immediately returns a Promise that only resolves to the return value of task()
+// at least 11 seconds (and at most 12 seconds) after antiOptimizeAsync is called.
+//As with Voile's kata, task will always be an arbitrary function that might run for any duration
+// between 0 to 10 seconds.
+//### **Обещаю не оптимизировать**
+//Это кат вдохновлен @Voile «s анти-оптимизатор кат , так что вы можете сделать это один первым.
+// В этом ката вы ставите себе задачу быть как можно более неэффективной и откладываете возврат результата
+// функции как минимум на 11 секунд (чтобы соответствовать 12-секундному пределу тайм-аута Codewars).
+//После того, как вы успешно реализовали свою antiOptimizeфункцию, начинается вторая фаза вашего злого заговора,
+// и вы развертываете антиоптимизированный код повсюду на своем производственном сервере.
+// Но начальство это понимает! - они требуют, чтобы функции возвращали результат как можно быстрее,
+// иначе вы рискуете быть уволенным.
+//Вы погрязли в отчаянии, не в силах воплотить в жизнь свою мечту о неэффективности, но, наконец, понимаете,
+// что есть способ сохранить все ужасно неэффективным, при этом немедленно возвращая значения из функций - обещания!
+//Итак, теперь ваша задача - написать функцию antiOptimizeAsync, которая принимает единственный
+// параметр task(функцию) и немедленно возвращает значение, Promiseкоторое разрешается только
+// в возвращаемое значение task() не менее 11 секунд (и не более 12 секунд) после antiOptimizeAsync вызова.
+//Как и в случае с ката Voile, taskвсегда будет произвольная функция,
+// которая может выполняться в течение любой продолжительности от 0 до 10 секунд .
 //----------
 //
 //---Solution---
-//
+function antiOptimizeAsync(task) {
+  // Let's make this inefficient
+}
 //---Test---
 // let arrayTest = [
 //     "Dermatoglyphics", //true );
@@ -1133,7 +1162,7 @@ console.log( cachedFunction('foo', 'baz') );
 //     document.write(' | ');
 // }
 // 
-//=== End (  ) ===
+//=== End ( I Promise Not To Optimize ) ===
 
 
 //---------------------------------------------------------------------------------------------------
