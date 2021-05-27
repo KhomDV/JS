@@ -986,24 +986,26 @@
 //----------
 //
 //---Solution---
-//
+function createFunctions(n) {
+  var callbacks = [];
+
+  for (var i=0; i<n; i++) {
+    const j = i;
+    callbacks.push(function() {
+      return j;
+    });
+  }
+  
+  return callbacks;
+}
+
 //---Test---
-// let arrayTest = [
-//     "Dermatoglyphics", //true );
-//     "isogram", //true );
-//     "aba", //false, "same chars may not be adjacent" );
-//     "moOse", //false, "same chars may not be same case" );
-//     "isIsogram", //false );
-//     "" //, true, "an empty string is a valid isogram" );
-// ]
-//
-//---View solution---
-// for (let i=0;i<arrayTest.length;i++) {
-//     document.write(isIsogram(arrayTest[i]));
-//     document.write(' | ');
-// }
+var callbacks = createFunctions(5); // create an array, containing 5 functions
+console.log( callbacks[0]() ); // must return 0
+console.dir( callbacks[3]() ); // must return 3
 // 
-//=== End (  ) ===
+
+//=== End ( Closures and Scopes ) ===
 
 
 //---------------------------------------------------------------------------------------------------
