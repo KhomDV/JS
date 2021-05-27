@@ -942,36 +942,47 @@
 //----------
 //
 //---Solution---
-const compose = (f,g) => (...args) => f(g(...args));
+//const compose = (f,g) => (...args) => f(g(...args));
 //---
-function compose(f,g) {
-  return function(...a) {
-    return f(g(...a));
-  }
-}
+// function compose(f,g) {
+//   return function(...a) {
+//     return f(g(...a));
+//   }
+// }
 //---
-function compose(f, g) {
-  return function() {
-    return f(g.apply(this, arguments));
-  };
-}
+// function compose(f, g) {
+//   return function() {
+//     return f(g.apply(this, arguments));
+//   };
+// }
 //---
-function compose(f, g) {
-  return (...args) => f(g(...args));
-}
+// function compose(f, g) {
+//   return (...args) => f(g(...args));
+// }
 //---Test---
 //
 //=== End ( Function Composition (2) ) ===
 
 
 //---------------------------------------------------------------------------------------------------
-// 
+// Closures and Scopes
 // (6 kyu) https://www.codewars.com/kata/closures-and-scopes
 //---------------------------------------------------------------------------------------------------
 //---Task---
-//### ****
-//
-//### ****
+//### **Closures and Scopes**
+//We want to create a function, which returns an array of functions, which return their index in the array. For better understanding, here an example:
+//var callbacks = createFunctions(5); // create an array, containing 5 functions
+//callbacks[0](); // must return 0
+//callbacks[3](); // must return 3
+//We already implemented that function, but when we actually run the code, the result doesn't look like what we expected.
+// Can you spot, what's wrong with it? A test fixture is also available
+//### **Замыкания и области видимости**
+//Мы хотим создать функцию, которая возвращает массив функций, которые возвращают свой индекс в массиве. Для лучшего понимания вот пример:
+//var callbacks = createFunctions(5); // create an array, containing 5 functions
+//callbacks[0](); // must return 0
+//callbacks[3](); // must return 3
+//Мы уже реализовали эту функцию, но когда мы действительно запускаем код, результат не похож на то, что мы ожидали.
+// Вы можете заметить, что с этим не так? Также доступен тестовый стенд.
 //----------
 //
 //---Solution---
