@@ -1030,12 +1030,22 @@
 //----------
 //
 //---Solution---
-
+function createSecretHolder(secret) {
+  return {
+    getSecret: function() {
+      return secret;
+    },
+    setSecret: function(value) {
+      secret = value;
+    }
+  }
+}
 
 //---Test---
-obj = createSecretHolder(5)
+const obj = createSecretHolder(5);
+console.log( obj );// # returns 5
 console.log( obj.getSecret() );// # returns 5
-obj.setSecret(2)
+obj.setSecret(2);
 console.log( obj.getSecret() ); //# returns 2
 // 
 //=== End ( Can you keep a secret? ) ===
