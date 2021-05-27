@@ -1030,56 +1030,71 @@
 //----------
 //
 //---Solution---
-function createSecretHolder(secret) {
-  return {
-    getSecret: function() {
-      return secret;
-    },
-    setSecret: function(value) {
-      secret = value;
-    }
-  }
-}
-
+// function createSecretHolder(secret) {
+//   return {
+//     getSecret: function() {
+//       return secret;
+//     },
+//     setSecret: function(value) {
+//       secret = value;
+//     }
+//   }
+// }
 //---Test---
-const obj = createSecretHolder(5);
-console.log( obj );// # returns 5
-console.log( obj.getSecret() );// # returns 5
-obj.setSecret(2);
-console.log( obj.getSecret() ); //# returns 2
+// const obj = createSecretHolder(5);
+// console.log( obj );// # returns 5
+// console.log( obj.getSecret() );// # returns 5
+// obj.setSecret(2);
+// console.log( obj.getSecret() ); //# returns 2
 // 
 //=== End ( Can you keep a secret? ) ===
 
 
 //---------------------------------------------------------------------------------------------------
-// 
+// Function Cache
 // (5 kyu) https://www.codewars.com/kata/function-cache
 //---------------------------------------------------------------------------------------------------
 //---Task---
-//### ****
-//
-//### ****
+//### **Function Cache**
+//If you are calculating complex things or execute time-consuming API calls, you sometimes want to cache the results.
+// In this case we want you to create a function wrapper, which takes a function and caches its results depending on the arguments, that were applied to the function.
+//Usage example:
+//var complexFunction = function(arg1, arg2) { /* complex calculation in here */ };
+//var cachedFunction = cache(complexFunction);
+//cachedFunction('foo', 'bar'); // complex function should be executed
+//cachedFunction('foo', 'bar'); // complex function should not be invoked again, instead the cached result should be returned
+//cachedFunction('foo', 'baz'); // should be executed, because the method wasn't invoked before with these arguments
+//### **Кэш функций**
+//Если вы рассчитываете сложные вещи или выполняете трудоемкие вызовы API, иногда вам нужно кэшировать результаты.
+// В этом случае мы хотим, чтобы вы создали оболочку функции, которая принимает функцию и кэширует ее результаты в зависимости от аргументов, которые были применены к функции.
+//Пример использования:
+//var complexFunction = function(arg1, arg2) { /* complex calculation in here */ };
+//var cachedFunction = cache(complexFunction);
+//cachedFunction('foo', 'bar'); // complex function should be executed
+//cachedFunction('foo', 'bar'); // complex function should not be invoked again, instead the cached result should be returned
+//cachedFunction('foo', 'baz'); // should be executed, because the method wasn't invoked before with these arguments
 //----------
 //
 //---Solution---
-//
+function cache(func) {
+  const cacheObj = {};
+  return (...args) => {
+    const key = JSON.stringify(args);
+    if (!(key in cacheObj)) {
+      const result = func.apply(null, args);
+      cacheObj[key] = result;
+    }
+    return cacheObj[key];
+  };
+}
 //---Test---
-// let arrayTest = [
-//     "Dermatoglyphics", //true );
-//     "isogram", //true );
-//     "aba", //false, "same chars may not be adjacent" );
-//     "moOse", //false, "same chars may not be same case" );
-//     "isIsogram", //false );
-//     "" //, true, "an empty string is a valid isogram" );
-// ]
-//
-//---View solution---
-// for (let i=0;i<arrayTest.length;i++) {
-//     document.write(isIsogram(arrayTest[i]));
-//     document.write(' | ');
-// }
+var complexFunction = function(arg1, arg2) { return arg1 + arg2 };
+var cachedFunction = cache(complexFunction);
+console.log( cachedFunction('foo', 'bar') ); // complex function should be executed
+console.log( cachedFunction('foo', 'bar') ); // complex function should not be invoked again, instead the cached result should be returned
+console.log( cachedFunction('foo', 'baz') );
 // 
-//=== End (  ) ===
+//=== End ( Function Cache ) ===
 
 
 
