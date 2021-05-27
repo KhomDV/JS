@@ -852,11 +852,11 @@
 
 
 //---------------------------------------------------------------------------------------------------
-// Function composition
+// Function composition - 1
 // (6 kyu) https://www.codewars.com/kata/function-composition-1
 //---------------------------------------------------------------------------------------------------
 //---Task---
-//### **Function composition**
+//### **Function composition - 1**
 //Javascript functions can be combined to form new functions. For example the functions addOne and multTwo can be combined to form a new function which first
 // adds one and then multiplies by two, as follows:
 //const addOne = (a) => a + 1
@@ -892,55 +892,76 @@
 //
 //---Solution---
 //My 
-const compose = (...fns) => input => fns.reduceRight((mem, fn) => fn(mem), input);
+//const compose = (...fns) => input => fns.reduceRight((mem, fn) => fn(mem), input);
 //Best
-function compose(...args) {
-  return function(n) {
-      args.reverse().forEach((i) => n=i(n));
-      return n;
-  }
-}
+//function compose(...args) {
+//  return function(n) {
+//      args.reverse().forEach((i) => n=i(n));
+//      return n;
+//  }
+//}
 //---Test---
-const addOne = (a) => a + 1;
-const multTwo = (b) => b * 2;
-console.log( compose()(10) );
-console.log( compose(multTwo, addOne)(5) ); //, 12, 'compose two functions')
-console.log( compose(addOne, multTwo, addOne, addOne)(2) ); //, 9, 'compose four functions')
-console.log( compose(addOne)(3) ); //, 4, 'compose one function')
-console.log( compose()(10) ); //, 10, 'compose no functions')
+//const addOne = (a) => a + 1;
+//const multTwo = (b) => b * 2;
+//console.log( compose()(10) );
+//console.log( compose(multTwo, addOne)(5) ); //, 12, 'compose two functions')
+//console.log( compose(addOne, multTwo, addOne, addOne)(2) ); //, 9, 'compose four functions')
+//console.log( compose(addOne)(3) ); //, 4, 'compose one function')
+//console.log( compose()(10) ); //, 10, 'compose no functions')
 // 
-//=== End ( Function composition ) ===
+//=== End ( Function composition - 1 ) ===
 
 
 //---------------------------------------------------------------------------------------------------
-// 
+// Function Composition (2)
 // (6 kyu) https://www.codewars.com/kata/function-composition
 //---------------------------------------------------------------------------------------------------
 //---Task---
+//### **Function Composition (2)**
+//Function composition is a mathematical operation that mainly presents itself in lambda calculus and computability.
+// It is explained well here, but this is my explanation, in simple mathematical notation:
+//f3 = compose( f1 f2 )
+//   Is equivalent to...
+//f3(a) = f1( f2( a ) )
+//Your task is to create a compose function to carry out this task, which will be passed two functions or lambdas.
+// Ruby functions will be passed, and should return, either a proc or a lambda. Remember that the resulting composed function may be passed multiple arguments!
+//compose(f , g)(x)
+//=> f( g( x ) )
+//This kata is not available in haskell; that would be too easy!
 //### ****
-//
-//### ****
+//Композиция функций - это математическая операция, которая в основном проявляется в лямбда-исчислении и вычислимости.
+// Это объясняется хорошо здесь , но это мое объяснение, в простой математической нотации:
+//f3 = compose( f1 f2 )
+//   Is equivalent to...
+//f3(a) = f1( f2( a ) )
+//Ваша задача - создать composeфункцию для выполнения этой задачи, которой будут переданы две функции или лямбды.
+// Функции Ruby будут передаваться и должны возвращать либо процедуру, либо лямбду. Помните, что полученной составной функции может быть передано несколько аргументов!
+//compose(f , g)(x)
+//=> f( g( x ) )
+//Это ката недоступно в haskell; это было бы слишком просто!
 //----------
 //
 //---Solution---
-//
+const compose = (f,g) => (...args) => f(g(...args));
+//---
+function compose(f,g) {
+  return function(...a) {
+    return f(g(...a));
+  }
+}
+//---
+function compose(f, g) {
+  return function() {
+    return f(g.apply(this, arguments));
+  };
+}
+//---
+function compose(f, g) {
+  return (...args) => f(g(...args));
+}
 //---Test---
-// let arrayTest = [
-//     "Dermatoglyphics", //true );
-//     "isogram", //true );
-//     "aba", //false, "same chars may not be adjacent" );
-//     "moOse", //false, "same chars may not be same case" );
-//     "isIsogram", //false );
-//     "" //, true, "an empty string is a valid isogram" );
-// ]
 //
-//---View solution---
-// for (let i=0;i<arrayTest.length;i++) {
-//     document.write(isIsogram(arrayTest[i]));
-//     document.write(' | ');
-// }
-// 
-//=== End (  ) ===
+//=== End ( Function Composition (2) ) ===
 
 
 //---------------------------------------------------------------------------------------------------
