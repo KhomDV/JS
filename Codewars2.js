@@ -891,36 +891,23 @@
 //----------
 //
 //---Solution---
-function compose() {
-  // Your solution
-  const arg = arguments;
-
-  const fun = (...fns) => x => fns.reduce((v, f) => f(v), x);
-
-  return fun;
-
+//My 
+const compose = (...fns) => input => fns.reduceRight((mem, fn) => fn(mem), input);
+//Best
+function compose(...args) {
+  return function(n) {
+      args.reverse().forEach((i) => n=i(n));
+      return n;
+  }
 }
 //---Test---
-const addOne = (a) => a + 1
-const multTwo = (b) => b * 2
+const addOne = (a) => a + 1;
+const multTwo = (b) => b * 2;
+console.log( compose()(10) );
 console.log( compose(multTwo, addOne)(5) ); //, 12, 'compose two functions')
 console.log( compose(addOne, multTwo, addOne, addOne)(2) ); //, 9, 'compose four functions')
 console.log( compose(addOne)(3) ); //, 4, 'compose one function')
 console.log( compose()(10) ); //, 10, 'compose no functions')
-// let arrayTest = [
-//     "Dermatoglyphics", //true );
-//     "isogram", //true );
-//     "aba", //false, "same chars may not be adjacent" );
-//     "moOse", //false, "same chars may not be same case" );
-//     "isIsogram", //false );
-//     "" //, true, "an empty string is a valid isogram" );
-// ]
-//
-//---View solution---
-// for (let i=0;i<arrayTest.length;i++) {
-//     document.write(isIsogram(arrayTest[i]));
-//     document.write(' | ');
-// }
 // 
 //=== End ( Function composition ) ===
 
