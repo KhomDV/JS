@@ -1181,34 +1181,99 @@
 
 
 //---------------------------------------------------------------------------------------------------
-// 
+// Jokes you've been 'awaiting' for ... promise
 // (6 kyu) https://www.codewars.com/kata/jokes-youve-been-awaiting-for-dot-dot-dot-promise
 //---------------------------------------------------------------------------------------------------
 //---Task---
-//### ****
-//
-//### ****
+//### **Jokes you've been 'awaiting' for ... promise**
+//Here are some classic Christmas cracker jokes.
+//There is a made up API URL (http://great.jokes/christmas) that you can call to a get list of Christmas jokes
+// in JSON format.
+//Your challenge
+//Write an async function which takes an apiUrl and jokeId which returns a promise.
+//The data will need to be filtered to get the specified joke by id.
+//When you got the joke it should be accessible through a simple API of saySetup and sayPunchLine methods.
+//Handle error cases
+//If a joke can't be found throw an error message in this format new Error('No jokes found id: {jokeId}').
+//Getting jokes from a another API URL may return a different data shape, throw this error message
+// new Error('No jokes at url: {url}') for an unexpected shape.
+//Throw error in a promise style
+//Info
+//Get the data using the mocked fetch(url) function, which implements the basics of the fetch api.
+// Learn about fetch. Learn about async/await.
+//Joke data shape:
+//{
+//  jokes: [{ 
+//    id: 101,
+//    setup: "Who is Santa's favorite singer?",
+//    punchLine: "Elf-is Presley!"
+//  },
+//...moreJokes]
+// Use for your tests ^^
+//### **Шутки, которых вы ждали ... обещание**
+//Вот несколько классических шуток о рождественских взломщиках.
+//Существует выдуманный URL-адрес API ( http://great.jokes/christmas), который можно вызвать,
+// чтобы получить список рождественских анекдотов в формате JSON.
+//Ваш вызов
+//Напишите асинхронную функцию, которая принимает apiUrl и jokeId возвращает обещание.
+//Данные нужно будет отфильтровать, чтобы получить указанную шутку id.
+//Когда вы поняли шутку, она должна быть доступна через простой API saySetupи sayPunchLineметоды.
+//Обработка случаев ошибок
+//Если шутку найти не удалось, вывести сообщение об ошибке в этом формате new Error('No jokes found id: {jokeId}').
+//Получение шуток от другого URL-адреса API может вернуть другую форму данных, выдайте это сообщение об ошибке new Error('No jokes at url: {url}')для неожиданной формы.
+//Вывести ошибку в стиле обещания
+//Информация
+//Получите данные, используя имитацию fetch(url)функции, которая реализует основы API выборки.
+// Узнайте о выборке . Узнайте об async / await .
+//Форма данных анекдота:
+//{
+//  jokes: [{ 
+//    id: 101,
+//    setup: "Who is Santa's favorite singer?",
+//    punchLine: "Elf-is Presley!"
+//  },
+//...moreJokes]
+// Use for your tests ^^
 //----------
 //
 //---Solution---
-//
-//---Test---
-// let arrayTest = [
-//     "Dermatoglyphics", //true );
-//     "isogram", //true );
-//     "aba", //false, "same chars may not be adjacent" );
-//     "moOse", //false, "same chars may not be same case" );
-//     "isIsogram", //false );
-//     "" //, true, "an empty string is a valid isogram" );
-// ]
-//
-//---View solution---
-// for (let i=0;i<arrayTest.length;i++) {
-//     document.write(isIsogram(arrayTest[i]));
-//     document.write(' | ');
+// async function sayJoke(apiUrl, jokeId) {
+//   try {
+//     const response = await fetch(apiUrl);
+//     const json = await response.json();
+//     for (let joke of json.jokes) {
+//       if (joke.id === jokeId) {
+//         return {
+//           saySetup: () => joke.setup,
+//           sayPunchLine: () => joke.punchLine
+//         };
+//       }
+//     }
+//     throw new Error(`No jokes found id: ${jokeId}`);
+//   } catch (error) {
+//     throw (error instanceof TypeError) ? new Error(`No jokes at url: ${apiUrl}`) : error;
+//   }
 // }
-// 
-//=== End (  ) ===
+//Best
+// async function sayJoke(apiUrl, jokeId) {    
+//   const response = await fetch(apiUrl)
+//   const jsonResponse = await response.json()
+//   if (!jsonResponse.hasOwnProperty('jokes')) {
+//     throw new Error(`No jokes at url: ${apiUrl}`)
+//   }
+//   const joke = jsonResponse.jokes.find(function(joke) {
+//     return joke.id === jokeId
+//   })
+//   if (!joke) {
+//     throw new Error(`No jokes found id: ${jokeId}`)
+//   }
+//   return {
+//     saySetup: () => joke.setup,
+//     sayPunchLine: () => joke.punchLine,
+//   }
+// }
+//---Test---
+//=== End ( Jokes you've been 'awaiting' for ... promise ) ===
 
 
 //---------------------------------------------------------------------------------------------------
