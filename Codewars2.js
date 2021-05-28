@@ -1315,34 +1315,70 @@
 //---------------------------------------------------------------------------------------------------
 
 //---------------------------------------------------------------------------------------------------
-// 
+// SantaClausable Interface
 // (7 kyu) https://www.codewars.com/kata/santaclausable-interface
 //---------------------------------------------------------------------------------------------------
 //---Task---
-//### ****
-//
-//### ****
+//### **SantaClausable Interface**
+//You probably know, that in Javascript (and also Ruby) there is no concept of interfaces.
+// There is only a concept of inheritance, but you can't assume that a certain method or property exists,
+// just because it exists in the parent prototype / class. We want to find out, whether a given object fulfils
+// the requirements to implement the "SantaClausable" interface. We need to implement a method which
+// checks for this interface.
+//Rules
+//The SantaClausable interface is implemented, if all of the following methods are defined on an object:
+//sayHoHoHo() / say_ho_ho_ho
+//distributeGifts() / distribute_gifts
+//goDownTheChimney() / go_down_the_chimney
+//Example
+//var santa = {
+//    sayHoHoHo: function() { console.log('Ho Ho Ho!') },
+//    distributeGifts: function() { console.log('Gifts for all!'); },
+//    goDownTheChimney: function() { console.log('*whoosh*'); }
+//};
+//var notSanta = {
+//    sayHoHoHo: function() { console.log('Oink Oink!') }
+//    // no distributeGifts() and no goDownTheChimney()
+//};
+//isSantaClausable(santa); // must return TRUE
+//isSantaClausable(notSanta); // must return FALSE
+//Additional Information on this Topic
+//Duck Typing (Wikipedia)
+//### **Интерфейс SantaClausable**
+//Вы, наверное, знаете, что в Javascript (а также Ruby) нет концепции интерфейсов.
+// Существует только концепция наследования, но вы не можете предполагать,
+// что определенный метод или свойство существует только потому, что он существует в родительском прототипе / классе.
+// Мы хотим выяснить, соответствует ли данный объект требованиям для реализации интерфейса «SantaClausable».
+// Нам нужно реализовать метод, который проверяет этот интерфейс .
+//Правила
+//Интерфейс SantaClausable реализуется, если для объекта определены все следующие методы:
+//sayHoHoHo() / say_ho_ho_ho
+//distributeGifts() / distribute_gifts
+//goDownTheChimney() / go_down_the_chimney
+//Пример
+//var santa = {
+//    sayHoHoHo: function() { console.log('Ho Ho Ho!') },
+//    distributeGifts: function() { console.log('Gifts for all!'); },
+//    goDownTheChimney: function() { console.log('*whoosh*'); }
+//};
+//var notSanta = {
+//    sayHoHoHo: function() { console.log('Oink Oink!') }
+//    // no distributeGifts() and no goDownTheChimney()
+//};
+//isSantaClausable(santa); // must return TRUE
+//isSantaClausable(notSanta); // must return FALSE
+//Дополнительная информация по этой теме
+//Утиный ввод (Википедия)
 //----------
 //
 //---Solution---
-//
-//---Test---
-// let arrayTest = [
-//     "Dermatoglyphics", //true );
-//     "isogram", //true );
-//     "aba", //false, "same chars may not be adjacent" );
-//     "moOse", //false, "same chars may not be same case" );
-//     "isIsogram", //false );
-//     "" //, true, "an empty string is a valid isogram" );
-// ]
-//
-//---View solution---
-// for (let i=0;i<arrayTest.length;i++) {
-//     document.write(isIsogram(arrayTest[i]));
-//     document.write(' | ');
+// function isSantaClausable(obj) {
+//   return ['sayHoHoHo', 'distributeGifts', 'goDownTheChimney'].every(function(methodName) {
+//     return typeof obj[methodName] == 'function';
+//   });
 // }
-// 
-//=== End (  ) ===
+//---Test---
+//=== End ( SantaClausable Interface ) ===
 
 
 //---------------------------------------------------------------------------------------------------
