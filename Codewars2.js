@@ -1143,33 +1143,39 @@
 //----------
 //
 //---Solution---
-function antiOptimizeAsync(task) {
-  const wait = ms => new Promise(resolve => setTimeout(resolve, ms));
-
-  return wait(10000).then(() => task());  
-  
-  
-  //return new Promise(resolve => {
-  //    setTimeout(() => {
-  //      resolve(task);
-  //    }, 11000);
-  //  })
-}
+//v.1
+//function antiOptimizeAsync(task) {
+//  // Let's make this inefficient
+//  return new Promise(resolve => {
+//    setTimeout(() => {
+//      const res = task();
+//      resolve(res);
+//    }, 1500);
+//  });
+//}
+//v.2
+//function antiOptimizeAsync(task) {
+//  return Promise.all([
+//    new Promise(resolve => process.nextTick(() => resolve(task()))),
+//    new Promise(resolve => setTimeout(resolve, 11000)),
+//  ]).then(([result]) => result)
+//}
+//v.3
+//const DELAY = 11000;
+//function antiOptimizeAsync(task) {
+//  // Let's make this inefficient
+//  return new Promise(resolve => {
+//    const start = new Date();
+//    const res = task();
+//    const time = new Date() - start;
+//    setTimeout(resolve, DELAY - time, res);
+//  });
+//}
 //---Test---
-// let arrayTest = [
-//     "Dermatoglyphics", //true );
-//     "isogram", //true );
-//     "aba", //false, "same chars may not be adjacent" );
-//     "moOse", //false, "same chars may not be same case" );
-//     "isIsogram", //false );
-//     "" //, true, "an empty string is a valid isogram" );
-// ]
-//
-//---View solution---
-// for (let i=0;i<arrayTest.length;i++) {
-//     document.write(isIsogram(arrayTest[i]));
-//     document.write(' | ');
-// }
+//const task = (a,b) => { return a + b}
+//console.log( task(5, 4) );
+//const r = antiOptimizeAsync( task(5,4) );
+//console.log( r );
 // 
 //=== End ( I Promise Not To Optimize ) ===
 
