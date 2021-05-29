@@ -1521,44 +1521,98 @@
 //----------
 //
 //---Solution---
-class MarioAdapter {
-  constructor(mario) { this.mario = mario }
-  attack(target) { target.health -= this.mario.jumpAttack() }
-}
+// class MarioAdapter {
+//   constructor(mario) { this.mario = mario }
+//   attack(target) { target.health -= this.mario.jumpAttack() }
+// }
 //---Test---
 // 
 //=== End ( PatternCraft - Adapter ) ===
 
 
 //---------------------------------------------------------------------------------------------------
-// 
+// PatternCraft - Visitor
 // (7 kyu) https://www.codewars.com/kata/patterncraft-visitor/
 //---------------------------------------------------------------------------------------------------
 //---Task---
-//### ****
-//
-//### ****
+//### **PatternCraft - Visitor**
+//The Visitor Design Pattern can be used, for example, to determine how an attack deals a different
+// amount of damage to a unit in the StarCraft game.
+//The pattern consists of delegating the responsibility to a different class.
+//When a unit takes damage it can tell the visitor what to do with itself.
+//Your Task
+//Complete the code so that when a Tank attacks a Marine it takes 21 damage and when a Tank attacks a Marauder
+// it takes 32 damage.
+//The Marine's initial health should be set to 100 and the Marauder's health should be set to 125.
+//You have 3 classes:
+//Marine: has a health property and accept(visitor) method
+//Marauder: has a health property and accept(visitor) method
+//TankBullet: the visitor class. Has visitLight(unit) and visitArmored(unit) methods
+//Ressources
+//PatternCraft > Visitor
+//SourceMaking > Visitor
+//Wikipedia > Visitor
+//PatternCraft series
+//State Pattern
+//Strategy Pattern
+//Visitor Pattern
+//Decorator Pattern
+//Adapter Pattern
+//Command Pattern
+//The original PatternCraft series (by John Lindquist) is a collection of Youtube videos that explains
+// some of the design patterns and how they are used (or could be) on StarCraft.
+//### **PatternCraft - Посетитель**
+//Шаблон посетителей Дизайн может быть использован, например, для определения того,
+// как атака наносит различное количество повреждения блока в игре StarCraft.
+//Шаблон состоит из делегирования ответственности другому классу.
+//Когда юнит получает урон, он может сказать посетителю, что ему делать с собой.
+//Твое задание
+//Дополните код так , что когда Tankатакует Marineон принимает 21урон и когда Tankатакует Marauderон принимает 32урон.
+//Первоначальное здоровье морпеха должно быть установлено на уровне,
+// 100а здоровье мародера должно быть установлено равным 125.
+//У вас 3 класса:
+//Marine: имеет healthсвойство и accept(visitor)метод
+//Marauder: имеет healthсвойство и accept(visitor)метод
+//TankBullet: класс посетителя. Имеет visitLight(unit)и visitArmored(unit)методы
+//Ресурсы
+//PatternCraft> Посетитель
+//SourceMaking> Посетитель
+//Википедия> Посетитель
+//Серия PatternCraft
+//Государственный образец
+//Шаблон стратегии
+//Шаблон посетителя
+//Шаблон декоратора
+//Шаблон адаптера
+//Командный шаблон
+//Оригинальная серия PatternCraft (от Джона Линдквиста) представляет собой сборник видеороликов на Youtube,
+// в которых объясняются некоторые шаблоны проектирования и то, как они используются (или могут быть) в StarCraft.
 //----------
 //
 //---Solution---
-//
+class Marine {
+  constructor() {
+    this.health = 100;
+  }
+  accept(visitor) { return visitor.visitLight(this) }
+}
+class Marauder {
+  constructor() {
+    this.health = 125;
+  }
+  accept(visitor) { return visitor.visitArmored(this) }
+}
+class TankBullet {
+  visitLight(unit) {
+    return unit.health -= 21;
+  }
+  visitArmored(unit) {
+    return unit.health -= 32;
+  }
+}
 //---Test---
-// let arrayTest = [
-//     "Dermatoglyphics", //true );
-//     "isogram", //true );
-//     "aba", //false, "same chars may not be adjacent" );
-//     "moOse", //false, "same chars may not be same case" );
-//     "isIsogram", //false );
-//     "" //, true, "an empty string is a valid isogram" );
-// ]
 //
-//---View solution---
-// for (let i=0;i<arrayTest.length;i++) {
-//     document.write(isIsogram(arrayTest[i]));
-//     document.write(' | ');
-// }
-// 
-//=== End (  ) ===
+//=== End ( PatternCraft - Visitor ) ===
 
 
 //---------------------------------------------------------------------------------------------------
