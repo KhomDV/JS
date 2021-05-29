@@ -1382,34 +1382,49 @@
 
 
 //---------------------------------------------------------------------------------------------------
-// 
+// Singleton Pattern
 // (7 kyu) https://www.codewars.com/kata/singleton-pattern
 //---------------------------------------------------------------------------------------------------
 //---Task---
-//### ****
-//
-//### ****
+//### **Singleton Pattern**
+//In software engineering, the singleton pattern is a design pattern that restricts the instantiation
+// of a class to one object. This is useful when exactly one object is needed to coordinate actions across the system.
+//Create an Singleton pattern, so there is one object in system.
+//Example:
+//var obj1 = new Singleton();
+//var obj2 = new Singleton();
+//obj1 === obj2; // => true
+//obj1.test = 1;
+//obj2.test; // => 1
+//### **Шаблон Singleton**
+//В программной инженерии одноэлементный шаблон - это шаблон проектирования,
+// который ограничивает создание экземпляра класса одним объектом.
+// Это полезно, когда нужен ровно один объект для координации действий в системе.
+//Создайте шаблон Singleton, чтобы в системе был один объект.
+//Пример:
+//var obj1 = new Singleton();
+//var obj2 = new Singleton();
+//obj1 === obj2; // => true
+//obj1.test = 1;
+//obj2.test; // => 1
 //----------
 //
 //---Solution---
-//
+var Singleton = function(){
+  if(Singleton.__instance) {
+    return Singleton.__instance;
+  }
+  
+  Singleton.__instance = this;
+};
 //---Test---
-// let arrayTest = [
-//     "Dermatoglyphics", //true );
-//     "isogram", //true );
-//     "aba", //false, "same chars may not be adjacent" );
-//     "moOse", //false, "same chars may not be same case" );
-//     "isIsogram", //false );
-//     "" //, true, "an empty string is a valid isogram" );
-// ]
-//
-//---View solution---
-// for (let i=0;i<arrayTest.length;i++) {
-//     document.write(isIsogram(arrayTest[i]));
-//     document.write(' | ');
-// }
+var obj1 = new Singleton();
+var obj2 = new Singleton();
+//obj1 === obj2; // => true
+obj1.test = 1;
+console.log( obj2.test ); // => 1
 // 
-//=== End (  ) ===
+//=== End ( Singleton Pattern ) ===
 
 
 //---------------------------------------------------------------------------------------------------
