@@ -1410,52 +1410,124 @@
 //----------
 //
 //---Solution---
-var Singleton = function(){
-  if(Singleton.__instance) {
-    return Singleton.__instance;
-  }
-  
-  Singleton.__instance = this;
-};
+// var Singleton = function(){
+//   if(Singleton.__instance) {
+//     return Singleton.__instance;
+//   }
+//   Singleton.__instance = this;
+// };
 //---Test---
-var obj1 = new Singleton();
-var obj2 = new Singleton();
-//obj1 === obj2; // => true
-obj1.test = 1;
-console.log( obj2.test ); // => 1
+// var obj1 = new Singleton();
+// var obj2 = new Singleton();
+// //obj1 === obj2; // => true
+// obj1.test = 1;
+// console.log( obj2.test ); // => 1
 // 
 //=== End ( Singleton Pattern ) ===
 
 
 //---------------------------------------------------------------------------------------------------
-// 
+// PatternCraft - Adapter
 // (7 kyu) https://www.codewars.com/kata/patterncraft-adapter/
 //---------------------------------------------------------------------------------------------------
 //---Task---
-//### ****
-//
-//### ****
+//### **PatternCraft - Adapter**
+//The Adapter Design Pattern can be used, for example in the StarCraft game,
+// to insert an external character in the game.
+//The pattern consists in having a wrapper class that will adapt the code from the external source.
+//Your Task
+//The adapter receives an instance of the object that it is going to adapt and handles it in a way
+// that works with our application.
+//In this example we have the pre-loaded classes:
+//class Marine {
+//  attack(target) {
+//    target.health -= 6;
+//  }
+//}
+//class Zealot {
+//  attack(target) {
+//    target.health -= 8;
+//  }
+//}
+//class Zergling {
+//  attack(target) {
+//    target.health -= 5;
+//  }
+//}
+//class Mario {
+//  jumpAttack() {
+//    console.log('Mamamia!');
+//    return 3;
+//  }
+//}
+//Complete the code so that we can create a MarioAdapter that can attack as other units do.
+//Note to calculate how much damage mario is going to do you have to call the jumpAttack method.
+//Resouces
+//PatternCraft > Adapter
+//SourceMaking > Adapter
+//Wikipedia > Adapter
+//PatternCraft series
+//State Pattern
+//Strategy Pattern
+//Visitor Pattern
+//Decorator Pattern
+//Adapter Pattern
+//Command Pattern
+//The original PatternCraft series (by John Lindquist) is a collection of Youtube videos that explains some of
+// the design patterns and how they are used (or could be) on StarCraft.
+//### **PatternCraft - Адаптер**
+//Шаблон Adapter Дизайн может быть использован, например , в игре StarCraft, чтобы вставить внешний характер в игре.
+//Шаблон состоит в наличии класса-оболочки, который адаптирует код из внешнего источника.
+//Твое задание
+//Адаптер получает экземпляр объекта, который он собирается адаптировать, и обрабатывает его так,
+// как это работает с нашим приложением.
+//В этом примере у нас есть предварительно загруженные классы:
+//class Marine {
+//  attack(target) {
+//    target.health -= 6;
+//  }
+//}
+//class Zealot {
+//  attack(target) {
+//    target.health -= 8;
+//  }
+//}
+//class Zergling {
+//  attack(target) {
+//    target.health -= 5;
+//  }
+//}
+//class Mario {
+//  jumpAttack() {
+//    console.log('Mamamia!');
+//    return 3;
+//  }
+//}
+//Завершите код, чтобы мы могли создать объект, MarioAdapterкоторый может атаковать, как это делают другие юниты.
+//Обратите внимание, чтобы рассчитать, какой урон marioвы нанесете, вам нужно вызвать jumpAttackметод.
+//Ресурсы
+//PatternCraft> Адаптер
+//SourceMaking> Адаптер
+//Википедия> Адаптер
+//Серия PatternCraft
+//Государственный образец
+//Шаблон стратегии
+//Шаблон посетителя
+//Шаблон декоратора
+//Шаблон адаптера
+//Командный шаблон
+//Оригинальная серия PatternCraft (от Джона Линдквиста) представляет собой сборник видеороликов на Youtube,
+// в которых объясняются некоторые шаблоны проектирования и то, как они используются (или могут быть) в StarCraft.
 //----------
 //
 //---Solution---
-//
+class MarioAdapter {
+  constructor(mario) { this.mario = mario }
+  attack(target) { target.health -= this.mario.jumpAttack() }
+}
 //---Test---
-// let arrayTest = [
-//     "Dermatoglyphics", //true );
-//     "isogram", //true );
-//     "aba", //false, "same chars may not be adjacent" );
-//     "moOse", //false, "same chars may not be same case" );
-//     "isIsogram", //false );
-//     "" //, true, "an empty string is a valid isogram" );
-// ]
-//
-//---View solution---
-// for (let i=0;i<arrayTest.length;i++) {
-//     document.write(isIsogram(arrayTest[i]));
-//     document.write(' | ');
-// }
 // 
-//=== End (  ) ===
+//=== End ( PatternCraft - Adapter ) ===
 
 
 //---------------------------------------------------------------------------------------------------
