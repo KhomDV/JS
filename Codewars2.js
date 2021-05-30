@@ -1907,34 +1907,47 @@ Object.prototype.hash = function(string) {
 
 
 //---------------------------------------------------------------------------------------------------
-// 
+// Image host filename generator
 // (6 kyu) https://www.codewars.com/kata/image-host-filename-generator
 //---------------------------------------------------------------------------------------------------
 //---Task---
-//### ****
-//
-//### ****
+//### **Image host filename generator**
+//You are developing an image hosting website.
+//You have to create a function for generating random and unique image filenames.
+//Create a function for generating a random 6 character string which will be used to access the photo URL.
+//To make sure the name is not already in use, you are given access to an PhotoManager object.
+//You can call it like so to make sure the name is unique
+//// at this point, the website has only one photo, hosted on the 'ABCDEF' url
+//photoManager.nameExists('ABCDEF'); // returns true
+//photoManager.nameExists('BBCDEF'); // returns false
+//Note: We consider two names with same letters but different cases to be unique.
+//### **Генератор имени файла хоста изображения**
+//Вы разрабатываете веб-сайт для хостинга изображений.
+//Вам необходимо создать функцию для генерации случайных и уникальных имен файлов изображений.
+//Создайте функцию для генерации случайной строки из 6 символов, которая будет использоваться для доступа к URL-адресу фотографии.
+//Чтобы убедиться, что это имя еще не используется, вам предоставляется доступ к объекту PhotoManager.
+//Вы можете назвать это так, чтобы имя было уникальным
+//// at this point, the website has only one photo, hosted on the 'ABCDEF' url
+//photoManager.nameExists('ABCDEF'); // returns true
+//photoManager.nameExists('BBCDEF'); // returns false
+//Примечание. Мы считаем, что два имени с одинаковыми буквами, но в разных регистрах являются уникальными.
 //----------
 //
 //---Solution---
-//
+function generateName()
+{
+  let str = "";
+  let allc =
+    "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_ !@#$%^&*_(),.?|{}[]-=+\\/";
+  for (let i = 0; i < 6; i++) {
+    str += allc[~~(allc.length * Math.random())];
+  }
+  if (!photoManager.nameExists(str)) return str;
+  return generateName();
+}
 //---Test---
-// let arrayTest = [
-//     "Dermatoglyphics", //true );
-//     "isogram", //true );
-//     "aba", //false, "same chars may not be adjacent" );
-//     "moOse", //false, "same chars may not be same case" );
-//     "isIsogram", //false );
-//     "" //, true, "an empty string is a valid isogram" );
-// ]
-//
-//---View solution---
-// for (let i=0;i<arrayTest.length;i++) {
-//     document.write(isIsogram(arrayTest[i]));
-//     document.write(' | ');
-// }
 // 
-//=== End (  ) ===
+//=== End ( Image host filename generator ) ===
 
 
 //---------------------------------------------------------------------------------------------------
