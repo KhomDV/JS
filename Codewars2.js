@@ -2057,45 +2057,71 @@ Object.prototype.hash = function(string) {
 //----------
 //
 //---Solution---
-function nouveau (Constructor,...args) {
-  const obj = Object.create(Constructor.prototype)
-  const alt = Constructor.apply(obj, args)
-  return alt && (typeof alt === 'object' || typeof alt === 'function') ? alt : obj
-}
+// function nouveau (Constructor,...args) {
+//   const obj = Object.create(Constructor.prototype)
+//   const alt = Constructor.apply(obj, args)
+//   return alt && (typeof alt === 'object' || typeof alt === 'function') ? alt : obj
+// }
 //---Test---
 // 
 //=== End ( Replicate `new` ) ===
 
 
 //---------------------------------------------------------------------------------------------------
-// 
+// Simple Events
 // (5 kyu) https://www.codewars.com/kata/simple-events
 //---------------------------------------------------------------------------------------------------
 //---Task---
-//### ****
-//
-//### ****
+//### **Simple Events**
+//Your goal is to write an Event constructor function, which can be used to make event objects.
+//An event object should work like this:
+//it has a .subscribe() method, which takes a function and stores it as its handler
+//it has an .unsubscribe() method, which takes a function and removes it from its handlers
+//it has an .emit() method, which takes an arbitrary number of arguments and calls all the stored functions
+// with these arguments
+//As this is an elementary example of events, there are some simplifications:
+//all functions are called with correct arguments (e.g. only functions will be passed to unsubscribe)
+//you should not worry about the order of handlers' execution
+//the handlers will not attempt to modify an event object (e.g. add or remove handlers)
+//the context of handlers' execution is not important
+//each handler will be subscribed at most once at any given moment of time.
+// It can still be unsubscribed and then subscribed again
+//Also see an example test fixture for suggested usage
+//### **Простые события**
+//Ваша цель - написать функцию конструктора событий , которую можно использовать для создания объектов событий .
+//Объект события должен работать так:
+//у него есть метод .subscribe () , который принимает функцию и сохраняет ее как обработчик
+//у него есть метод .unsubscribe () , который принимает функцию и удаляет ее из своих обработчиков.
+//у него есть метод .emit () , который принимает произвольное количество аргументов и вызывает все сохраненные функции
+// с этими аргументами.
+//Поскольку это простейший пример событий, есть некоторые упрощения:
+//все функции вызываются с правильными аргументами ( например , для отказа от подписки будут переданы только функции)
+//не стоит беспокоиться о порядке выполнения обработчиков
+//обработчики не будут пытаться изменить объект события ( например, добавить или удалить обработчики)
+//контекст выполнения обработчиков не важен
+//каждый обработчик будет подписан не более одного раза в любой момент времени. От него все еще можно отказаться,
+// а затем подписаться снова
+//Также см. Пример тестового устройства для предлагаемого использования.
 //----------
 //
 //---Solution---
-//
+class Event {
+  constructor() {
+    this.subscribers = new Set();
+  }
+  subscribe(func) {
+    this.subscribers.add(func);
+  }
+  unsubscribe(func) {
+    this.subscribers.delete(func);
+  }
+  emit(...args) {
+    this.subscribers.forEach(s => s(...args));
+  }
+}
 //---Test---
-// let arrayTest = [
-//     "Dermatoglyphics", //true );
-//     "isogram", //true );
-//     "aba", //false, "same chars may not be adjacent" );
-//     "moOse", //false, "same chars may not be same case" );
-//     "isIsogram", //false );
-//     "" //, true, "an empty string is a valid isogram" );
-// ]
-//
-//---View solution---
-// for (let i=0;i<arrayTest.length;i++) {
-//     document.write(isIsogram(arrayTest[i]));
-//     document.write(' | ');
-// }
 // 
-//=== End (  ) ===
+//=== End ( Simple Events ) ===
 
 
 //===================================================================================================
