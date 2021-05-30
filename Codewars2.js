@@ -1934,51 +1934,137 @@ Object.prototype.hash = function(string) {
 //----------
 //
 //---Solution---
-function generateName()
-{
-  let str = "";
-  let allc =
-    "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_ !@#$%^&*_(),.?|{}[]-=+\\/";
-  for (let i = 0; i < 6; i++) {
-    str += allc[~~(allc.length * Math.random())];
-  }
-  if (!photoManager.nameExists(str)) return str;
-  return generateName();
-}
+// function generateName()
+// {
+//   let str = "";
+//   let allc =
+//     "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_ !@#$%^&*_(),.?|{}[]-=+\\/";
+//   for (let i = 0; i < 6; i++) {
+//     str += allc[~~(allc.length * Math.random())];
+//   }
+//   if (!photoManager.nameExists(str)) return str;
+//   return generateName();
+// }
 //---Test---
 // 
 //=== End ( Image host filename generator ) ===
 
 
 //---------------------------------------------------------------------------------------------------
-// 
+// Replicate `new`
 // (5 kyu) https://www.codewars.com/kata/replicate-new
 //---------------------------------------------------------------------------------------------------
 //---Task---
-//### ****
-//
-//### ****
+//### **Replicate `new`**
+//TL;DR: write a nouveau function that replicates all the behavior of the new operator.
+//Aside: Operators?
+//In JavaScript, perhaps no operator is as complicated as new. "Wait; new is an operator?" Yep;
+// an operator is something that operates on one or more operands and evaluates to a result.
+// Binary operators like + and !== operate on two operands:
+//5 + 5 evaluates to 10
+//{} !== [] evaluates to true
+//Whereas unary operators like + and typeof take one operand (hmm, + is both a unary and binary operator,
+// how 'bout that!):
+//+'5' evaluates to 5
+//typeof '5' evaluates to 'string'
+//Ultimately operators are functions with different syntax. They take inputs/operands and return/evaluate to something.
+// In fact, some JS operators can be re-written as functions.
+//New
+//So what about new? Well, the unary operator new is intended to create "instances" of a constructor function.
+// To be more precise, the operation new Constructor(arg1, arg2, ...argX) does the following:
+//Creates an empty object (which we'll call instance) which prototypally inherits from Constructor.prototype
+//Binds Constructor to instance (meaning this is instance) and invokes Constructor with any arguments passed in
+//If the return value of Constructor is an object (including arrays, functions, dates, regexes, etc.)
+// the operation evaluates to that object
+//Otherwise, the operation evaluates to instance
+//Let's see some examples:
+//function Person (name, age) {
+//  this.name = name;
+//  this.age = age;
+//}
+//Person.prototype.introduce = function(){
+//  return 'My name is ' + this.name + ' and I am ' + this.age;
+//};
+//var john = new Person('John', 30);
+//var jack = new Person('Jack', 40);
+//console.log( john.introduce() ); // My name is John and I am 30
+//console.log( jack.introduce() ); // My name is Jack and I am 40
+//function ReturnsArray (name) {
+//  this.name = name;
+//  return [1, 2, 3];
+//}
+//var arr = new ReturnsArray('arr?');
+//console.log( arr.name ); // undefined
+//console.log( arr ); // [1, 2, 3]
+//Oof! No wonder people get confused about new. The good news is… everything new can do, you can do too.
+//Exercise
+//Your mission: write a function nouveau (that's French for "new") which takes one function parameter (the constructor),
+// plus an unknown number of additional parameters of any type (arguments for the constructor).
+// When invoked, nouveau should do everything new does and return the same object new would evaluate to,
+// as specified above.
+//var john = nouveau(Person, 'John', 30); // same result as above
+//Good luck!
+//### **Репликация `new`**
+//TL; DR: напишите nouveauфункцию, которая копирует все поведение newоператора.
+//В сторону: Операторы?
+//В JavaScript, возможно, нет такого сложного оператора, как new. "Подождите,  newэто оператор?" Ага;
+// оператор является то , что работает на одном или нескольких операндов и вычисляется в результате.
+// Бинарные операторы любят +и !==оперируют двумя операндами:
+//5 + 5 оценивает 10
+//{} !== [] оценивает true
+//Принимая во внимание, что унарные операторы любят +и typeofпринимают один операнд (хм, +это и унарный,
+// и бинарный оператор, как насчет этого!):
+//+'5' оценивает 5
+//typeof '5' оценивает 'string'
+//В конечном итоге операторы - это функции с другим синтаксисом. Они принимают входные данные
+// / операнды и возвращают / оценивают что-то. Фактически, некоторые операторы JS можно переписать как функции.
+//Новый
+//Так что насчет new? Что ж, унарный оператор newпредназначен для создания «экземпляров» функции-конструктора.
+// Если быть более точным, операция new Constructor(arg1, arg2, ...argX)делает следующее:
+//Создает пустой объект (который мы назовем instance), прототипно наследующий отConstructor.prototype
+//Персональные Constructorв instance(смысле thisесть instance) и вызывает Constructorс любыми аргументами,
+// передаваемыми в
+//Если возвращаемое значение Constructorявляется объектом (включая массивы, функции, даты, регулярные выражения и т. Д.),
+// Операция оценивается для этого объекта.
+//В противном случае операция оценивается как instance
+//Давайте посмотрим на несколько примеров:
+//function Person (name, age) {
+//  this.name = name;
+//  this.age = age;
+//}
+//Person.prototype.introduce = function(){
+//  return 'My name is ' + this.name + ' and I am ' + this.age;
+//};
+//var john = new Person('John', 30);
+//var jack = new Person('Jack', 40);
+//console.log( john.introduce() ); // My name is John and I am 30
+//console.log( jack.introduce() ); // My name is Jack and I am 40
+//function ReturnsArray (name) {
+//  this.name = name;
+//  return [1, 2, 3];
+//}
+//var arr = new ReturnsArray('arr?');
+//console.log( arr.name ); // undefined
+//console.log( arr ); // [1, 2, 3]
+//Уф! Неудивительно, что люди путаются new. Хорошая новость в том, что… все newможно, вы тоже можете.
+//Упражнение
+//Ваша миссия: написать функцию nouveau(по-французски «новая»), которая принимает один параметр функции (конструктор)
+// плюс неизвестное количество дополнительных параметров любого типа (аргументы для конструктора).
+// При вызове nouveauдолжен делать все, что newделает, и возвращать тот же объект, который newбудет оценивать,
+// как указано выше.
+//var john = nouveau(Person, 'John', 30); // same result as above
+//Удачи!
 //----------
 //
 //---Solution---
-//
+function nouveau (Constructor,...args) {
+  const obj = Object.create(Constructor.prototype)
+  const alt = Constructor.apply(obj, args)
+  return alt && (typeof alt === 'object' || typeof alt === 'function') ? alt : obj
+}
 //---Test---
-// let arrayTest = [
-//     "Dermatoglyphics", //true );
-//     "isogram", //true );
-//     "aba", //false, "same chars may not be adjacent" );
-//     "moOse", //false, "same chars may not be same case" );
-//     "isIsogram", //false );
-//     "" //, true, "an empty string is a valid isogram" );
-// ]
-//
-//---View solution---
-// for (let i=0;i<arrayTest.length;i++) {
-//     document.write(isIsogram(arrayTest[i]));
-//     document.write(' | ');
-// }
 // 
-//=== End (  ) ===
+//=== End ( Replicate `new` ) ===
 
 
 //---------------------------------------------------------------------------------------------------
