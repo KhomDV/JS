@@ -1828,58 +1828,82 @@
 //----------
 //
 //---Solution---
-class Marine {
-  constructor(_damage, _armor) {
-    this.damage = _damage || 0;
-    this.armor = _armor || 0;
-  }
-}
-class MarineWeaponUpgrade {
-  constructor(marine) {
-    this.damage = marine.damage + 1;
-    this.armor = marine.armor;
-  }
-}
-class MarineArmorUpgrade {
-  constructor(marine) {
-    this.damage = marine.damage;
-    this.armor = marine.armor + 1;
-  }
-}
+// class Marine {
+//   constructor(_damage, _armor) {
+//     this.damage = _damage || 0;
+//     this.armor = _armor || 0;
+//   }
+// }
+// class MarineWeaponUpgrade {
+//   constructor(marine) {
+//     this.damage = marine.damage + 1;
+//     this.armor = marine.armor;
+//   }
+// }
+// class MarineArmorUpgrade {
+//   constructor(marine) {
+//     this.damage = marine.damage;
+//     this.armor = marine.armor + 1;
+//   }
+// }
 //---Test---
 // 
 //=== End ( PatternCraft - Decorator ) ===
 
 
 //---------------------------------------------------------------------------------------------------
-// 
+// Extract Nested Object Reference
 // (6 kyu) https://www.codewars.com/kata/extract-nested-object-reference
 //---------------------------------------------------------------------------------------------------
 //---Task---
-//### ****
-//
-//### ****
+//### **Extract Nested Object Reference**
+//You are given a complex object that has many deeply nested variables.
+// You don't want to go the usual if obj.property == null route.
+// Create a prototype method that given a nested path, either return the value or undefined.
+//var obj = {
+//  person: {
+//    name: 'joe',
+//   history: {
+//      hometown: 'bratislava',
+//      bio: {
+//        funFact: 'I like fishing.'
+//      }
+//    }
+//  }
+//};
+//obj.hash('person.name'); // 'joe'
+//obj.hash('person.history.bio'); // { funFact: 'I like fishing.' }
+//obj.hash('person.history.homeStreet'); // undefined
+//obj.hash('person.animal.pet.needNoseAntEater'); // undefined
+//### **Извлечь ссылку на вложенный объект**
+//Вам дан сложный объект, который имеет много глубоко вложенных переменных.
+// Вы не хотите идти по обычному маршруту if obj.property == null.
+// Создайте метод-прототип, который задан вложенным путем, либо возвращает значение, либо не определено.
+//var obj = {
+//  person: {
+//    name: 'joe',
+//    history: {
+//      hometown: 'bratislava',
+//      bio: {
+//        funFact: 'I like fishing.'
+//      }
+//    }
+//  }
+//};
+//obj.hash('person.name'); // 'joe'
+//obj.hash('person.history.bio'); // { funFact: 'I like fishing.' }
+//obj.hash('person.history.homeStreet'); // undefined
+//obj.hash('person.animal.pet.needNoseAntEater'); // undefined
 //----------
 //
 //---Solution---
-//
+Object.prototype.hash = function(string) {
+  try { return eval(`this.${string}`) }
+  catch (e) { return undefined }
+}
 //---Test---
-// let arrayTest = [
-//     "Dermatoglyphics", //true );
-//     "isogram", //true );
-//     "aba", //false, "same chars may not be adjacent" );
-//     "moOse", //false, "same chars may not be same case" );
-//     "isIsogram", //false );
-//     "" //, true, "an empty string is a valid isogram" );
-// ]
-//
-//---View solution---
-// for (let i=0;i<arrayTest.length;i++) {
-//     document.write(isIsogram(arrayTest[i]));
-//     document.write(' | ');
-// }
 // 
-//=== End (  ) ===
+//=== End ( Extract Nested Object Reference ) ===
 
 
 //---------------------------------------------------------------------------------------------------
