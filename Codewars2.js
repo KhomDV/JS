@@ -1752,53 +1752,103 @@
 //----------
 //
 //---Solution---
-class Fly {
-  move(unit) { return (unit.position += 10) }
-}
-class Walk {
-  move(unit) { return unit.position++ }
-}
-class Viking {
-  constructor() {
-    this.position = 0;
-    this.moveBehavior = new Walk();
-  }
-  move() { return this.moveBehavior.move(this) }
-}
+// class Fly {
+//   move(unit) { return (unit.position += 10) }
+// }
+// class Walk {
+//   move(unit) { return unit.position++ }
+// }
+// class Viking {
+//   constructor() {
+//     this.position = 0;
+//     this.moveBehavior = new Walk();
+//   }
+//   move() { return this.moveBehavior.move(this) }
+// }
 //---Test---
 // 
 //=== End ( PatternCraft - Strategy ) ===
 
 
 //---------------------------------------------------------------------------------------------------
-// 
+// PatternCraft - Decorator
 // (6 kyu) https://www.codewars.com/kata/patterncraft-decorator/
 //---------------------------------------------------------------------------------------------------
 //---Task---
-//### ****
-//
-//### ****
+//### **PatternCraft - Decorator**
+//The Decorator Design Pattern can be used, for example, in the StarCraft game to manage upgrades.
+//The pattern consists in "incrementing" your base class with extra functionality.
+//A decorator will receive an instance of the base class and use it to create a new instance with the
+// new things you want "added on it".
+//Your Task
+//Complete the code so that when a Marine gets a WeaponUpgrade it increases the damage by 1,
+// and if it is a ArmorUpgrade then increase the armor by 1.
+//You have 3 classes:
+//Marine: has a damage and an armor properties
+//MarineWeaponUpgrade and MarineArmorUpgrade: upgrades to apply on marine.
+// Accepts a Marine in the constructor and has the same properties as the Marine
+//Resouces
+//PatternCraft > Decorator
+//SourceMaking > Decorator
+//Wikipedia > Decorator
+//PatternCraft series
+//State Pattern
+//Strategy Pattern
+//Visitor Pattern
+//Decorator Pattern
+//Adapter Pattern
+//Command Pattern
+//The original PatternCraft series (by John Lindquist) is a collection of Youtube videos that explains
+// some of the design patterns and how they are used (or could be) on StarCraft.
+//### **PatternCraft - Декоратор**
+//Шаблон Decorator Design может быть использован, например, в игре StarCraft , чтобы управлять обновлениями.
+//Паттерн состоит в «увеличении» базового класса за счет дополнительных функций.
+//Декоратор получит экземпляр базового класса и использует его для создания нового экземпляра с новыми вещами,
+// которые вы хотите «добавить в него».
+//Твое задание
+//Завершите код так, чтобы при получении Marinea WeaponUpgradeурон увеличивался на 1, а если это a,
+// ArmorUpgradeто увеличивалась броня на 1.
+//У вас 3 класса:
+//Marine: Имеет damageи А.Н. armorсвойства
+//MarineWeaponUpgradeи MarineArmorUpgrade: обновления для применения на морских судах.
+// Принимает Marineв конструкторе и имеет те же свойства, что иMarine
+//Ресурсы
+//PatternCraft> Декоратор
+//SourceMaking> Decorator
+//Википедия> Декоратор
+//Серия PatternCraft
+//Государственный образец
+//Шаблон стратегии
+//Шаблон посетителя
+//Шаблон декоратора
+//Шаблон адаптера
+//Командный шаблон
+//Оригинальная серия PatternCraft (от Джона Линдквиста) представляет собой коллекцию видеороликов Youtube,
+// в которых объясняются некоторые шаблоны проектирования и то, как они используются (или могут быть) в StarCraft.
 //----------
 //
 //---Solution---
-//
+class Marine {
+  constructor(_damage, _armor) {
+    this.damage = _damage || 0;
+    this.armor = _armor || 0;
+  }
+}
+class MarineWeaponUpgrade {
+  constructor(marine) {
+    this.damage = marine.damage + 1;
+    this.armor = marine.armor;
+  }
+}
+class MarineArmorUpgrade {
+  constructor(marine) {
+    this.damage = marine.damage;
+    this.armor = marine.armor + 1;
+  }
+}
 //---Test---
-// let arrayTest = [
-//     "Dermatoglyphics", //true );
-//     "isogram", //true );
-//     "aba", //false, "same chars may not be adjacent" );
-//     "moOse", //false, "same chars may not be same case" );
-//     "isIsogram", //false );
-//     "" //, true, "an empty string is a valid isogram" );
-// ]
-//
-//---View solution---
-// for (let i=0;i<arrayTest.length;i++) {
-//     document.write(isIsogram(arrayTest[i]));
-//     document.write(' | ');
-// }
 // 
-//=== End (  ) ===
+//=== End ( PatternCraft - Decorator ) ===
 
 
 //---------------------------------------------------------------------------------------------------
