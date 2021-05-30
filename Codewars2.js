@@ -1590,43 +1590,106 @@
 //----------
 //
 //---Solution---
-class Marine {
-  constructor() {
-    this.health = 100;
-  }
-  accept(visitor) { return visitor.visitLight(this) }
-}
-class Marauder {
-  constructor() {
-    this.health = 125;
-  }
-  accept(visitor) { return visitor.visitArmored(this) }
-}
-class TankBullet {
-  visitLight(unit) {
-    return unit.health -= 21;
-  }
-  visitArmored(unit) {
-    return unit.health -= 32;
-  }
-}
+// class Marine {
+//   constructor() {
+//     this.health = 100;
+//   }
+//   accept(visitor) { return visitor.visitLight(this) }
+// }
+// class Marauder {
+//   constructor() {
+//     this.health = 125;
+//   }
+//   accept(visitor) { return visitor.visitArmored(this) }
+// }
+// class TankBullet {
+//   visitLight(unit) {
+//     return unit.health -= 21;
+//   }
+//   visitArmored(unit) {
+//     return unit.health -= 32;
+//   }
+// }
 //---Test---
 //
 //=== End ( PatternCraft - Visitor ) ===
 
 
 //---------------------------------------------------------------------------------------------------
-// 
+// PatternCraft - State
 // (6 kyu) https://www.codewars.com/kata/patterncraft-state/
 //---------------------------------------------------------------------------------------------------
 //---Task---
-//### ****
-//
-//### ****
+//### **PatternCraft - State**
+//The State Design Pattern can be used, for example, to manage the state of a tank in the StarCraft game.
+//The pattern consists in isolating the state logic in different classes rather than having multiple ifs to
+// determine what should happen.
+//Your Task
+//Complete the code so that when a Tank goes into SiegeMode it cannot move and its damage goes to 20.
+// When it goes to TankMode it should be able to move and the damage should be set to 5.
+//You have 3 classes:
+//Tank: has a state, canMove and damage properties
+//SiegeState and TankState: has canMove and damage properties
+//Note: The tank initial state should be TankState.
+//Resources
+//PatternCraft > State
+//SourceMaking > State
+//Wikipedia > State
+//PatternCraft series
+//State Pattern
+//Strategy Pattern
+//Visitor Pattern
+//Decorator Pattern
+//Adapter Pattern
+//Command Pattern
+//The original PatternCraft series (by John Lindquist) is a collection of Youtube videos that explains
+// some of the design patterns and how they are used (or could be) on StarCraft.
+//### **PatternCraft - Государство**
+//Pattern Конструкторское может использоваться, например, для управления состоянием танка в игре StarCraft.
+//Паттерн состоит в том, чтобы изолировать логику состояния в разных классах,
+// а не использовать несколько ifs для определения того, что должно произойти.
+//Твое задание
+//Завершите код так, чтобы при Tankвходе в SiegeModeнего он не мог двигаться, а его повреждение составляло 20.
+// Когда он подойдет, TankModeон должен иметь возможность двигаться, а урон должен быть установлен на 5.
+//У вас 3 класса:
+//Tank: Имеет state, canMoveи damageсвойства
+//SiegeStateand TankState: имеет canMoveи damageсвойства
+//Примечание . Начальное состояние резервуара должно быть TankState.
+//Ресурсы
+//PatternCraft> Состояние
+//SourceMaking> State
+//Википедия> Государство
+//Серия PatternCraft
+//Государственный образец
+//Шаблон стратегии
+//Шаблон посетителя
+//Шаблон декоратора
+//Шаблон адаптера
+//Командный шаблон
+//Оригинальная серия PatternCraft (от Джона Линдквиста) представляет собой сборник видеороликов на Youtube,
+// в которых объясняются некоторые шаблоны проектирования и то, как они используются (или могут быть) в StarCraft.
 //----------
 //
 //---Solution---
-//
+class SiegeState {
+  constructor() {
+    this.move = false;
+    this.dmg = 20;
+  }
+}
+
+class TankState {
+  constructor() {
+    this.move = true;
+    this.dmg = 5;
+  }
+}
+
+class Tank {
+  constructor() { this.state = new TankState() }
+  get canMove() { return this.state.move }
+  get damage() { return this.state.dmg }
+}
 //---Test---
 // let arrayTest = [
 //     "Dermatoglyphics", //true );
@@ -1643,7 +1706,7 @@ class TankBullet {
 //     document.write(' | ');
 // }
 // 
-//=== End (  ) ===
+//=== End ( PatternCraft - State ) ===
 
 
 //---------------------------------------------------------------------------------------------------
