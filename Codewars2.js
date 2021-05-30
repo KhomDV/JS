@@ -1671,73 +1671,103 @@
 //----------
 //
 //---Solution---
-class SiegeState {
-  constructor() {
-    this.move = false;
-    this.dmg = 20;
-  }
-}
-
-class TankState {
-  constructor() {
-    this.move = true;
-    this.dmg = 5;
-  }
-}
-
-class Tank {
-  constructor() { this.state = new TankState() }
-  get canMove() { return this.state.move }
-  get damage() { return this.state.dmg }
-}
-//---Test---
-// let arrayTest = [
-//     "Dermatoglyphics", //true );
-//     "isogram", //true );
-//     "aba", //false, "same chars may not be adjacent" );
-//     "moOse", //false, "same chars may not be same case" );
-//     "isIsogram", //false );
-//     "" //, true, "an empty string is a valid isogram" );
-// ]
-//
-//---View solution---
-// for (let i=0;i<arrayTest.length;i++) {
-//     document.write(isIsogram(arrayTest[i]));
-//     document.write(' | ');
+// class SiegeState {
+//   constructor() {
+//     this.move = false;
+//     this.dmg = 20;
+//   }
 // }
+// class TankState {
+//   constructor() {
+//     this.move = true;
+//     this.dmg = 5;
+//   }
+// }
+// class Tank {
+//   constructor() { this.state = new TankState() }
+//   get canMove() { return this.state.move }
+//   get damage() { return this.state.dmg }
+// }
+//---Test---
 // 
 //=== End ( PatternCraft - State ) ===
 
 
 //---------------------------------------------------------------------------------------------------
-// 
+// PatternCraft - Strategy
 // (6 kyu) https://www.codewars.com/kata/patterncraft-strategy/
 //---------------------------------------------------------------------------------------------------
 //---Task---
-//### ****
-//
-//### ****
+//### **PatternCraft - Strategy**
+//The Strategy Design Pattern can be used, for example, to determine how a unit moves in the StarCraft game.
+//The pattern consists in having a different strategy to one functionality.
+// A unit, for example, could move by walking or flying.
+//Your Task
+//Complete the code so that when a Viking is flying its position increases by 10 each time it moves.
+//If it is walking then the position is increased by 1.
+//In this Kata, Viking starts as a ground unit when it is created.
+//You have 3 classes:
+//Viking: has a position, moveBehavior and move method.
+//Fly and Walk: the move behaviors with the move(unit) method. Fly has to move 10 positions at a time and Walk
+// has to move 1.
+//Resouces
+//PatternCraft > Strategy
+//SourceMaking > Strategy
+//Wikipedia > Strategy
+//PatternCraft series
+//State Pattern
+//Strategy Pattern
+//Visitor Pattern
+//Decorator Pattern
+//Adapter Pattern
+//Command Pattern
+//The original PatternCraft series (by John Lindquist) is a collection of Youtube videos that explains
+// some of the design patterns and how they are used (or could be) on StarCraft.
+//### **PatternCraft - Стратегия**
+//Шаблон стратегии дизайна может быть использован, например, для определения того,
+// как блок перемещается в игре StarCraft.
+//Паттерн состоит в том, чтобы использовать разные стратегии для одной функциональности.
+// Например, отряд может двигаться пешком или летать.
+//Твое задание
+//Завершите код, чтобы при Vikingполете его позиция увеличивалась с 10каждым движением.
+// Если он идет, то положение увеличивается на 1.
+//В этом Ката Викинг начинается как наземный отряд, когда он создается.
+//У вас есть 3занятия:
+//Viking: Есть position, moveBehaviorи moveметод.
+//Flyи Walk: поведение при перемещении с помощью move(unit)метода.
+// Flyдолжен перемещать 10позиции за раз и Walkдолжен двигаться 1.
+//Ресурсы
+//PatternCraft> Стратегия
+//SourceMaking> Стратегия
+//Википедия> Стратегия
+//Серия PatternCraft
+//Государственный образец
+//Шаблон стратегии
+//Шаблон посетителя
+//Шаблон декоратора
+//Шаблон адаптера
+//Командный шаблон
+//Оригинальная серия PatternCraft (от Джона Линдквиста) представляет собой сборник видеороликов на Youtube,
+// в которых объясняются некоторые шаблоны проектирования и то, как они используются (или могут быть) в StarCraft.
 //----------
 //
 //---Solution---
-//
+class Fly {
+  move(unit) { return (unit.position += 10) }
+}
+class Walk {
+  move(unit) { return unit.position++ }
+}
+class Viking {
+  constructor() {
+    this.position = 0;
+    this.moveBehavior = new Walk();
+  }
+  move() { return this.moveBehavior.move(this) }
+}
 //---Test---
-// let arrayTest = [
-//     "Dermatoglyphics", //true );
-//     "isogram", //true );
-//     "aba", //false, "same chars may not be adjacent" );
-//     "moOse", //false, "same chars may not be same case" );
-//     "isIsogram", //false );
-//     "" //, true, "an empty string is a valid isogram" );
-// ]
-//
-//---View solution---
-// for (let i=0;i<arrayTest.length;i++) {
-//     document.write(isIsogram(arrayTest[i]));
-//     document.write(' | ');
-// }
 // 
-//=== End (  ) ===
+//=== End ( PatternCraft - Strategy ) ===
 
 
 //---------------------------------------------------------------------------------------------------
