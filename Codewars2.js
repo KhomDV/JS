@@ -2105,20 +2105,20 @@ Object.prototype.hash = function(string) {
 //----------
 //
 //---Solution---
-class Event {
-  constructor() {
-    this.subscribers = new Set();
-  }
-  subscribe(func) {
-    this.subscribers.add(func);
-  }
-  unsubscribe(func) {
-    this.subscribers.delete(func);
-  }
-  emit(...args) {
-    this.subscribers.forEach(s => s(...args));
-  }
-}
+// class Event {
+//   constructor() {
+//     this.subscribers = new Set();
+//   }
+//   subscribe(func) {
+//     this.subscribers.add(func);
+//   }
+//   unsubscribe(func) {
+//     this.subscribers.delete(func);
+//   }
+//   emit(...args) {
+//     this.subscribers.forEach(s => s(...args));
+//   }
+// }
 //---Test---
 // 
 //=== End ( Simple Events ) ===
