@@ -65,63 +65,56 @@
 //Округлите ответы до двух десятичных знаков.
 //
 //---Solution---
-function euclideanDistance(point1, point2) {
-  return Math.ceil(( Math.sqrt( point1.reduce((sum, el, i) => sum + Math.pow((el - point2[i]), 2), 0) ) )*100)/100;
-}
+// function euclideanDistance(point1, point2) {
+//   return Math.ceil(( Math.sqrt( point1.reduce((sum, el, i) => sum + Math.pow((el - point2[i]), 2), 0) ) )*100)/100;
+// }
 //
 //---Test---
-console.log( euclideanDistance([-1], [2]) ); //, 3);
-console.log( euclideanDistance([-1,2], [2,4]) ); //, 3.61);
-console.log( euclideanDistance([-1,2,5], [2,4,9]) ); //, 5.39);
+// console.log( euclideanDistance([-1], [2]) ); //, 3);
+// console.log( euclideanDistance([-1,2], [2,4]) ); //, 3.61);
+// console.log( euclideanDistance([-1,2,5], [2,4,9]) ); //, 5.39);
 // 
 //=== End ( Euclidean distance in n dimensions ) ===
 
  
-
-
-
-
 //---------------------------------------------------------------------------------------------------
-// Highest and Lowest
-//7 kyu https://www.codewars.com/kata/highest-and-lowest/
+// Create Phone Number
+// (6 kyu) https://www.codewars.com/kata/create-phone-number
 //---------------------------------------------------------------------------------------------------
 //---Task---
-//### **Highest and Lowest**
-//In this little assignment you are given a string of space separated numbers, and have to return the highest and lowest number.
-//Example:
-//highAndLow("1 2 3 4 5");  // return "5 1"
-//highAndLow("1 2 -3 4 5"); // return "5 -3"
-//highAndLow("1 9 3 4 -5"); // return "9 -5"
-//Notes:
-//All numbers are valid Int32, no need to validate them.
-//There will always be at least one number in the input string.
-//Output string must be two numbers separated by a single space, and highest number is first.
+//### **Create Phone Number**
+//Write a function that accepts an array of 10 integers (between 0 and 9),
+//that returns a string of those numbers in the form of a phone number.
+//Example
+//createPhoneNumber([1, 2, 3, 4, 5, 6, 7, 8, 9, 0]) // => returns "(123) 456-7890"
+//The returned format must be correct in order to complete this challenge.
+//Don't forget the space after the closing parentheses!
 //
-//### **Самый высокий и самый низкий**
-//В этом небольшом задании вам дается строка чисел, разделенных пробелами, и вы должны возвращать наибольшее и наименьшее числа.
-//Пример:
-//highAndLow("1 2 3 4 5");  // return "5 1"
-//highAndLow("1 2 -3 4 5"); // return "5 -3"
-//highAndLow("1 9 3 4 -5"); // return "9 -5"
-//Примечания:
-//Все числа действительны Int32, подтверждать их не нужно .
-//Во входной строке всегда будет хотя бы одно число.
-//Строка вывода должна состоять из двух чисел, разделенных одним пробелом, при этом наибольшее число должно быть первым.
-// ---
+//### **Создать номер телефона**
+//Напишите функцию, которая принимает массив из 10 целых чисел (от 0 до 9),
+//который возвращает строку этих чисел в форме номера телефона.
+//Пример
+//createPhoneNumber([1, 2, 3, 4, 5, 6, 7, 8, 9, 0]) // => returns "(123) 456-7890"
+//Возвращенный формат должен быть правильным для выполнения этой задачи.
+//Не забывайте пробел после закрывающих скобок!
 //
 //---Solution---
-// function highAndLow(numbers){
-//     const sortnumb = numbers.split(' ').map(e => +e).sort((a,b)=>b-a);
-//     return `${sortnumb[0]}  ${sortnumb[sortnumb.length-1]}`;
-// }
+function createPhoneNumber(numbers) {
+  return numbers.join('').replace(/([\d]{3})([\d]{3})([\d]{4})/g,'($1) $2-$3');
+  return '(' + numbers.slice(0,3).join('') + ') ' + numbers.slice(3,6).join('') + '-' + numbers.slice(6).join('');
+}
 //
 //---Test---
-//let arrayTest = []
-//
-//---View solution---
-// document.write(highAndLow("4 5 29 54 4 0 -214 542 -64 1 -3 6 -6")) //"542 -214"
+console.log( createPhoneNumber([1, 2, 3, 4, 5, 6, 7, 8, 9, 0]) ); //, "(123) 456-7890");
+console.log( createPhoneNumber([1, 1, 1, 1, 1, 1, 1, 1, 1, 1]) ); //, "(111) 111-1111");
+console.log( createPhoneNumber([1, 2, 3, 4, 5, 6, 7, 8, 9, 0]) ); //, "(123) 456-7890");
 // 
-//=== End ( Highest and Lowest ) ===
+//=== End ( Create Phone Number ) ===
+
+
+
+
+
 
 
 //---------------------------------------------------------------------------------------------------
