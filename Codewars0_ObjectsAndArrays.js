@@ -28,41 +28,30 @@
 //
 //---Solution---
 function stray(numbers) {
-
-  return  numbers.reduce((acc, el) => {
-    acc[el] = (acc[el] || 0) + 1;
-    return acc;
-  }, {});
-
+  return numbers.reduce((a, b) => a ^ b);
 }
-
-
+//Решение:
+//1. Методом бинарного исключающего ИЛИ (^)
+//Длина массива - нечетная и один отличающийся элемент.
+//Следовательно: множество одинаковых элементов - парное, их и исключаем - остается один искомый элемент
+//2. Сравнение индексов элемента с начала массива и с конца массива - когда индекс один - элемент найден
+//3. Сортировка и сравнение первого, среднего, последенего элемента
+//4. min, max
+//Ниже просто пример подсчета одинаковых элементов в массиве
+// let oNumb = numbers.reduce((acc, el) => {
+//   acc[el] = (acc[el] || 0) + 1;
+//   return acc;
+// }, {});
 //
 //---Test---
-//const task = (a,b) => { return a + b}
-//console.log( task(5, 4) );
-//const r = antiOptimizeAsync( task(5,4) );
-//console.log( r );
-console.log( stray([17, 17, 3, 17, 17, 17, 17]) );
-
-//
-//---View solution---
-//    document.write(disemvowel("This website is for losers LOL!")); //"Ths wbst s fr lsrs LL!"
-// 
-//=== End ( Disemvowel Trolls ) ===
-
-
-
-
-
-
-
-
+console.log( stray([1, 1, 2]) ); //2
+console.log( stray([17, 17, 3, 17, 17, 17, 17]) ); //3
+//=== End ( Find the stray number ) ===
 
 
 //---------------------------------------------------------------------------------------------------
 // Mumbling
-// 7 kyu https://www.codewars.com/kata/mumbling/
+// (7 kyu) https://www.codewars.com/kata/euclidean-distance-in-n-dimensions
 //---------------------------------------------------------------------------------------------------
 //---Task---
 //### **Mumbling**
