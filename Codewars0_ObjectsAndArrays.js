@@ -27,9 +27,9 @@
 //[17, 17, 3, 17, 17, 17, 17] ==> 3
 //
 //---Solution---
-function stray(numbers) {
-  return numbers.reduce((a, b) => a ^ b);
-}
+// function stray(numbers) {
+//   return numbers.reduce((a, b) => a ^ b);
+// }
 //Решение:
 //1. Методом бинарного исключающего ИЛИ (^)
 //Длина массива - нечетная и один отличающийся элемент.
@@ -44,56 +44,41 @@ function stray(numbers) {
 // }, {});
 //
 //---Test---
-console.log( stray([1, 1, 2]) ); //2
-console.log( stray([17, 17, 3, 17, 17, 17, 17]) ); //3
+// console.log( stray([1, 1, 2]) ); //2
+// console.log( stray([17, 17, 3, 17, 17, 17, 17]) ); //3
 //=== End ( Find the stray number ) ===
 
 
 //---------------------------------------------------------------------------------------------------
-// Mumbling
+// Euclidean distance in n dimensions
 // (7 kyu) https://www.codewars.com/kata/euclidean-distance-in-n-dimensions
 //---------------------------------------------------------------------------------------------------
 //---Task---
-//### **Mumbling**
-//This time no story, no theory. The examples below show you how to write function accum:
-//Examples:
-//accum("abcd") -> "A-Bb-Ccc-Dddd"
-//accum("RqaEzty") -> "R-Qq-Aaa-Eeee-Zzzzz-Tttttt-Yyyyyyy"
-//accum("cwAt") -> "C-Ww-Aaa-Tttt"
-//The parameter of accum is a string which includes only letters from a..z and A..Z.
+//### **Euclidean distance in n dimensions**
+//Implement a function to calculate the distance between two points in n-dimensional space.
+//The two points will be passed to your function as arrays of the same length (tuples in Python).
+//Round your answers to two decimal places.
 //
-//### **Бормотание**
-//На этот раз ни рассказа, ни теории. В приведенных ниже примерах показано, как писать функцию accum:
-//Примеры:
-//accum("abcd") -> "A-Bb-Ccc-Dddd"
-//accum("RqaEzty") -> "R-Qq-Aaa-Eeee-Zzzzz-Tttttt-Yyyyyyy"
-//accum("cwAt") -> "C-Ww-Aaa-Tttt"
-//Параметр аккумулятора - это строка, состоящая только из букв от a..zи A..Z.
-// ---
+//### **Евклидово расстояние в n измерениях**
+//Реализуйте функцию для вычисления расстояния между двумя точками в n-мерном пространстве.
+//Две точки будут переданы вашей функции в виде массивов одинаковой длины (кортежи в Python).
+//Округлите ответы до двух десятичных знаков.
 //
 //---Solution---
-//accum = (str) => {
-//    return str.split('').map((e,i)=>e.toUpperCase() + e.repeat(i).toLowerCase()).join('-');
-//}
+function euclideanDistance(point1, point2) {
+  return Math.ceil(( Math.sqrt( point1.reduce((sum, el, i) => sum + Math.pow((el - point2[i]), 2), 0) ) )*100)/100;
+}
 //
 //---Test---
-//let arrayTest = [
-//    'ZpglnRxqenU', //'Z-Pp-Ggg-Llll-Nnnnn-Rrrrrr-Xxxxxxx-Qqqqqqqq-Eeeeeeeee-Nnnnnnnnnn-Uuuuuuuuuuu'
-//    'NyffsGeyylB', //'N-Yy-Fff-Ffff-Sssss-Gggggg-Eeeeeee-Yyyyyyyy-Yyyyyyyyy-Llllllllll-Bbbbbbbbbbb'
-//    'MjtkuBovqrU', //'M-Jj-Ttt-Kkkk-Uuuuu-Bbbbbb-Ooooooo-Vvvvvvvv-Qqqqqqqqq-Rrrrrrrrrr-Uuuuuuuuuuu'
-//    'EvidjUnokmM', //'E-Vv-Iii-Dddd-Jjjjj-Uuuuuu-Nnnnnnn-Oooooooo-Kkkkkkkkk-Mmmmmmmmmm-Mmmmmmmmmmm'
-//    'HbideVbxncC'  //'H-Bb-Iii-Dddd-Eeeee-Vvvvvv-Bbbbbbb-Xxxxxxxx-Nnnnnnnnn-Cccccccccc-Ccccccccccc'
-//    ]
-//
-//---View solution---
-//for (let i=0;i<arrayTest.length;i++) {
-//
-//    document.write(accum(arrayTest[i]));
-//    document.write(' | ');
-//
-//}
+console.log( euclideanDistance([-1], [2]) ); //, 3);
+console.log( euclideanDistance([-1,2], [2,4]) ); //, 3.61);
+console.log( euclideanDistance([-1,2,5], [2,4,9]) ); //, 5.39);
 // 
-//=== End ( Mumbling ) ===
+//=== End ( Euclidean distance in n dimensions ) ===
+
+ 
+
+
 
 
 //---------------------------------------------------------------------------------------------------
