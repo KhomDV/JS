@@ -171,68 +171,52 @@
 //=== End ( Bubblesort Once ) ===
 
 
-
-
-
 //---------------------------------------------------------------------------------------------------
-// Char Code Calculation
-//7 kyu https://www.codewars.com/kata/char-code-calculation
+// Sort with Arrow Functions
+// (7 kyu) https://www.codewars.com/kata/sort-with-arrow-functions
 //---------------------------------------------------------------------------------------------------
 //---Task---
-//### **Char Code Calculation**
-//Given a string, turn each character into its ASCII character code and join them together
-// to create a number - let's call this number total1:
-//'ABC' --> 'A' = 65, 'B' = 66, 'C' = 67 --> 656667
-//Then replace any incidence of the number 7 with the number 1, and call this number 'total2':
-//total1 = 656667
-//              ^
-//total2 = 656661
-//              ^
-//Then return the difference between the sum of the digits in total1 and total2:
-//  (6 + 5 + 6 + 6 + 6 + 7)
-//- (6 + 5 + 6 + 6 + 6 + 1)
-//-------------------------
-//                       6
+//### **Sort with Arrow Functions**
+//Order People by age Using Arrow Function
+//Sort and Order people by their age using Arrow Functions
+//Task
+//Your task is to order a list containg people objects by age using the new Javascript Arrow Functions
+//Input
+//Input will be a valid array with People objects containing an Age and Name
+//Output
+//Output will be a valid sorted array with People objects sorted by Age in ascending order
+//Reference: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions
 //
-//### **Расчет кода символа**
-//Учитывая строку, превратите каждый символ в его код символа ASCII и соедините их вместе,
-// чтобы создать число - давайте назовем это число total1:
-//'ABC' --> 'A' = 65, 'B' = 66, 'C' = 67 --> 656667
-//Затем замените любую частоту числа 7на число 1и назовите это число 'total2':
-//total1 = 656667
-//              ^
-//total2 = 656661
-//              ^
-//Затем верните разницу между суммой цифр total1и total2:
-//  (6 + 5 + 6 + 6 + 6 + 7)
-//- (6 + 5 + 6 + 6 + 6 + 1)
-//-------------------------
-//                       6
-// ---
+//### **Сортировка с помощью стрелок**
+//Сортировка людей по возрасту с помощью стрелок
+//Сортируйте и упорядочивайте людей по возрасту с помощью стрелочных функций
+//Задача
+//Ваша задача - упорядочить список, содержащий объекты людей по возрасту, используя новые стрелочные функции Javascript.
+//Вход
+//Ввод будет допустимым массивом с объектами People, содержащими возраст и имя.
+//Выход
+//Результатом будет действительный отсортированный массив с объектами People, отсортированными по возрасту в порядке возрастания.
+//Ссылка: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions
 //
 //---Solution---
-//function calc(x){
-//    const total1 = x.split('').map((e)=>e.charCodeAt()).join('');
-//    const total2 = total1.replace(/[7]/g, '1');
-//    return (total1.split('').reduce((a,b)=>a + Number(b), 0) - total2.split('').reduce((a,b)=>a + Number(b), 0));
-//}
+var OrderPeople = function(people) {
+  return people.sort( (a, b) => a.age - b.age );
+}
 //
 //---Test---
-//let arrayTest = [
-//    'ABC', //6
-//    'abcdef', //6
-//    'ifkhchlhfd', //6
-//    'aaaaaddddr',  //30
-//    'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ' // 96
-//]
-//
-//---View solution---
-//for (let i=0;i<arrayTest.length;i++) {
-//    document.write(calc(arrayTest[i]));
-//    document.write(' | ');
-//}
+console.log( OrderPeople([ { age: 83, name: 'joel' },
+                           { age: 46, name: 'roger' },
+                           { age: 99, name: 'vinny' },
+                           { age: 26, name: 'don' },
+                           { age: 74, name: 'brendan' } ]) );
+//[{age:26,name:"don"},{age:46,name:"roger"},{age:74,name:"brendan"},{age:83,name:"joel"},{age:99,name:"vinny"}], 'The array is still empty')
 // 
-//=== End ( Char Code Calculation ) ===
+//=== End ( Sort with Arrow Functions ) ===
+
+
+
+
+
 
 
 //---------------------------------------------------------------------------------------------------
