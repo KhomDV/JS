@@ -99,72 +99,79 @@
 //Не забывайте пробел после закрывающих скобок!
 //
 //---Solution---
-function createPhoneNumber(numbers) {
-  return numbers.join('').replace(/([\d]{3})([\d]{3})([\d]{4})/g,'($1) $2-$3');
-  return '(' + numbers.slice(0,3).join('') + ') ' + numbers.slice(3,6).join('') + '-' + numbers.slice(6).join('');
-}
+// function createPhoneNumber(numbers) {
+//   return numbers.join('').replace(/([\d]{3})([\d]{3})([\d]{4})/g,'($1) $2-$3');
+//   return '(' + numbers.slice(0,3).join('') + ') ' + numbers.slice(3,6).join('') + '-' + numbers.slice(6).join('');
+// }
 //
 //---Test---
-console.log( createPhoneNumber([1, 2, 3, 4, 5, 6, 7, 8, 9, 0]) ); //, "(123) 456-7890");
-console.log( createPhoneNumber([1, 1, 1, 1, 1, 1, 1, 1, 1, 1]) ); //, "(111) 111-1111");
-console.log( createPhoneNumber([1, 2, 3, 4, 5, 6, 7, 8, 9, 0]) ); //, "(123) 456-7890");
+// console.log( createPhoneNumber([1, 2, 3, 4, 5, 6, 7, 8, 9, 0]) ); //, "(123) 456-7890");
+// console.log( createPhoneNumber([1, 1, 1, 1, 1, 1, 1, 1, 1, 1]) ); //, "(111) 111-1111");
+// console.log( createPhoneNumber([1, 2, 3, 4, 5, 6, 7, 8, 9, 0]) ); //, "(123) 456-7890");
 // 
 //=== End ( Create Phone Number ) ===
 
 
-
-
-
-
-
 //---------------------------------------------------------------------------------------------------
-// Isograms
-//7 kyu https://www.codewars.com/kata/isograms/
+// Bubblesort Once
+// (7 kyu) https://www.codewars.com/kata/bubblesort-once
 //---------------------------------------------------------------------------------------------------
 //---Task---
-//### **Isograms**
-//An isogram is a word that has no repeating letters, consecutive or non-consecutive.
-//Implement a function that determines whether a string that contains only letters is an isogram.
-//Assume the empty string is an isogram. Ignore letter case.
-//isIsogram "Dermatoglyphics" == true
-//isIsogram "aba" == false
-//isIsogram "moOse" == false -- ignore letter case
+//### **Bubblesort Algorithm**
+//Overview
+//The Bubblesort Algorithm is one of many algorithms used to sort a list of similar
+//items (e.g. all numbers or all letters) into either ascending order or descending order. Given a list (e.g.):
+//[9, 7, 5, 3, 1, 2, 4, 6, 8]
+//To sort this list in ascending order using Bubblesort, you first have to compare the first two terms of the list.
+//If the first term is larger than the second term, you perform a swap. The list then becomes:
+//[7, 9, 5, 3, 1, 2, 4, 6, 8] // The "9" and "7" have been swapped because 9 is larger than 7 and thus 9 should be after 7
+//You then proceed by comparing the 2nd and 3rd terms, performing a swap when necessary,
+//and then the 3rd and 4th term, then the 4th and 5th term, etc. etc.
+//When you reach the end of the list, it is said that you have completed 1 complete pass.
+//Task
+//Given an array of integers, your function bubblesortOnce/bubblesort_once/BubblesortOnce
+//(or equivalent, depending on your language's naming conventions) should return a new array equivalent
+//to performing exactly 1 complete pass on the original array. Your function should be pure, i.e.
+//it should not mutate the input array.
 //
-//### **Изограммы**
-//Изограмма - это слово, в котором нет повторяющихся букв, последовательных или непоследовательных.
-//Реализуйте функцию, которая определяет, является ли строка, содержащая только буквы, изограммой.
-//Предположим, что пустая строка является изограммой. Игнорировать регистр букв.
-//isIsogram "Dermatoglyphics" == true
-//isIsogram "aba" == false
-//isIsogram "moOse" == false -- ignore letter case
-// ---
+//### **Алгоритм пузырьковой сортировки**
+//Обзор
+//Алгоритм пузырьковой сортировки - один из многих алгоритмов, используемых для сортировки списка похожих
+//элементов (например, всех цифр или всех букв) либо по возрастанию, либо по убыванию. Учитывая список (например):
+//[9, 7, 5, 3, 1, 2, 4, 6, 8]
+//Чтобы отсортировать этот список в порядке возрастания с помощью пузырьковой сортировки,
+//сначала необходимо сравнить первые два члена списка. Если первый член больше второго, вы выполняете обмен.
+//Список становится таким:
+//[7, 9, 5, 3, 1, 2, 4, 6, 8] // The "9" and "7" have been swapped because 9 is larger than 7 and thus 9 should be after 7
+//Затем вы сравниваете 2-й и 3-й члены, при необходимости выполняя замену , а затем 3-й и 4-й члены,
+//затем 4-й и 5-й члены и т. Д. И т. Д. Когда вы дойдете до конца списка, будет сказано, что вы выполнили 1 полный проход.
+//Задача
+//Учитывая массив целых чисел, ваша функция bubblesortOnce/ bubblesort_once/ BubblesortOnce
+//(или эквивалент, в зависимости от соглашений об именовании вашего языка) должна возвращать новый массив,
+//эквивалентный выполнению ровно 1 полного прохода в исходном массиве.
+//Ваша функция должна быть чистой, т.е. она не должна изменять входной массив.
 //
 //---Solution---
-// function isIsogram(str){
-//     if (str.trim() === "" ) return true;
-//     const arr = str.split('').map((e)=>e.toUpperCase());
-//     return arr.length === Array.from(new Set(arr)).length ? true : false;
-//     //best- return !/(\w).*\1/i.test(str)
-//     //best- return new Set(str.toUpperCase()).size == str.length;
+// function bubblesortOnce(a) {
+//   //1-solution
+//   return a.reduce((acc, el, i) => {
+//     if (acc[i] >= a[i+1]) {
+//       acc[i+1] = acc[i];
+//       acc[i] = a[i+1]
+//     }
+//     return acc;
+//   }, [...a]);
+//   //2-solution
+//   return [...a].map((e, i, arr) => e > arr[i+1] ? (arr[i] = arr[i+1], arr[i+1] = e, arr[i]) : e)
 // }
 //
 //---Test---
-// let arrayTest = [
-//     "Dermatoglyphics", //true );
-//     "isogram", //true );
-//     "aba", //false, "same chars may not be adjacent" );
-//     "moOse", //false, "same chars may not be same case" );
-//     "isIsogram", //false );
-//     "" //, true, "an empty string is a valid isogram" );
-// ]
+// console.log( bubblesortOnce([9, 7, 5, 3, 1, 2, 4, 6, 8]) ); //, [7, 5, 3, 1, 2, 4, 6, 8, 9]);
 //
-//---View solution---
-// for (let i=0;i<arrayTest.length;i++) {
-//     document.write(isIsogram(arrayTest[i]));
-//     document.write(' | ');
-// }
-// 
-//=== End ( Isograms ) ===
+//=== End ( Bubblesort Once ) ===
+
+
+
 
 
 //---------------------------------------------------------------------------------------------------
