@@ -199,142 +199,175 @@
 //Ссылка: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions
 //
 //---Solution---
-var OrderPeople = function(people) {
-  return people.sort( (a, b) => a.age - b.age );
-}
+// var OrderPeople = function(people) {
+//   return people.sort( (a, b) => a.age - b.age );
+// }
 //
 //---Test---
-console.log( OrderPeople([ { age: 83, name: 'joel' },
-                           { age: 46, name: 'roger' },
-                           { age: 99, name: 'vinny' },
-                           { age: 26, name: 'don' },
-                           { age: 74, name: 'brendan' } ]) );
+// console.log( OrderPeople([ { age: 83, name: 'joel' },
+//                            { age: 46, name: 'roger' },
+//                            { age: 99, name: 'vinny' },
+//                            { age: 26, name: 'don' },
+//                            { age: 74, name: 'brendan' } ]) );
 //[{age:26,name:"don"},{age:46,name:"roger"},{age:74,name:"brendan"},{age:83,name:"joel"},{age:99,name:"vinny"}], 'The array is still empty')
 // 
 //=== End ( Sort with Arrow Functions ) ===
 
 
-
-
-
-
-
 //---------------------------------------------------------------------------------------------------
-// Cat and Mouse - 2D Version
-//7 kyu https://www.codewars.com/kata/cat-and-mouse-2d-version/
+// Who's Online?
+// (7 kyu) https://www.codewars.com/kata/whos-online
 //---------------------------------------------------------------------------------------------------
 //---Task---
-//### **Cat and Mouse - 2D Version**
-//You will be given a string (map) featuring a cat "C" and a mouse "m".
-//The rest of the string will be made up of dots (".")
-//The cat can move the given number of moves up, down, left or right, but not diagonally.
-//You need to find out if the cat can catch the mouse from it's current position and return "Caught!" or "Escaped!" respectively.
-//Finally, if one of two animals are not present, return "boring without two animals".
-//Examples
-//moves = 5
-//map =
-//..C......
-//.........
-//....m....
-//returns "Caught!" because the cat can catch the mouse in 4 moves
-//moves = 5
-//map =
-//.C.......
-//.........
-//......m..
-//returns "Escaped!" because the cat cannot catch the mouse in  5 moves
+//### **Who's Online?**
+//You have a group chat application, but who is online!?
+//You want to show your users which of their friends are online and available to chat!
+//Given an input of an array of objects containing usernames, status and time since last activity (in mins),
+//create a function to work out who is online, offline and away.
+//If someone is online but their lastActivity was more than 10 minutes ago they are to be considered away.
+//The input data has the following structure:
+//[{
+//  username: 'David',
+//  status: 'online',
+//  lastActivity: 10
+//}, {
+//  username: 'Lucy', 
+//  status: 'offline',
+//  lastActivity: 22
+//}, {
+//  username: 'Bob', 
+//  status: 'online',
+//  lastActivity: 104
+//}]
+//The corresponding output should look as follows:
+//{
+//  online: ['David'],
+//  offline: ['Lucy'],
+//  away: ['Bob']
+//}
+//If for example, no users are online the output should look as follows:
+//{
+//  offline: ['Lucy'],
+//  away: ['Bob']
+//}
+//username will always be a string, status will always be either 'online' or 'offline' (UserStatus enum in C#)
+//and lastActivity will always be number >= 0.
+//Finally, if you have no friends in your chat application, the input will be an empty array [].
+//In this case you should return an empty object {} (empty Dictionary in C#).
 //
-//### **Кошка и Мышь - 2D версия**
-//Вам дадут веревочку ( map) с изображением кота "C"и мышки "m".
-//Остальная часть строки будет состоять из точек ( ".").
-//Кошка может перемещаться на указанное количество movesвверх, вниз, влево или вправо, но не по диагонали .
-//Вам нужно выяснить, может ли кошка поймать мышь из текущей позиции и вернуться "Caught!"или "Escaped!"соответственно.
-//Наконец, если одного из двух животных нет, вернитесь "boring without two animals".
-//Примеры
-//moves = 5
-//map =
-//..C......
-//.........
-//....m....
-//returns "Caught!" because the cat can catch the mouse in 4 moves
-//moves = 5
-//map =
-//.C.......
-//.........
-//......m..
-//returns "Escaped!" because the cat cannot catch the mouse in  5 moves
-// ---
+//### **Кто онлайн?**
+//У вас есть приложение для группового чата, но кто в сети !?
+//Вы хотите показать своим пользователям, кто из их друзей в сети и доступен для общения в чате!
+//Учитывая ввод массива объектов, содержащих имена пользователей,
+//статус и время с момента последнего действия (в минутах), создайте функцию для определения, кто есть online,
+//offline и away.
+//Если кто-то есть, online но он lastActivity был более 10 минут назад, они должны быть рассмотрены away.
+//Входные данные имеют следующую структуру:
+//[{
+//  username: 'David',
+//  status: 'online',
+//  lastActivity: 10
+//}, {
+//  username: 'Lucy', 
+//  status: 'offline',
+//  lastActivity: 22
+//}, {
+//  username: 'Bob', 
+//  status: 'online',
+//  lastActivity: 104
+//}]
+//Соответствующий вывод должен выглядеть следующим образом:
+//{
+//  online: ['David'],
+//  offline: ['Lucy'],
+//  away: ['Bob']
+//}
+//Если, например, пользователей нет, onlineрезультат должен выглядеть следующим образом:
+//{
+//  offline: ['Lucy'],
+//  away: ['Bob']
+//}
+//имя пользователя всегда будет a string, статус всегда будет либо 'online'или 'offline'(перечисление UserStatus в C #),
+//а lastActivity всегда будет number >= 0.
+//Наконец, если в вашем приложении чата нет друзей, входом будет пустой массив [].
+//В этом случае вы должны вернуть пустой объект {}(пустой словарь в C #).
 //
 //---Solution---
-// function catMouse(map,moves){
-//     //Локальное решение
-//     if ( !map.includes("C") || !map.includes("m") ) return ('boring without two animals');
-//
-//     map = map.trim();
-//
-//     let arr = [];
-//     while (true) {
-//         const nInd = map.indexOf(' ');
-//         if (nInd === -1) {
-//             arr.push(map);
-//             break;
-//         }
-//         arr.push(map.substring(0,nInd-1));
-//         map = map.substring(nInd).trim();
-//     }
-//
-//     let posC;
-//     let posM;
-//     arr.forEach((e,i)=> e.indexOf('C')>-1 ? posC = Array(i,e.indexOf('C')) : '');
-//     arr.forEach((e,i)=> e.indexOf('m')>-1 ? posM = Array(i,e.indexOf('m')) : '');
-//     const nStep = Math.abs(posC[0] - posM[0]) + Math.abs(posC[1] - posM[1]);
-//    
-//     return (nStep <= moves ? "Caught!" : "Escaped!");
-//    
-//
-//     // Решение на Codewars
-//     if ( !map.includes("C") || !map.includes("m") ) return ('boring without two animals');
-//
-//     const arr = map.split('\n');
-//
-//     let posC;
-//     let posM;
-//     arr.forEach((e,i)=> e.indexOf('C')>-1 ? posC = Array(i,e.indexOf('C')) : '');
-//     arr.forEach((e,i)=> e.indexOf('m')>-1 ? posM = Array(i,e.indexOf('m')) : '');
-//     const nStep = Math.abs(posC[0] - posM[0]) + Math.abs(posC[1] - posM[1]);
-//    
-//     return (nStep <= moves ? "Caught!" : "Escaped!");
-// }
+const whosOnline = (friends) => {
+
+let acc = friends.reduce( (acc, el, i) => {
+  if (el.status === 'online') {
+    if (el.lastActivity <= 10) {
+      const ol = acc['online'];
+      console.log(typeof(ol));
+
+      acc['online'] = [el.username];
+    } else {
+      console.log(acc['away']);
+      const ol = acc['away'];
+      console.log(typeof(ol));
+      acc['away'] = [el.username];
+    }
+  } else {
+    console.log(acc['offline']);
+    acc['offline'] = [el.username];
+  }
+  return acc;
+}, {} );
+console.log(acc);
+// let oNumb = numbers.reduce((acc, el) => {
+//   acc[el] = (acc[el] || 0) + 1;
+//   return acc;
+// }, {});
+
+  return friends;
+}
 //
 //---Test---
-//let arrayTest = []
-//
-//---View solution---
-//for (let i=0;i<arrayTest.length;i++) {
-//     let map=
-//  `..C......
-//  .........
-//  ....m....`
-//       //'Caught!'
-//     document.write(catMouse(map,5));
-//     document.write(' | ');
-//        
-//     map=
-//     `.C.......
-//     .........
-//     ......m..` //'Escaped!'
-//     document.write(catMouse(map,5));
-//     document.write(' | ');
-//    
-//     map=
-//     `..C......
-//     .........
-//     .........` //'boring without two animals'
-//     document.write(catMouse(map,5));
-//     document.write(' | ');
+let friends = [{
+  username: 'David',
+  status: 'online',
+  lastActivity: 10
+}, {
+  username: 'Lucy',
+  status: 'offline',
+  lastActivity: 22
+}, {
+  username: 'Bob',
+  status: 'online',
+  lastActivity: 104
+}, {
+  username: 'Bob2',
+  status: 'online',
+  lastActivity: 104
+}];
+console.log( whosOnline(friends) );
+//{
+//  online: ['David'],
+//  offline: ['Lucy'],
+//  away: ['Bob']
+//}
+  
+friends = [{
+  username: 'Lucy',
+  status: 'offline',
+  lastActivity: 22
+}, {
+  username: 'Bob',
+  status: 'online',
+  lastActivity: 104
+}];
+console.log( whosOnline(friends) );
+//{
+//  offline: ['Lucy'],
+//  away: ['Bob']
 //}
 // 
 //=== End ( Cat and Mouse - 2D Version ) ===
+
+
+
+
 
 
 //---------------------------------------------------------------------------------------------------
