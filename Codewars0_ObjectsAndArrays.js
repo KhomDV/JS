@@ -293,35 +293,24 @@
 //В этом случае вы должны вернуть пустой объект {}(пустой словарь в C #).
 //
 //---Solution---
+//---1---
 const whosOnline = (friends) => {
-
-let acc = friends.reduce( (acc, el, i) => {
-  if (el.status === 'online') {
-    if (el.lastActivity <= 10) {
-      const ol = acc['online'];
-      console.log(typeof(ol));
-
-      acc['online'] = [el.username];
-    } else {
-      console.log(acc['away']);
-      const ol = acc['away'];
-      console.log(typeof(ol));
-      acc['away'] = [el.username];
-    }
-  } else {
-    console.log(acc['offline']);
-    acc['offline'] = [el.username];
+  let statusChat = {};
+  for (let i=0; i<friends.length; i++) {
+    const user = friends[i];
+    const userStatus = user.status === 'online' && user.lastActivity > 10 ? 'away' : user.status;
+    let statusValue = statusChat[userStatus] || [];
+    statusValue.push(user.username);
+    statusChat[userStatus] = statusValue;
   }
-  return acc;
-}, {} );
-console.log(acc);
-// let oNumb = numbers.reduce((acc, el) => {
-//   acc[el] = (acc[el] || 0) + 1;
-//   return acc;
-// }, {});
-
-  return friends;
+  return statusChat;
 }
+//---2---
+const whosOnline = friends => friends.reduce((a,{username, status, lastActivity}) => {
+  const fStatus = status === 'online' && lastActivity > 10 ? 'away' : status;
+  a[fStatus] ? a[fStatus].push(username) : a[fStatus] = [username];
+  return a;
+}, {})
 //
 //---Test---
 let friends = [{
@@ -340,6 +329,10 @@ let friends = [{
   username: 'Bob2',
   status: 'online',
   lastActivity: 104
+}, {
+  username: 'Lucy2',
+  status: 'offline',
+  lastActivity: 22
 }];
 console.log( whosOnline(friends) );
 //{
