@@ -389,23 +389,23 @@
 //
 //---Solution---
 //---1---
-function filterHomogenous(arrays) {
-  let newArray = arrays.reduce((acc, el) => {
-    if (!el.some( e => typeof(e) !== typeof(el[0]) ) && el.length !== 0) {
-      acc = [...acc, el];
-    }
-    return acc;
-  }, []);
-  return newArray;
-}
+// function filterHomogenous(arrays) {
+//   let newArray = arrays.reduce((acc, el) => {
+//     if (!el.some( e => typeof(e) !== typeof(el[0]) ) && el.length !== 0) {
+//       acc = [...acc, el];
+//     }
+//     return acc;
+//   }, []);
+//   return newArray;
+// }
 //---2---
 // function filterHomogenous(arr) {
 //   return arr.filter(subArr => subArr.length > 0 && subArr.every(val => typeof val === typeof subArr[0]));
 // }
 //
 //---Test---
-console.log( filterHomogenous([[1, 5, 4], ['a', 3, 5], ['b'], [], ['1', 2, 3]]) ); //, [[1, 5, 4], ['b']]);
-console.log( filterHomogenous([[123, 234, 432], ['', 'abc'], [''], ['', 1], ['', '1'], []]) ); //, [[123, 234, 432], ['', 'abc'], [''], ['', '1']]);
+// console.log( filterHomogenous([[1, 5, 4], ['a', 3, 5], ['b'], [], ['1', 2, 3]]) ); //, [[1, 5, 4], ['b']]);
+// console.log( filterHomogenous([[123, 234, 432], ['', 'abc'], [''], ['', 1], ['', '1'], []]) ); //, [[123, 234, 432], ['', 'abc'], [''], ['', '1']]);
 //
 //=== End ( Homogenous arrays ) ===
 //===================================================================================================
