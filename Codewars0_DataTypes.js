@@ -28,38 +28,50 @@
 //7  -->  "16-9"
 //
 //---Solution---
-const findSquares = num => {
-  const max = Math.ceil(num/2) ** 2;
-  const min = Math.floor(num/2) ** 2;
-  return `${max}-${min}`;
-};
+// const findSquares = num => {
+//   const max = Math.ceil(num/2) ** 2;
+//   const min = Math.floor(num/2) ** 2;
+//   return `${max}-${min}`;
+// };
 //
 //---Test---
-console.log( findSquares(9) );  //, '25-16');
-console.log( findSquares(5) );  //, '9-4');
-console.log( findSquares(81) ); //, '1681-1600');
-console.log( findSquares(25) ); //, '169-144');
+// console.log( findSquares(9) );  //, '25-16');
+// console.log( findSquares(5) );  //, '9-4');
+// console.log( findSquares(81) ); //, '1681-1600');
+// console.log( findSquares(25) ); //, '169-144');
 //=== End ( Find the stray number ) ===
 
 
-
-
-
-
 //---------------------------------------------------------------------------------------------------
-// Euclidean distance in n dimensions
-// (7 kyu) https://www.codewars.com/kata/euclidean-distance-in-n-dimensions
+// Sum of Triangular Numbers
+// (7 kyu) https://www.codewars.com/kata/sum-of-triangular-numbers
 //---------------------------------------------------------------------------------------------------
 //---Task---
-//### **Euclidean distance in n dimensions**
-//Implement a function to calculate the distance between two points in n-dimensional space.
-//The two points will be passed to your function as arrays of the same length (tuples in Python).
-//Round your answers to two decimal places.
+//### ** Sum of Triangular Numbers**
+//Your task is to return the sum of Triangular Numbers up-to-and-including the nth Triangular Number.
+//Triangular Number: "any of the series of numbers (1, 3, 6, 10, 15, etc.) obtained by continued summation
+//of the natural numbers 1, 2, 3, 4, 5, etc."
+//[01]
+//02 [03]
+//04 05 [06]
+//07 08 09 [10]
+//11 12 13 14 [15]
+//16 17 18 19 20 [21]
+//e.g. If 4 is given: 1 + 3 + 6 + 10 = 20.
+//Triangular Numbers cannot be negative so return 0 if a negative number is given.
 //
-//### **Евклидово расстояние в n измерениях**
-//Реализуйте функцию для вычисления расстояния между двумя точками в n-мерном пространстве.
-//Две точки будут переданы вашей функции в виде массивов одинаковой длины (кортежи в Python).
-//Округлите ответы до двух десятичных знаков.
+//### **Сумма треугольных чисел**
+//Ваша задача - вернуть сумму Треугольных чисел до Треугольного числа включительно nth.
+//Треугольное число: «любая из серий чисел (1, 3, 6, 10, 15 и т. Д.),
+//Полученных путем непрерывного суммирования натуральных чисел 1, 2, 3, 4, 5 и т. Д.»
+//[01]
+//02 [03]
+//04 05 [06]
+//07 08 09 [10]
+//11 12 13 14 [15]
+//16 17 18 19 20 [21]
+//например , если 4дано: 1 + 3 + 6 + 10 = 20.
+//Треугольные числа не могут быть отрицательными, поэтому верните 0, если задано отрицательное число.
 //
 //---Solution---
 // function euclideanDistance(point1, point2) {
@@ -72,6 +84,9 @@ console.log( findSquares(25) ); //, '169-144');
 // console.log( euclideanDistance([-1,2,5], [2,4,9]) ); //, 5.39);
 // 
 //=== End ( Euclidean distance in n dimensions ) ===
+
+
+
 
  
 //---------------------------------------------------------------------------------------------------
