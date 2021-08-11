@@ -119,82 +119,74 @@
 //maxRedigit(123); // returns 321
 //
 //---Solution---
-var maxRedigit = function(num) {
-  return (num <= 0 || String(num).length !== 3) ? null : Number([...String(num)].sort((a,b)=>b-a).join('')); 
-};
+// var maxRedigit = function(num) {
+//   return (num <= 0 || String(num).length !== 3) ? null : Number([...String(num)].sort((a,b)=>b-a).join('')); 
+// };
 //
 //---Test---
-console.log( maxRedigit(123) ); //, 321, "123 => 321");
-console.log( maxRedigit(-1) ); //, null, "-1 => null");
-console.log( maxRedigit(0) ); //, null, "0 => null");
-console.log( maxRedigit(99) ); //, null, "0 => null");
-console.log( maxRedigit(3) ); //, null, "0 => null");
-console.log( maxRedigit(1000) ); //, null, "0 => null");
-console.log( maxRedigit(1502) ); //, null, "0 => null");
+// console.log( maxRedigit(123) ); //, 321, "123 => 321");
+// console.log( maxRedigit(-1) ); //, null, "-1 => null");
+// console.log( maxRedigit(0) ); //, null, "0 => null");
+// console.log( maxRedigit(99) ); //, null, "0 => null");
+// console.log( maxRedigit(3) ); //, null, "0 => null");
+// console.log( maxRedigit(1000) ); //, null, "0 => null");
+// console.log( maxRedigit(1502) ); //, null, "0 => null");
 // 
 //=== End ( Rearrange Number to Get its Maximum ) ===
 
 
-
-
-
 //---------------------------------------------------------------------------------------------------
-// Bubblesort Once
-// (7 kyu) https://www.codewars.com/kata/bubblesort-once
+// Credit Card Mask
+// (7 kyu) https://www.codewars.com/kata/credit-card-mask
 //---------------------------------------------------------------------------------------------------
 //---Task---
-//### **Bubblesort Algorithm**
-//Overview
-//The Bubblesort Algorithm is one of many algorithms used to sort a list of similar
-//items (e.g. all numbers or all letters) into either ascending order or descending order. Given a list (e.g.):
-//[9, 7, 5, 3, 1, 2, 4, 6, 8]
-//To sort this list in ascending order using Bubblesort, you first have to compare the first two terms of the list.
-//If the first term is larger than the second term, you perform a swap. The list then becomes:
-//[7, 9, 5, 3, 1, 2, 4, 6, 8] // The "9" and "7" have been swapped because 9 is larger than 7 and thus 9 should be after 7
-//You then proceed by comparing the 2nd and 3rd terms, performing a swap when necessary,
-//and then the 3rd and 4th term, then the 4th and 5th term, etc. etc.
-//When you reach the end of the list, it is said that you have completed 1 complete pass.
-//Task
-//Given an array of integers, your function bubblesortOnce/bubblesort_once/BubblesortOnce
-//(or equivalent, depending on your language's naming conventions) should return a new array equivalent
-//to performing exactly 1 complete pass on the original array. Your function should be pure, i.e.
-//it should not mutate the input array.
+//### **Credit Card Mask**
+//Usually when you buy something, you're asked whether your credit card number,
+//phone number or answer to your most secret question is still correct.
+//However, since someone could look over your shoulder, you don't want that shown on your screen. Instead, we mask it.
+//Your task is to write a function maskify, which changes all but the last four characters into '#'.
+//Examples
+//maskify("4556364607935616") == "############5616"
+//maskify(     "64607935616") ==      "#######5616"
+//maskify(               "1") ==                "1"
+//maskify(                "") ==                 ""
+//// "What was the name of your first pet?"
+//maskify("Skippy")                                   == "##ippy"
+//maskify("Nananananananananananananananana Batman!") == "####################################man!"
 //
 //### **Алгоритм пузырьковой сортировки**
-//Обзор
-//Алгоритм пузырьковой сортировки - один из многих алгоритмов, используемых для сортировки списка похожих
-//элементов (например, всех цифр или всех букв) либо по возрастанию, либо по убыванию. Учитывая список (например):
-//[9, 7, 5, 3, 1, 2, 4, 6, 8]
-//Чтобы отсортировать этот список в порядке возрастания с помощью пузырьковой сортировки,
-//сначала необходимо сравнить первые два члена списка. Если первый член больше второго, вы выполняете обмен.
-//Список становится таким:
-//[7, 9, 5, 3, 1, 2, 4, 6, 8] // The "9" and "7" have been swapped because 9 is larger than 7 and thus 9 should be after 7
-//Затем вы сравниваете 2-й и 3-й члены, при необходимости выполняя замену , а затем 3-й и 4-й члены,
-//затем 4-й и 5-й члены и т. Д. И т. Д. Когда вы дойдете до конца списка, будет сказано, что вы выполнили 1 полный проход.
-//Задача
-//Учитывая массив целых чисел, ваша функция bubblesortOnce/ bubblesort_once/ BubblesortOnce
-//(или эквивалент, в зависимости от соглашений об именовании вашего языка) должна возвращать новый массив,
-//эквивалентный выполнению ровно 1 полного прохода в исходном массиве.
-//Ваша функция должна быть чистой, т.е. она не должна изменять входной массив.
+//Обычно, когда вы что-то покупаете, вас спрашивают, верен ли номер вашей кредитной карты,
+//номер телефона или ответ на самый секретный вопрос. Однако, поскольку кто-то может взглянуть через ваше плечо,
+//вы не хотите, чтобы это отображалось на вашем экране. Вместо этого мы маскируем это.
+//Ваша задача - написать функцию maskify, которая заменяет все символы, кроме последних четырех, на '#'.
+//Примеры
+//maskify("4556364607935616") == "############5616"
+//maskify(     "64607935616") ==      "#######5616"
+//maskify(               "1") ==                "1"
+//maskify(                "") ==                 ""
+//// "What was the name of your first pet?"
+//maskify("Skippy")                                   == "##ippy"
+//maskify("Nananananananananananananananana Batman!") == "####################################man!"
 //
 //---Solution---
-// function bubblesortOnce(a) {
-//   //1-solution
-//   return a.reduce((acc, el, i) => {
-//     if (acc[i] >= a[i+1]) {
-//       acc[i+1] = acc[i];
-//       acc[i] = a[i+1]
-//     }
-//     return acc;
-//   }, [...a]);
-//   //2-solution
-//   return [...a].map((e, i, arr) => e > arr[i+1] ? (arr[i] = arr[i+1], arr[i+1] = e, arr[i]) : e)
-// }
+function maskify(cc) {
+  return cc.length <= 4 ? cc : `${'#'.repeat(cc.length-4)}${cc.substring(cc.length-4)}`;
+  //
+  // return cc.slice(0, -4).replace(/./g, '#') + cc.slice(-4);
+  // return cc.replace(/.(?=....)/g, '#');
+  // return cc.replace(/.(?=.{4})/g, "#");
+}
 //
 //---Test---
-// console.log( bubblesortOnce([9, 7, 5, 3, 1, 2, 4, 6, 8]) ); //, [7, 5, 3, 1, 2, 4, 6, 8, 9]);
+console.log( maskify('4556364607935616') ); //, '############5616');
+console.log( maskify('1') ); //, '1');
+console.log( maskify('11111') ); //, '#1111');
 //
-//=== End ( Bubblesort Once ) ===
+//=== End ( Credit Card Mask ) ===
+
+
+
+
 
 
 //---------------------------------------------------------------------------------------------------
