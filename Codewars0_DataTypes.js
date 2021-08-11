@@ -241,151 +241,69 @@
 //=== End ( Complementary DNA ) ===
 
 
-
-
-
 //---------------------------------------------------------------------------------------------------
-// Who's Online?
-// (7 kyu) https://www.codewars.com/kata/whos-online
+// Make a function that does arithmetic!
+// (7 kyu) https://www.codewars.com/kata/make-a-function-that-does-arithmetic
 //---------------------------------------------------------------------------------------------------
 //---Task---
-//### **Who's Online?**
-//You have a group chat application, but who is online!?
-//You want to show your users which of their friends are online and available to chat!
-//Given an input of an array of objects containing usernames, status and time since last activity (in mins),
-//create a function to work out who is online, offline and away.
-//If someone is online but their lastActivity was more than 10 minutes ago they are to be considered away.
-//The input data has the following structure:
-//[{
-//  username: 'David',
-//  status: 'online',
-//  lastActivity: 10
-//}, {
-//  username: 'Lucy', 
-//  status: 'offline',
-//  lastActivity: 22
-//}, {
-//  username: 'Bob', 
-//  status: 'online',
-//  lastActivity: 104
-//}]
-//The corresponding output should look as follows:
-//{
-//  online: ['David'],
-//  offline: ['Lucy'],
-//  away: ['Bob']
-//}
-//If for example, no users are online the output should look as follows:
-//{
-//  offline: ['Lucy'],
-//  away: ['Bob']
-//}
-//username will always be a string, status will always be either 'online' or 'offline' (UserStatus enum in C#)
-//and lastActivity will always be number >= 0.
-//Finally, if you have no friends in your chat application, the input will be an empty array [].
-//In this case you should return an empty object {} (empty Dictionary in C#).
+//### **Make a function that does arithmetic!**
+//Given two numbers and an arithmetic operator (the name of it, as a string),
+//return the result of the two numbers having that operator used on them.
+//a and b will both be positive integers, and a will always be the first number in the operation,
+//and b always the second.
+//The four operators are "add", "subtract", "divide", "multiply".
+//A few examples:
+//arithmetic(5, 2, "add")      => returns 7
+//arithmetic(5, 2, "subtract") => returns 3
+//rithmetic(5, 2, "multiply") => returns 10
+//arithmetic(5, 2, "divide")   => returns 2.5
+//ArithmeticFunction.arithmetic(5, 2, "add")      => returns 7
+//ArithmeticFunction.arithmetic(5, 2, "subtract") => returns 3
+//ArithmeticFunction.arithmetic(5, 2, "multiply") => returns 10
+//ArithmeticFunction.arithmetic(5, 2, "divide")   => returns 2
+//Try to do it without using if statements!
 //
-//### **Кто онлайн?**
-//У вас есть приложение для группового чата, но кто в сети !?
-//Вы хотите показать своим пользователям, кто из их друзей в сети и доступен для общения в чате!
-//Учитывая ввод массива объектов, содержащих имена пользователей,
-//статус и время с момента последнего действия (в минутах), создайте функцию для определения, кто есть online,
-//offline и away.
-//Если кто-то есть, online но он lastActivity был более 10 минут назад, они должны быть рассмотрены away.
-//Входные данные имеют следующую структуру:
-//[{
-//  username: 'David',
-//  status: 'online',
-//  lastActivity: 10
-//}, {
-//  username: 'Lucy', 
-//  status: 'offline',
-//  lastActivity: 22
-//}, {
-//  username: 'Bob', 
-//  status: 'online',
-//  lastActivity: 104
-//}]
-//Соответствующий вывод должен выглядеть следующим образом:
-//{
-//  online: ['David'],
-//  offline: ['Lucy'],
-//  away: ['Bob']
-//}
-//Если, например, пользователей нет, onlineрезультат должен выглядеть следующим образом:
-//{
-//  offline: ['Lucy'],
-//  away: ['Bob']
-//}
-//имя пользователя всегда будет a string, статус всегда будет либо 'online'или 'offline'(перечисление UserStatus в C #),
-//а lastActivity всегда будет number >= 0.
-//Наконец, если в вашем приложении чата нет друзей, входом будет пустой массив [].
-//В этом случае вы должны вернуть пустой объект {}(пустой словарь в C #).
+//### **Сделайте функцию, которая выполняет арифметические операции!**
+//Учитывая два числа и арифметический оператор (его имя в виде строки),
+//верните результат двух чисел, для которых используется этот оператор.
+//aи bоба будут положительными целыми числами и aвсегда будут первым числом в операции и bвсегда вторым.
+//Четыре оператора - это «сложение», «вычитание», «деление», «умножение».
+//Несколько примеров:
+//arithmetic(5, 2, "add")      => returns 7
+//arithmetic(5, 2, "subtract") => returns 3
+//arithmetic(5, 2, "multiply") => returns 10
+//arithmetic(5, 2, "divide")   => returns 2.5
+//ArithmeticFunction.arithmetic(5, 2, "add")      => returns 7
+//ArithmeticFunction.arithmetic(5, 2, "subtract") => returns 3
+//ArithmeticFunction.arithmetic(5, 2, "multiply") => returns 10
+//ArithmeticFunction.arithmetic(5, 2, "divide")   => returns 2
+//Попробуйте сделать это без использования операторов if!
 //
 //---Solution---
-//---1---
-// const whosOnline = (friends) => {
-//   let statusChat = {};
-//   for (let i=0; i<friends.length; i++) {
-//     const user = friends[i];
-//     const userStatus = user.status === 'online' && user.lastActivity > 10 ? 'away' : user.status;
-//     let statusValue = statusChat[userStatus] || [];
-//     statusValue.push(user.username);
-//     statusChat[userStatus] = statusValue;
-//   }
-//   return statusChat;
-// }
-//---2---
-// const whosOnline = friends => friends.reduce((a,{username, status, lastActivity}) => {
-//   const fStatus = status === 'online' && lastActivity > 10 ? 'away' : status;
-//   a[fStatus] ? a[fStatus].push(username) : a[fStatus] = [username];
-//   return a;
-// }, {})
+function arithmetic(a, b, operator){
+  let compute = {add: '+', subtract: '-', multiply: '*', divide: '/'};
+  return eval(""+ a + compute[operator] + b);
+}
+//2
+const arithmetic = (a, b, operator) => ({
+  'add'     : a + b,
+  'subtract': a - b,
+  'multiply': a * b,
+  'divide'  : a / b
+}[operator])
 //
 //---Test---
-// let friends = [{
-//   username: 'David',
-//   status: 'online',
-//   lastActivity: 10
-// }, {
-//   username: 'Lucy',
-//   status: 'offline',
-//   lastActivity: 22
-// }, {
-//   username: 'Bob',
-//   status: 'online',
-//   lastActivity: 104
-// }, {
-//   username: 'Bob2',
-//   status: 'online',
-//   lastActivity: 104
-// }, {
-//   username: 'Lucy2',
-//   status: 'offline',
-//   lastActivity: 22
-// }];
-// console.log( whosOnline(friends) );
-//{
-//  online: ['David'],
-//  offline: ['Lucy'],
-//  away: ['Bob']
-//}
-// friends = [{
-//   username: 'Lucy',
-//   status: 'offline',
-//   lastActivity: 22
-// }, {
-//   username: 'Bob',
-//   status: 'online',
-//   lastActivity: 104
-// }];
-// console.log( whosOnline(friends) );
-//{
-//  offline: ['Lucy'],
-//  away: ['Bob']
-//}
+console.log( arithmetic(1, 2, "add") ); //, 3, "'add' should return the two numbers added together!");
+console.log( arithmetic(8, 2, "subtract") ); //, 6, "'subtract' should return a minus b!");
+console.log( arithmetic(5, 2, "multiply") ); //, 10, "'multiply' should return a multiplied by b!");
+console.log( arithmetic(8, 2, "divide") ); //, 4, "'divide' should return a divided by b!");
 // 
-//=== End ( Who's Online? ) ===
+//=== End ( Make a function that does arithmetic! ) ===
+
+
+
+
+
 
 
 //---------------------------------------------------------------------------------------------------
