@@ -74,14 +74,28 @@
 //Треугольные числа не могут быть отрицательными, поэтому верните 0, если задано отрицательное число.
 //
 //---Solution---
-// function euclideanDistance(point1, point2) {
-//   return Math.ceil(( Math.sqrt( point1.reduce((sum, el, i) => sum + Math.pow((el - point2[i]), 2), 0) ) )*100)/100;
-// }
+function sumTriangularNumbers(n) {
+  let numb = 0;
+  let sum = 0;
+  for (i=1; i<=n; i++) {
+    sum += (numb += i);
+    //или
+    numb = numb + i;
+    sum = sum + numb;
+  }
+  return sum;
+}
+//2. Через формулу расчета
+function sumTriangularNumbers(n) {
+  return n < 0 ? 0 : n * (n + 1) * (n + 2) / 6;
+}
 //
 //---Test---
-// console.log( euclideanDistance([-1], [2]) ); //, 3);
-// console.log( euclideanDistance([-1,2], [2,4]) ); //, 3.61);
-// console.log( euclideanDistance([-1,2,5], [2,4,9]) ); //, 5.39);
+console.log( sumTriangularNumbers(6) ); //, 56);
+console.log( sumTriangularNumbers(34) ); //, 7140);
+console.log( sumTriangularNumbers(-291) ); //, 0);
+console.log( sumTriangularNumbers(943) ); //, 140205240);
+console.log( sumTriangularNumbers(-971) ); //, 0);
 // 
 //=== End ( Euclidean distance in n dimensions ) ===
 
