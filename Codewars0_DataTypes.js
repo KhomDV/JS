@@ -47,7 +47,7 @@
 // (7 kyu) https://www.codewars.com/kata/sum-of-triangular-numbers
 //---------------------------------------------------------------------------------------------------
 //---Task---
-//### ** Sum of Triangular Numbers**
+//### **Sum of Triangular Numbers**
 //Your task is to return the sum of Triangular Numbers up-to-and-including the nth Triangular Number.
 //Triangular Number: "any of the series of numbers (1, 3, 6, 10, 15, etc.) obtained by continued summation
 //of the natural numbers 1, 2, 3, 4, 5, etc."
@@ -74,68 +74,68 @@
 //Треугольные числа не могут быть отрицательными, поэтому верните 0, если задано отрицательное число.
 //
 //---Solution---
-function sumTriangularNumbers(n) {
-  let numb = 0;
-  let sum = 0;
-  for (i=1; i<=n; i++) {
-    sum += (numb += i);
-    //или
-    numb = numb + i;
-    sum = sum + numb;
-  }
-  return sum;
-}
-//2. Через формулу расчета
-function sumTriangularNumbers(n) {
-  return n < 0 ? 0 : n * (n + 1) * (n + 2) / 6;
-}
-//
-//---Test---
-console.log( sumTriangularNumbers(6) ); //, 56);
-console.log( sumTriangularNumbers(34) ); //, 7140);
-console.log( sumTriangularNumbers(-291) ); //, 0);
-console.log( sumTriangularNumbers(943) ); //, 140205240);
-console.log( sumTriangularNumbers(-971) ); //, 0);
-// 
-//=== End ( Euclidean distance in n dimensions ) ===
-
-
-
-
- 
-//---------------------------------------------------------------------------------------------------
-// Create Phone Number
-// (6 kyu) https://www.codewars.com/kata/create-phone-number
-//---------------------------------------------------------------------------------------------------
-//---Task---
-//### **Create Phone Number**
-//Write a function that accepts an array of 10 integers (between 0 and 9),
-//that returns a string of those numbers in the form of a phone number.
-//Example
-//createPhoneNumber([1, 2, 3, 4, 5, 6, 7, 8, 9, 0]) // => returns "(123) 456-7890"
-//The returned format must be correct in order to complete this challenge.
-//Don't forget the space after the closing parentheses!
-//
-//### **Создать номер телефона**
-//Напишите функцию, которая принимает массив из 10 целых чисел (от 0 до 9),
-//который возвращает строку этих чисел в форме номера телефона.
-//Пример
-//createPhoneNumber([1, 2, 3, 4, 5, 6, 7, 8, 9, 0]) // => returns "(123) 456-7890"
-//Возвращенный формат должен быть правильным для выполнения этой задачи.
-//Не забывайте пробел после закрывающих скобок!
-//
-//---Solution---
-// function createPhoneNumber(numbers) {
-//   return numbers.join('').replace(/([\d]{3})([\d]{3})([\d]{4})/g,'($1) $2-$3');
-//   return '(' + numbers.slice(0,3).join('') + ') ' + numbers.slice(3,6).join('') + '-' + numbers.slice(6).join('');
+// function sumTriangularNumbers(n) {
+//   let numb = 0;
+//   let sum = 0;
+//   for (i=1; i<=n; i++) {
+//     sum += (numb += i);
+//     //или
+//     numb = numb + i;
+//     sum = sum + numb;
+//   }
+//   return sum;
+// }
+// //2. Через формулу расчета
+// function sumTriangularNumbers(n) {
+//   return n < 0 ? 0 : n * (n + 1) * (n + 2) / 6;
 // }
 //
 //---Test---
-// console.log( createPhoneNumber([1, 2, 3, 4, 5, 6, 7, 8, 9, 0]) ); //, "(123) 456-7890");
-// console.log( createPhoneNumber([1, 1, 1, 1, 1, 1, 1, 1, 1, 1]) ); //, "(111) 111-1111");
-// console.log( createPhoneNumber([1, 2, 3, 4, 5, 6, 7, 8, 9, 0]) ); //, "(123) 456-7890");
+// console.log( sumTriangularNumbers(6) ); //, 56);
+// console.log( sumTriangularNumbers(34) ); //, 7140);
+// console.log( sumTriangularNumbers(-291) ); //, 0);
+// console.log( sumTriangularNumbers(943) ); //, 140205240);
+// console.log( sumTriangularNumbers(-971) ); //, 0);
 // 
-//=== End ( Create Phone Number ) ===
+//=== End ( Sum of Triangular Numbers ) ===
+
+
+//---------------------------------------------------------------------------------------------------
+// Rearrange Number to Get its Maximum
+// (7 kyu) https://www.codewars.com/kata/rearrange-number-to-get-its-maximum
+//---------------------------------------------------------------------------------------------------
+//---Task---
+//### **Rearrange Number to Get its Maximum**
+//Create a function that takes one positive three digit integer and rearranges its digits to get the maximum
+//possible number. Assume that the argument is an integer.
+//Return null (nil for Ruby, nothing for Julia) if the argument is not valid.
+//maxRedigit(123); // returns 321
+//
+//### **Переставьте число, чтобы получить его максимум**
+//Создайте функцию, которая принимает одно положительное трехзначное целое число и переставляет его цифры,
+//чтобы получить максимально возможное число.
+//Предположим, что аргумент является целым числом. Вернуть null( nilдля Ruby, nothingдля Julia),
+//если аргумент недействителен.
+//maxRedigit(123); // returns 321
+//
+//---Solution---
+var maxRedigit = function(num) {
+  return (num <= 0 || String(num).length !== 3) ? null : Number([...String(num)].sort((a,b)=>b-a).join('')); 
+};
+//
+//---Test---
+console.log( maxRedigit(123) ); //, 321, "123 => 321");
+console.log( maxRedigit(-1) ); //, null, "-1 => null");
+console.log( maxRedigit(0) ); //, null, "0 => null");
+console.log( maxRedigit(99) ); //, null, "0 => null");
+console.log( maxRedigit(3) ); //, null, "0 => null");
+console.log( maxRedigit(1000) ); //, null, "0 => null");
+console.log( maxRedigit(1502) ); //, null, "0 => null");
+// 
+//=== End ( Rearrange Number to Get its Maximum ) ===
+
+
+
 
 
 //---------------------------------------------------------------------------------------------------
