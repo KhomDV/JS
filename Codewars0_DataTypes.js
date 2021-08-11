@@ -169,67 +169,79 @@
 //maskify("Nananananananananananananananana Batman!") == "####################################man!"
 //
 //---Solution---
-function maskify(cc) {
-  return cc.length <= 4 ? cc : `${'#'.repeat(cc.length-4)}${cc.substring(cc.length-4)}`;
-  //
-  // return cc.slice(0, -4).replace(/./g, '#') + cc.slice(-4);
-  // return cc.replace(/.(?=....)/g, '#');
-  // return cc.replace(/.(?=.{4})/g, "#");
-}
+// function maskify(cc) {
+//   return cc.length <= 4 ? cc : `${'#'.repeat(cc.length-4)}${cc.substring(cc.length-4)}`;
+//   //
+//   // return cc.slice(0, -4).replace(/./g, '#') + cc.slice(-4);
+//   // return cc.replace(/.(?=....)/g, '#');
+//   // return cc.replace(/.(?=.{4})/g, "#");
+// }
 //
 //---Test---
-console.log( maskify('4556364607935616') ); //, '############5616');
-console.log( maskify('1') ); //, '1');
-console.log( maskify('11111') ); //, '#1111');
+// console.log( maskify('4556364607935616') ); //, '############5616');
+// console.log( maskify('1') ); //, '1');
+// console.log( maskify('11111') ); //, '#1111');
 //
 //=== End ( Credit Card Mask ) ===
 
 
-
-
-
-
 //---------------------------------------------------------------------------------------------------
-// Sort with Arrow Functions
-// (7 kyu) https://www.codewars.com/kata/sort-with-arrow-functions
+// Complementary DNA
+// (7 kyu) https://www.codewars.com/kata/complementary-dna
 //---------------------------------------------------------------------------------------------------
 //---Task---
-//### **Sort with Arrow Functions**
-//Order People by age Using Arrow Function
-//Sort and Order people by their age using Arrow Functions
-//Task
-//Your task is to order a list containg people objects by age using the new Javascript Arrow Functions
-//Input
-//Input will be a valid array with People objects containing an Age and Name
-//Output
-//Output will be a valid sorted array with People objects sorted by Age in ascending order
-//Reference: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions
+//### **Complementary DNA**
+//Deoxyribonucleic acid (DNA) is a chemical found in the nucleus of cells and carries the "instructions"
+//for the development and functioning of living organisms.
+//If you want to know more: http://en.wikipedia.org/wiki/DNA
+//In DNA strings, symbols "A" and "T" are complements of each other, as "C" and "G".
+//You have function with one side of the DNA (string, except for Haskell);
+//you need to get the other complementary side. DNA strand is never empty or there is no DNA at all
+//(again, except for Haskell).
+//More similar exercise are found here: http://rosalind.info/problems/list-view/ (source)
+//Example: (input: output)
+//DNAStrand ("ATTGC") // return "TAACG"
+//DNAStrand ("GTAT") // return "CATA" 
 //
-//### **Сортировка с помощью стрелок**
-//Сортировка людей по возрасту с помощью стрелок
-//Сортируйте и упорядочивайте людей по возрасту с помощью стрелочных функций
-//Задача
-//Ваша задача - упорядочить список, содержащий объекты людей по возрасту, используя новые стрелочные функции Javascript.
-//Вход
-//Ввод будет допустимым массивом с объектами People, содержащими возраст и имя.
-//Выход
-//Результатом будет действительный отсортированный массив с объектами People, отсортированными по возрасту в порядке возрастания.
-//Ссылка: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions
+//### **Комплементарная ДНК**
+//Дезоксирибонуклеиновая кислота (ДНК) - это химическое вещество, обнаруженное в ядре клеток и несущее
+//«инструкции» для развития и функционирования живых организмов.
+//Если вы хотите узнать больше: http://en.wikipedia.org/wiki/DNA
+//В цепочках ДНК символы «А» и «Т» дополняют друг друга, как «С» и «G». У вас есть функция с одной стороной ДНК
+//(строка, кроме Haskell); вам нужно получить другую дополнительную сторону.
+//Нить ДНК никогда не бывает пустой или ДНК вообще не бывает (опять же, за исключением Haskell).
+//Более похожие упражнения можно найти здесь: http://rosalind.info/problems/list-view/ (источник)
+//Пример: ( ввод: вывод )
+//DNAStrand ("ATTGC") // return "TAACG"
+//DNAStrand ("GTAT") // return "CATA" 
 //
 //---Solution---
-// var OrderPeople = function(people) {
-//   return people.sort( (a, b) => a.age - b.age );
+// function DNAStrand(dna){
+//   return dna.replace(/A|T|C|G/g, function(match) {
+//     const repacements = {A: 'T', T: 'A', C: 'G', G: 'C'};
+//     return repacements[match];
+//   });
+// }
+// //2
+// const DNAStrand = dna => dna.replace(/./g, m => 'CGAT'['GCTA'.indexOf(m)]);
+// //3
+// let pairs = {A:'T',T:'A',C:'G',G:'C'};
+// const DNAStrand = dna => dna.replace(/./g, c => pairs[c]);
+// //4
+// var pairs = {'A':'T','T':'A','C':'G','G':'C'};
+// function DNAStrand(dna){
+//   return dna.split('').map(function(v){ return pairs[v] }).join('');
 // }
 //
 //---Test---
-// console.log( OrderPeople([ { age: 83, name: 'joel' },
-//                            { age: 46, name: 'roger' },
-//                            { age: 99, name: 'vinny' },
-//                            { age: 26, name: 'don' },
-//                            { age: 74, name: 'brendan' } ]) );
-//[{age:26,name:"don"},{age:46,name:"roger"},{age:74,name:"brendan"},{age:83,name:"joel"},{age:99,name:"vinny"}], 'The array is still empty')
+// console.log( DNAStrand("AAAA") ); //,"TTTT","String AAAA is")
+// console.log( DNAStrand("ATTGC") ); //,"TAACG","String ATTGC is")
+// console.log( DNAStrand("GTAT") ); //,"CATA","String GTAT is")   
 // 
-//=== End ( Sort with Arrow Functions ) ===
+//=== End ( Complementary DNA ) ===
+
+
+
 
 
 //---------------------------------------------------------------------------------------------------
