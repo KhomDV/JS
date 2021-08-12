@@ -389,177 +389,177 @@
 //
 //---Solution---
 //function whoseBicycle(diary1, diary2, diary3) {
-//--1--
-function whoseBicycle(...diary) {
-  const ageTable = {'firstSonAge': 14,
-                    'secondSonAge': 9,
-                    'thirdSonAge': 8
-                  };
+// //--1--
+// function whoseBicycle(...diary) {
+//   const ageTable = {'firstSonAge': 14,
+//                     'secondSonAge': 9,
+//                     'thirdSonAge': 8
+//                   };
 
-  const ageSon = Object.values(ageTable);
+//   const ageSon = Object.values(ageTable);
 
-  let maxMark = 0;
-  let marksSon = [];
-  let sonNumb = '';
-  for (i=0; i<diary.length; i++) {
-    const mark = Object.values(diary[i]).reduce( (sum, el) => sum + el);
-    if (maxMark < mark) {
-      maxMark = mark
-    };
-    sonNumb = '';
-    switch(i) {
-      case 0:
-        sonNumb = 'first';
-        break;
-      case 1:  
-        sonNumb = 'second';
-        break;
-      case 2:  
-        sonNumb = 'third';
-        break;
-    };
-    marksSon.push( {
-                    mark: mark,
-                    age: ageSon[i],
-                    son: sonNumb
-                    });
-  }
+//   let maxMark = 0;
+//   let marksSon = [];
+//   let sonNumb = '';
+//   for (i=0; i<diary.length; i++) {
+//     const mark = Object.values(diary[i]).reduce( (sum, el) => sum + el);
+//     if (maxMark < mark) {
+//       maxMark = mark
+//     };
+//     sonNumb = '';
+//     switch(i) {
+//       case 0:
+//         sonNumb = 'first';
+//         break;
+//       case 1:  
+//         sonNumb = 'second';
+//         break;
+//       case 2:  
+//         sonNumb = 'third';
+//         break;
+//     };
+//     marksSon.push( {
+//                     mark: mark,
+//                     age: ageSon[i],
+//                     son: sonNumb
+//                     });
+//   }
 
-  marksSon.sort (function (a,b) {
-    return 2 * (a.mark > b.mark ? 1 : a.mark < b.mark ? -1 : 0) + 1 * (a.age > b.age ? 1 : a.age < b.age ? -1 : 0)
-  });
-  const ind = marksSon.findIndex((x)=> x.mark === maxMark )
+//   marksSon.sort (function (a,b) {
+//     return 2 * (a.mark > b.mark ? 1 : a.mark < b.mark ? -1 : 0) + 1 * (a.age > b.age ? 1 : a.age < b.age ? -1 : 0)
+//   });
+//   const ind = marksSon.findIndex((x)=> x.mark === maxMark )
 
-  return `I need to buy a bicycle for my ${marksSon[ind].son} son.`;
-}
-//--2--
-function whoseBicycle(dairy1, dairy2, dairy3) {
-  const diaries = [dairy1, dairy2, dairy3];
-  const son = {
-    0: 'first',
-    1: 'second',
-    2: 'third'
-  };
-  const scores = diaries.map((diary, index) => {
-    const keys = Object.keys(diary);
+//   return `I need to buy a bicycle for my ${marksSon[ind].son} son.`;
+// }
+// //--2--
+// function whoseBicycle(dairy1, dairy2, dairy3) {
+//   const diaries = [dairy1, dairy2, dairy3];
+//   const son = {
+//     0: 'first',
+//     1: 'second',
+//     2: 'third'
+//   };
+//   const scores = diaries.map((diary, index) => {
+//     const keys = Object.keys(diary);
     
-    return keys.reduce((acc, cur) => acc + diary[cur], 0);
-  });
+//     return keys.reduce((acc, cur) => acc + diary[cur], 0);
+//   });
   
-  const maxValue = Math.max(...scores);
+//   const maxValue = Math.max(...scores);
   
-  const maxDiary = scores.lastIndexOf(maxValue);
+//   const maxDiary = scores.lastIndexOf(maxValue);
   
-  return `I need to buy a bicycle for my ${son[maxDiary]} son.`;
-}
-//--3--
-function whoseBicycle(a, b, c) {
-  [a, b, c] = [a, b, c].map(x => Object.values(x).reduce((y, z) => y + z, 0));
-  let n = Math.max(a, b, c);
-  return `I need to buy a bicycle for my ${n === c ? "third" : n === b ? "second" : "first"} son.`;
-}
+//   return `I need to buy a bicycle for my ${son[maxDiary]} son.`;
+// }
+// //--3--
+// function whoseBicycle(a, b, c) {
+//   [a, b, c] = [a, b, c].map(x => Object.values(x).reduce((y, z) => y + z, 0));
+//   let n = Math.max(a, b, c);
+//   return `I need to buy a bicycle for my ${n === c ? "third" : n === b ? "second" : "first"} son.`;
+// }
 //
 //---Test---
 // console.log( Calculator.average(1,2,3,4) );
-let res = whoseBicycle(
-              {
-                'algebra': 6,
-                'history': 7,
-                'physics': 8,
-                'geography': 9,
-                'chemistry': 10
-              },
-              {
-                'algebra': 8,
-                'history': 7,
-                'physics': 8,
-                'geography': 9,
-                'chemistry': 10
-              },
-              {
-                'algebra': 6,
-                'history': 5,
-                'physics': 5,
-                'geography': 9,
-                'chemistry': 10
-              }
-            ); //, 'I need to buy a bicycle for my second son.'
-console.log( res );
+// let res = whoseBicycle(
+//               {
+//                 'algebra': 6,
+//                 'history': 7,
+//                 'physics': 8,
+//                 'geography': 9,
+//                 'chemistry': 10
+//               },
+//               {
+//                 'algebra': 8,
+//                 'history': 7,
+//                 'physics': 8,
+//                 'geography': 9,
+//                 'chemistry': 10
+//               },
+//               {
+//                 'algebra': 6,
+//                 'history': 5,
+//                 'physics': 5,
+//                 'geography': 9,
+//                 'chemistry': 10
+//               }
+//             ); //, 'I need to buy a bicycle for my second son.'
+// console.log( res );
   
-res = whoseBicycle(
-              {
-                'algebra': 6,
-                'history': 7,
-                'physics': 8,
-                'geography': 9,
-                'chemistry': 10
-              },
-              {
-                'algebra':6,
-                'history': 7,
-                'physics': 8,
-                'geography': 9,
-                'chemistry': 10
-              },
-              {
-                'algebra': 6,
-                'history': 7,
-                'physics': 8,
-                'geography': 9,
-                'chemistry': 10
-              }
-            ); //, 'I need to buy a bicycle for my third son.'
-console.log( res );
+// res = whoseBicycle(
+//               {
+//                 'algebra': 6,
+//                 'history': 7,
+//                 'physics': 8,
+//                 'geography': 9,
+//                 'chemistry': 10
+//               },
+//               {
+//                 'algebra':6,
+//                 'history': 7,
+//                 'physics': 8,
+//                 'geography': 9,
+//                 'chemistry': 10
+//               },
+//               {
+//                 'algebra': 6,
+//                 'history': 7,
+//                 'physics': 8,
+//                 'geography': 9,
+//                 'chemistry': 10
+//               }
+//             ); //, 'I need to buy a bicycle for my third son.'
+// console.log( res );
   
-res = whoseBicycle(
-              {
-                'algebra': 6,
-                'history': 7,
-                'physics': 8,
-                'geography': 9,
-                'chemistry': 5
-              },
-              {
-                'algebra':6,
-                'history': 7,
-                'physics': 8,
-                'geography': 9,
-                'chemistry': 10
-              },
-              {
-                'algebra': 6,
-                'history': 7,
-                'physics': 8,
-                'geography': 9,
-                'chemistry': 10
-              }
-            ); //, 'I need to buy a bicycle for my third son.'
-console.log( res );
+// res = whoseBicycle(
+//               {
+//                 'algebra': 6,
+//                 'history': 7,
+//                 'physics': 8,
+//                 'geography': 9,
+//                 'chemistry': 5
+//               },
+//               {
+//                 'algebra':6,
+//                 'history': 7,
+//                 'physics': 8,
+//                 'geography': 9,
+//                 'chemistry': 10
+//               },
+//               {
+//                 'algebra': 6,
+//                 'history': 7,
+//                 'physics': 8,
+//                 'geography': 9,
+//                 'chemistry': 10
+//               }
+//             ); //, 'I need to buy a bicycle for my third son.'
+// console.log( res );
   
-res = whoseBicycle(
-              {
-                'algebra': 3,
-                'history': 7,
-                'physics': 8,
-                'geography': 4,
-                'chemistry': 10
-              },
-              {
-                'algebra':6,
-                'history': 7,
-                'physics': 8,
-                'geography': 9,
-                'chemistry': 4
-              },
-              {
-                'algebra': 9,
-                'history': 7,
-                'physics': 9,
-                'geography': 9,
-                'chemistry': 10
-              }
-            ); //, 'I need to buy a bicycle for my third son.'
-console.log( res );
+// res = whoseBicycle(
+//               {
+//                 'algebra': 3,
+//                 'history': 7,
+//                 'physics': 8,
+//                 'geography': 4,
+//                 'chemistry': 10
+//               },
+//               {
+//                 'algebra':6,
+//                 'history': 7,
+//                 'physics': 8,
+//                 'geography': 9,
+//                 'chemistry': 4
+//               },
+//               {
+//                 'algebra': 9,
+//                 'history': 7,
+//                 'physics': 9,
+//                 'geography': 9,
+//                 'chemistry': 10
+//               }
+//             ); //, 'I need to buy a bicycle for my third son.'
+// console.log( res );
 //
 //=== End ( Whose bicycle? ) ===
 //===================================================================================================
