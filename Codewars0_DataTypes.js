@@ -324,18 +324,248 @@
 //Ожидается, что Calculator.average (3,4,5) вернет 4.
 //
 //---Solution---
-var Calculator = {
-  average: function() {
-    return arguments.length === 0 ? 0 : [...arguments].reduce( (sum, el) => sum + el) / arguments.length;
-  }
-};
+// var Calculator = {
+//   average: function() {
+//     return arguments.length === 0 ? 0 : [...arguments].reduce( (sum, el) => sum + el) / arguments.length;
+//   }
+// };
 //
 //---Test---
-console.log( Calculator.average(1,2,3,4) );
+// console.log( Calculator.average(1,2,3,4) );
 //
-//=== End ( Homogenous arrays ) ===
+//=== End ( Calculating averages ) ===
 
 
+//---------------------------------------------------------------------------------------------------
+// Whose bicycle?
+// (7 kyu) https://www.codewars.com/kata/whose-bicycle
+//---------------------------------------------------------------------------------------------------
+//---Task---
+//### **Whose bicycle?**
+//I am the father of three wonderful sons. before the beginning of the school year,
+//I promised them that I would buy a bicycle for someone who would bring the best marks at the end of the school year.
+//it's time to keep promises and I count on you.
+//You have 3 input objects(school diaries) with school subjects and marks (1-10). For example:
+//{
+//  'algebra': 6,
+//  'history': 8,
+//  'physics': 9,
+//  'geography': 2,
+//  'chemistry': 9
+//}
+//Return please :
+//'I need to buy a bicycle for my first son.' // the sum of the marks is the highest  in the first diary.
+//'I need to buy a bicycle for my second son.' // the sum of the marks is the highest in the second diary.
+//'I need to buy a bicycle for my third son.' //  the sum of the marks is the highest in the third diary.
+//If two or three sons have the same highest marks, you need to choose the younger one. Use the age table which is constant and preloaded:
+//const ageTable = {
+//                  'firstSonAge': 14,
+//                  'secondSonAge': 9,
+//                  'thirdSonAge': 8
+//                }
+//
+//### **Чей велосипед?**
+//Я отец трех замечательных сыновей. Перед началом учебного года я пообещал им, что куплю велосипед тому,
+//кто принесет лучшие оценки в конце учебного года. Пришло время выполнять обещания, и я рассчитываю на тебя.
+//У вас есть 3 объекта ввода (школьные дневники) со школьными предметами и оценками (1-10). Например:
+//{
+//  'algebra': 6,
+//  'history': 8,
+//  'physics': 9,
+//  'geography': 2,
+//  'chemistry': 9
+//}
+//Верните пожалуйста:
+//'I need to buy a bicycle for my first son.' // the sum of the marks is the highest  in the first diary.
+//'I need to buy a bicycle for my second son.' // the sum of the marks is the highest in the second diary.
+//'I need to buy a bicycle for my third son.' //  the sum of the marks is the highest in the third diary.
+//Если у двух-трех сыновей одинаковые высшие оценки, нужно выбрать младшего.
+//Используйте постоянную и предварительно загруженную таблицу возрастов:
+//const ageTable = {
+//                  'firstSonAge': 14,
+//                  'secondSonAge': 9,
+//                  'thirdSonAge': 8
+//                }
+//
+//---Solution---
+//function whoseBicycle(diary1, diary2, diary3) {
+function whoseBicycle(...diary) {
+  const ageTable = {'firstSonAge': 14,
+                    'secondSonAge': 9,
+                    'thirdSonAge': 8
+                  };
+
+  const age = Object.values(ageTable);
+  console.log( age );
 
 
+  //let marks = new Array(diary.length);
+
+  let maxMark = 0;
+  let markArray = [];
+  for (i=0; i<diary.length; i++) {
+    mark = Object.values(diary[i]).reduce( (sum, el) => sum + el);
+    if (maxMark < mark) {
+       maxMark = mark
+    };
+    markArray.push( {
+                      a: mark,
+                      b: age[i],
+                      c: i+1
+                    });
+
+    //marks[i] = Object.values(diary[i]).reduce( (sum, el) => sum + el);
+    //console.log(Object.values(diary[i]));
+    //console.log([...diary[i]]);
+
+    // marks[i] = [...diary[i]];
+    // console.log(marks[i]);
+
+  }
+
+  //console.log( Math.max(...marks) );
+
+
+  console.log( markArray );
+  // good luck
+
+  markArray.sort (function (a,b) {
+    return 2 * (a.a > b.a ? 1 : a.a < b.a ? -1 : 0) + 1 * (a.b > b.b ? 1 : a.b < b.b ? -1 : 0)
+   });
+   //https://overcoder.net/q/297601/%D1%81%D0%BE%D1%80%D1%82%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D1%82%D1%8C-%D1%8D%D0%BB%D0%B5%D0%BC%D0%B5%D0%BD%D1%82%D1%8B-%D0%B2-%D0%BC%D0%B0%D1%81%D1%81%D0%B8%D0%B2%D0%B5-%D0%BF%D0%BE-%D0%BD%D0%B5%D1%81%D0%BA%D0%BE%D0%BB%D1%8C%D0%BA%D0%B8%D0%BC-%D0%BF%D0%BE%D0%BB%D1%8F%D0%BC-%D1%81-%D0%BF%D0%BE%D0%BC%D0%BE%D1%89%D1%8C%D1%8E-lodash
+    console.log( markArray );
+
+    const ind = markArray.findIndex((x)=> x.a === maxMark )
+    console.log( maxMark +" - "+ ind );
+
+
+    // Object.entries(obj).sort((a, b) => a[0] - b[0]);.
+
+    //https://filmix.zagonka.net/video/10139-1_lyubov-2015-online.html
+
+
+    // var foo = [
+  //   {a: 'a', b: 2},
+  //   {a: 'a', b: 1},
+  //   {a: 'b', b: 5},
+  //   {a: 'a', b: 3},
+  // ];
+  // foo.sort (function (a,b) {
+  //     return 2 * (a.a > b.a ? 1 : a.a < b.a ? -1 : 0) + 1 * (a.b > b.b ? 1 : a.b < b.b ? -1 : 0)
+  // })
+  
+  //  /*
+  // [
+  //   {a: 'a', b: 1},
+  //   {a: 'a', b: 2},
+  //   {a: 'a', b: 3},
+  //   {a: 'b', b: 5},
+  // ]
+  // */
+
+}
+//
+//---Test---
+// console.log( Calculator.average(1,2,3,4) );
+let res = whoseBicycle(
+              {
+                'algebra': 6,
+                'history': 7,
+                'physics': 8,
+                'geography': 9,
+                'chemistry': 10
+              },
+              {
+                'algebra': 8,
+                'history': 7,
+                'physics': 8,
+                'geography': 9,
+                'chemistry': 10
+              },
+              {
+                'algebra': 6,
+                'history': 5,
+                'physics': 5,
+                'geography': 9,
+                'chemistry': 10
+              }
+            ); //, 'I need to buy a bicycle for my second son.'
+console.log( res );
+  
+res = whoseBicycle(
+              {
+                'algebra': 6,
+                'history': 7,
+                'physics': 8,
+                'geography': 9,
+                'chemistry': 10
+              },
+              {
+                'algebra':6,
+                'history': 7,
+                'physics': 8,
+                'geography': 9,
+                'chemistry': 10
+              },
+              {
+                'algebra': 6,
+                'history': 7,
+                'physics': 8,
+                'geography': 9,
+                'chemistry': 10
+              }
+            ); //, 'I need to buy a bicycle for my third son.'
+console.log( res );
+  
+res = whoseBicycle(
+              {
+                'algebra': 6,
+                'history': 7,
+                'physics': 8,
+                'geography': 9,
+                'chemistry': 5
+              },
+              {
+                'algebra':6,
+                'history': 7,
+                'physics': 8,
+                'geography': 9,
+                'chemistry': 10
+              },
+              {
+                'algebra': 6,
+                'history': 7,
+                'physics': 8,
+                'geography': 9,
+                'chemistry': 10
+              }
+            ); //, 'I need to buy a bicycle for my third son.'
+console.log( res );
+  
+res = whoseBicycle(
+              {
+                'algebra': 3,
+                'history': 7,
+                'physics': 8,
+                'geography': 4,
+                'chemistry': 10
+              },
+              {
+                'algebra':6,
+                'history': 7,
+                'physics': 8,
+                'geography': 9,
+                'chemistry': 4
+              },
+              {
+                'algebra': 9,
+                'history': 7,
+                'physics': 9,
+                'geography': 9,
+                'chemistry': 10
+              }
+            ); //, 'I need to buy a bicycle for my third son.'
+console.log( res );
+//
+//=== End ( Whose bicycle? ) ===
 //===================================================================================================
