@@ -280,80 +280,62 @@
 //Попробуйте сделать это без использования операторов if!
 //
 //---Solution---
-function arithmetic(a, b, operator){
-  let compute = {add: '+', subtract: '-', multiply: '*', divide: '/'};
-  return eval(""+ a + compute[operator] + b);
-}
-//2
-const arithmetic = (a, b, operator) => ({
-  'add'     : a + b,
-  'subtract': a - b,
-  'multiply': a * b,
-  'divide'  : a / b
-}[operator])
+// function arithmetic(a, b, operator){
+//   let compute = {add: '+', subtract: '-', multiply: '*', divide: '/'};
+//   return eval(""+ a + compute[operator] + b);
+// }
+// //2
+// const arithmetic = (a, b, operator) => ({
+//   'add'     : a + b,
+//   'subtract': a - b,
+//   'multiply': a * b,
+//   'divide'  : a / b
+// }[operator])
 //
 //---Test---
-console.log( arithmetic(1, 2, "add") ); //, 3, "'add' should return the two numbers added together!");
-console.log( arithmetic(8, 2, "subtract") ); //, 6, "'subtract' should return a minus b!");
-console.log( arithmetic(5, 2, "multiply") ); //, 10, "'multiply' should return a multiplied by b!");
-console.log( arithmetic(8, 2, "divide") ); //, 4, "'divide' should return a divided by b!");
+// console.log( arithmetic(1, 2, "add") ); //, 3, "'add' should return the two numbers added together!");
+// console.log( arithmetic(8, 2, "subtract") ); //, 6, "'subtract' should return a minus b!");
+// console.log( arithmetic(5, 2, "multiply") ); //, 10, "'multiply' should return a multiplied by b!");
+// console.log( arithmetic(8, 2, "divide") ); //, 4, "'divide' should return a divided by b!");
 // 
 //=== End ( Make a function that does arithmetic! ) ===
 
 
-
-
-
-
-
 //---------------------------------------------------------------------------------------------------
-// Homogenous arrays
-// (7 kyu) https://www.codewars.com/kata/homogenous-arrays
+// Basic JS - Calculating averages
+// (7 kyu) https://www.codewars.com/kata/basic-js-calculating-averages
 //---------------------------------------------------------------------------------------------------
 //---Task---
-//### **Homogenous arrays**
-//Challenge:
-//Given a two-dimensional array, return a new array which carries over only those arrays from the original,
-//which were not empty and whose items are all of the same type (i.e. homogenous).
-//For simplicity, the arrays inside the array will only contain characters and integers.
-//Example:
-//Given [[1, 5, 4], ['a', 3, 5], ['b'], [], ['1', 2, 3]], your function should return [[1, 5, 4], ['b']].
-//Addendum:
-//Please keep in mind that for this kata, we assume that empty arrays are not homogenous.
-//The resultant arrays should be in the order they were originally in and should not have its values changed.
-//No implicit type casting is allowed. A subarray [1, '2'] would be considered illegal and should be filtered out.
+//### **Basic JS - Calculating averages**
+//Let's build a calculator that can calculate the average for an arbitrary number of arguments.
+//The test expects you to provide a Calculator object with an average method:
+//Calculator.average()
+//The test also expects that when you pass no arguments, it returns 0. The arguments are expected
+//to be integers.
+//It expects Calculator.average(3,4,5) to return 4.
 //
-//### **Однородные массивы**
-//Испытание:
-//Учитывая двумерный массив, верните новый массив, который переносит только те массивы из оригинала,
-//которые не были пустыми и все элементы которых относятся к одному типу (т.е. однородны).
-//Для простоты массивы внутри массива будут содержать только символы и целые числа.
-//Пример:
-//Учитывая [[1, 5, 4], ['a', 3, 5], ['b'], [], ['1', 2, 3]], ваша функция должна вернуть [[1, 5, 4], ['b']].
-//Дополнение:
-//Имейте в виду, что в этом ката мы предполагаем, что пустые массивы неоднородны.
-//Результирующие массивы должны быть в том порядке, в котором они были изначально, и не должны изменять свои значения.
-//Неявное приведение типов не допускается. Подмассив [1, '2'] будет считаться недопустимым и должен быть отфильтрован.
+//### **Basic JS - Расчет средних значений**
+//Давайте построим калькулятор, который может вычислять среднее значение для произвольного
+//количества аргументов.
+//Тест ожидает, что вы предоставите объекту Calculator метод усреднения:
+//Calculator.average()
+//Тест также предполагает, что если вы не передаете аргументов, он вернет 0.
+//Ожидается, что аргументы будут целыми числами.
+//Ожидается, что Calculator.average (3,4,5) вернет 4.
 //
 //---Solution---
-//---1---
-// function filterHomogenous(arrays) {
-//   let newArray = arrays.reduce((acc, el) => {
-//     if (!el.some( e => typeof(e) !== typeof(el[0]) ) && el.length !== 0) {
-//       acc = [...acc, el];
-//     }
-//     return acc;
-//   }, []);
-//   return newArray;
-// }
-//---2---
-// function filterHomogenous(arr) {
-//   return arr.filter(subArr => subArr.length > 0 && subArr.every(val => typeof val === typeof subArr[0]));
-// }
+var Calculator = {
+  average: function() {
+    return arguments.length === 0 ? 0 : [...arguments].reduce( (sum, el) => sum + el) / arguments.length;
+  }
+};
 //
 //---Test---
-// console.log( filterHomogenous([[1, 5, 4], ['a', 3, 5], ['b'], [], ['1', 2, 3]]) ); //, [[1, 5, 4], ['b']]);
-// console.log( filterHomogenous([[123, 234, 432], ['', 'abc'], [''], ['', 1], ['', '1'], []]) ); //, [[123, 234, 432], ['', 'abc'], [''], ['', '1']]);
+console.log( Calculator.average(1,2,3,4) );
 //
 //=== End ( Homogenous arrays ) ===
+
+
+
+
 //===================================================================================================
