@@ -389,80 +389,74 @@
 //
 //---Solution---
 //function whoseBicycle(diary1, diary2, diary3) {
+//--1--
 function whoseBicycle(...diary) {
   const ageTable = {'firstSonAge': 14,
                     'secondSonAge': 9,
                     'thirdSonAge': 8
                   };
 
-  const age = Object.values(ageTable);
-  console.log( age );
-
-
-  //let marks = new Array(diary.length);
+  const ageSon = Object.values(ageTable);
 
   let maxMark = 0;
-  let markArray = [];
+  let marksSon = [];
+  let sonNumb = '';
   for (i=0; i<diary.length; i++) {
-    mark = Object.values(diary[i]).reduce( (sum, el) => sum + el);
+    const mark = Object.values(diary[i]).reduce( (sum, el) => sum + el);
     if (maxMark < mark) {
-       maxMark = mark
+      maxMark = mark
     };
-    markArray.push( {
-                      a: mark,
-                      b: age[i],
-                      c: i+1
+    sonNumb = '';
+    switch(i) {
+      case 0:
+        sonNumb = 'first';
+        break;
+      case 1:  
+        sonNumb = 'second';
+        break;
+      case 2:  
+        sonNumb = 'third';
+        break;
+    };
+    marksSon.push( {
+                    mark: mark,
+                    age: ageSon[i],
+                    son: sonNumb
                     });
-
-    //marks[i] = Object.values(diary[i]).reduce( (sum, el) => sum + el);
-    //console.log(Object.values(diary[i]));
-    //console.log([...diary[i]]);
-
-    // marks[i] = [...diary[i]];
-    // console.log(marks[i]);
-
   }
 
-  //console.log( Math.max(...marks) );
+  marksSon.sort (function (a,b) {
+    return 2 * (a.mark > b.mark ? 1 : a.mark < b.mark ? -1 : 0) + 1 * (a.age > b.age ? 1 : a.age < b.age ? -1 : 0)
+  });
+  const ind = marksSon.findIndex((x)=> x.mark === maxMark )
 
-
-  console.log( markArray );
-  // good luck
-
-  markArray.sort (function (a,b) {
-    return 2 * (a.a > b.a ? 1 : a.a < b.a ? -1 : 0) + 1 * (a.b > b.b ? 1 : a.b < b.b ? -1 : 0)
-   });
-   //https://overcoder.net/q/297601/%D1%81%D0%BE%D1%80%D1%82%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D1%82%D1%8C-%D1%8D%D0%BB%D0%B5%D0%BC%D0%B5%D0%BD%D1%82%D1%8B-%D0%B2-%D0%BC%D0%B0%D1%81%D1%81%D0%B8%D0%B2%D0%B5-%D0%BF%D0%BE-%D0%BD%D0%B5%D1%81%D0%BA%D0%BE%D0%BB%D1%8C%D0%BA%D0%B8%D0%BC-%D0%BF%D0%BE%D0%BB%D1%8F%D0%BC-%D1%81-%D0%BF%D0%BE%D0%BC%D0%BE%D1%89%D1%8C%D1%8E-lodash
-    console.log( markArray );
-
-    const ind = markArray.findIndex((x)=> x.a === maxMark )
-    console.log( maxMark +" - "+ ind );
-
-
-    // Object.entries(obj).sort((a, b) => a[0] - b[0]);.
-
-    //https://filmix.zagonka.net/video/10139-1_lyubov-2015-online.html
-
-
-    // var foo = [
-  //   {a: 'a', b: 2},
-  //   {a: 'a', b: 1},
-  //   {a: 'b', b: 5},
-  //   {a: 'a', b: 3},
-  // ];
-  // foo.sort (function (a,b) {
-  //     return 2 * (a.a > b.a ? 1 : a.a < b.a ? -1 : 0) + 1 * (a.b > b.b ? 1 : a.b < b.b ? -1 : 0)
-  // })
+  return `I need to buy a bicycle for my ${marksSon[ind].son} son.`;
+}
+//--2--
+function whoseBicycle(dairy1, dairy2, dairy3) {
+  const diaries = [dairy1, dairy2, dairy3];
+  const son = {
+    0: 'first',
+    1: 'second',
+    2: 'third'
+  };
+  const scores = diaries.map((diary, index) => {
+    const keys = Object.keys(diary);
+    
+    return keys.reduce((acc, cur) => acc + diary[cur], 0);
+  });
   
-  //  /*
-  // [
-  //   {a: 'a', b: 1},
-  //   {a: 'a', b: 2},
-  //   {a: 'a', b: 3},
-  //   {a: 'b', b: 5},
-  // ]
-  // */
-
+  const maxValue = Math.max(...scores);
+  
+  const maxDiary = scores.lastIndexOf(maxValue);
+  
+  return `I need to buy a bicycle for my ${son[maxDiary]} son.`;
+}
+//--3--
+function whoseBicycle(a, b, c) {
+  [a, b, c] = [a, b, c].map(x => Object.values(x).reduce((y, z) => y + z, 0));
+  let n = Math.max(a, b, c);
+  return `I need to buy a bicycle for my ${n === c ? "third" : n === b ? "second" : "first"} son.`;
 }
 //
 //---Test---
