@@ -9,40 +9,29 @@
 
 
 //---------------------------------------------------------------------------------------------------
-// Find the Squares
-// (7 kyu) https://www.codewars.com/kata/find-the-squares
+// Are arrow functions odd?
+// (8 kyu) https://www.codewars.com/kata/are-arrow-functions-odd
 //---------------------------------------------------------------------------------------------------
 //---Task---
-//### **Find the Squares**
-//Complete the function that takes an odd integer (0 < n < 1000000) which is the difference between
-//two consecutive perfect squares, and return these squares as a string in the format "bigger-smaller"
-//Examples
-//9  -->  "25-16"
-//5  -->  "9-4"
-//7  -->  "16-9"
+//### **Are arrow functions odd?**
+//Time to test your basic knowledge in functions! Return the odds from a list:
+//[1, 2, 3, 4, 5]  -->  [1, 3, 5]
+//[2, 4, 6]        -->  []
 //
-//### **Найдите квадраты**
-//Завершите функцию, которая принимает нечетное целое число ( 0 < n < 1000000),
-//которое представляет собой разницу между двумя последовательными точными квадратами,
-//и верните эти квадраты в виде строки в формате"bigger-smaller"
-//Примеры
-//9  -->  "25-16"
-//5  -->  "9-4"
-//7  -->  "16-9"
+//### **Странные функции стрелок?**
+//Пришло время проверить свои базовые знания о функциях! Верните коэффициенты из списка:
+//[1, 2, 3, 4, 5]  -->  [1, 3, 5]
+//[2, 4, 6]        -->  []
 //
 //---Solution---
-// const findSquares = num => {
-//   const max = Math.ceil(num/2) ** 2;
-//   const min = Math.floor(num/2) ** 2;
-//   return `${max}-${min}`;
-// };
+function odds(values) {
+  return values.filter( (x)=>x%2!==0 );
+}
 //
 //---Test---
-// console.log( findSquares(9) );  //, '25-16');
-// console.log( findSquares(5) );  //, '9-4');
-// console.log( findSquares(81) ); //, '1681-1600');
-// console.log( findSquares(25) ); //, '169-144');
-//=== End ( Find the stray number ) ===
+console.log( odds([1, 2, 3, 4, 5]) );  //[1, 3, 5]
+console.log( odds([2, 4, 6]) );  //[]
+//=== End ( Are arrow functions odd? ) ===
 
 
 //---------------------------------------------------------------------------------------------------
