@@ -5,9 +5,6 @@
 //   Codewars #0 Functions
 //---------------------------------------------------------------------------------------------------
 
-
-
-
 //---------------------------------------------------------------------------------------------------
 // Are arrow functions odd?
 // (8 kyu) https://www.codewars.com/kata/are-arrow-functions-odd
@@ -24,72 +21,50 @@
 //[2, 4, 6]        -->  []
 //
 //---Solution---
-function odds(values) {
-  return values.filter( (x)=>x%2!==0 );
-}
+// function odds(values) {
+//   return values.filter( (x)=>x%2!==0 );
+// }
 //
 //---Test---
-console.log( odds([1, 2, 3, 4, 5]) );  //[1, 3, 5]
-console.log( odds([2, 4, 6]) );  //[]
+// console.log( odds([1, 2, 3, 4, 5]) );  //[1, 3, 5]
+// console.log( odds([2, 4, 6]) );  //[]
 //=== End ( Are arrow functions odd? ) ===
 
 
 //---------------------------------------------------------------------------------------------------
-// Sum of Triangular Numbers
-// (7 kyu) https://www.codewars.com/kata/sum-of-triangular-numbers
+// Test Your Knowledge Of Function Scope
+// (7 kyu) https://www.codewars.com/kata/test-your-knowledge-of-function-scope
 //---------------------------------------------------------------------------------------------------
 //---Task---
-//### **Sum of Triangular Numbers**
-//Your task is to return the sum of Triangular Numbers up-to-and-including the nth Triangular Number.
-//Triangular Number: "any of the series of numbers (1, 3, 6, 10, 15, etc.) obtained by continued summation
-//of the natural numbers 1, 2, 3, 4, 5, etc."
-//[01]
-//02 [03]
-//04 05 [06]
-//07 08 09 [10]
-//11 12 13 14 [15]
-//16 17 18 19 20 [21]
-//e.g. If 4 is given: 1 + 3 + 6 + 10 = 20.
-//Triangular Numbers cannot be negative so return 0 if a negative number is given.
+//### **Test Your Knowledge Of Function Scope**
+//Write a function that adds from two invocations.
+//add(3)(4)  // 7
+//add(12)(20) // 32
 //
-//### **Сумма треугольных чисел**
-//Ваша задача - вернуть сумму Треугольных чисел до Треугольного числа включительно nth.
-//Треугольное число: «любая из серий чисел (1, 3, 6, 10, 15 и т. Д.),
-//Полученных путем непрерывного суммирования натуральных чисел 1, 2, 3, 4, 5 и т. Д.»
-//[01]
-//02 [03]
-//04 05 [06]
-//07 08 09 [10]
-//11 12 13 14 [15]
-//16 17 18 19 20 [21]
-//например , если 4дано: 1 + 3 + 6 + 10 = 20.
-//Треугольные числа не могут быть отрицательными, поэтому верните 0, если задано отрицательное число.
+//### **Проверьте свои знания об объеме функций**
+//Напишите функцию, которая складывает из двух вызовов.
+//add(3)(4)  // 7
+//add(12)(20) // 32
 //
 //---Solution---
-// function sumTriangularNumbers(n) {
-//   let numb = 0;
-//   let sum = 0;
-//   for (i=1; i<=n; i++) {
-//     sum += (numb += i);
-//     //или
-//     numb = numb + i;
-//     sum = sum + numb;
-//   }
-//   return sum;
-// }
-// //2. Через формулу расчета
-// function sumTriangularNumbers(n) {
-//   return n < 0 ? 0 : n * (n + 1) * (n + 2) / 6;
-// }
+//--1--
+const add = (a) => (b) => a + b;
+//--2--
+function add(x) {
+  return function(y) {
+    return x + y
+  }
+}
 //
 //---Test---
-// console.log( sumTriangularNumbers(6) ); //, 56);
-// console.log( sumTriangularNumbers(34) ); //, 7140);
-// console.log( sumTriangularNumbers(-291) ); //, 0);
-// console.log( sumTriangularNumbers(943) ); //, 140205240);
-// console.log( sumTriangularNumbers(-971) ); //, 0);
+console.log( add(2)(5) ); //, 7,    'Should return the addition of these invocations!')
+console.log( add(14)(25) ); //, 39, 'Should return the addition of these invocations!')
 // 
-//=== End ( Sum of Triangular Numbers ) ===
+//=== End ( Test Your Knowledge Of Function Scope ) ===
+
+
+
+
 
 
 //---------------------------------------------------------------------------------------------------
