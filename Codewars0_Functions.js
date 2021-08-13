@@ -47,59 +47,75 @@
 //add(12)(20) // 32
 //
 //---Solution---
-//--1--
-const add = (a) => (b) => a + b;
-//--2--
-function add(x) {
-  return function(y) {
-    return x + y
-  }
-}
+// //--1--
+// const add = (a) => (b) => a + b;
+// //--2--
+// function add(x) {
+//   return function(y) {
+//     return x + y
+//   }
+// }
 //
 //---Test---
-console.log( add(2)(5) ); //, 7,    'Should return the addition of these invocations!')
-console.log( add(14)(25) ); //, 39, 'Should return the addition of these invocations!')
+// console.log( add(2)(5) ); //, 7,    'Should return the addition of these invocations!')
+// console.log( add(14)(25) ); //, 39, 'Should return the addition of these invocations!')
 // 
 //=== End ( Test Your Knowledge Of Function Scope ) ===
 
 
-
-
-
-
 //---------------------------------------------------------------------------------------------------
-// Rearrange Number to Get its Maximum
-// (7 kyu) https://www.codewars.com/kata/rearrange-number-to-get-its-maximum
+// Run your String
+// (7 kyu) https://www.codewars.com/kata/run-your-string
 //---------------------------------------------------------------------------------------------------
 //---Task---
-//### **Rearrange Number to Get its Maximum**
-//Create a function that takes one positive three digit integer and rearranges its digits to get the maximum
-//possible number. Assume that the argument is an integer.
-//Return null (nil for Ruby, nothing for Julia) if the argument is not valid.
-//maxRedigit(123); // returns 321
+//### **Run your String**
+//1. Function should accept two arguments:
+//arg: any type
+//object with properties:
+//param: string type.
+//func: string type. This string is a body of executable function
+//2. Function should evaluate code of string passed as 'func' with parameter arg passed as argument and
+//return result of execution
+//Example:
+//var arg = 4,                         // arg for "string" function call
+//    obj = {
+//      param: 'num',                  // parameter name for function in string  
+//      func: 'return Math.sqrt(num)'  // function that need call with arg var
+//    };
+//runYourString(arg, obj)              // we expect it should return 2 which is a result of square root of 4
+//ps: Solution of this Kata just fun language trick.
+//Usage of this code in production is not recommended.
 //
-//### **Переставьте число, чтобы получить его максимум**
-//Создайте функцию, которая принимает одно положительное трехзначное целое число и переставляет его цифры,
-//чтобы получить максимально возможное число.
-//Предположим, что аргумент является целым числом. Вернуть null( nilдля Ruby, nothingдля Julia),
-//если аргумент недействителен.
-//maxRedigit(123); // returns 321
+//### **Запустите свою строку**
+//1. Функция должна принимать два аргумента:
+//аргумент: любой тип
+//объект со свойствами:
+//param: строковый тип.
+//func: строковый тип. Эта строка представляет собой тело исполняемой функции
+//2. Функция должна оценивать код строки, переданной как 'func' с параметром arg, переданным в качестве аргумента,
+//и возвращать результат выполнения
+//Пример:
+//var arg = 4,                         // arg for "string" function call
+//    obj = {
+//      param: 'num',                  // parameter name for function in string  
+//      func: 'return Math.sqrt(num)'  // function that need call with arg var
+//    };
+//runYourString(arg, obj)              // we expect it should return 2 which is a result of square root of 4
+//ps: Решение этой каты просто забавный языковой трюк.
+//Не рекомендуется использовать этот код в продакшене.
 //
 //---Solution---
-// var maxRedigit = function(num) {
-//   return (num <= 0 || String(num).length !== 3) ? null : Number([...String(num)].sort((a,b)=>b-a).join('')); 
-// };
+function runYourString (arg, obj) {
+  //your code here
+}
 //
 //---Test---
-// console.log( maxRedigit(123) ); //, 321, "123 => 321");
-// console.log( maxRedigit(-1) ); //, null, "-1 => null");
-// console.log( maxRedigit(0) ); //, null, "0 => null");
-// console.log( maxRedigit(99) ); //, null, "0 => null");
-// console.log( maxRedigit(3) ); //, null, "0 => null");
-// console.log( maxRedigit(1000) ); //, null, "0 => null");
-// console.log( maxRedigit(1502) ); //, null, "0 => null");
+console.log( runYourString(true, {param: 'val', func: 'return val'}) ); //, true)
 // 
-//=== End ( Rearrange Number to Get its Maximum ) ===
+//=== End ( Run your String ) ===
+
+
+
 
 
 //---------------------------------------------------------------------------------------------------
