@@ -105,68 +105,64 @@
 //Не рекомендуется использовать этот код в продакшене.
 //
 //---Solution---
-function runYourString (arg, obj) {
-  return new Function(obj.param, obj.func)(arg);
-}
+// function runYourString (arg, obj) {
+//   return new Function(obj.param, obj.func)(arg);
+// }
 //
 //---Test---
-console.log( runYourString(16, {param: 'num', func: 'return Math.sqrt(num)'}) ); //, 4)
-console.log( runYourString(true, {param: 'val', func: 'return val'}) ); //, true)
+// console.log( runYourString(16, {param: 'num', func: 'return Math.sqrt(num)'}) ); //, 4)
+// console.log( runYourString(true, {param: 'val', func: 'return val'}) ); //, true)
 // 
 //=== End ( Run your String ) ===
 
 
-
-
-
 //---------------------------------------------------------------------------------------------------
-// Credit Card Mask
-// (7 kyu) https://www.codewars.com/kata/credit-card-mask
+// Factorial Factory
+// (7 kyu) https://www.codewars.com/kata/factorial-factory
 //---------------------------------------------------------------------------------------------------
 //---Task---
-//### **Credit Card Mask**
-//Usually when you buy something, you're asked whether your credit card number,
-//phone number or answer to your most secret question is still correct.
-//However, since someone could look over your shoulder, you don't want that shown on your screen. Instead, we mask it.
-//Your task is to write a function maskify, which changes all but the last four characters into '#'.
-//Examples
-//maskify("4556364607935616") == "############5616"
-//maskify(     "64607935616") ==      "#######5616"
-//maskify(               "1") ==                "1"
-//maskify(                "") ==                 ""
-//// "What was the name of your first pet?"
-//maskify("Skippy")                                   == "##ippy"
-//maskify("Nananananananananananananananana Batman!") == "####################################man!"
+//### **Factorial Factory**
+//In mathematics, the factorial of integer 'n' is written as 'n!'. It is equal to the product of n and every
+//integer preceding it. For example: 5! = 1 x 2 x 3 x 4 x 5 = 120
+//Your mission is simple: write a function that takes an integer 'n' and returns 'n!'.
+//You are guaranteed an integer argument. For any values outside the positive range, return null, nil or None .
+//Note: 0! is always equal to 1. Negative values should return null;
+//For more on Factorials : http://en.wikipedia.org/wiki/Factorial
 //
-//### **Алгоритм пузырьковой сортировки**
-//Обычно, когда вы что-то покупаете, вас спрашивают, верен ли номер вашей кредитной карты,
-//номер телефона или ответ на самый секретный вопрос. Однако, поскольку кто-то может взглянуть через ваше плечо,
-//вы не хотите, чтобы это отображалось на вашем экране. Вместо этого мы маскируем это.
-//Ваша задача - написать функцию maskify, которая заменяет все символы, кроме последних четырех, на '#'.
-//Примеры
-//maskify("4556364607935616") == "############5616"
-//maskify(     "64607935616") ==      "#######5616"
-//maskify(               "1") ==                "1"
-//maskify(                "") ==                 ""
-//// "What was the name of your first pet?"
-//maskify("Skippy")                                   == "##ippy"
-//maskify("Nananananananananananananananana Batman!") == "####################################man!"
+//### **Факториал Завод**
+//В математике факториал целого числа n записывается как n! Он равен произведению n и всех предшествующих целых чисел.
+//Например: 5! = 1 х 2 х 3 х 4 х 5 = 120
+//Ваша миссия проста: напишите функцию, которая принимает целое число n и возвращает n!
+//Вам гарантирован целочисленный аргумент. При любых значениях за пределами положительного диапазона,
+//возврат null, nilили None.
+//Примечание: 0! всегда равно 1. Отрицательные значения должны возвращать null;
+//Подробнее о факториалах: http://en.wikipedia.org/wiki/Factorial
 //
 //---Solution---
-// function maskify(cc) {
-//   return cc.length <= 4 ? cc : `${'#'.repeat(cc.length-4)}${cc.substring(cc.length-4)}`;
-//   //
-//   // return cc.slice(0, -4).replace(/./g, '#') + cc.slice(-4);
-//   // return cc.replace(/.(?=....)/g, '#');
-//   // return cc.replace(/.(?=.{4})/g, "#");
-// }
+function factorial (n) {
+  if (n < 0) return null;
+  let result = 1;
+  for (i=1; i<=n; i++) {
+    result = result * i;
+  }
+  return result;
+}
+//--2-- Возможный вариант решения, но не лучший
+function factorial (n) {
+  if (n > -1)
+    return n == 0 ? 1 : n * factorial(n - 1);
+}
 //
 //---Test---
-// console.log( maskify('4556364607935616') ); //, '############5616');
-// console.log( maskify('1') ); //, '1');
-// console.log( maskify('11111') ); //, '#1111');
+console.log( factorial(2) ); //, 2, 'Your math may be incorrect');
+console.log( factorial(5) ); //, 120, 'Your math may be incorrect');
+console.log( factorial(-1) ); //, null, "Don't forget to check for negatives!");
 //
-//=== End ( Credit Card Mask ) ===
+//=== End ( Factorial Factory ) ===
+
+
+
+
 
 
 //---------------------------------------------------------------------------------------------------
