@@ -139,86 +139,83 @@
 //Подробнее о факториалах: http://en.wikipedia.org/wiki/Factorial
 //
 //---Solution---
-function factorial (n) {
-  if (n < 0) return null;
-  let result = 1;
-  for (i=1; i<=n; i++) {
-    result = result * i;
-  }
-  return result;
-}
+// function factorial (n) {
+//   if (n < 0) return null;
+//   let result = 1;
+//   for (i=1; i<=n; i++) {
+//     result = result * i;
+//   }
+//   return result;
+// }
 //--2-- Возможный вариант решения, но не лучший
-function factorial (n) {
-  if (n > -1)
-    return n == 0 ? 1 : n * factorial(n - 1);
-}
+// function factorial (n) {
+//   if (n > -1)
+//     return n == 0 ? 1 : n * factorial(n - 1);
+// }
 //
 //---Test---
-console.log( factorial(2) ); //, 2, 'Your math may be incorrect');
-console.log( factorial(5) ); //, 120, 'Your math may be incorrect');
-console.log( factorial(-1) ); //, null, "Don't forget to check for negatives!");
+// console.log( factorial(2) ); //, 2, 'Your math may be incorrect');
+// console.log( factorial(5) ); //, 120, 'Your math may be incorrect');
+// console.log( factorial(-1) ); //, null, "Don't forget to check for negatives!");
 //
 //=== End ( Factorial Factory ) ===
 
 
-
-
-
-
 //---------------------------------------------------------------------------------------------------
-// Complementary DNA
-// (7 kyu) https://www.codewars.com/kata/complementary-dna
+// Recursion 101
+// (7 kyu) https://www.codewars.com/kata/recursion-101
 //---------------------------------------------------------------------------------------------------
 //---Task---
-//### **Complementary DNA**
-//Deoxyribonucleic acid (DNA) is a chemical found in the nucleus of cells and carries the "instructions"
-//for the development and functioning of living organisms.
-//If you want to know more: http://en.wikipedia.org/wiki/DNA
-//In DNA strings, symbols "A" and "T" are complements of each other, as "C" and "G".
-//You have function with one side of the DNA (string, except for Haskell);
-//you need to get the other complementary side. DNA strand is never empty or there is no DNA at all
-//(again, except for Haskell).
-//More similar exercise are found here: http://rosalind.info/problems/list-view/ (source)
-//Example: (input: output)
-//DNAStrand ("ATTGC") // return "TAACG"
-//DNAStrand ("GTAT") // return "CATA" 
+//### **Recursion 101**
+//In this Kata, you will be given two positive integers a and b and your task will be to apply the following operations:
+//i) If a = 0 or b = 0, return [a,b]. Otherwise, go to step (ii);
+//ii) If a ≥ 2*b, set a = a - 2*b, and repeat step (i). Otherwise, go to step (iii);
+//iii) If b ≥ 2*a, set b = b - 2*a, and repeat step (i). Otherwise, return [a,b].
+//a and b will both be lower than 10E8.
+//More examples in tests cases. Good luck!
+//Please also try Simple time difference
 //
-//### **Комплементарная ДНК**
-//Дезоксирибонуклеиновая кислота (ДНК) - это химическое вещество, обнаруженное в ядре клеток и несущее
-//«инструкции» для развития и функционирования живых организмов.
-//Если вы хотите узнать больше: http://en.wikipedia.org/wiki/DNA
-//В цепочках ДНК символы «А» и «Т» дополняют друг друга, как «С» и «G». У вас есть функция с одной стороной ДНК
-//(строка, кроме Haskell); вам нужно получить другую дополнительную сторону.
-//Нить ДНК никогда не бывает пустой или ДНК вообще не бывает (опять же, за исключением Haskell).
-//Более похожие упражнения можно найти здесь: http://rosalind.info/problems/list-view/ (источник)
-//Пример: ( ввод: вывод )
-//DNAStrand ("ATTGC") // return "TAACG"
-//DNAStrand ("GTAT") // return "CATA" 
+//### **Рекурсия 101**
+//В этом ката, вы получите два положительных целых чисел aи , bи ваша задача будет применять следующие операции:
+//i) If a = 0 or b = 0, return [a,b]. Otherwise, go to step (ii);
+//ii) If a ≥ 2*b, set a = a - 2*b, and repeat step (i). Otherwise, go to step (iii);
+//iii) If b ≥ 2*a, set b = b - 2*a, and repeat step (i). Otherwise, return [a,b].
+//aи bоба будут ниже 10E8.
+//Еще примеры в тестовых кейсах. Удачи!
+//Пожалуйста, попробуйте также Простую разницу во времени
 //
 //---Solution---
-// function DNAStrand(dna){
-//   return dna.replace(/A|T|C|G/g, function(match) {
-//     const repacements = {A: 'T', T: 'A', C: 'G', G: 'C'};
-//     return repacements[match];
-//   });
-// }
-// //2
-// const DNAStrand = dna => dna.replace(/./g, m => 'CGAT'['GCTA'.indexOf(m)]);
-// //3
-// let pairs = {A:'T',T:'A',C:'G',G:'C'};
-// const DNAStrand = dna => dna.replace(/./g, c => pairs[c]);
-// //4
-// var pairs = {'A':'T','T':'A','C':'G','G':'C'};
-// function DNAStrand(dna){
-//   return dna.split('').map(function(v){ return pairs[v] }).join('');
-// }
+function solve(a,b) {
+  if (a === 0 || b === 0) {
+    return [a,b];
+  } else {
+    if (a >= 2*b) {
+      a = a - 2*b;
+      return solve(a,b);
+    } else {
+      if (b >= 2*a) {
+        b = b - 2*a;
+        return solve(a,b);
+      } else {
+        return [a,b];
+      }
+    }
+  }
+}
+//--2-- Как вариант через стрелочную функцию
+const solve = (a, b) => 
+  !a || !b ? [a, b] : a >= 2 * b ? solve(a - 2 * b, b) : b >= 2 * a ? solve(a, b - 2 * a) : [a, b];
 //
 //---Test---
-// console.log( DNAStrand("AAAA") ); //,"TTTT","String AAAA is")
-// console.log( DNAStrand("ATTGC") ); //,"TAACG","String ATTGC is")
-// console.log( DNAStrand("GTAT") ); //,"CATA","String GTAT is")   
+console.log( solve(6,19) ); //,[6,7]);
+console.log( solve(2,1) ); //,[0,1]);
+console.log( solve(22,5) ); //,[0,1]);
+console.log( solve(2,10) ); //,[2,2]);
 // 
-//=== End ( Complementary DNA ) ===
+//=== End ( Recursion 101 ) ===
+
+
+
 
 
 //---------------------------------------------------------------------------------------------------
