@@ -227,29 +227,29 @@
 //Преобразуйте десятичные числа в двоичные. Наслаждаться! Без обмана. Нет toString
 //
 //---Solution---
-function decToBin(d) {
-  if (d === 0) return '0';
-  let converted = '';
-  while (d >= 1) {
-    converted = ''+(d%2) + converted;
-    d = Math.floor(d/2);
-  }
-  return converted;
-}
+// function decToBin(d) {
+//   if (d === 0) return '0';
+//   let converted = '';
+//   while (d >= 1) {
+//     converted = ''+(d%2) + converted;
+//     d = Math.floor(d/2);
+//   }
+//   return converted;
+// }
 //--2--
-function decToBin(d) {
-  let s = ""
-  for (; d; d >>= 1) s = (d & 1) + s
-  return s || "0"
-}
+// function decToBin(d) {
+//   let s = ""
+//   for (; d; d >>= 1) s = (d & 1) + s
+//   return s || "0"
+// }
 //
 //---Test---
-console.log( decToBin(0) ); //, '0');
-console.log( decToBin(1) ); //, '1');
-console.log( decToBin(2) ); //, '10');
-console.log( decToBin(3) ); //, '11');
-console.log( decToBin(21) ); //, '10101');
-console.log( decToBin(31) ); //, '11111');
+// console.log( decToBin(0) ); //, '0');
+// console.log( decToBin(1) ); //, '1');
+// console.log( decToBin(2) ); //, '10');
+// console.log( decToBin(3) ); //, '11');
+// console.log( decToBin(21) ); //, '10101');
+// console.log( decToBin(31) ); //, '11111');
 // 
 //=== End ( Decimal to binary converter ) ===
 //===================================================================================================
