@@ -106,10 +106,11 @@
 //
 //---Solution---
 function runYourString (arg, obj) {
-  //your code here
+  return new Function(obj.param, obj.func)(arg);
 }
 //
 //---Test---
+console.log( runYourString(16, {param: 'num', func: 'return Math.sqrt(num)'}) ); //, 4)
 console.log( runYourString(true, {param: 'val', func: 'return val'}) ); //, true)
 // 
 //=== End ( Run your String ) ===
