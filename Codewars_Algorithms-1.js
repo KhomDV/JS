@@ -35,58 +35,78 @@
 //         [0,0,0,0,1] ]
 //
 //---Solution---
-function getMatrix(number) {
-  result = [];
-  for (i=1; i <= number; i++) {
-    result.push(Array(number).fill(0));
-    result[i-1][i-1] = 1;
-  }
-  return result;
-}
+// function getMatrix(number) {
+//   result = [];
+//   for (i=1; i <= number; i++) {
+//     result.push(Array(number).fill(0));
+//     result[i-1][i-1] = 1;
+//   }
+//   return result;
+// }
 //--2-- Как решение...
-const getMatrix = n => [...Array(n)].map((e,i)=> [...Array(n)].map((s,j)=> +(i == j))); 
+// const getMatrix = n => [...Array(n)].map((e,i)=> [...Array(n)].map((s,j)=> +(i == j))); 
 //
 //---Test---
-console.log( getMatrix(1) ); //, [[1]]);
-console.log( getMatrix(2) ); //, [[1, 0], [0, 1]]);
-console.log( getMatrix(5) ); //, [[1, 0, 0, 0, 0], [0, 1, 0, 0, 0], [0, 0, 1, 0, 0], [0, 0, 0, 1, 0], [0, 0, 0, 0, 1]]);
+// console.log( getMatrix(1) ); //, [[1]]);
+// console.log( getMatrix(2) ); //, [[1, 0], [0, 1]]);
+// console.log( getMatrix(5) ); //, [[1, 0, 0, 0, 0], [0, 1, 0, 0, 0], [0, 0, 1, 0, 0], [0, 0, 0, 1, 0], [0, 0, 0, 0, 1]]);
 //=== End ( Matrix creation ) ===
 
 
-
-
-
-
 //---------------------------------------------------------------------------------------------------
-// Test Your Knowledge Of Function Scope
-// (7 kyu) https://www.codewars.com/kata/test-your-knowledge-of-function-scope
+// Basics 04: Rotate Matrix
+// (7 kyu) https://www.codewars.com/kata/basics-04-rotate-matrix
 //---------------------------------------------------------------------------------------------------
 //---Task---
-//### **Test Your Knowledge Of Function Scope**
-//Write a function that adds from two invocations.
-//add(3)(4)  // 7
-//add(12)(20) // 32
+//### **Basics 04: Rotate Matrix**
+//Your task is to rotate a matrix 90 degree to the left. The matrix is an array of integers with dimension n,m.
+//So this kata checks some basics, it's not too difficult.
+//There's nothing more to explain, no tricks, no "bad cases";-). Perhaps you take a look at the testcases...
+//One easy example:
+//Input: {{-1, 4, 5},
+//        { 2, 3, 4}}
+//Output: {{ 5, 4},
+//         { 4, 3},
+//         {-1, 2}}
+//First there are some static tests, later on random tests too...
 //
-//### **Проверьте свои знания об объеме функций**
-//Напишите функцию, которая складывает из двух вызовов.
-//add(3)(4)  // 7
-//add(12)(20) // 32
+//### **Основы 04: Поворот матрицы**
+//Ваша задача - повернуть матрицу на 90 градусов влево. Матрица представляет собой массив целых чисел размерности n, m.
+//Итак, это ката проверяет некоторые основы, это не так уж сложно.
+//Больше объяснять нечего, никаких уловок, никаких "плохих дел" ;-). Возможно, вы посмотрите тестовые примеры ...
+//Один простой пример:
+//Input: {{-1, 4, 5},
+//        { 2, 3, 4}}
+//Output: {{ 5, 4},
+//         { 4, 3},
+//         {-1, 2}}
+//Сначала есть статические тесты, потом тоже случайные ...
 //
 //---Solution---
-// //--1--
-// const add = (a) => (b) => a + b;
-// //--2--
-// function add(x) {
-//   return function(y) {
-//     return x + y
-//   }
-// }
+var rotateMatrix = arr => {
+  const n = arr[0].length;
+  let result = new Array(n);
+  for (let i = 0; i < n; i++) {
+    result[i] = Array(arr.length);
+    for (let j = 0; j < arr.length; j++) {
+      result[i][j] = arr[j][n-1-i];
+    }
+  }
+  return result;
+}
+//--2--
+return arr[0].map((x, i) => arr.map(x => x[x.length - 1 - i]));
+//--3--
+let rotateMatrix = a => a[0].map((_, i) => a.map(r => r[i])).reverse();
 //
 //---Test---
-// console.log( add(2)(5) ); //, 7,    'Should return the addition of these invocations!')
-// console.log( add(14)(25) ); //, 39, 'Should return the addition of these invocations!')
+console.log( rotateMatrix([[-1,4,5],[2,3,4]]) ); // b = [[5,4],[4,3],[-1,2]];
 // 
-//=== End ( Test Your Knowledge Of Function Scope ) ===
+//=== End ( Basics 04: Rotate Matrix ) ===
+
+
+
+
 
 
 //---------------------------------------------------------------------------------------------------
