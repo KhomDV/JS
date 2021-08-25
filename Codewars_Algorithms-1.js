@@ -125,70 +125,61 @@
 //Примечание . Выходной массив следует отсортировать по алфавиту.
 //
 //---Solution---
-function convertHashToArray(hash) {
-  return Object.entries(hash).sort();
-}
-//--2--
-const convertHashToArray = (hash) => Object.keys(hash).map(key => [key, hash[key]]).sort();
+// function convertHashToArray(hash) {
+//   return Object.entries(hash).sort();
+// }
+// //--2--
+// const convertHashToArray = (hash) => Object.keys(hash).map(key => [key, hash[key]]).sort();
 //
 //---Test---
-console.log( convertHashToArray({name: "Jeremy"}) ); //,[["name", "Jeremy"]]);
-console.log( convertHashToArray({name: "Jeremy", age: 24}) ); //,[["age", 24], ["name", "Jeremy"]]);
-console.log( convertHashToArray({name: "Jeremy", age: 24, role: "Software Engineer"}) ); //,[["age", 24], ["name", "Jeremy"], ["role", "Software Engineer"]]);
-console.log( convertHashToArray({product: "CodeWars", powerLevelOver: 9000}) ); //,[["powerLevelOver", 9000], ["product", "CodeWars"]]);
-console.log( convertHashToArray({}) ); //,[]);
+// console.log( convertHashToArray({name: "Jeremy"}) ); //,[["name", "Jeremy"]]);
+// console.log( convertHashToArray({name: "Jeremy", age: 24}) ); //,[["age", 24], ["name", "Jeremy"]]);
+// console.log( convertHashToArray({name: "Jeremy", age: 24, role: "Software Engineer"}) ); //,[["age", 24], ["name", "Jeremy"], ["role", "Software Engineer"]]);
+// console.log( convertHashToArray({product: "CodeWars", powerLevelOver: 9000}) ); //,[["powerLevelOver", 9000], ["product", "CodeWars"]]);
+// console.log( convertHashToArray({}) ); //,[]);
 // 
 //=== End ( Convert Hash To An Array ) ===
 
 
-
-
-
-
-
 //---------------------------------------------------------------------------------------------------
-// Factorial Factory
-// (7 kyu) https://www.codewars.com/kata/factorial-factory
+// Array.diff
+// (6 kyu) https://www.codewars.com/kata/array-dot-diff
 //---------------------------------------------------------------------------------------------------
 //---Task---
-//### **Factorial Factory**
-//In mathematics, the factorial of integer 'n' is written as 'n!'. It is equal to the product of n and every
-//integer preceding it. For example: 5! = 1 x 2 x 3 x 4 x 5 = 120
-//Your mission is simple: write a function that takes an integer 'n' and returns 'n!'.
-//You are guaranteed an integer argument. For any values outside the positive range, return null, nil or None .
-//Note: 0! is always equal to 1. Negative values should return null;
-//For more on Factorials : http://en.wikipedia.org/wiki/Factorial
+//### **Array.diff**
+//Your goal in this kata is to implement a difference function,
+//which subtracts one list from another and returns the result.
+//It should remove all values from list a, which are present in list b keeping their order.
+//arrayDiff([1,2],[1]) == [2]
+//If a value is present in b, all of its occurrences must be removed from the other:
+//arrayDiff([1,2,2,2,3],[2]) == [1,3]
 //
-//### **Факториал Завод**
-//В математике факториал целого числа n записывается как n! Он равен произведению n и всех предшествующих целых чисел.
-//Например: 5! = 1 х 2 х 3 х 4 х 5 = 120
-//Ваша миссия проста: напишите функцию, которая принимает целое число n и возвращает n!
-//Вам гарантирован целочисленный аргумент. При любых значениях за пределами положительного диапазона,
-//возврат null, nilили None.
-//Примечание: 0! всегда равно 1. Отрицательные значения должны возвращать null;
-//Подробнее о факториалах: http://en.wikipedia.org/wiki/Factorial
+//### **Array.diff**
+//Ваша цель в этом ката - реализовать функцию различия,
+//которая вычитает один список из другого и возвращает результат.
+//Он должен удалить все значения из списка a, которые присутствуют в списке, b сохраняя их порядок.
+//arrayDiff([1,2],[1]) == [2]
+//Если значение присутствует в b, все его вхождения должны быть удалены из другого:
+//arrayDiff([1,2,2,2,3],[2]) == [1,3]
 //
 //---Solution---
-// function factorial (n) {
-//   if (n < 0) return null;
-//   let result = 1;
-//   for (i=1; i<=n; i++) {
-//     result = result * i;
-//   }
-//   return result;
-// }
-//--2-- Возможный вариант решения, но не лучший
-// function factorial (n) {
-//   if (n > -1)
-//     return n == 0 ? 1 : n * factorial(n - 1);
-// }
+function arrayDiff(a, b) {
+  return a.filter(x=>b.findIndex(e=>e===x) === -1);
+}
+//--2--
+return a.filter(e => !b.includes(e));
 //
 //---Test---
-// console.log( factorial(2) ); //, 2, 'Your math may be incorrect');
-// console.log( factorial(5) ); //, 120, 'Your math may be incorrect');
-// console.log( factorial(-1) ); //, null, "Don't forget to check for negatives!");
+console.log( arrayDiff([], [4,5]) ); //, [], "a was [], b was [4,5]");
+console.log( arrayDiff([3,4], [3]) ); //, [4], "a was [3,4], b was [3]");
+console.log( arrayDiff([1,8,2], []) ); //, [1,8,2], "a was [1,8,2], b was []");
+console.log( arrayDiff([1,2,3], [1,2]) ); //, [3], "a was [1,2,3], b was [1,2]")
 //
-//=== End ( Factorial Factory ) ===
+//=== End ( Array.diff ) ===
+
+
+
+
 
 
 //---------------------------------------------------------------------------------------------------
