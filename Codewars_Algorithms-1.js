@@ -163,114 +163,97 @@
 //arrayDiff([1,2,2,2,3],[2]) == [1,3]
 //
 //---Solution---
-function arrayDiff(a, b) {
-  return a.filter(x=>b.findIndex(e=>e===x) === -1);
-}
-//--2--
-return a.filter(e => !b.includes(e));
+// function arrayDiff(a, b) {
+//   return a.filter(x=>b.findIndex(e=>e===x) === -1);
+// }
+// //--2--
+// return a.filter(e => !b.includes(e));
 //
 //---Test---
-console.log( arrayDiff([], [4,5]) ); //, [], "a was [], b was [4,5]");
-console.log( arrayDiff([3,4], [3]) ); //, [4], "a was [3,4], b was [3]");
-console.log( arrayDiff([1,8,2], []) ); //, [1,8,2], "a was [1,8,2], b was []");
-console.log( arrayDiff([1,2,3], [1,2]) ); //, [3], "a was [1,2,3], b was [1,2]")
+// console.log( arrayDiff([], [4,5]) ); //, [], "a was [], b was [4,5]");
+// console.log( arrayDiff([3,4], [3]) ); //, [4], "a was [3,4], b was [3]");
+// console.log( arrayDiff([1,8,2], []) ); //, [1,8,2], "a was [1,8,2], b was []");
+// console.log( arrayDiff([1,2,3], [1,2]) ); //, [3], "a was [1,2,3], b was [1,2]")
 //
 //=== End ( Array.diff ) ===
 
 
-
-
-
-
 //---------------------------------------------------------------------------------------------------
-// Recursion 101
-// (7 kyu) https://www.codewars.com/kata/recursion-101
+// Element equals its index
+// (6 kyu) https://www.codewars.com/kata/element-equals-its-index
 //---------------------------------------------------------------------------------------------------
 //---Task---
-//### **Recursion 101**
-//In this Kata, you will be given two positive integers a and b and your task will be to apply the following operations:
-//i) If a = 0 or b = 0, return [a,b]. Otherwise, go to step (ii);
-//ii) If a ≥ 2*b, set a = a - 2*b, and repeat step (i). Otherwise, go to step (iii);
-//iii) If b ≥ 2*a, set b = b - 2*a, and repeat step (i). Otherwise, return [a,b].
-//a and b will both be lower than 10E8.
-//More examples in tests cases. Good luck!
-//Please also try Simple time difference
+//### **Element equals its index**
+//Given a sorted array of distinct integers, write a function indexEqualsValue that returns the lowest index
+//for which array[index] == index.
+//Return -1 if there is no such index.
+//Your algorithm should be very performant.
+//[input] array of integers ( with 0-based nonnegative indexing )
+//[output] integer
+//Examples:
+//input: [-8,0,2,5]
+//output: 2 # since array[2] == 2
+//input: [-1,0,3,6]
+//output: -1 # since no index in array satisfies array[index] == index
+//Random Tests Constraints:
+//Array length: 200 000
+//Amount of tests: 1 000
+//Time limit: 150 ms
 //
-//### **Рекурсия 101**
-//В этом ката, вы получите два положительных целых чисел aи , bи ваша задача будет применять следующие операции:
-//i) If a = 0 or b = 0, return [a,b]. Otherwise, go to step (ii);
-//ii) If a ≥ 2*b, set a = a - 2*b, and repeat step (i). Otherwise, go to step (iii);
-//iii) If b ≥ 2*a, set b = b - 2*a, and repeat step (i). Otherwise, return [a,b].
-//aи bоба будут ниже 10E8.
-//Еще примеры в тестовых кейсах. Удачи!
-//Пожалуйста, попробуйте также Простую разницу во времени
-//
-//---Solution---
-// function solve(a,b) {
-//   if (a === 0 || b === 0) {
-//     return [a,b];
-//   } else {
-//     if (a >= 2*b) {
-//       a = a - 2*b;
-//       return solve(a,b);
-//     } else {
-//       if (b >= 2*a) {
-//         b = b - 2*a;
-//         return solve(a,b);
-//       } else {
-//         return [a,b];
-//       }
-//     }
-//   }
-// }
-//--2-- Как вариант через стрелочную функцию
-// const solve = (a, b) => 
-//   !a || !b ? [a, b] : a >= 2 * b ? solve(a - 2 * b, b) : b >= 2 * a ? solve(a, b - 2 * a) : [a, b];
-//
-//---Test---
-// console.log( solve(6,19) ); //,[6,7]);
-// console.log( solve(2,1) ); //,[0,1]);
-// console.log( solve(22,5) ); //,[0,1]);
-// console.log( solve(2,10) ); //,[2,2]);
-// 
-//=== End ( Recursion 101 ) ===
-
-
-//---------------------------------------------------------------------------------------------------
-// Decimal to binary converter
-// (7 kyu) https://www.codewars.com/kata/decimal-to-binary-converter
-//---------------------------------------------------------------------------------------------------
-//---Task---
-//### **Decimal to binary converter**
-//Convert decimal numbers to binary. Enjoy! No cheating. No toString
-//
-//### **Преобразователь десятичных чисел в двоичные**
-//Преобразуйте десятичные числа в двоичные. Наслаждаться! Без обмана. Нет toString
+//### **Элемент равен своему индексу**
+//Учитывая отсортированный массив различных целых чисел, напишите функцию, indexEqualsValueкоторая возвращает
+//наименьший индекс, для которого array[index] == index.
+//Вернуть, -1если такого индекса нет.
+//Ваш алгоритм должен быть очень производительным.
+//[вход] массив целых чисел (с 0неотрицательной индексацией)
+//[выход] целое число
+//Примеры:
+//input: [-8,0,2,5]
+//output: 2 # since array[2] == 2
+//input: [-1,0,3,6]
+//output: -1 # since no index in array satisfies array[index] == index
+//Ограничения случайных тестов:
+//Длина массива: 200 000
+//Количество тестов: 1000
+//Ограничение по времени: 150 мс
 //
 //---Solution---
-// function decToBin(d) {
-//   if (d === 0) return '0';
-//   let converted = '';
-//   while (d >= 1) {
-//     converted = ''+(d%2) + converted;
-//     d = Math.floor(d/2);
-//   }
-//   return converted;
-// }
-//--2--
-// function decToBin(d) {
-//   let s = ""
-//   for (; d; d >>= 1) s = (d & 1) + s
-//   return s || "0"
-// }
+function indexEqualsValue(a) {
+  let result = -1;
+  findlength = a.length;
+  while (true) {
+    break;
+
+
+
+
+    if ( findlength === 1 ) {
+      if (a[k] === k) {
+        result = k;
+      }
+      break;
+    }
+  }
+
+
+
+
+  // let result = -1;
+  // const findItem = a.some((item, index) => {
+  //   result = index;
+  //   return item === index;
+  // });
+  // return findItem ? result : -1;
+}
 //
 //---Test---
-// console.log( decToBin(0) ); //, '0');
-// console.log( decToBin(1) ); //, '1');
-// console.log( decToBin(2) ); //, '10');
-// console.log( decToBin(3) ); //, '11');
-// console.log( decToBin(21) ); //, '10101');
-// console.log( decToBin(31) ); //, '11111');
+console.log( indexEqualsValue([-8,0,2,5]) ); //, 2 );
+console.log( indexEqualsValue([-1,0,3,6]) ); //, -1 );
+console.log( indexEqualsValue([-3,0,1,3,10]) ); //, 3 );
+console.log( indexEqualsValue([-5, 1, 2, 3, 4, 5, 7, 10, 15]) ); //, 1 );
+console.log( indexEqualsValue([9,10,11,12,13,14]) ); //, -1 );
+console.log( indexEqualsValue([0]) ); //, 0 );
 // 
-//=== End ( Decimal to binary converter ) ===
+//=== End ( Element equals its index ) ===
+
 //===================================================================================================
