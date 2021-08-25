@@ -83,83 +83,67 @@
 //Сначала есть статические тесты, потом тоже случайные ...
 //
 //---Solution---
-var rotateMatrix = arr => {
-  const n = arr[0].length;
-  let result = new Array(n);
-  for (let i = 0; i < n; i++) {
-    result[i] = Array(arr.length);
-    for (let j = 0; j < arr.length; j++) {
-      result[i][j] = arr[j][n-1-i];
-    }
-  }
-  return result;
-}
-//--2--
-return arr[0].map((x, i) => arr.map(x => x[x.length - 1 - i]));
-//--3--
-let rotateMatrix = a => a[0].map((_, i) => a.map(r => r[i])).reverse();
+// var rotateMatrix = arr => {
+//   const n = arr[0].length;
+//   let result = new Array(n);
+//   for (let i = 0; i < n; i++) {
+//     result[i] = Array(arr.length);
+//     for (let j = 0; j < arr.length; j++) {
+//       result[i][j] = arr[j][n-1-i];
+//     }
+//   }
+//   return result;
+// }
+// //--2--
+// return arr[0].map((x, i) => arr.map(x => x[x.length - 1 - i]));
+// //--3--
+// let rotateMatrix = a => a[0].map((_, i) => a.map(r => r[i])).reverse();
 //
 //---Test---
-console.log( rotateMatrix([[-1,4,5],[2,3,4]]) ); // b = [[5,4],[4,3],[-1,2]];
+// console.log( rotateMatrix([[-1,4,5],[2,3,4]]) ); // b = [[5,4],[4,3],[-1,2]];
 // 
 //=== End ( Basics 04: Rotate Matrix ) ===
 
 
-
-
-
-
 //---------------------------------------------------------------------------------------------------
-// Run your String
-// (7 kyu) https://www.codewars.com/kata/run-your-string
+// Convert Hash To An Array
+// (7 kyu) https://www.codewars.com/kata/convert-hash-to-an-array
 //---------------------------------------------------------------------------------------------------
 //---Task---
-//### **Run your String**
-//1. Function should accept two arguments:
-//arg: any type
-//object with properties:
-//param: string type.
-//func: string type. This string is a body of executable function
-//2. Function should evaluate code of string passed as 'func' with parameter arg passed as argument and
-//return result of execution
-//Example:
-//var arg = 4,                         // arg for "string" function call
-//    obj = {
-//      param: 'num',                  // parameter name for function in string  
-//      func: 'return Math.sqrt(num)'  // function that need call with arg var
-//    };
-//runYourString(arg, obj)              // we expect it should return 2 which is a result of square root of 4
-//ps: Solution of this Kata just fun language trick.
-//Usage of this code in production is not recommended.
+//### **Convert Hash To An Array**
+//Convert a hash into an array. Nothing more, Nothing less.
+//{name: 'Jeremy', age: 24, role: 'Software Engineer'}
+//should be converted into
+//[["name", "Jeremy"], ["age", 24], ["role", "Software Engineer"]]
+//Note: The output array should be sorted alphabetically.
 //
-//### **Запустите свою строку**
-//1. Функция должна принимать два аргумента:
-//аргумент: любой тип
-//объект со свойствами:
-//param: строковый тип.
-//func: строковый тип. Эта строка представляет собой тело исполняемой функции
-//2. Функция должна оценивать код строки, переданной как 'func' с параметром arg, переданным в качестве аргумента,
-//и возвращать результат выполнения
-//Пример:
-//var arg = 4,                         // arg for "string" function call
-//    obj = {
-//      param: 'num',                  // parameter name for function in string  
-//      func: 'return Math.sqrt(num)'  // function that need call with arg var
-//    };
-//runYourString(arg, obj)              // we expect it should return 2 which is a result of square root of 4
-//ps: Решение этой каты просто забавный языковой трюк.
-//Не рекомендуется использовать этот код в продакшене.
+//### **Преобразовать хеш в массив**
+//Преобразуйте хеш в массив. Ни больше ни меньше.
+//{name: 'Jeremy', age: 24, role: 'Software Engineer'}
+//следует преобразовать в
+//[["name", "Jeremy"], ["age", 24], ["role", "Software Engineer"]]
+//Примечание . Выходной массив следует отсортировать по алфавиту.
 //
 //---Solution---
-// function runYourString (arg, obj) {
-//   return new Function(obj.param, obj.func)(arg);
-// }
+function convertHashToArray(hash) {
+  return Object.entries(hash).sort();
+}
+//--2--
+const convertHashToArray = (hash) => Object.keys(hash).map(key => [key, hash[key]]).sort();
 //
 //---Test---
-// console.log( runYourString(16, {param: 'num', func: 'return Math.sqrt(num)'}) ); //, 4)
-// console.log( runYourString(true, {param: 'val', func: 'return val'}) ); //, true)
+console.log( convertHashToArray({name: "Jeremy"}) ); //,[["name", "Jeremy"]]);
+console.log( convertHashToArray({name: "Jeremy", age: 24}) ); //,[["age", 24], ["name", "Jeremy"]]);
+console.log( convertHashToArray({name: "Jeremy", age: 24, role: "Software Engineer"}) ); //,[["age", 24], ["name", "Jeremy"], ["role", "Software Engineer"]]);
+console.log( convertHashToArray({product: "CodeWars", powerLevelOver: 9000}) ); //,[["powerLevelOver", 9000], ["product", "CodeWars"]]);
+console.log( convertHashToArray({}) ); //,[]);
 // 
-//=== End ( Run your String ) ===
+//=== End ( Convert Hash To An Array ) ===
+
+
+
+
+
 
 
 //---------------------------------------------------------------------------------------------------
