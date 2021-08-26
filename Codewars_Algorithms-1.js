@@ -218,36 +218,36 @@
 //Ограничение по времени: 150 мс
 //
 //---Solution---
-function indexEqualsValue(a) {
-  let result = -1;
-  let indBeg = 0;
-  let indEdn = a.length-1;
-  if (a[indBeg] === indBeg) return indBeg;
-  while (true) {
-    const index = indBeg + Math.floor((indEdn - indBeg) / 2);
-    if ((indEdn - indBeg)-1 === 0) {
-      if (a[indBeg] === indBeg) return indBeg;
-      if (a[indEdn] === indEdn) return indEdn;
-      break;
-    } 
-    if (a[index] < index) {
-      indBeg = index;
-    } else {
-      indEdn = index;
-    }
-  }
-  return result;
-}
-//--2--
-indexEqualsValue=(a,b=0,c=a.length-1,i=(b+c)>>1)=>b<c?i<=a[i]?indexEqualsValue(a,b,i):indexEqualsValue(a,++i,c):a[c]==c?c:-1
+// function indexEqualsValue(a) {
+//   let result = -1;
+//   let indBeg = 0;
+//   let indEdn = a.length-1;
+//   if (a[indBeg] === indBeg) return indBeg;
+//   while (true) {
+//     const index = indBeg + Math.floor((indEdn - indBeg) / 2);
+//     if ((indEdn - indBeg)-1 === 0) {
+//       if (a[indBeg] === indBeg) return indBeg;
+//       if (a[indEdn] === indEdn) return indEdn;
+//       break;
+//     } 
+//     if (a[index] < index) {
+//       indBeg = index;
+//     } else {
+//       indEdn = index;
+//     }
+//   }
+//   return result;
+// }
+// //--2--
+// indexEqualsValue=(a,b=0,c=a.length-1,i=(b+c)>>1)=>b<c?i<=a[i]?indexEqualsValue(a,b,i):indexEqualsValue(a,++i,c):a[c]==c?c:-1
 //
 //---Test---
-console.log( indexEqualsValue([-8,0,2,5]) ); //, 2 );
-console.log( indexEqualsValue([-1,0,3,6]) ); //, -1 );
-console.log( indexEqualsValue([-3,0,1,3,10]) ); //, 3 );
-console.log( indexEqualsValue([-5, 1, 2, 3, 4, 5, 7, 10, 15]) ); //, 1 );
-console.log( indexEqualsValue([9,10,11,12,13,14]) ); //, -1 );
-console.log( indexEqualsValue([0]) ); //, 0 );
+// console.log( indexEqualsValue([-8,0,2,5]) ); //, 2 );
+// console.log( indexEqualsValue([-1,0,3,6]) ); //, -1 );
+// console.log( indexEqualsValue([-3,0,1,3,10]) ); //, 3 );
+// console.log( indexEqualsValue([-5, 1, 2, 3, 4, 5, 7, 10, 15]) ); //, 1 );
+// console.log( indexEqualsValue([9,10,11,12,13,14]) ); //, -1 );
+// console.log( indexEqualsValue([0]) ); //, 0 );
 // 
 //=== End ( Element equals its index ) ===
 
