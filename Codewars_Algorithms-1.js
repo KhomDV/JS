@@ -220,31 +220,26 @@
 //---Solution---
 function indexEqualsValue(a) {
   let result = -1;
-  findlength = a.length;
+  let indBeg = 0;
+  let indEdn = a.length-1;
+  if (a[indBeg] === indBeg) return indBeg;
   while (true) {
-    break;
-
-
-
-
-    if ( findlength === 1 ) {
-      if (a[k] === k) {
-        result = k;
-      }
+    const index = indBeg + Math.floor((indEdn - indBeg) / 2);
+    if ((indEdn - indBeg)-1 === 0) {
+      if (a[indBeg] === indBeg) return indBeg;
+      if (a[indEdn] === indEdn) return indEdn;
       break;
+    } 
+    if (a[index] < index) {
+      indBeg = index;
+    } else {
+      indEdn = index;
     }
   }
-
-
-
-
-  // let result = -1;
-  // const findItem = a.some((item, index) => {
-  //   result = index;
-  //   return item === index;
-  // });
-  // return findItem ? result : -1;
+  return result;
 }
+//--2--
+indexEqualsValue=(a,b=0,c=a.length-1,i=(b+c)>>1)=>b<c?i<=a[i]?indexEqualsValue(a,b,i):indexEqualsValue(a,++i,c):a[c]==c?c:-1
 //
 //---Test---
 console.log( indexEqualsValue([-8,0,2,5]) ); //, 2 );
