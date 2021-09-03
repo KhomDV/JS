@@ -6,51 +6,112 @@
 //---------------------------------------------------------------------------------------------------
 
 //---------------------------------------------------------------------------------------------------
-// Matrix creation
-// (7 kyu) https://www.codewars.com/kata/matrix-creation
+// The Deca Tree
+// (7 kyu) https://www.codewars.com/kata/the-deca-tree
 //---------------------------------------------------------------------------------------------------
 //---Task---
-//### **Matrix creation**
-//Create an identity matrix of the specified size( >= 0).
-//Some examples:
-//(1)  =>  [[1]]
-//(2) => [ [1,0],
-//         [0,1] ]
-//(5) => [ [1,0,0,0,0],
-//         [0,1,0,0,0],
-//         [0,0,1,0,0],
-//         [0,0,0,1,0],
-//         [0,0,0,0,1] ]
+//### **The Deca Tree**
+//In the Deca Forest, grow the Deca Trees.
+//On each Deca Tree, a trunk has 10 branches.
+//On each branch, there are 10 twigs.
+//On each twig, there are 10 leaves.
+//Unfortunately, the Deca Forest is becoming wildly overgrown and is endangering the local wildlife.
+//You must add methods to the tree object so that the woodcutter can remove parts of a tree as follows,
+//where n is a positive integer:
+//chopTrunk(n)     will remove n trunks
+//chopBranch(n)    will remove n branches
+//chopTwig(n)      will remove n twigs
+//chopLeaf(n)      will remove n leaves
+//Make sure that when you remove any part of the tree, you also remove all the smaller parts attached to it. e.g.
+//if you remove a twig you must also remove 10 leaves from the tree object.
+//The woodcutter's aim is to trim back this forest, so he will try to remove as much of the tree as possible
+//each time he chops.
+//Conversely, when you remove a smaller part, you do not need to remove the larger parts it is attached to -
+//for example you could pick off all the leaves from a tree and the number of twigs,
+//branches and trunks would be unaffected.
+//The tree cannot have a negative number of trunks, branches, leaves or twigs. That would be highly unnatural.
+//You must also add a method 'describe' that allows the Deca Forest tourguides to describe each tree.
+//It should describe the tree in the following format:
+//"This tree has a trunks, b branches, c twigs and d leaves."
+//(where a, b, c and d are integer values)
+//Your methods will be tested for trees with varying numbers of trunks and for removing random numbers of leaves,
+//twigs, branches and trunks. The test will use only positive integers for these values.
 //
-//### **Создание матрицы**
-//Создайте единичную матрицу указанного размера (> = 0).
-//Некоторые примеры:
-//(1)  =>  [[1]]
-//(2) => [ [1,0],
-//         [0,1] ]
-//(5) => [ [1,0,0,0,0],
-//         [0,1,0,0,0],
-//         [0,0,1,0,0],
-//         [0,0,0,1,0],
-//         [0,0,0,0,1] ]
+//### **Дека дерево**
+//В лесу Дека вырастите деревья Дека.
+//На каждом Дека-дереве у ствола есть 10 ветвей.
+//На каждой ветке по 10 веточек.
+//На каждой веточке по 10 листочков.
+//К сожалению, лес Дека сильно зарастает и ставит под угрозу местную дикую природу.
+//Вы должны добавить методы к объекту дерева, чтобы дровосек мог удалять части дерева следующим образом,
+//где n- положительное целое число:
+//chopTrunk(n)     will remove n trunks
+//chopBranch(n)    will remove n branches
+//chopTwig(n)      will remove n twigs
+//chopLeaf(n)      will remove n leaves
+//Убедитесь, что, удаляя любую часть дерева, вы также удаляете все прикрепленные к нему более мелкие части.
+//например, если вы удалите ветку, вы также должны удалить 10 листьев с дерева.
+//Цель дровосека - подрезать этот лес, чтобы он старался убирать как можно больше дерева каждый раз, когда рубит.
+//И наоборот, когда вы удаляете меньшую часть, вам не нужно снимать большие части, к которым она прикреплена - например,
+//вы можете сорвать все листья с дерева, и это не повлияет на количество веток, веток и стволов.
+//У дерева не может быть отрицательного числа стволов, веток, листьев или веток.
+//Это было бы в высшей степени неестественно.
+//Вы также должны добавить метод «description», позволяющий туристическим гидам Deca Forest описывать каждое дерево.
+//Он должен описывать дерево в следующем формате:
+//«У этого дерева есть aстволы, bветви, cпрутья и dлистья».
+//(где a, b, cи dявляются целые значения)
+//Ваши методы будут проверены на деревьях с различным количеством стволов и на удаление случайного количества листьев,
+//веток, веток и стволов. Для этих значений в тесте будут использоваться только положительные целые числа.
 //
 //---Solution---
-// function getMatrix(number) {
-//   result = [];
-//   for (i=1; i <= number; i++) {
-//     result.push(Array(number).fill(0));
-//     result[i-1][i-1] = 1;
-//   }
-//   return result;
-// }
-//--2-- Как решение...
-// const getMatrix = n => [...Array(n)].map((e,i)=> [...Array(n)].map((s,j)=> +(i == j))); 
+function tree(trunks) {
+  this.trunks = trunks;
+  this.branches = trunks * 10;
+  this.twigs = trunks * 100;
+  this.leaves = trunks * 1000;
+}
+tree.prototype.chopLeaf = function(n) {
+  this.leaves = n > this.leaves ? 0 : this.leaves - n;
+  //this.leaves = Math.max(this.leaves - n, 0);
+}
+tree.prototype.chopTwig = function(n) {
+  this.twigs = n > this.twigs ? 0 : this.twigs - n;
+  this.chopLeaf(10*n);
+}
+tree.prototype.chopBranch = function(n) {
+  this.branches = n > this.branches ? 0 : this.branches - n;
+  this.chopTwig(10*n);
+}
+tree.prototype.chopTrunk = function(n) {
+  this.trunks = n > this.trunks ? 0 : this.trunks - n;
+  this.chopBranch(10*n);
+}
+tree.prototype.describe = function() {
+  return `This tree has ${this.trunks} trunks, ${this.branches} branches, ${this.twigs} twigs and ${this.leaves} leaves.`
+}
 //
 //---Test---
-// console.log( getMatrix(1) ); //, [[1]]);
-// console.log( getMatrix(2) ); //, [[1, 0], [0, 1]]);
-// console.log( getMatrix(5) ); //, [[1, 0, 0, 0, 0], [0, 1, 0, 0, 0], [0, 0, 1, 0, 0], [0, 0, 0, 1, 0], [0, 0, 0, 0, 1]]);
-//=== End ( Matrix creation ) ===
+var myTree = new tree(10);
+myTree.chopLeaf(1);
+console.log( myTree.leaves ); //, 9999);
+myTree.chopTwig(1);
+console.log( myTree.twigs ); //, 999);
+console.log( myTree.leaves ); //, 9989, 'Removing a twig should also remove 10 leaves');
+myTree.chopBranch(1);
+console.log( myTree.branches ); //, 99);
+console.log( myTree.twigs ); //, 989, 'Removing a branch should also remove 10 twigs');
+console.log( myTree.leaves ); //, 9889, 'Removing a branch should also remove 100 leaves');
+myTree.chopTrunk(1);
+console.log( myTree.trunks ); //, 9);
+console.log( myTree.branches ); //, 89, 'Removing a trunk should also remove 10 branches');
+console.log( myTree.twigs ); //, 889, 'Removing a trunk should also remove 100 twigs');
+console.log( myTree.leaves ); //, 8889, 'Removing a trunk should also remove 1000 leaves');
+console.log( myTree.describe() ); //, 'This tree has 9 trunks, 89 branches, 889 twigs and 8889 leaves.');
+//=== End ( The Deca Tree ) ===
+
+
+
+
 
 
 //---------------------------------------------------------------------------------------------------
