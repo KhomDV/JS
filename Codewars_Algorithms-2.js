@@ -213,67 +213,80 @@
 //Все входные данные будут в правильном формате. Строки на билетах не всегда имеют одинаковую длину.
 //
 //---Solution---
-function bingo(ticket, win) {
-  return ticket.reduce((sum, el) => 
-    (el[0].split('').some(e=>e.charCodeAt(0)===el[1])) ? sum + 1 : sum, 0) >= win ? 'Winner!' : 'Loser!';
-  //--1--
-  // return ticket.reduce((sum, el) => {
-  //     return (el[0].split('').some(e=>e.charCodeAt(0)===el[1])) ? sum + 1 : sum;
-  //   },0) >= win ? 'Winner!' : 'Loser!';
-  //--2--
-  // let winner = 0;
-  // for (i=0; i < ticket.length; i++) {
-  //   if (ticket[i][0].split('').some(e=>e.charCodeAt(0)===ticket[i][1])) winner++;
-  // }
-  // return winner >= win ? 'Winner!' : 'Loser!';
-}
+// function bingo(ticket, win) {
+//   return ticket.reduce((sum, el) => 
+//     (el[0].split('').some(e=>e.charCodeAt(0)===el[1])) ? sum + 1 : sum, 0) >= win ? 'Winner!' : 'Loser!';
+//   //--1--
+//   // return ticket.reduce((sum, el) => {
+//   //     return (el[0].split('').some(e=>e.charCodeAt(0)===el[1])) ? sum + 1 : sum;
+//   //   },0) >= win ? 'Winner!' : 'Loser!';
+//   //--2--
+//   // let winner = 0;
+//   // for (i=0; i < ticket.length; i++) {
+//   //   if (ticket[i][0].split('').some(e=>e.charCodeAt(0)===ticket[i][1])) winner++;
+//   // }
+//   // return winner >= win ? 'Winner!' : 'Loser!';
+// }
 //
 //---Test---
-console.log( bingo([['ABC', 65], ['HGR', 74], ['BYHT', 74]], 2) ); //, 'Loser!');
-console.log( bingo([['ABC', 65], ['HGR', 74], ['BYHT', 74]], 1) ); //, 'Winner!');
-console.log( bingo([['HGTYRE', 74], ['BE', 66], ['JKTY', 74]], 3) ); //, 'Loser!');
+// console.log( bingo([['ABC', 65], ['HGR', 74], ['BYHT', 74]], 2) ); //, 'Loser!');
+// console.log( bingo([['ABC', 65], ['HGR', 74], ['BYHT', 74]], 1) ); //, 'Winner!');
+// console.log( bingo([['HGTYRE', 74], ['BE', 66], ['JKTY', 74]], 3) ); //, 'Loser!');
 // 
 //=== End ( Lottery Ticket ) ===
 
 
-
-
-
 //---------------------------------------------------------------------------------------------------
-// Array.diff
-// (6 kyu) https://www.codewars.com/kata/array-dot-diff
+// RGB To Hex Conversion
+// (5 kyu) https://www.codewars.com/kata/rgb-to-hex-conversion
 //---------------------------------------------------------------------------------------------------
 //---Task---
-//### **Array.diff**
-//Your goal in this kata is to implement a difference function,
-//which subtracts one list from another and returns the result.
-//It should remove all values from list a, which are present in list b keeping their order.
-//arrayDiff([1,2],[1]) == [2]
-//If a value is present in b, all of its occurrences must be removed from the other:
-//arrayDiff([1,2,2,2,3],[2]) == [1,3]
+//### **RGB To Hex Conversion**
+//The rgb function is incomplete. Complete it so that passing in RGB decimal values will result in a hexadecimal
+//representation being returned. Valid decimal values for RGB are 0 - 255.
+//Any values that fall out of that range must be rounded to the closest valid value.
+//Note: Your answer should always be 6 characters long, the shorthand with 3 will not work here.
+//The following are examples of expected output values:
+//rgb(255, 255, 255) // returns FFFFFF
+//rgb(255, 255, 300) // returns FFFFFF
+//rgb(0,0,0) // returns 000000
+//rgb(148, 0, 211) // returns 9400D3
 //
-//### **Array.diff**
-//Ваша цель в этом ката - реализовать функцию различия,
-//которая вычитает один список из другого и возвращает результат.
-//Он должен удалить все значения из списка a, которые присутствуют в списке, b сохраняя их порядок.
-//arrayDiff([1,2],[1]) == [2]
-//Если значение присутствует в b, все его вхождения должны быть удалены из другого:
-//arrayDiff([1,2,2,2,3],[2]) == [1,3]
+//### **Преобразование RGB в шестнадцатеричный**
+//Функция rgb не завершена. Завершите его так, чтобы передача десятичных значений RGB приводила к возврату
+//шестнадцатеричного представления. Допустимые десятичные значения для RGB: 0 - 255.
+//Любые значения, выходящие за пределы этого диапазона, должны быть округлены до ближайшего допустимого значения.
+//Примечание. Ваш ответ всегда должен состоять из 6 символов, сокращение с 3 здесь не работает.
+//Ниже приведены примеры ожидаемых выходных значений:
+//rgb(255, 255, 255) // returns FFFFFF
+//rgb(255, 255, 300) // returns FFFFFF
+//rgb(0,0,0) // returns 000000
+//rgb(148, 0, 211) // returns 9400D3
 //
 //---Solution---
-// function arrayDiff(a, b) {
-//   return a.filter(x=>b.findIndex(e=>e===x) === -1);
-// }
-// //--2--
-// return a.filter(e => !b.includes(e));
+function rgb(r, g, b) {
+  // complete this function
+  return `${toHex(r)}${toHex(g)}${toHex(b)}`;
+
+  function toHex(numb) {
+    if (numb < 0) numb = 0;
+    if (numb > 255) numb = 255;
+    return ("0"+(Number(numb).toString(16))).slice(-2).toUpperCase();
+  }
+}
 //
 //---Test---
-// console.log( arrayDiff([], [4,5]) ); //, [], "a was [], b was [4,5]");
-// console.log( arrayDiff([3,4], [3]) ); //, [4], "a was [3,4], b was [3]");
-// console.log( arrayDiff([1,8,2], []) ); //, [1,8,2], "a was [1,8,2], b was []");
-// console.log( arrayDiff([1,2,3], [1,2]) ); //, [3], "a was [1,2,3], b was [1,2]")
+console.log( rgb(0, 0, 0) ); //, '000000')
+console.log( rgb(0, 0, -20) ); //, '000000')
+console.log( rgb(300,255,255) ); //, 'FFFFFF')
+console.log( rgb(173,255,47) ); //, 'ADFF2F')
+console.log( rgb(10,10,15) ); //, 'ADFF2F')
+
 //
-//=== End ( Array.diff ) ===
+//=== End ( RGB To Hex Conversion ) ===
+
+
+
 
 
 //---------------------------------------------------------------------------------------------------
