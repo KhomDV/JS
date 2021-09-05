@@ -459,47 +459,47 @@
 //---Solution---
 // This is here as documentation. The nodes in the tree are instances of
 // this class. You don't need to change this implementation.
-class Node {
-  constructor(value, left = null, right = null){
-    this.value = value;
-    this.left = left;
-    this.right = right;
-  }
-}
-//--1--
-const isBST = node => {
-  const arr1 = [];
-  t(node,arr1);
-  return JSON.stringify(arr1)===JSON.stringify(arr1.slice().sort((a,b)=>a-b))||
-         JSON.stringify(arr1)===JSON.stringify(arr1.slice().sort((a,b)=>b-a))
-};
-function t(root,arr){
-  if(!root) return;
-  t(root.left,arr)
-  arr.push(root.value)
-  t(root.right,arr)
-}
-//--2--
-const isBST = node => {
-  const arr = inOrder(node);
-  
-  return arr.every( (v, i, a) => i == 0 ? true : v > a[i-1])
-    || arr.every( (v, i, a) => i == 0 ? true : v < a[i-1]);
-  
-  function inOrder(node) { 
-    if (node == undefined) return [];
-    return inOrder(node.left).concat(node.value).concat(inOrder(node.right)); 
-  }
-};
+// class Node {
+//   constructor(value, left = null, right = null){
+//     this.value = value;
+//     this.left = left;
+//     this.right = right;
+//   }
+// }
+// //--1--
+// const isBST = node => {
+//   const arr1 = [];
+//   t(node,arr1);
+//   return JSON.stringify(arr1)===JSON.stringify(arr1.slice().sort((a,b)=>a-b))||
+//          JSON.stringify(arr1)===JSON.stringify(arr1.slice().sort((a,b)=>b-a))
+// };
+// function t(root,arr){
+//   if(!root) return;
+//   t(root.left,arr)
+//   arr.push(root.value)
+//   t(root.right,arr)
+// }
+// //--2--
+// const isBST = node => {
+//   const arr = inOrder(node);
+//  
+//   return arr.every( (v, i, a) => i == 0 ? true : v > a[i-1])
+//     || arr.every( (v, i, a) => i == 0 ? true : v < a[i-1]);
+//  
+//   function inOrder(node) { 
+//     if (node == undefined) return [];
+//     return inOrder(node.left).concat(node.value).concat(inOrder(node.right)); 
+//   }
+// };
 //
 //---Test---
-const T = (v, l, r) => new Node(v, l, r);
-console.log( isBST(T(5, T(2, T(1), T(3)), T(7, null, T(9)))) ); //, true);
-console.log( isBST(T(7, T(9), T(2))) ); //, true);
-console.log( isBST(T(1, T(2), T(3))) ); //, false);
-console.log( isBST(T(5, T(2, null, T(7)), T(9))) ); //, false);
-console.log( isBST(T(T(),T())) );
-console.log( isBST() );
+// const T = (v, l, r) => new Node(v, l, r);
+// console.log( isBST(T(5, T(2, T(1), T(3)), T(7, null, T(9)))) ); //, true);
+// console.log( isBST(T(7, T(9), T(2))) ); //, true);
+// console.log( isBST(T(1, T(2), T(3))) ); //, false);
+// console.log( isBST(T(5, T(2, null, T(7)), T(9))) ); //, false);
+// console.log( isBST(T(T(),T())) );
+// console.log( isBST() );
 //
 //=== End ( Binary search tree validation ) ===
 
