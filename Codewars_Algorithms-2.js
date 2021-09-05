@@ -64,106 +64,131 @@
 //веток, веток и стволов. Для этих значений в тесте будут использоваться только положительные целые числа.
 //
 //---Solution---
-function tree(trunks) {
-  this.trunks = trunks;
-  this.branches = trunks * 10;
-  this.twigs = trunks * 100;
-  this.leaves = trunks * 1000;
-}
-tree.prototype.chopLeaf = function(n) {
-  this.leaves = n > this.leaves ? 0 : this.leaves - n;
-  //this.leaves = Math.max(this.leaves - n, 0);
-}
-tree.prototype.chopTwig = function(n) {
-  this.twigs = n > this.twigs ? 0 : this.twigs - n;
-  this.chopLeaf(10*n);
-}
-tree.prototype.chopBranch = function(n) {
-  this.branches = n > this.branches ? 0 : this.branches - n;
-  this.chopTwig(10*n);
-}
-tree.prototype.chopTrunk = function(n) {
-  this.trunks = n > this.trunks ? 0 : this.trunks - n;
-  this.chopBranch(10*n);
-}
-tree.prototype.describe = function() {
-  return `This tree has ${this.trunks} trunks, ${this.branches} branches, ${this.twigs} twigs and ${this.leaves} leaves.`
-}
+// function tree(trunks) {
+//   this.trunks = trunks;
+//   this.branches = trunks * 10;
+//   this.twigs = trunks * 100;
+//   this.leaves = trunks * 1000;
+// }
+// tree.prototype.chopLeaf = function(n) {
+//   this.leaves = n > this.leaves ? 0 : this.leaves - n;
+//   //this.leaves = Math.max(this.leaves - n, 0);
+// }
+// tree.prototype.chopTwig = function(n) {
+//   this.twigs = n > this.twigs ? 0 : this.twigs - n;
+//   this.chopLeaf(10*n);
+// }
+// tree.prototype.chopBranch = function(n) {
+//   this.branches = n > this.branches ? 0 : this.branches - n;
+//   this.chopTwig(10*n);
+// }
+// tree.prototype.chopTrunk = function(n) {
+//   this.trunks = n > this.trunks ? 0 : this.trunks - n;
+//   this.chopBranch(10*n);
+// }
+// tree.prototype.describe = function() {
+//   return `This tree has ${this.trunks} trunks, ${this.branches} branches, ${this.twigs} twigs and ${this.leaves} leaves.`
+// }
 //
 //---Test---
-var myTree = new tree(10);
-myTree.chopLeaf(1);
-console.log( myTree.leaves ); //, 9999);
-myTree.chopTwig(1);
-console.log( myTree.twigs ); //, 999);
-console.log( myTree.leaves ); //, 9989, 'Removing a twig should also remove 10 leaves');
-myTree.chopBranch(1);
-console.log( myTree.branches ); //, 99);
-console.log( myTree.twigs ); //, 989, 'Removing a branch should also remove 10 twigs');
-console.log( myTree.leaves ); //, 9889, 'Removing a branch should also remove 100 leaves');
-myTree.chopTrunk(1);
-console.log( myTree.trunks ); //, 9);
-console.log( myTree.branches ); //, 89, 'Removing a trunk should also remove 10 branches');
-console.log( myTree.twigs ); //, 889, 'Removing a trunk should also remove 100 twigs');
-console.log( myTree.leaves ); //, 8889, 'Removing a trunk should also remove 1000 leaves');
-console.log( myTree.describe() ); //, 'This tree has 9 trunks, 89 branches, 889 twigs and 8889 leaves.');
+// var myTree = new tree(10);
+// myTree.chopLeaf(1);
+// console.log( myTree.leaves ); //, 9999);
+// myTree.chopTwig(1);
+// console.log( myTree.twigs ); //, 999);
+// console.log( myTree.leaves ); //, 9989, 'Removing a twig should also remove 10 leaves');
+// myTree.chopBranch(1);
+// console.log( myTree.branches ); //, 99);
+// console.log( myTree.twigs ); //, 989, 'Removing a branch should also remove 10 twigs');
+// console.log( myTree.leaves ); //, 9889, 'Removing a branch should also remove 100 leaves');
+// myTree.chopTrunk(1);
+// console.log( myTree.trunks ); //, 9);
+// console.log( myTree.branches ); //, 89, 'Removing a trunk should also remove 10 branches');
+// console.log( myTree.twigs ); //, 889, 'Removing a trunk should also remove 100 twigs');
+// console.log( myTree.leaves ); //, 8889, 'Removing a trunk should also remove 1000 leaves');
+// console.log( myTree.describe() ); //, 'This tree has 9 trunks, 89 branches, 889 twigs and 8889 leaves.');
 //=== End ( The Deca Tree ) ===
 
 
-
-
-
-
 //---------------------------------------------------------------------------------------------------
-// Basics 04: Rotate Matrix
-// (7 kyu) https://www.codewars.com/kata/basics-04-rotate-matrix
+// Next Prime
+// (7 kyu) https://www.codewars.com/kata/next-prime
 //---------------------------------------------------------------------------------------------------
 //---Task---
-//### **Basics 04: Rotate Matrix**
-//Your task is to rotate a matrix 90 degree to the left. The matrix is an array of integers with dimension n,m.
-//So this kata checks some basics, it's not too difficult.
-//There's nothing more to explain, no tricks, no "bad cases";-). Perhaps you take a look at the testcases...
-//One easy example:
-//Input: {{-1, 4, 5},
-//        { 2, 3, 4}}
-//Output: {{ 5, 4},
-//         { 4, 3},
-//         {-1, 2}}
-//First there are some static tests, later on random tests too...
+//### **Next Prime**
+//Get the next prime number!
+//You will get a numbern (>= 0) and your task is to find the next prime number.
+//Make sure to optimize your code: there will numbers tested up to about 10^12.
+//Examples
+//5   =>  7
+//12  =>  13
 //
-//### **Основы 04: Поворот матрицы**
-//Ваша задача - повернуть матрицу на 90 градусов влево. Матрица представляет собой массив целых чисел размерности n, m.
-//Итак, это ката проверяет некоторые основы, это не так уж сложно.
-//Больше объяснять нечего, никаких уловок, никаких "плохих дел" ;-). Возможно, вы посмотрите тестовые примеры ...
-//Один простой пример:
-//Input: {{-1, 4, 5},
-//        { 2, 3, 4}}
-//Output: {{ 5, 4},
-//         { 4, 3},
-//         {-1, 2}}
-//Сначала есть статические тесты, потом тоже случайные ...
+//### **Следующий прайм**
+//Получите следующее простое число!
+//Вы получите число n(> = 0), и ваша задача - найти следующее простое число.
+//Убедитесь, что ваш код оптимизирован: там будут числа, проверенные примерно до 10^12.
+//Примеры
+//5   =>  7
+//12  =>  13
 //
 //---Solution---
-// var rotateMatrix = arr => {
-//   const n = arr[0].length;
-//   let result = new Array(n);
-//   for (let i = 0; i < n; i++) {
-//     result[i] = Array(arr.length);
-//     for (let j = 0; j < arr.length; j++) {
-//       result[i][j] = arr[j][n-1-i];
+function nextPrime(n) {
+  //have fun ^.^
+  if (n <= 1) return 2; 
+  if (n === 2) return 3;
+
+  let numbPrime;
+  if (n%2 === 0) {
+    numbPrime = n + 1;
+  } else {
+    numbPrime = n + 2;
+  }
+
+  while (true) {
+    if (!isPrime(numbPrime)) return numbPrime;
+    numbPrime += 2;
+  }
+
+  function isPrime(numb) {
+    for (let i = 3; i <= Math.sqrt(numb); i = i + 2) {
+      if (numb % i === 0) return true;
+    }
+    return false;
+  }
+
+}
+//--2--
+// function nextPrime(n) {
+//   if ( ++n < 2 ){ return 2 }
+  
+//   for ( let i = 2; i <= Math.sqrt(n); i++ ){
+//     if ( n % i === 0 ){
+//       return nextPrime(n); 
 //     }
 //   }
-//   return result;
+//   return n;
 // }
-// //--2--
-// return arr[0].map((x, i) => arr.map(x => x[x.length - 1 - i]));
-// //--3--
-// let rotateMatrix = a => a[0].map((_, i) => a.map(r => r[i])).reverse();
 //
 //---Test---
-// console.log( rotateMatrix([[-1,4,5],[2,3,4]]) ); // b = [[5,4],[4,3],[-1,2]];
+console.log( '= '+ nextPrime(0) ); //, 2);
+console.log( '= '+ nextPrime(1) ); //, 2);
+console.log( '= '+ nextPrime(2) ); //, 3);
+console.log( '= '+ nextPrime(3) ); //, 5);
+console.log( '= '+ nextPrime(5) ); //, 7);
+console.log( '= '+ nextPrime(11) ); //, 13);
+console.log( '= '+ nextPrime(7) ); //, 11);
+console.log( '= '+ nextPrime(8) ); //, 11);
+console.log( '= '+ nextPrime(9) ); //, 11);
+console.log( '= '+ nextPrime(10) ); //, 11);
+console.log( '= '+ nextPrime(11) ); //, 11);
+console.log( '= '+ nextPrime(17) ); //, 19);
+console.log( '= '+ nextPrime(2971) ); //, 2999);
 // 
-//=== End ( Basics 04: Rotate Matrix ) ===
+//=== End ( Next Prime ) ===
+
+
+
+
 
 
 //---------------------------------------------------------------------------------------------------
