@@ -132,35 +132,30 @@
 //12  =>  13
 //
 //---Solution---
-function nextPrime(n) {
-  //have fun ^.^
-  if (n <= 1) return 2; 
-  if (n === 2) return 3;
-
-  let numbPrime;
-  if (n%2 === 0) {
-    numbPrime = n + 1;
-  } else {
-    numbPrime = n + 2;
-  }
-
-  while (true) {
-    if (!isPrime(numbPrime)) return numbPrime;
-    numbPrime += 2;
-  }
-
-  function isPrime(numb) {
-    for (let i = 3; i <= Math.sqrt(numb); i = i + 2) {
-      if (numb % i === 0) return true;
-    }
-    return false;
-  }
-
-}
+// function nextPrime(n) {
+//   //have fun ^.^
+//   if (n <= 1) return 2; 
+//   if (n === 2) return 3;
+//   let numbPrime;
+//   if (n%2 === 0) {
+//     numbPrime = n + 1;
+//   } else {
+//     numbPrime = n + 2;
+//   }
+//   while (true) {
+//     if (!isPrime(numbPrime)) return numbPrime;
+//     numbPrime += 2;
+//   }
+//   function isPrime(numb) {
+//     for (let i = 3; i <= Math.sqrt(numb); i = i + 2) {
+//       if (numb % i === 0) return true;
+//     }
+//     return false;
+//   }
+// }
 //--2--
 // function nextPrime(n) {
 //   if ( ++n < 2 ){ return 2 }
-  
 //   for ( let i = 2; i <= Math.sqrt(n); i++ ){
 //     if ( n % i === 0 ){
 //       return nextPrime(n); 
@@ -170,61 +165,78 @@ function nextPrime(n) {
 // }
 //
 //---Test---
-console.log( '= '+ nextPrime(0) ); //, 2);
-console.log( '= '+ nextPrime(1) ); //, 2);
-console.log( '= '+ nextPrime(2) ); //, 3);
-console.log( '= '+ nextPrime(3) ); //, 5);
-console.log( '= '+ nextPrime(5) ); //, 7);
-console.log( '= '+ nextPrime(11) ); //, 13);
-console.log( '= '+ nextPrime(7) ); //, 11);
-console.log( '= '+ nextPrime(8) ); //, 11);
-console.log( '= '+ nextPrime(9) ); //, 11);
-console.log( '= '+ nextPrime(10) ); //, 11);
-console.log( '= '+ nextPrime(11) ); //, 11);
-console.log( '= '+ nextPrime(17) ); //, 19);
-console.log( '= '+ nextPrime(2971) ); //, 2999);
+// console.log( '= '+ nextPrime(0) ); //, 2);
+// console.log( '= '+ nextPrime(1) ); //, 2);
+// console.log( '= '+ nextPrime(2) ); //, 3);
+// console.log( '= '+ nextPrime(3) ); //, 5);
+// console.log( '= '+ nextPrime(5) ); //, 7);
+// console.log( '= '+ nextPrime(11) ); //, 13);
+// console.log( '= '+ nextPrime(7) ); //, 11);
+// console.log( '= '+ nextPrime(8) ); //, 11);
+// console.log( '= '+ nextPrime(9) ); //, 11);
+// console.log( '= '+ nextPrime(10) ); //, 11);
+// console.log( '= '+ nextPrime(11) ); //, 11);
+// console.log( '= '+ nextPrime(17) ); //, 19);
+// console.log( '= '+ nextPrime(2971) ); //, 2999);
 // 
 //=== End ( Next Prime ) ===
 
 
-
-
-
-
 //---------------------------------------------------------------------------------------------------
-// Convert Hash To An Array
-// (7 kyu) https://www.codewars.com/kata/convert-hash-to-an-array
+// Lottery Ticket
+// (6 kyu) https://www.codewars.com/kata/lottery-ticket
 //---------------------------------------------------------------------------------------------------
 //---Task---
-//### **Convert Hash To An Array**
-//Convert a hash into an array. Nothing more, Nothing less.
-//{name: 'Jeremy', age: 24, role: 'Software Engineer'}
-//should be converted into
-//[["name", "Jeremy"], ["age", 24], ["role", "Software Engineer"]]
-//Note: The output array should be sorted alphabetically.
+//### **Lottery Ticket**
+//Time to win the lottery!
+//Given a lottery ticket (ticket), represented by an array of 2-value arrays, you must find out if you've won the jackpot.
+//Example ticket:
+//[ [ 'ABC', 65 ], [ 'HGR', 74 ], [ 'BYHT', 74 ] ]
+//To do this, you must first count the 'mini-wins' on your ticket. Each subarray has both a string and a number within it.
+//If the character code of any of the characters in the string matches the number, you get a mini win.
+//Note you can only have one mini win per sub array.
+//Once you have counted all of your mini wins, compare that number to the other input provided (win).
+//If your total is more than or equal to (win), return 'Winner!'. Else return 'Loser!'.
+//All inputs will be in the correct format. Strings on tickets are not always the same length.
 //
-//### **Преобразовать хеш в массив**
-//Преобразуйте хеш в массив. Ни больше ни меньше.
-//{name: 'Jeremy', age: 24, role: 'Software Engineer'}
-//следует преобразовать в
-//[["name", "Jeremy"], ["age", 24], ["role", "Software Engineer"]]
-//Примечание . Выходной массив следует отсортировать по алфавиту.
+//### **Лотерейный билет**
+//Время выигрывать в лотерею!
+//Учитывая лотерейный билет (билет), представленный массивом из двух значений, вы должны выяснить,
+//выиграли ли вы джекпот.
+//Пример билета:
+//[ [ 'ABC', 65 ], [ 'HGR', 74 ], [ 'BYHT', 74 ] ]
+//Для этого вы должны сначала подсчитать «мини-выигрыши» на своем билете. В каждом подмассиве есть как строка,
+//так и номер. Если код любого из символов в строке совпадает с номером, вы получаете мини-выигрыш.
+//Обратите внимание, что у вас может быть только одна мини-победа на подмассив.
+//После того, как вы подсчитали все свои мини-выигрыши, сравните это число с другим введенным значением (выигрыш).
+//Если ваша сумма больше или равна (выигрыш), верните «Победитель!». Иначе верните «Неудачник!».
+//Все входные данные будут в правильном формате. Строки на билетах не всегда имеют одинаковую длину.
 //
 //---Solution---
-// function convertHashToArray(hash) {
-//   return Object.entries(hash).sort();
-// }
-// //--2--
-// const convertHashToArray = (hash) => Object.keys(hash).map(key => [key, hash[key]]).sort();
+function bingo(ticket, win) {
+  return ticket.reduce((sum, el) => 
+    (el[0].split('').some(e=>e.charCodeAt(0)===el[1])) ? sum + 1 : sum, 0) >= win ? 'Winner!' : 'Loser!';
+  //--1--
+  // return ticket.reduce((sum, el) => {
+  //     return (el[0].split('').some(e=>e.charCodeAt(0)===el[1])) ? sum + 1 : sum;
+  //   },0) >= win ? 'Winner!' : 'Loser!';
+  //--2--
+  // let winner = 0;
+  // for (i=0; i < ticket.length; i++) {
+  //   if (ticket[i][0].split('').some(e=>e.charCodeAt(0)===ticket[i][1])) winner++;
+  // }
+  // return winner >= win ? 'Winner!' : 'Loser!';
+}
 //
 //---Test---
-// console.log( convertHashToArray({name: "Jeremy"}) ); //,[["name", "Jeremy"]]);
-// console.log( convertHashToArray({name: "Jeremy", age: 24}) ); //,[["age", 24], ["name", "Jeremy"]]);
-// console.log( convertHashToArray({name: "Jeremy", age: 24, role: "Software Engineer"}) ); //,[["age", 24], ["name", "Jeremy"], ["role", "Software Engineer"]]);
-// console.log( convertHashToArray({product: "CodeWars", powerLevelOver: 9000}) ); //,[["powerLevelOver", 9000], ["product", "CodeWars"]]);
-// console.log( convertHashToArray({}) ); //,[]);
+console.log( bingo([['ABC', 65], ['HGR', 74], ['BYHT', 74]], 2) ); //, 'Loser!');
+console.log( bingo([['ABC', 65], ['HGR', 74], ['BYHT', 74]], 1) ); //, 'Winner!');
+console.log( bingo([['HGTYRE', 74], ['BE', 66], ['JKTY', 74]], 3) ); //, 'Loser!');
 // 
-//=== End ( Convert Hash To An Array ) ===
+//=== End ( Lottery Ticket ) ===
+
+
+
 
 
 //---------------------------------------------------------------------------------------------------
