@@ -264,102 +264,123 @@
 //rgb(148, 0, 211) // returns 9400D3
 //
 //---Solution---
-function rgb(r, g, b) {
-  // complete this function
-  return `${toHex(r)}${toHex(g)}${toHex(b)}`;
+// function rgb(r, g, b) {
+//   // complete this function
+//   return `${toHex(r)}${toHex(g)}${toHex(b)}`;
 
-  function toHex(numb) {
-    if (numb < 0) numb = 0;
-    if (numb > 255) numb = 255;
-    return ("0"+(Number(numb).toString(16))).slice(-2).toUpperCase();
-  }
-}
+//   function toHex(numb) {
+//     if (numb < 0) numb = 0;
+//     if (numb > 255) numb = 255;
+//     return ("0"+(Number(numb).toString(16))).slice(-2).toUpperCase();
+//   }
+// }
 //
 //---Test---
-console.log( rgb(0, 0, 0) ); //, '000000')
-console.log( rgb(0, 0, -20) ); //, '000000')
-console.log( rgb(300,255,255) ); //, 'FFFFFF')
-console.log( rgb(173,255,47) ); //, 'ADFF2F')
-console.log( rgb(10,10,15) ); //, 'ADFF2F')
-
+// console.log( rgb(0, 0, 0) ); //, '000000')
+// console.log( rgb(0, 0, -20) ); //, '000000')
+// console.log( rgb(300,255,255) ); //, 'FFFFFF')
+// console.log( rgb(173,255,47) ); //, 'ADFF2F')
+// console.log( rgb(10,10,15) ); //, 'ADFF2F')
 //
 //=== End ( RGB To Hex Conversion ) ===
 
 
-
-
-
 //---------------------------------------------------------------------------------------------------
-// Element equals its index
-// (6 kyu) https://www.codewars.com/kata/element-equals-its-index
+// Fun with trees: max sum
+// (6 kyu) https://www.codewars.com/kata/fun-with-trees-max-sum
 //---------------------------------------------------------------------------------------------------
 //---Task---
-//### **Element equals its index**
-//Given a sorted array of distinct integers, write a function indexEqualsValue that returns the lowest index
-//for which array[index] == index.
-//Return -1 if there is no such index.
-//Your algorithm should be very performant.
-//[input] array of integers ( with 0-based nonnegative indexing )
-//[output] integer
-//Examples:
-//input: [-8,0,2,5]
-//output: 2 # since array[2] == 2
-//input: [-1,0,3,6]
-//output: -1 # since no index in array satisfies array[index] == index
-//Random Tests Constraints:
-//Array length: 200 000
-//Amount of tests: 1 000
-//Time limit: 150 ms
+//### **Fun with trees: max sum**
+//You are given a binary tree. Implement the method maxSum which returns the maximal sum of a route from root to leaf.
+//For example, given the following tree:
+//    17
+//   /  \
+//  3   -10
+// /    /  \
+//2    16   1
+//         /
+//        13
+//The method should return 23, since [17,-10,16] is the route from root to leaf with the maximal sum.
+//The class TreeNode is available for you:
+//var TreeNode = function(value, left, right) {
+//  this.value = value;
+//  this.left = left;
+//  this.right = right;
+//};
+//This kata is part of fun with trees series:
+//Fun with trees: max sum
+//Fun with trees: array to tree
+//Fun with trees: is perfect
 //
-//### **Элемент равен своему индексу**
-//Учитывая отсортированный массив различных целых чисел, напишите функцию, indexEqualsValueкоторая возвращает
-//наименьший индекс, для которого array[index] == index.
-//Вернуть, -1если такого индекса нет.
-//Ваш алгоритм должен быть очень производительным.
-//[вход] массив целых чисел (с 0неотрицательной индексацией)
-//[выход] целое число
-//Примеры:
-//input: [-8,0,2,5]
-//output: 2 # since array[2] == 2
-//input: [-1,0,3,6]
-//output: -1 # since no index in array satisfies array[index] == index
-//Ограничения случайных тестов:
-//Длина массива: 200 000
-//Количество тестов: 1000
-//Ограничение по времени: 150 мс
+//### **Развлечение с деревьями: максимальная сумма**
+//Вам дано двоичное дерево. Реализуйте метод maxSum, который возвращает максимальную сумму маршрута от корня до листа.
+//Например, учитывая следующее дерево:
+//    17
+//   /  \
+//  3   -10
+// /    /  \
+//2    16   1
+//         /
+//        13
+//Метод должен вернуть 23, поскольку [17, -10,16] - это путь от корня к листу с максимальной суммой.
+//Вам доступен класс TreeNode:
+//var TreeNode = function(value, left, right) {
+//  this.value = value;
+//  this.left = left;
+//  this.right = right;
+//};
+//Это ката является частью серии « Веселье с деревьями »:
+//Развлечение с деревьями: максимальная сумма
+//Развлечение с деревьями: от массива к дереву
+//Развлечение с деревьями: идеально
 //
 //---Solution---
-// function indexEqualsValue(a) {
-//   let result = -1;
-//   let indBeg = 0;
-//   let indEdn = a.length-1;
-//   if (a[indBeg] === indBeg) return indBeg;
-//   while (true) {
-//     const index = indBeg + Math.floor((indEdn - indBeg) / 2);
-//     if ((indEdn - indBeg)-1 === 0) {
-//       if (a[indBeg] === indBeg) return indBeg;
-//       if (a[indEdn] === indEdn) return indEdn;
-//       break;
-//     } 
-//     if (a[index] < index) {
-//       indBeg = index;
-//     } else {
-//       indEdn = index;
-//     }
-//   }
-//   return result;
-// }
-// //--2--
-// indexEqualsValue=(a,b=0,c=a.length-1,i=(b+c)>>1)=>b<c?i<=a[i]?indexEqualsValue(a,b,i):indexEqualsValue(a,++i,c):a[c]==c?c:-1
+function maxSum(root) {
+  if (!root) return 0;
+  let maxSum = 0;
+  preOrder(root, 0);
+  return maxSum;
+
+  function preOrder(node, sumPath) {
+    if (node == null) {
+      if (maxSum < sumPath) maxSum = sumPath;
+      return sumPath;
+    }
+    sum = sumPath + node.value;
+    sum = preOrder(node.left, sum);
+    sum = preOrder(node.right, sum);
+    return sumPath;
+  }
+}
+//--2--
+function maxSum(root) {
+  if (!root) return 0
+  let left = maxSum(root.left) + root.value
+  let right = maxSum(root.right) + root.value
+  return Math.max(left, right)
+}
 //
 //---Test---
-// console.log( indexEqualsValue([-8,0,2,5]) ); //, 2 );
-// console.log( indexEqualsValue([-1,0,3,6]) ); //, -1 );
-// console.log( indexEqualsValue([-3,0,1,3,10]) ); //, 3 );
-// console.log( indexEqualsValue([-5, 1, 2, 3, 4, 5, 7, 10, 15]) ); //, 1 );
-// console.log( indexEqualsValue([9,10,11,12,13,14]) ); //, -1 );
-// console.log( indexEqualsValue([0]) ); //, 0 );
+let TreeNode = function(value, left, right) {
+  this.value = value;
+  this.left = left;
+  this.right = right;
+};
+let root = null;
+console.log( maxSum(root) ); //, 0);
+//  /**
+//   *      5
+//   *    /   \
+//   *  -22    11
+//   *  / \    / \
+//   * 9  50  9   2
+//   */
+root = new TreeNode(5, new TreeNode(-22, new TreeNode(9), new TreeNode(50)), new TreeNode(11, new TreeNode(9), new TreeNode(2)));
+console.log( maxSum(root) ); //, 33);
 // 
-//=== End ( Element equals its index ) ===
+//=== End ( Fun with trees: max sum ) ===
+
+
+
 
 //===================================================================================================
