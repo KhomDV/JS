@@ -335,39 +335,38 @@
 //Развлечение с деревьями: идеально
 //
 //---Solution---
-function maxSum(root) {
-  if (!root) return 0;
-  let maxSum = 0;
-  preOrder(root, 0);
-  return maxSum;
-
-  function preOrder(node, sumPath) {
-    if (node == null) {
-      if (maxSum < sumPath) maxSum = sumPath;
-      return sumPath;
-    }
-    sum = sumPath + node.value;
-    sum = preOrder(node.left, sum);
-    sum = preOrder(node.right, sum);
-    return sumPath;
-  }
-}
+// function maxSum(root) {
+//   if (!root) return 0;
+//   let maxSum = 0;
+//   preOrder(root, 0);
+//   return maxSum;
+//   function preOrder(node, sumPath) {
+//     if (node == null) {
+//       if (maxSum < sumPath) maxSum = sumPath;
+//       return sumPath;
+//     }
+//     sum = sumPath + node.value;
+//     sum = preOrder(node.left, sum);
+//     sum = preOrder(node.right, sum);
+//     return sumPath;
+//   }
+// }
 //--2--
-function maxSum(root) {
-  if (!root) return 0
-  let left = maxSum(root.left) + root.value
-  let right = maxSum(root.right) + root.value
-  return Math.max(left, right)
-}
+// function maxSum(root) {
+//   if (!root) return 0
+//   let left = maxSum(root.left) + root.value
+//   let right = maxSum(root.right) + root.value
+//   return Math.max(left, right)
+// }
 //
 //---Test---
-let TreeNode = function(value, left, right) {
-  this.value = value;
-  this.left = left;
-  this.right = right;
-};
-let root = null;
-console.log( maxSum(root) ); //, 0);
+// let TreeNode = function(value, left, right) {
+//   this.value = value;
+//   this.left = left;
+//   this.right = right;
+// };
+// let root = null;
+// console.log( maxSum(root) ); //, 0);
 //  /**
 //   *      5
 //   *    /   \
@@ -375,12 +374,133 @@ console.log( maxSum(root) ); //, 0);
 //   *  / \    / \
 //   * 9  50  9   2
 //   */
-root = new TreeNode(5, new TreeNode(-22, new TreeNode(9), new TreeNode(50)), new TreeNode(11, new TreeNode(9), new TreeNode(2)));
-console.log( maxSum(root) ); //, 33);
+// root = new TreeNode(5, new TreeNode(-22, new TreeNode(9), new TreeNode(50)), new TreeNode(11, new TreeNode(9), new TreeNode(2)));
+// console.log( maxSum(root) ); //, 33);
 // 
 //=== End ( Fun with trees: max sum ) ===
 
 
-
+//---------------------------------------------------------------------------------------------------
+// Binary search tree validation
+// (5 kyu) https://www.codewars.com/kata/binary-search-tree-validation
+//---------------------------------------------------------------------------------------------------
+//---Task---
+//### **Binary search tree validation**
+//A binary search tree is a binary tree that is ordered. This means that if you were to convert the tree to an array
+//using an in-order traversal, the array would be in sorted order.
+//The benefit gained by this ordering is that when the tree is balanced, searching is a logarithmic time operation,
+//since each node you look at that isn't the one you're searching for lets you discard half of the tree.
+//If you haven't worked with binary trees before or don't understand what a traversal is,
+//you can learn more about that here: https://www.codewars.com/kata/binary-tree-traversal.
+//In this kata, you will write a function that will validate that a given binary tree is a binary search tree.
+//The sort order is not predefined so it should work with either.
+//These are valid binary search trees:
+//
+//    5
+//   / \
+//  2   7
+// / \   \
+//1   3   9
+//
+//  7
+// / \
+//9   2
+//while these are not:
+//
+//  1
+// / \
+//2   3
+//
+//  5
+// / \
+//2   9
+// \
+//  7
+//There are several different approaches you can take to solve this kata. If you're not as comfortable with
+//recursion I'd recommend practicing that.
+//Note: no test case tree will contain duplicate numbers.
+//
+//### **Проверка дерева двоичного поиска**
+//Бинарное дерево поиска представляет собой бинарное дерево, которое прописал.
+//Это означает, что если бы вы преобразовали дерево в массив, используя обход по порядку,
+//массив был бы в отсортированном порядке. Преимущество такого упорядочения заключается в том,
+//что когда дерево сбалансировано, поиск является логарифмической временной операцией, поскольку каждый узел,
+//на который вы смотрите, не тот, который вы ищете, позволяет отбросить половину дерева.
+//Если вы раньше не работали с бинарными деревьями или не понимаете, что такое обход,
+//вы можете узнать об этом больше здесь: https://www.codewars.com/kata/binary-tree-traversal .
+//В этом ката вы напишете функцию, которая будет проверять, что данное двоичное дерево является двоичным деревом поиска.
+//Порядок сортировки не определен заранее, поэтому он должен работать и с ним.
+//Это действительные деревья двоичного поиска:
+//
+//    5
+//   / \
+//  2   7
+// / \   \
+//1   3   9
+//
+//  7
+// / \
+//9   2
+//пока это не так:
+//
+//  1
+// / \
+//2   3
+//
+//  5
+// / \
+//2   9
+// \
+//  7
+//Есть несколько разных подходов, которые вы можете использовать для выполнения этого ката.
+//Если вам не нравится рекурсия, я бы порекомендовал ей попрактиковаться.
+//Примечание: дерево тестовых примеров не будет содержать повторяющихся чисел.
+//
+//---Solution---
+// This is here as documentation. The nodes in the tree are instances of
+// this class. You don't need to change this implementation.
+class Node {
+  constructor(value, left = null, right = null){
+    this.value = value;
+    this.left = left;
+    this.right = right;
+  }
+}
+//--1--
+const isBST = node => {
+  const arr1 = [];
+  t(node,arr1);
+  return JSON.stringify(arr1)===JSON.stringify(arr1.slice().sort((a,b)=>a-b))||
+         JSON.stringify(arr1)===JSON.stringify(arr1.slice().sort((a,b)=>b-a))
+};
+function t(root,arr){
+  if(!root) return;
+  t(root.left,arr)
+  arr.push(root.value)
+  t(root.right,arr)
+}
+//--2--
+const isBST = node => {
+  const arr = inOrder(node);
+  
+  return arr.every( (v, i, a) => i == 0 ? true : v > a[i-1])
+    || arr.every( (v, i, a) => i == 0 ? true : v < a[i-1]);
+  
+  function inOrder(node) { 
+    if (node == undefined) return [];
+    return inOrder(node.left).concat(node.value).concat(inOrder(node.right)); 
+  }
+};
+//
+//---Test---
+const T = (v, l, r) => new Node(v, l, r);
+console.log( isBST(T(5, T(2, T(1), T(3)), T(7, null, T(9)))) ); //, true);
+console.log( isBST(T(7, T(9), T(2))) ); //, true);
+console.log( isBST(T(1, T(2), T(3))) ); //, false);
+console.log( isBST(T(5, T(2, null, T(7)), T(9))) ); //, false);
+console.log( isBST(T(T(),T())) );
+console.log( isBST() );
+//
+//=== End ( Binary search tree validation ) ===
 
 //===================================================================================================
