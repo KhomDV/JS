@@ -42,13 +42,18 @@
 // ---
 //
 //---Solution---
-function absentVowel(x){
-
-}
+// function absentVowel(x){
+//   const a = ['A','E','I','O','U'];
+//   for (let i=0; i<a.length; i++) {
+//     if ( x.search(new RegExp(a[i],'ui')) < 0) return i;
+//   }
+// }
+//--2--
+// return ["a", "e", "i", "o", "u"].findIndex(v => !x.includes(v));
 //
 //---Test---
-console.log( absentVowel("John Doe hs seven red pples under his bsket") ); //0
-console.log( absentVowel("Bb Smith sent us six neatly arranged range bicycles") ); //3
+// console.log( absentVowel("John Doe hs seven red pples under his bsket") ); //0
+// console.log( absentVowel("Bb Smith sent us six neatly arranged range bicycles") ); //3
 // 
 //=== End ( Absent vowel ) ===
 
