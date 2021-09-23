@@ -341,6 +341,43 @@
 //=== End ( Nickname Generator ) ===
 
 
+//---------------------------------------------------------------------------------------------------
+// Digits explosion
+//7 kyu https://www.codewars.com/kata/digits-explosion
+//---------------------------------------------------------------------------------------------------
+//---Task---
+//### **Digits explosion**
+//Given a string made of digits [0-9], return a string where each digit is repeated a number of times equals
+//to its value.
+//Examples
+//Digits.Explode("312") = "333122"
+//Digits.Explode("102269") = "12222666666999999999"
+//
+//### **Взрыв цифр**
+//Учитывая строку, состоящую из цифр [0-9], верните строку, в которой каждая цифра повторяется столько раз,
+//сколько соответствует ее значению.
+//Примеры
+//Digits.Explode("312") = "333122"
+//Digits.Explode("102269") = "12222666666999999999"
+//---
+//
+//---Solution---
+// function explode(s) {
+//   return s.split('').map(e => e.repeat(+e)).join('');
+//   //return s.split('').map(e => +e !== 0 ? e.repeat(+e) : '').join('');
+// }
+//
+//---Test---
+// console.log( explode("312") ); //"333122"
+// console.log( explode("102269") ); //"12222666666999999999"
+// console.log( explode("0") );   //""
+// console.log( explode("000") ); //""
+// console.log( explode("123") ); //"122333"
+//
+//=== End ( Digits explosion ) ===
+
+
+
 
 
 
