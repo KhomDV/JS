@@ -153,12 +153,55 @@
 //   }
 //
 //---Test---
-//let arrayTest = []
-//
-//---View solution---
 // console.log( highAndLow("4 5 29 54 4 0 -214 542 -64 1 -3 6 -6") ); //"542 -214"
 // 
 //=== End ( Highest and Lowest ) ===
+
+
+//---------------------------------------------------------------------------------------------------
+// Jaden Casing Strings
+//7 kyu https://www.codewars.com/kata/highest-and-lowest/
+//---------------------------------------------------------------------------------------------------
+//---Task---
+//### **Jaden Casing Strings**
+//Jaden Smith, the son of Will Smith, is the star of films such as The Karate Kid (2010) and After Earth (2013).
+//Jaden is also known for some of his philosophy that he delivers via Twitter. When writing on Twitter,
+//he is known for almost always capitalizing every word. For simplicity, you'll have to capitalize each word,
+//check out how contractions are expected to be in the example below.
+//Your task is to convert strings to how they would be written by Jaden Smith.
+//The strings are actual quotes from Jaden Smith, but they are not capitalized in the same way he originally typed them.
+//Example:
+//Not Jaden-Cased: "How can mirrors be real if our eyes aren't real"
+//Jaden-Cased:     "How Can Mirrors Be Real If Our Eyes Aren't Real"
+//Link to Jaden's former Twitter account @officialjaden via archive.org
+//
+//### **Обсадные колонны Jaden**
+//Джейден Смит, сын Уилла Смита, является звездой таких фильмов, как The Karate Kid (2010) и After Earth (2013).
+//Джейден также известен своей философией, которую он распространяет через Twitter . Когда он пишет в Твиттере,
+//он известен тем, что почти всегда использует каждое слово с большой буквы. Для простоты вам придется писать
+//каждое слово с заглавной буквы, посмотрите, как ожидается сокращение в приведенном ниже примере.
+//Ваша задача - преобразовать строки в то, как они были бы написаны Джейденом Смитом.
+//Строки - это настоящие цитаты Джейдена Смита, но они не пишутся с заглавной буквы так, как он их изначально набирал.
+//Пример:
+//Not Jaden-Cased: "How can mirrors be real if our eyes aren't real"
+//Jaden-Cased:     "How Can Mirrors Be Real If Our Eyes Aren't Real"
+//Ссылка на бывший аккаунт Джейдена в Твиттере @officialjaden через archive.org
+// ---
+//
+//---Solution---
+// String.prototype.toJadenCase = function () {
+//   return this.split(' ').map(e => e[0].toUpperCase() + e.substring(1)).join(' ');
+//   //--2--
+//   return this.replace(/(^|\s)[a-z]/g, function(x){ return x.toUpperCase(); });
+// };
+//
+//---Test---
+// const str = "How can mirrors be real if our eyes aren't real";
+// console.log( str.toJadenCase() ); //, "How Can Mirrors Be Real If Our Eyes Aren't Real");
+//
+//=== End ( Jaden Casing Strings ) ===
+
+
 
 
 
