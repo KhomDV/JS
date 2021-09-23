@@ -278,6 +278,67 @@
 //=== End ( Isograms ) ===
 
 
+//---------------------------------------------------------------------------------------------------
+// Nickname Generator
+//7 kyu https://www.codewars.com/kata/nickname-generator
+//---------------------------------------------------------------------------------------------------
+//---Task---
+//### **Nickname Generator**
+//Write a function, nicknameGenerator that takes a string name as an argument and returns the first 3 or 4 letters
+//as a nickname.
+//If the 3rd letter is a consonant, return the first 3 letters.
+//nickname("Robert") //=> "Rob"
+//nickname("Kimberly") //=> "Kim"
+//nickname("Samantha") //=> "Sam"
+//If the 3rd letter is a vowel, return the first 4 letters.
+//nickname("Jeannie") //=> "Jean"
+//nickname("Douglas") //=> "Doug"
+//nickname("Gregory") //=> "Greg"
+//If the string is less than 4 characters, return "Error: Name too short".
+//Notes:
+//Vowels are "aeiou", so discount the letter "y".
+//Input will always be a string.
+//Input will always have the first letter capitalised and the rest lowercase (e.g. Sam).
+//The input can be modified
+//
+//### **Генератор псевдонимов**
+//Напишите функцию, nicknameGeneratorкоторая принимает строковое имя в качестве аргумента и возвращает
+//первые 3 или 4 буквы в качестве псевдонима.
+//Если 3-я буква согласная, верните первые 3 буквы.
+//nickname("Robert") //=> "Rob"
+//nickname("Kimberly") //=> "Kim"
+//nickname("Samantha") //=> "Sam"
+//Если 3-я буква является гласной, верните первые 4 буквы.
+//nickname("Jeannie") //=> "Jean"
+//nickname("Douglas") //=> "Doug"
+//nickname("Gregory") //=> "Greg"
+//Если строка меньше 4 символов, вернуть «Ошибка: слишком короткое имя».
+//Примечания:
+//Гласные - это «aeiou», поэтому отбрасывайте букву «y».
+//Ввод всегда будет строкой.
+//При вводе первая буква всегда будет заглавной, а остальные строчные (например, Sam).
+//Вход можно изменить
+//---
+//
+//---Solution---
+// function nicknameGenerator(name){
+//   if (name.length <= 3) return "Error: Name too short";
+//   return /[aeiou]/gi.test(name[2]) ? name.slice(0,4) : name.slice(0,3);
+//   //--2--
+//   return name.length<4?"Error: Name too short":name.match(/^\w{2}([auoie]\w|[^auoie])/)[0];
+// }
+//
+//---Test---
+// console.log( nicknameGenerator("Jiiimmy") ); //, "Jim");
+// console.log( nicknameGenerator("Samantha") ); //, "Sam");
+// console.log( nicknameGenerator("Sam") ); //, "Error: Name too short");
+// console.log( nicknameGenerator("Kayne") ); //, "Kay", "'y' is not a vowel");
+// console.log( nicknameGenerator("Melissa") ); //, "Mel");
+// console.log( nicknameGenerator("James") ); //, "Jam");
+// console.log( nicknameGenerator("Greg") ); //, "Greg");
+// console.log( nicknameGenerator("Jean") ); //, "Jean");
+// 
+//=== End ( Nickname Generator ) ===
 
 
 
