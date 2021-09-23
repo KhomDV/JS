@@ -116,6 +116,49 @@
 //=== End ( Get the Middle Character ) ===
 
 
+//---------------------------------------------------------------------------------------------------
+// Highest and Lowest
+//7 kyu https://www.codewars.com/kata/highest-and-lowest/
+//---------------------------------------------------------------------------------------------------
+//---Task---
+//### **Highest and Lowest**
+//In this little assignment you are given a string of space separated numbers, and have to return the highest and lowest number.
+//Example:
+//highAndLow("1 2 3 4 5");  // return "5 1"
+//highAndLow("1 2 -3 4 5"); // return "5 -3"
+//highAndLow("1 9 3 4 -5"); // return "9 -5"
+//Notes:
+//All numbers are valid Int32, no need to validate them.
+//There will always be at least one number in the input string.
+//Output string must be two numbers separated by a single space, and highest number is first.
+//
+//### **Самый высокий и самый низкий**
+//В этом небольшом задании вам дается строка чисел, разделенных пробелами, и вы должны возвращать наибольшее и наименьшее числа.
+//Пример:
+//highAndLow("1 2 3 4 5");  // return "5 1"
+//highAndLow("1 2 -3 4 5"); // return "5 -3"
+//highAndLow("1 9 3 4 -5"); // return "9 -5"
+//Примечания:
+//Все числа действительны Int32, подтверждать их не нужно .
+//Во входной строке всегда будет хотя бы одно число.
+//Строка вывода должна состоять из двух чисел, разделенных одним пробелом, при этом наибольшее число должно быть первым.
+// ---
+//
+//---Solution---
+// function highAndLow(numbers) {
+//     // const sortnumb = numbers.split(' ').map(e => +e).sort((a,b)=>b-a);
+//     // return `${sortnumb[0]}  ${sortnumb[sortnumb.length-1]}`;
+//     //--2--
+//     return `${Math.max(...numbers.split(' '))}  ${Math.min(...numbers.split(' '))}`;
+//   }
+//
+//---Test---
+//let arrayTest = []
+//
+//---View solution---
+// console.log( highAndLow("4 5 29 54 4 0 -214 542 -64 1 -3 6 -6") ); //"542 -214"
+// 
+//=== End ( Highest and Lowest ) ===
 
 
 
@@ -209,47 +252,6 @@
 //=== End ( Mumbling ) ===
 
 
-//---------------------------------------------------------------------------------------------------
-// Highest and Lowest
-//7 kyu https://www.codewars.com/kata/highest-and-lowest/
-//---------------------------------------------------------------------------------------------------
-//---Task---
-//### **Highest and Lowest**
-//In this little assignment you are given a string of space separated numbers, and have to return the highest and lowest number.
-//Example:
-//highAndLow("1 2 3 4 5");  // return "5 1"
-//highAndLow("1 2 -3 4 5"); // return "5 -3"
-//highAndLow("1 9 3 4 -5"); // return "9 -5"
-//Notes:
-//All numbers are valid Int32, no need to validate them.
-//There will always be at least one number in the input string.
-//Output string must be two numbers separated by a single space, and highest number is first.
-//
-//### **Самый высокий и самый низкий**
-//В этом небольшом задании вам дается строка чисел, разделенных пробелами, и вы должны возвращать наибольшее и наименьшее числа.
-//Пример:
-//highAndLow("1 2 3 4 5");  // return "5 1"
-//highAndLow("1 2 -3 4 5"); // return "5 -3"
-//highAndLow("1 9 3 4 -5"); // return "9 -5"
-//Примечания:
-//Все числа действительны Int32, подтверждать их не нужно .
-//Во входной строке всегда будет хотя бы одно число.
-//Строка вывода должна состоять из двух чисел, разделенных одним пробелом, при этом наибольшее число должно быть первым.
-// ---
-//
-//---Solution---
-// function highAndLow(numbers){
-//     const sortnumb = numbers.split(' ').map(e => +e).sort((a,b)=>b-a);
-//     return `${sortnumb[0]}  ${sortnumb[sortnumb.length-1]}`;
-// }
-//
-//---Test---
-//let arrayTest = []
-//
-//---View solution---
-// document.write(highAndLow("4 5 29 54 4 0 -214 542 -64 1 -3 6 -6")) //"542 -214"
-// 
-//=== End ( Highest and Lowest ) ===
 
 
 //---------------------------------------------------------------------------------------------------
