@@ -202,17 +202,6 @@
 //=== End ( Jaden Casing Strings ) ===
 
 
-
-
-
-
-
-
-
-//---------------------------------------------------------------------------------------------------
-//  String
-//---------------------------------------------------------------------------------------------------
-
 //---------------------------------------------------------------------------------------------------
 // Disemvowel Trolls
 // 7 kyu https://www.codewars.com/kata/disemvowel-trolls/
@@ -235,17 +224,25 @@
 //
 //---Solution---
 //disemvowel = (str) => {
-//    return str.split('').filter((e) => !/[aeiou]/.test(e.toLowerCase()) ).join('');
+//    return str.split('').filter((e) => !/[aeiou]/gi.test(e) ).join('');
 //    //best - str.replace(/[aeiou]/gi, '')
 //}
 //
 //---Test---
-// let arrayTest = []
-//
-//---View solution---
-//    document.write(disemvowel("This website is for losers LOL!")); //"Ths wbst s fr lsrs LL!"
+//console.log( disemvowel("This website is for losers LOL!")); //"Ths wbst s fr lsrs LL!"
 // 
 //=== End ( Disemvowel Trolls ) ===
+
+
+
+
+
+
+
+//---------------------------------------------------------------------------------------------------
+//  String
+//---------------------------------------------------------------------------------------------------
+
 
 
 //---------------------------------------------------------------------------------------------------
