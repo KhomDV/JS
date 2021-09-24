@@ -402,24 +402,116 @@
 //---
 //
 //---Solution---
-function getParticipants(handshakes){
-  let people = 1;
-  let n = 0;
-  while (handshakes > n) {
-    n = n + people++;
-    //sum += people++;
-  }
-  return people;
-}
+// function getParticipants(handshakes){
+//   let people = 1;
+//   let n = 0;
+//   while (handshakes > n) {
+//     n = n + people++;
+//     //sum += people++;
+//   }
+//   return people;
+// }
 //
 //---Test---
-console.log( getParticipants(0) ); //, 1)
-console.log( getParticipants(1) ); //, 2)
-console.log( getParticipants(3) ); //, 3)
-console.log( getParticipants(6) ); //, 4)
-console.log( getParticipants(7) ); //, 5)
+// console.log( getParticipants(0) ); //, 1)
+// console.log( getParticipants(1) ); //, 2)
+// console.log( getParticipants(3) ); //, 3)
+// console.log( getParticipants(6) ); //, 4)
+// console.log( getParticipants(7) ); //, 5)
 //
 //=== End ( Handshake problem ) ===
+
+
+//---------------------------------------------------------------------------------------------------
+// Reverse or rotate?
+//6 kyu https://www.codewars.com/kata/reverse-or-rotate
+//---------------------------------------------------------------------------------------------------
+//---Task---
+//### **Reverse or rotate?**
+//The input is a string str of digits. Cut the string into chunks (a chunk here is a substring of the initial string)
+//of size sz (ignore the last chunk if its size is less than sz).
+//If a chunk represents an integer such as the sum of the cubes of its digits is divisible by 2, reverse that chunk;
+//otherwise rotate it to the left by one position. Put together these modified chunks and return the result as a string.
+//If
+//sz is <= 0 or if str is empty return ""
+//sz is greater (>) than the length of str it is impossible to take a chunk of size sz hence return "".
+//Examples:
+//revrot("123456987654", 6) --> "234561876549"
+//revrot("123456987653", 6) --> "234561356789"
+//revrot("66443875", 4) --> "44668753"
+//revrot("66443875", 8) --> "64438756"
+//revrot("664438769", 8) --> "67834466"
+//revrot("123456779", 8) --> "23456771"
+//revrot("", 8) --> ""
+//revrot("123456779", 0) --> "" 
+//revrot("563000655734469485", 4) --> "0365065073456944"
+//Example of a string rotated to the left by one position:
+//s = "123456" gives "234561".
+//
+//### **Обратный или поворотный?**
+//Входные данные - это строка str цифр. Разрежьте строку на фрагменты (здесь фрагмент - это подстрока исходной строки)
+//размера sz(игнорируйте последний фрагмент, если его размер меньше sz).
+//Если фрагмент представляет собой целое число, например, сумма кубов его цифр делится на 2 , переверните этот фрагмент;
+//в противном случае поверните его влево на одну позицию. Соедините эти измененные фрагменты и верните результат
+//в виде строки.
+//Если
+//sz является <= 0или , если strэто emptyвозвращение «»
+//sz больше (>)длины strневозможно взять кусок размера, szпоэтому верните "".
+//Примеры:
+//revrot("123456 987654", 6) --> "234561 876549"
+//revrot("123456 987653", 6) --> "234561 356789"
+//revrot("6644 3875", 4) --> "4466 8753"
+//revrot("66443875", 8) --> "64438756"
+//revrot("66443876 9", 8) --> "67834466"
+//revrot("12345677 9", 8) --> "23456771"
+//revrot("", 8) --> ""
+//revrot("123456779", 0) --> "" 
+//revrot("5630 0065 5734 4694 85", 4) --> "0365 0650 7345 6944"
+//Example of a string rotated to the left by one position:
+//s = "123456" gives "234561".
+//---
+//
+//---Solution---
+// function revrot(str, sz) {
+//   let newStr = '';
+//   if (sz === 0 || str.length === 0) return '';
+//   for (let i=0; i < Math.floor(str.length/sz); i++) {
+//     const fragment = str.slice(i*sz,sz*(i+1)).split('');
+//     if (isSumCube(fragment)) {
+//       newStr += fragment.reverse().join('');
+//     } else {
+//       fistSimbol = fragment.shift();
+//       newStr += fragment.join('') + fistSimbol;
+//     }
+//   }
+//   return newStr;
+//   function isSumCube(arr) {
+//     return arr.reduce((sum,e) => sum + Math.pow(+e,3),0) % 2 === 0;
+//   }
+// }
+//--2--
+// function revrot(str, sz) {
+//   if (sz < 1 || sz > str.length) 
+//     return '';
+
+//   let reverse = s => s.split('').reverse().join('');
+//   let rotate  = s => s.slice(1) + s.slice(0, 1);
+//   let sum_cubes = c => c.split('').reduce((a, b) => a + +b ** 3, 0); 
+
+//   return str
+//     .match(new RegExp('.{' + sz + '}', 'g'))
+//     .map(c => sum_cubes(c) % 2 ? rotate(c) : reverse(c))
+//     .join('');
+// }
+//
+//---Test---
+// console.log( revrot("1234", 0) ); //, "")
+// console.log( revrot("", 0) ); //, "")
+// console.log( revrot("1234", 5) ); //, "")
+// console.log( revrot("733049910872815764", 5) ); //, "330479108928157")
+//                                                   330479108928157
+//=== End ( Reverse or rotate? ) ===
+
 
 
 
