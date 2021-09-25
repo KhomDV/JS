@@ -639,7 +639,7 @@
 
 //---------------------------------------------------------------------------------------------------
 // Array Deep Count
-//7 kyu https://www.codewars.com/kata/head-tail-init-and-last
+//6 kyu https://www.codewars.com/kata/array-deep-count
 //---------------------------------------------------------------------------------------------------
 //---Task---
 //### **Array Deep Count**
@@ -654,7 +654,7 @@
 ////>>>>> 7
 //The input will always be an array.
 //
-//### **Голова, Хвост, Начало и Последний**
+//### **Глубокий подсчет массива**
 //Array.prototype.length даст вам количество элементов верхнего уровня в массиве.
 //Ваша задача - создать функцию, deepCountкоторая возвращает количество ВСЕХ элементов в массиве,
 //включая любые внутри массивов внутреннего уровня.
@@ -698,6 +698,68 @@
 // console.log( deepCount([[[[[[[[[]]]]]]]]]) ); //, 8, "Expected 8")
 //
 //=== End ( Array Deep Count ) ===
+
+
+//---------------------------------------------------------------------------------------------------
+// Valid string
+//6 kyu https://www.codewars.com/kata/valid-string
+//---------------------------------------------------------------------------------------------------
+//---Task---
+//### **Valid string**
+//You are given a sequence of valid words and a string. Test if the string is made up by one or more words from
+//the array.
+//Task
+//Test if the string can be entirely formed by consecutively concatenating words of the dictionary.
+//For example:
+//dictionary: ["code", "wars"]
+//s1:         "codewars" =>  true  -> match 'code', 'wars'
+//s2:         "codewar"  =>  false -> match 'code', unmatched 'war'
+//One word from the dictionary can be used several times.
+//
+//### **Действительная строка**
+//Вам дается последовательность допустимых слов и строка. Проверьте, состоит ли строка из одного
+//или нескольких слов из массива.
+//Задача
+//Проверьте, может ли строка быть полностью сформирована последовательным соединением слов словаря.
+//Например:
+//dictionary: ["code", "wars"]
+//s1:         "codewars" =>  true  -> match 'code', 'wars'
+//s2:         "codewar"  =>  false -> match 'code', unmatched 'war'
+//Одно слово из словаря можно использовать несколько раз.
+//---
+//
+//---Solution---
+// var validWord = function(dictionary, word) {
+//   if (dictionary.length === 0) return false;
+//   strReg = '^';
+//   strReg += dictionary.reduce((r,e,i) => r + e + (i == dictionary.length-1 ? ')' : '|'), '(');
+//   strReg += '*$';
+//   return new RegExp(strReg).test(word);
+// //--2--
+//   reg = new RegExp('^(' + dictionary.join('|') + ')+$');
+//   return reg.test(word);
+// };
+//
+//---Test---
+// console.log( validWord(['y','hc','ar','n','vzhy','qox','z','spo'], 'yhcarnvzhy') ); // true
+// console.log( validWord(['code', 'wars'], 'codewars') ); //true
+// console.log( validWord(['code', 'wars'], 'codecodewars') ); //true
+// console.log( validWord(['wars', 'code'], 'codewars') ); //true
+// console.log( validWord(['code', 'wars'], 'codewar') ); //false
+// console.log( validWord(['code', 'wars'], 'codewarscode') ); //true
+// console.log( validWord(['code', 'star', 'wars'], 'starwars') ); //true
+// console.log( validWord(['Star', 'Code', 'Wars'], 'StarCodeWars') ); //true
+// console.log( validWord(['Star', 'Code', 'Wars'], 'WarsStarCode') ); //true
+// console.log( validWord(['Star', 'Code', 'Wars'], 'CodeStarsWar') ); //false
+// console.log( validWord([], 'codewars') ); //false
+// console.log( validWord(['code', 'wars'], 'code') ); //true
+// console.log( validWord(['a', 'b', 'c', 'd', 'e', 'f'], 'abcdef') ); //true
+// console.log( validWord(['a', 'b', 'c', 'd', 'e', 'f'], 'abcdefg') ); //false
+// console.log( validWord(['ab', 'a', 'bc'], 'abc') ); //true
+// console.log( validWord(['ab', 'bc'], 'abc') ); //false
+//
+//=== End ( Valid string ) ===
+
 
 
 
