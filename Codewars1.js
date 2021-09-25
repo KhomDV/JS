@@ -552,7 +552,7 @@
 // console.log( solution(10) ); //, 23
 //
 //=== End ( Multiples of 3 or 5 ) ===
-
+//===================================================================================================
 
 
 //---------------------------------------------------------------------------------------------------
@@ -622,19 +622,82 @@
 //---
 //
 //---Solution---
-const head = a => a[0];
-const tail = a => a.slice(1);
-const init = a => a.slice(0,a.length-1);
-const last = a => a[a.length-1];
+// const head = a => a[0];
+// const tail = a => a.slice(1);
+// const init = a => a.slice(0,a.length-1);
+// const last = a => a[a.length-1];
 //
 //---Test---
 // console.log( solution(10) ); //, 23
-console.log( head([5,1]) ); //, 5 );
-console.log( tail([1]) ); //, [] );
-console.log( init([1,5,7,9]) ); //, [1,5,7] );
-console.log( last([7,2]) ); //, 2 );
+// console.log( head([5,1]) ); //, 5 );
+// console.log( tail([1]) ); //, [] );
+// console.log( init([1,5,7,9]) ); //, [1,5,7] );
+// console.log( last([7,2]) ); //, 2 );
 //
 //=== End ( Head, Tail, Init and Last ) ===
+
+
+//---------------------------------------------------------------------------------------------------
+// Array Deep Count
+//7 kyu https://www.codewars.com/kata/head-tail-init-and-last
+//---------------------------------------------------------------------------------------------------
+//---Task---
+//### **Array Deep Count**
+//Array.prototype.length will give you the number of top-level elements in an array.
+//Your task is to create a function deepCount that returns the number of ALL elements within an array, including any within inner-level arrays.
+//For example:
+//deepCount([1, 2, 3]);  
+////>>>>> 3
+//deepCount(["x", "y", ["z"]]);  
+////>>>>> 4
+//deepCount([1, 2, [3, 4, [5]]]);  
+////>>>>> 7
+//The input will always be an array.
+//
+//### **Голова, Хвост, Начало и Последний**
+//Array.prototype.length даст вам количество элементов верхнего уровня в массиве.
+//Ваша задача - создать функцию, deepCountкоторая возвращает количество ВСЕХ элементов в массиве,
+//включая любые внутри массивов внутреннего уровня.
+//Например:
+//deepCount([1, 2, 3]);  
+////>>>>> 3
+//deepCount(["x", "y", ["z"]]);  
+////>>>>> 4
+//deepCount([1, 2, [3, 4, [5]]]);  
+////>>>>> 7
+//На входе всегда будет массив.
+//---
+//
+//---Solution---
+// function deepCount(a) {
+//   let n = 0;
+//   for (let i=0; i<a.length; i++) {
+//     n++;
+//     if ( Array.isArray(a[i]) ) {
+//       n += deepCount(a[i]);
+//     }
+//   }
+//   return n;
+// }
+// //--2--
+// function deepCount(a){
+//   return a.reduce((s,e)=>s+(Array.isArray(e)?deepCount(e):0),a.length);
+// }
+// //--3--
+// function deepCount(a){
+//   let count = a.length;
+//   for (let i=0; i<a.length; i++) if (Array.isArray(a[i])) count += deepCount(a[i]);
+//   return count;
+// }
+//
+//---Test---
+// console.log( deepCount([]) ); //, 0, "Expected 0")
+// console.log( deepCount([1, 2, 3]) ); //, 3, "Expected 3")
+// console.log( deepCount(["x", "y", ["z"]]) ); //, 4, "Expected 4")
+// console.log( deepCount([1, 2, [3, 4, [5]]]) ); //, 7, "Expected 7")
+// console.log( deepCount([[[[[[[[[]]]]]]]]]) ); //, 8, "Expected 8")
+//
+//=== End ( Array Deep Count ) ===
 
 
 
