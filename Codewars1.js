@@ -937,7 +937,7 @@
 //---------------------------------------------------------------------------------------------------
 
 //---------------------------------------------------------------------------------------------------
-// Closures and Scopes - No solution
+// Closures and Scopes - Solution
 //6 kyu https://www.codewars.com/kata/closures-and-scopes
 //---------------------------------------------------------------------------------------------------
 //---Task---
@@ -1012,14 +1012,22 @@
 //---
 //---Solution---
 // function createSecretHolder(secret) {
-
+//   return {
+//     getSecret: function() {
+//       return secret;
+//     },
+//     setSecret: function(value) {
+//       secret = value;
+//     }
+//   }
 // }
 //
 //---Test---
 // obj = createSecretHolder(5);
-// obj.getSecret(); // # returns 5
+// console.log( obj ); // # returns 5
+// console.log( obj.getSecret() ); // # returns 5
 // obj.setSecret(2);
-// obj.getSecret(); // # returns 2
+// console.log( obj.getSecret() ); // # returns 2
 //
 //=== End ( Can you keep a secret? ) ===
 
