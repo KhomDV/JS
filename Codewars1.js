@@ -983,7 +983,7 @@
 
 
 //---------------------------------------------------------------------------------------------------
-// Can you keep a secret? - No solution
+// Can you keep a secret? - Solution
 //6 kyu https://www.codewars.com/kata/can-you-keep-a-secret
 //---------------------------------------------------------------------------------------------------
 //---Task---
@@ -1032,11 +1032,55 @@
 //=== End ( Can you keep a secret? ) ===
 
 
+//---------------------------------------------------------------------------------------------------
+//  Date
+//---------------------------------------------------------------------------------------------------
+
+//---------------------------------------------------------------------------------------------------
+// The Coupon Code - No Solution
+//7 kyu https://www.codewars.com/kata/the-coupon-code
+//---------------------------------------------------------------------------------------------------
+//---Task---
+//### **The Coupon Code**
+//Story
+//Your online store likes to give out coupons for special occasions. Some customers try to cheat the system
+//by entering invalid codes or using expired coupons.
+//Task
+//Your mission:
+//Write a function called checkCoupon which verifies that a coupon code is valid and not expired.
+//A coupon is no more valid on the day AFTER the expiration date. All dates will be passed as strings in this format:
+//"MONTH DATE, YEAR".
+//Examples:
+//checkCoupon("123", "123", "July 9, 2015", "July 9, 2015")  ===  true
+//checkCoupon("123", "123", "July 9, 2015", "July 2, 2015")  ===  false
+//
+//### **Код купона**
+//История
+//Ваш интернет-магазин любит раздавать купоны для особых случаев. Некоторые клиенты пытаются обмануть систему,
+//вводя неверные коды или используя просроченные купоны.
+//Задача
+//Ваша миссия:
+//написать функцию с именем, checkCouponкоторая проверяет, действителен ли код купона и не истек его срок действия.
+//Купон больше не действует в день ПОСЛЕ истечения срока его действия. Все даты будут переданы как строки в таком
+//формате: "MONTH DATE, YEAR".
+//Примеры:
+//checkCoupon("123", "123", "July 9, 2015", "July 9, 2015")  ===  true
+//checkCoupon("123", "123", "July 9, 2015", "July 2, 2015")  ===  false
+//---
+//---Solution---
+function checkCoupon(enteredCode, correctCode, currentDate, expirationDate){
+  return ((enteredCode === correctCode) && new Date(currentDate) <= new Date(expirationDate));
+}
+//
+//---Test---
+console.log( checkCoupon('123','123','September 5, 2014','October 1, 2014') ); //, true);
+console.log( checkCoupon('123a','123','September 5, 2014','October 1, 2014') ); //, false);
+//
+//=== End ( The Coupon Code ) ===
 
 
 
-
-// ----------No solution
+ //----------No solution
 
 
 
