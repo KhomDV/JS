@@ -1080,7 +1080,7 @@
 
 
 //---------------------------------------------------------------------------------------------------
-// Unlucky Days - No Solution
+// Unlucky Days - Solution
 //7 kyu https://www.codewars.com/kata/unlucky-days
 //---------------------------------------------------------------------------------------------------
 //---Task---
@@ -1122,6 +1122,165 @@
 // console.log( unluckyDays(2065) ); //, 3, "should be: 3");
 //
 //=== End ( Unlucky Days ) ===
+
+
+//---------------------------------------------------------------------------------------------------
+// Human readable duration format - Solution
+//4 kyu https://www.codewars.com/kata/human-readable-duration-format
+//---------------------------------------------------------------------------------------------------
+//---Task---
+//### **Human readable duration format**
+//Your task in order to complete this Kata is to write a function which formats a duration,
+//given as a number of seconds, in a human-friendly way.
+//The function must accept a non-negative integer. If it is zero, it just returns "now".
+//Otherwise, the duration is expressed as a combination of years, days, hours, minutes and seconds.
+//It is much easier to understand with an example:
+//formatDuration(62)    // returns "1 minute and 2 seconds"
+//formatDuration(3662)  // returns "1 hour, 1 minute and 2 seconds"
+//For the purpose of this Kata, a year is 365 days and a day is 24 hours.
+//Note that spaces are important.
+//Detailed rules
+//The resulting expression is made of components like 4 seconds, 1 year, etc. In general,
+//a positive integer and one of the valid units of time, separated by a space.
+//The unit of time is used in plural if the integer is greater than 1.
+//The components are separated by a comma and a space (", "). Except the last component, which is separated by " and ",
+//just like it would be written in English.
+//A more significant units of time will occur before than a least significant one.
+//Therefore, 1 second and 1 year is not correct, but 1 year and 1 second is.
+//Different components have different unit of times. So there is not repeated units like in 5 seconds and 1 second.
+//A component will not appear at all if its value happens to be zero. Hence, 1 minute and 0 seconds is not valid,
+//but it should be just 1 minute.
+//A unit of time must be used "as much as possible". It means that the function should not return 61 seconds,
+//but 1 minute and 1 second instead. Formally, the duration specified by of a component must not be greater than
+//any valid more significant unit of time.
+//
+//### **Удобочитаемый формат продолжительности**
+//Ваша задача для выполнения этого Ката - написать функцию, которая форматирует длительность,
+//заданную как количество секунд, удобным для человека способом.
+//Функция должна принимать неотрицательное целое число. Если он равен нулю, он просто возвращается "now".
+//В противном случае, длительность выражается в виде комбинации years, days, hours, minutesи seconds.
+//Это намного проще понять на примере:
+//formatDuration(62)    // returns "1 minute and 2 seconds"
+//formatDuration(3662)  // returns "1 hour, 1 minute and 2 seconds"
+//Для этого Ката год составляет 365 дней, а день - 24 часа.
+//Обратите внимание, что пробелы важны.
+//Подробные правила
+//Результирующее выражение состоит из таких компонентов, как 4 seconds, 1 yearи т. Д.
+//Как правило, положительное целое число и одна из допустимых единиц времени, разделенных пробелом.
+//Единица времени используется во множественном числе, если целое число больше 1.
+//Компоненты разделяются запятой и пробелом ( ", "). За исключением последнего компонента,
+//который разделен значком " and ", как если бы он был написан на английском языке.
+//Более значимые единицы времени наступят раньше, чем наименее значимые.
+//Следовательно, 1 second and 1 yearне правильно, но 1 year and 1 secondесть.
+//У разных компонентов разная единица времени. Так что нет повторяющихся единиц, как в 5 seconds and 1 second.
+//Компонент вообще не появится, если его значение равно нулю. Следовательно, 1 minute and 0 secondsнедействительно,
+//но это должно быть справедливо 1 minute.
+//Единица времени должна использоваться «как можно больше». Это означает, что функция должна не возвращаться 61 seconds,
+//а 1 minute and 1 secondвместо этого. Формально продолжительность, указанная в компоненте,
+//не должна превышать любую допустимую более значимую единицу времени.
+//---
+//---Solution---
+// function formatDuration (seconds) {
+//   let sayTime = '';
+//
+//   if (seconds <= 0) return 'now';
+//
+//   y1 = seconds / (60 * 60 * 24 * 365);
+//   y = Math.floor(y1);
+//   d1 = (y1 - y) * 365;
+//   d = Math.floor(d1);
+//   h1 = (d1 - d) * 24;
+//   h = Math.floor(h1);
+//   m1 = (h1 - h) * 60;
+//   m = Math.floor(m1);
+//   s1 = (m1 - m) * 60;
+//   s = Math.round(s1);
+//   if (s === 60) {
+//     m += 1;
+//     s = 0;
+//   }
+//
+//   if (y > 0) sayTime = sayTime + y + (y > 1 ? ' years' : ' year');
+//   if (d > 0) sayTime = sayTime + (sayTime === '' ? '' : (h===0 && m===0 && s===0 ? ' and ' : ', ')) + d + (d > 1 ? ' days' : ' day');
+//   if (h > 0) sayTime = sayTime + (sayTime === '' ? '' : (m===0 && s===0 ? ' and ' : ', ')) + h + (h > 1 ? ' hours' : ' hour');
+//   if (m > 0) sayTime = sayTime + (sayTime === '' ? '' : (s===0 ? ' and ' : ', ')) + m + (m > 1 ? ' minutes' : ' minute');
+//   if (s > 0) sayTime = sayTime + (sayTime === '' ? '' : ' and ') + s + (s > 1 ? ' seconds' : ' second');
+//   return sayTime;
+// }
+// //--2--
+// function formatDuration (seconds) {
+//   var time = { year: 31536000, day: 86400, hour: 3600, minute: 60, second: 1 },
+//       res = [];
+//
+//   if (seconds === 0) return 'now';
+//  
+//   for (var key in time) {
+//     if (seconds >= time[key]) {
+//       var val = Math.floor(seconds/time[key]);
+//       res.push(val += val > 1 ? ' ' + key + 's' : ' ' + key);
+//       seconds = seconds % time[key];
+//     }
+//   }
+// 
+//   return res.length > 1 ? res.join(', ').replace(/,([^,]*)$/,' and'+'$1') : res[0]
+// }
+// //--3--
+// function formatDuration (seconds) {
+//   if(!seconds)return "now";
+//   var strout = "";
+//   var s = seconds%60;
+//   seconds = (seconds-s)/60;
+//   var m = seconds%60;
+//   seconds = (seconds-m)/60;
+//   var h = seconds%24;
+//   seconds = (seconds-h)/24;
+//   var d = seconds%365;
+//   seconds = (seconds-d)/365;
+//   var y = seconds;
+//  
+//   var english=[];
+//   if(y)english.push(y+" year"+(y>1?'s':''));
+//   if(d)english.push(d+" day"+(d>1?'s':''));
+//   if(h)english.push(h+" hour"+(h>1?'s':''));
+//   if(m)english.push(m+" minute"+(m>1?'s':''));
+//   if(s)english.push(s+" second"+(s>1?'s':''));
+//  
+//   return english.join(", ").replace(/,([^,]*)$/," and$1");
+//  
+// }
+// //--4--
+// const delegates = [
+//   { s: 'year', v: 60 * 60 * 24 * 365 },
+//   { s: 'day', v: 60 * 60 * 24 },
+//   { s: 'hour', v: 60 * 60 },
+//   { s: 'minute', v: 60 },
+//   { s: 'second', v: 1 }
+// ];
+//
+// function formatDuration (seconds) {
+//   if (!seconds) return 'now';
+//
+//   return delegates.reduce((ret, dg, idx) => {
+//     const val = Math.floor(seconds / dg.v);
+//     if (!val) return ret;
+//     seconds -= dg.v * val;
+//     const str = val > 1 ? dg.s + 's' : dg.s;
+//     const add = !ret ? '' : (seconds > 0 ? ', ' : ' and ');
+//     return ret + add + `${val} ${str}`;
+//   }, '');
+// }
+//
+//---Test---
+// console.log( formatDuration(0) ); //, "1 second");
+// console.log( formatDuration(1) ); //, "1 second");
+// console.log( formatDuration(60) ); //, "1 minute and 2 seconds");
+// console.log( formatDuration(62) ); //, "1 minute and 2 seconds");
+// console.log( formatDuration(120) ); //, "2 minutes");
+// console.log( formatDuration(3600) ); //, "1 hour");
+// console.log( formatDuration(3662) ); //, "1 hour, 1 minute and 2 seconds");
+//
+//=== End ( Human readable duration format ) ===
+
 
  //----------No solution
 
