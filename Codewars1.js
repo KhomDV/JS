@@ -1037,7 +1037,7 @@
 //---------------------------------------------------------------------------------------------------
 
 //---------------------------------------------------------------------------------------------------
-// The Coupon Code - No Solution
+// The Coupon Code - Solution
 //7 kyu https://www.codewars.com/kata/the-coupon-code
 //---------------------------------------------------------------------------------------------------
 //---Task---
@@ -1068,17 +1068,60 @@
 //checkCoupon("123", "123", "July 9, 2015", "July 2, 2015")  ===  false
 //---
 //---Solution---
-function checkCoupon(enteredCode, correctCode, currentDate, expirationDate){
-  return ((enteredCode === correctCode) && new Date(currentDate) <= new Date(expirationDate));
-}
+// function checkCoupon(enteredCode, correctCode, currentDate, expirationDate){
+//   return ((enteredCode === correctCode) && new Date(currentDate) <= new Date(expirationDate));
+// }
 //
 //---Test---
-console.log( checkCoupon('123','123','September 5, 2014','October 1, 2014') ); //, true);
-console.log( checkCoupon('123a','123','September 5, 2014','October 1, 2014') ); //, false);
+// console.log( checkCoupon('123','123','September 5, 2014','October 1, 2014') ); //, true);
+// console.log( checkCoupon('123a','123','September 5, 2014','October 1, 2014') ); //, false);
 //
 //=== End ( The Coupon Code ) ===
 
 
+//---------------------------------------------------------------------------------------------------
+// Unlucky Days - No Solution
+//7 kyu https://www.codewars.com/kata/unlucky-days
+//---------------------------------------------------------------------------------------------------
+//---Task---
+//### **Unlucky Days**
+//Friday 13th or Black Friday is considered as unlucky day. Calculate how many unlucky days are in the given year.
+//Find the number of Friday 13th in the given year.
+//Input: Year in Gregorian calendar as integer.
+//Output: Number of Black Fridays in the year as an integer.
+//Examples:
+//unluckyDays(2015) == 3
+//unluckyDays(1986) == 1
+//
+//### **Несчастливые дни**
+//Пятница 13-е или Черная пятница считается несчастливым днем. Посчитайте, сколько неудачных дней в данном году.
+//Найдите число пятницы 13 числа в данном году.
+//Ввод: год по григорианскому календарю в виде целого числа.
+//Выходные данные: Число черных пятниц в году в виде целого числа.
+//Примеры:
+//unluckyDays(2015) == 3
+//unluckyDays(1986) == 1
+//---
+//---Solution---
+// function unluckyDays(year){
+//   mounth = [0,1,2,3,4,5,6,7,8,9,10,11];
+//   return mounth.reduce((s,e) => s + (new Date(year,e,13).getDay() === 5 ? 1 : 0), 0);
+// }
+//
+//---Test---
+// console.log( unluckyDays(2021) ); //, 1, "should be: 1");
+// console.log( unluckyDays(1586) ); //, 1, "should be: 1");
+// console.log( unluckyDays(1001) ); //, 3, "should be: 3");
+// console.log( unluckyDays(2819) ); //, 2, "should be: 2");
+// console.log( unluckyDays(2792) ); //, 2, "should be: 2");
+// console.log( unluckyDays(2723) ); //, 2, "should be: 2");
+// console.log( unluckyDays(1909) ); //, 1, "should be: 1");
+// console.log( unluckyDays(1812) ); //, 2, "should be: 2");
+// console.log( unluckyDays(1618) ); //, 2, "should be: 2");
+// console.log( unluckyDays(2132) ); //, 1, "should be: 1");
+// console.log( unluckyDays(2065) ); //, 3, "should be: 3");
+//
+//=== End ( Unlucky Days ) ===
 
  //----------No solution
 
