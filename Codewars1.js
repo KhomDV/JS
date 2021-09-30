@@ -10,7 +10,7 @@
 //---------------------------------------------------------------------------------------------------
 
 //---------------------------------------------------------------------------------------------------
-// Absent vowel
+// Absent vowel - Solution
 // 7 kyu https://www.codewars.com/kata/absent-vowel
 //---------------------------------------------------------------------------------------------------
 //---Task---
@@ -59,7 +59,7 @@
 
 
 //---------------------------------------------------------------------------------------------------
-// Get the Middle Character
+// Get the Middle Character - Solution
 // 7 kyu https://www.codewars.com/kata/get-the-middle-character
 //---------------------------------------------------------------------------------------------------
 //---Task---
@@ -117,7 +117,7 @@
 
 
 //---------------------------------------------------------------------------------------------------
-// Highest and Lowest
+// Highest and Lowest - Solution
 //7 kyu https://www.codewars.com/kata/highest-and-lowest/
 //---------------------------------------------------------------------------------------------------
 //---Task---
@@ -159,7 +159,7 @@
 
 
 //---------------------------------------------------------------------------------------------------
-// Jaden Casing Strings
+// Jaden Casing Strings - Solution
 //7 kyu https://www.codewars.com/kata/highest-and-lowest/
 //---------------------------------------------------------------------------------------------------
 //---Task---
@@ -203,7 +203,7 @@
 
 
 //---------------------------------------------------------------------------------------------------
-// Disemvowel Trolls
+// Disemvowel Trolls - Solution
 // 7 kyu https://www.codewars.com/kata/disemvowel-trolls/
 //---------------------------------------------------------------------------------------------------
 //---Task---
@@ -235,7 +235,7 @@
 
 
 //---------------------------------------------------------------------------------------------------
-// Isograms
+// Isograms - Solution
 //7 kyu https://www.codewars.com/kata/isograms/
 //---------------------------------------------------------------------------------------------------
 //---Task---
@@ -279,7 +279,7 @@
 
 
 //---------------------------------------------------------------------------------------------------
-// Nickname Generator
+// Nickname Generator - Solution
 //7 kyu https://www.codewars.com/kata/nickname-generator
 //---------------------------------------------------------------------------------------------------
 //---Task---
@@ -342,7 +342,7 @@
 
 
 //---------------------------------------------------------------------------------------------------
-// Digits explosion
+// Digits explosion - Solution
 //7 kyu https://www.codewars.com/kata/digits-explosion
 //---------------------------------------------------------------------------------------------------
 //---Task---
@@ -378,7 +378,7 @@
 
 
 //---------------------------------------------------------------------------------------------------
-// Handshake problem
+// Handshake problem - Solution
 //6 kyu https://www.codewars.com/kata/handshake-problem
 //---------------------------------------------------------------------------------------------------
 //---Task---
@@ -423,7 +423,7 @@
 
 
 //---------------------------------------------------------------------------------------------------
-// Reverse or rotate?
+// Reverse or rotate? - Solution
 //6 kyu https://www.codewars.com/kata/reverse-or-rotate
 //---------------------------------------------------------------------------------------------------
 //---Task---
@@ -514,7 +514,7 @@
 
 
 //---------------------------------------------------------------------------------------------------
-// Multiples of 3 or 5
+// Multiples of 3 or 5 - Solution
 //6 kyu https://www.codewars.com/kata/multiples-of-3-or-5
 //---------------------------------------------------------------------------------------------------
 //---Task---
@@ -560,7 +560,7 @@
 //---------------------------------------------------------------------------------------------------
 
 //---------------------------------------------------------------------------------------------------
-// Head, Tail, Init and Last
+// Head, Tail, Init and Last - Solution
 //7 kyu https://www.codewars.com/kata/head-tail-init-and-last
 //---------------------------------------------------------------------------------------------------
 //---Task---
@@ -638,7 +638,7 @@
 
 
 //---------------------------------------------------------------------------------------------------
-// Array Deep Count
+// Array Deep Count - Solution
 //6 kyu https://www.codewars.com/kata/array-deep-count
 //---------------------------------------------------------------------------------------------------
 //---Task---
@@ -701,7 +701,7 @@
 
 
 //---------------------------------------------------------------------------------------------------
-// Valid string
+// Valid string - Solution
 //6 kyu https://www.codewars.com/kata/valid-string
 //---------------------------------------------------------------------------------------------------
 //---Task---
@@ -762,7 +762,7 @@
 
 
 //---------------------------------------------------------------------------------------------------
-// Vasya - Clerk
+// Vasya - Clerk - Solution
 //6 kyu https://www.codewars.com/kata/vasya-clerk
 //---------------------------------------------------------------------------------------------------
 //---Task---
@@ -870,7 +870,7 @@
 
 
 //---------------------------------------------------------------------------------------------------
-// Sorting by bits
+// Sorting by bits - Solution
 //6 kyu https://www.codewars.com/kata/sorting-by-bits
 //---------------------------------------------------------------------------------------------------
 //---Task---
@@ -929,6 +929,108 @@
 // console.log( sortByBit([965997,973785,901104]) ); //[0, 2, 2, 4, 8, 8, 3, 5, 5, 6, 9, 7, 56]
 //
 //=== End ( Sorting by bits ) ===
+//===================================================================================================
+
+
+//---------------------------------------------------------------------------------------------------
+//  Functions
+//---------------------------------------------------------------------------------------------------
+
+//---------------------------------------------------------------------------------------------------
+// Closures and Scopes - No solution
+//6 kyu https://www.codewars.com/kata/closures-and-scopes
+//---------------------------------------------------------------------------------------------------
+//---Task---
+//### **Closures and Scopes**
+//We want to create a function, which returns an array of functions, which return their index in the array.
+//For better understanding, here an example:
+//var callbacks = createFunctions(5); // create an array, containing 5 functions
+//callbacks[0](); // must return 0
+//callbacks[3](); // must return 3
+//We already implemented that function, but when we actually run the code, the result doesn't look like
+//what we expected. Can you spot, what's wrong with it? A test fixture is also available
+//
+//### **Замыкания и области видимости**
+//Мы хотим создать функцию, которая возвращает массив функций, которые возвращают свой индекс в массиве.
+//Для лучшего понимания вот пример:
+//var callbacks = createFunctions(5); // create an array, containing 5 functions
+//callbacks[0](); // must return 0
+//callbacks[3](); // must return 3
+//Мы уже реализовали эту функцию, но когда мы действительно запускаем код, результат не такой, как мы ожидали.
+//Вы можете заметить, что с этим не так? Также доступен тестовый стенд.
+//---
+//---Solution---
+// function createFunctions(n) {
+//   var callbacks = [];
+//   for (let i=0; i<n; i++) {
+//     //Это правильно для "let i=0"
+//     //Если в цикле описание "var i=0", то
+//     //const j = i;
+//     callbacks.push(function() {
+//       //return j;
+//       return i;
+//     });
+//   }
+//   return callbacks;
+// }
+//
+//---Test---
+// var callbacks = createFunctions(5); // create an array, containing 5 functions
+// console.log( callbacks[0]() ); // must return 0
+// console.log( callbacks[3]() ); // must return 3
+//
+//=== End ( Closures and Scopes ) ===
+
+
+//---------------------------------------------------------------------------------------------------
+// Can you keep a secret? - No solution
+//6 kyu https://www.codewars.com/kata/can-you-keep-a-secret
+//---------------------------------------------------------------------------------------------------
+//---Task---
+//### **Can you keep a secret?**
+//There's no such thing as private properties on a coffeescript object! But, maybe there are?
+//Implement a function createSecretHolder(secret) which accepts any value as secret and returns an object
+//with ONLY two methods
+//getSecret() which returns the secret
+//setSecret() which sets the secret
+//obj = createSecretHolder(5)
+//obj.getSecret() # returns 5
+//obj.setSecret(2)
+//obj.getSecret() # returns 2
+//
+//### **Замыкания и области видимости**
+//Вы можете сохранить в тайне?
+//Для объекта coffeescript не существует такой вещи, как частные свойства! Но, может быть, есть?
+//Реализуйте функцию, createSecretHolder(secret)которая принимает любое значение как секретное и возвращает
+//объект ТОЛЬКО двумя методами.
+//getSecret() который возвращает секрет
+//setSecret() который устанавливает секрет
+//obj = createSecretHolder(5)
+//obj.getSecret() # returns 5
+//obj.setSecret(2)
+//obj.getSecret() # returns 2
+//---
+//---Solution---
+// function createSecretHolder(secret) {
+
+// }
+//
+//---Test---
+// obj = createSecretHolder(5);
+// obj.getSecret(); // # returns 5
+// obj.setSecret(2);
+// obj.getSecret(); // # returns 2
+//
+//=== End ( Can you keep a secret? ) ===
+
+
+
+
+
+
+// ----------No solution
+
+
 
 
 
@@ -2138,3 +2240,276 @@
 //===================================================================================================
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+
+
+Date
+7 kyu https://www.codewars.com/kata/mylanguages
+My Languages
+Task
+You are given a dictionary/hash/object containing some languages and your test results in the given languages. Return the list of languages where your test score is at least 60, in descending order of the results.
+
+Note: the scores will always be unique (so no duplicate values)
+
+Examples
+{"Java": 10, "Ruby": 80, "Python": 65}    -->  ["Ruby", "Python"]
+{"Hindi": 60, "Dutch" : 93, "Greek": 71}  -->  ["Dutch", "Greek", "Hindi"]
+{"C++": 50, "ASM": 10, "Haskell": 20}     -->  []
+
+function myLanguages(results) {
+
+}
+
+describe("myLanguages", function(){
+  it("Fixed tests", function(){
+    Test.assertDeepEquals(myLanguages({"Java" : 10, "Ruby" : 80, "Python" : 65}), ["Ruby", "Python"])
+    Test.assertDeepEquals(myLanguages({"Hindi" : 60, "Greek" : 71, "Dutch" : 93}), ["Dutch", "Greek", "Hindi"])
+    Test.assertDeepEquals(myLanguages({"C++" : 50, "ASM" : 10, "Haskell" : 20}), [])
+  });
+});
+
+Задача
+Вам предоставляется словарь / хэш / объект, содержащий некоторые языки, и результаты вашего теста на этих языках. Верните список языков, на которых ваш тестовый балл не ниже 60, в порядке убывания результатов.
+
+Примечание: оценки всегда будут уникальными (чтобы не было повторяющихся значений).
+
+Примеры
+{"Java": 10, "Ruby": 80, "Python": 65}    -->  ["Ruby", "Python"]
+{"Hindi": 60, "Dutch" : 93, "Greek": 71}  -->  ["Dutch", "Greek", "Hindi"]
+{"C++": 50, "ASM": 10, "Haskell": 20}     -->  []
+
+
+
+6 kyu https://www.codewars.com/kata/run-length-encoding
+Run-length encoding
+Run-length encoding (RLE) is a very simple form of data compression in which runs of data (that is, sequences in which the same data value occurs in many consecutive data elements) are stored as a single data value and count, rather than as the original run. Wikipedia
+
+Task
+Your task is to write such a run-length encoding. For a given string, return a list (or array) of pairs (or arrays) [ (i1, s1), (i2, s2), …, (in, sn) ], such that one can reconstruct the original string by replicating the character sx ix times and concatening all those strings. Your run-length encoding should be minimal, ie. for all i the values si and si+1 should differ.
+
+Examples
+As the article states, RLE is a very simple form of data compression. It's only suitable for runs of data, as one can see in the following example:
+
+runLengthEncoding("hello world!")
+ //=>      [[1,'h'], [1,'e'], [2,'l'], [1,'o'], [1,' '], [1,'w'], [1,'o'], [1,'r'], [1,'l'], [1,'d'], [1,'!']]
+It's very effective if the same data value occurs in many consecutive data elements:
+
+runLengthEncoding("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabbb")
+ // => [[34,'a'], [3,'b']]
+
+
+ var runLengthEncoding = function(str){
+  return [] // << fix this
+}
+
+
+var randomString = function(n){
+  var i, s = "";
+  for(i = 0; i < n; ++i)
+    s += (new Array((Math.random() * 5 + 1) | 0)).join(String.fromCharCode((Math.random() * 26 + "A".charCodeAt(0)) | 0));
+  return s;
+}
+
+describe("runLengthEncoding",function(){
+  it("should work for some examples",function(){
+    Test.assertSimilar(runLengthEncoding(""), []);      
+    Test.assertSimilar(runLengthEncoding("abc"), [[1,'a'],[1,'b'],[1,'c']]);
+    Test.assertSimilar(runLengthEncoding("aab"), [[2,'a'],[1,'b']]);      
+    Test.assertSimilar(runLengthEncoding("hello world!"),
+      [[1,'h'],[1,'e'],[2,'l'],[1,'o'],[1,' '],[1,'w'],[1,'o'],[1,'r'],[1,'l'],[1,'d'],[1,'!']]);
+    Test.assertSimilar(runLengthEncoding("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabbb"),
+      [[34,'a'], [3,'b']]);
+    Test.assertSimilar(
+      runLengthEncoding("WWWWWWWWWWWWBWWWWWWWWWWWWBBBWWWWWWWWWWWWWWWWWWWWWWWWBWWWWWWWWWWWWWW"),
+      [[12,'W'],[1,'B'],[12,'W'],[3,'B'],[24,'W'],[1,'B'],[14,'W']]
+    );
+  });
+});
+describe("inverse operations",function(){
+  it("should return the original string",function(){
+    var i, inversRLE = function(arr){
+      return arr.reduce(function(p,e){ return p += (new Array(e[0] + 1).join(e[1])); }, "");
+    }, s;
+    for(i = 0;  i < 100; ++i){
+      s = randomString(20);
+      Test.assertEquals(inversRLE(runLengthEncoding(s)), s);
+    }     
+  });
+});
+
+Кодирование длин серий
+
+Кодирование длин серий (RLE) - это очень простая форма сжатия данных, при которой серии данных (то есть последовательности, в которых одно и то же значение данных встречается во многих последовательных элементах данных) сохраняются как одно значение данных и счетчик, а не как оригинальный пробег. Википедия
+
+Задача
+Ваша задача написать такую ​​кодировку длин серий. Для данной строки вернуть список (или массив) пар (или массивов) [(i 1 , s 1 ), (i 2 , s 2 ),…, (i n , s n )], чтобы можно было восстановить исходную строку, реплицируя символ s x i x раз и объединяя все эти строки. Кодировка длины прогона должна быть минимальной, т.е. для всех i значения s i и s i + 1 должны различаться.
+
+Примеры
+Как говорится в статье, RLE - это очень простая форма сжатия данных. Это подходит только для прогонов данных, как показано в следующем примере:
+
+runLengthEncoding("hello world!")
+ //=>      [[1,'h'], [1,'e'], [2,'l'], [1,'o'], [1,' '], [1,'w'], [1,'o'], [1,'r'], [1,'l'], [1,'d'], [1,'!']]
+Это очень эффективно, если одно и то же значение данных встречается во многих последовательных элементах данных:
+
+runLengthEncoding("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabbb")
+ // => [[34,'a'], [3,'b']]
+
+
+
+ 4 kyu https://www.codewars.com/kata/human-readable-duration-format
+
+ Human readable duration format
+
+ Your task in order to complete this Kata is to write a function which formats a duration, given as a number of seconds, in a human-friendly way.
+
+ The function must accept a non-negative integer. If it is zero, it just returns "now". Otherwise, the duration is expressed as a combination of years, days, hours, minutes and seconds.
+ 
+ It is much easier to understand with an example:
+ 
+ formatDuration(62)    // returns "1 minute and 2 seconds"
+ formatDuration(3662)  // returns "1 hour, 1 minute and 2 seconds"
+ For the purpose of this Kata, a year is 365 days and a day is 24 hours.
+ 
+ Note that spaces are important.
+ 
+ Detailed rules
+ The resulting expression is made of components like 4 seconds, 1 year, etc. In general, a positive integer and one of the valid units of time, separated by a space. The unit of time is used in plural if the integer is greater than 1.
+ 
+ The components are separated by a comma and a space (", "). Except the last component, which is separated by " and ", just like it would be written in English.
+ 
+ A more significant units of time will occur before than a least significant one. Therefore, 1 second and 1 year is not correct, but 1 year and 1 second is.
+ 
+ Different components have different unit of times. So there is not repeated units like in 5 seconds and 1 second.
+ 
+ A component will not appear at all if its value happens to be zero. Hence, 1 minute and 0 seconds is not valid, but it should be just 1 minute.
+ 
+ A unit of time must be used "as much as possible". It means that the function should not return 61 seconds, but 1 minute and 1 second instead. Formally, the duration specified by of a component must not be greater than any valid more significant unit of time.
+ 
+
+ function formatDuration (seconds) {
+  // Complete this function
+}
+
+
+describe("Tests", () => {
+  it("test", () => {
+Test.assertEquals(formatDuration(1), "1 second");
+Test.assertEquals(formatDuration(62), "1 minute and 2 seconds");
+Test.assertEquals(formatDuration(120), "2 minutes");
+Test.assertEquals(formatDuration(3600), "1 hour");
+Test.assertEquals(formatDuration(3662), "1 hour, 1 minute and 2 seconds");
+
+  });
+});
+
+Удобочитаемый формат продолжительности
+
+Ваша задача для выполнения этого Ката - написать функцию, которая форматирует длительность, заданную как количество секунд, удобным для человека способом.
+
+Функция должна принимать неотрицательное целое число. Если он равен нулю, он просто возвращается "now". В противном случае, длительность выражается в виде комбинации years, days, hours, minutesи seconds.
+
+Это намного проще понять на примере:
+
+formatDuration(62)    // returns "1 minute and 2 seconds"
+formatDuration(3662)  // returns "1 hour, 1 minute and 2 seconds"
+Для этого Ката год составляет 365 дней, а день - 24 часа.
+
+Обратите внимание, что пробелы важны.
+
+Подробные правила
+Результирующее выражение состоит из таких компонентов, как 4 seconds, 1 yearи т. Д. Как правило, положительное целое число и одна из допустимых единиц времени, разделенных пробелом. Единица времени используется во множественном числе, если целое число больше 1.
+
+Компоненты разделяются запятой и пробелом ( ", "). За исключением последнего компонента, который разделен значком " and ", как если бы он был написан на английском языке.
+
+Более значимые единицы времени наступят раньше, чем наименее значимые. Следовательно, 1 second and 1 yearне правильно, но 1 year and 1 secondесть.
+
+У разных компонентов разная единица времени. Так что нет повторяющихся единиц, как в 5 seconds and 1 second.
+
+Компонент вообще не появится, если его значение равно нулю. Следовательно, 1 minute and 0 secondsнедействительно, но это должно быть справедливо 1 minute.
+
+Единица времени должна использоваться «как можно больше». Это означает, что функция должна не возвращаться 61 seconds, а 1 minute and 1 secondвместо этого. Формально продолжительность, указанная в компоненте, не должна быть больше любой допустимой более значимой единицы времени.
+
+
+
+7 kyu https://www.codewars.com/kata/unlucky-days
+
+Unlucky Days
+
+Friday 13th or Black Friday is considered as unlucky day. Calculate how many unlucky days are in the given year.
+
+Find the number of Friday 13th in the given year.
+
+Input: Year in Gregorian calendar as integer.
+
+Output: Number of Black Fridays in the year as an integer.
+
+Examples:
+
+unluckyDays(2015) == 3
+unluckyDays(1986) == 1
+
+
+function unluckyDays(year){
+  //your code here
+}
+
+
+describe("Basic Tests",() =>{
+  Test.assertEquals(unluckyDays(1586), 1, "should be: 1");
+  Test.assertEquals(unluckyDays(1001), 3, "should be: 3");
+  Test.assertEquals(unluckyDays(2819), 2, "should be: 2");
+  Test.assertEquals(unluckyDays(2792), 2, "should be: 2");
+  Test.assertEquals(unluckyDays(2723), 2, "should be: 2");
+  Test.assertEquals(unluckyDays(1909), 1, "should be: 1");
+  Test.assertEquals(unluckyDays(1812), 2, "should be: 2");
+  Test.assertEquals(unluckyDays(1618), 2, "should be: 2");
+  Test.assertEquals(unluckyDays(2132), 1, "should be: 1");
+  Test.assertEquals(unluckyDays(2065), 3, "should be: 3");
+  }
+
+
+
+  Несчастливые дни
+
+
+  Пятница 13-е или Черная пятница считается несчастливым днем. Посчитайте, сколько неудачных дней в данном году.
+
+  Найдите число пятницы 13 числа в данном году.
+  
+  Ввод: год по григорианскому календарю в виде целого числа.
+  
+  Выходные данные: Число черных пятниц в году в виде целого числа.
+  
+  Примеры:
+  
+  unluckyDays(2015) == 3
+  unluckyDays(1986) == 1
+
+*/
