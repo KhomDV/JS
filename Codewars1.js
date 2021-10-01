@@ -1330,6 +1330,80 @@
 //
 //=== End ( My Languages ) ===
 
+//---------------------------------------------------------------------------------------------------
+// Run-length encoding - Solution
+//6 kyu https://www.codewars.com/kata/run-length-encoding
+//---------------------------------------------------------------------------------------------------
+//---Task---
+//### **Run-length encoding**
+//Run-length encoding (RLE) is a very simple form of data compression in which runs of data
+//(that is, sequences in which the same data value occurs in many consecutive data elements)
+//are stored as a single data value and count, rather than as the original run. Wikipedia
+//Task
+//Your task is to write such a run-length encoding. For a given string, return a list (or array)
+//of pairs (or arrays) [ (i1, s1), (i2, s2), …, (in, sn) ], such that one can reconstruct the original
+//string by replicating the character sx ix times and concatening all those strings.
+//Your run-length encoding should be minimal, ie. for all i the values si and si+1 should differ.
+//Examples
+//As the article states, RLE is a very simple form of data compression. It's only suitable for runs of data,
+//as one can see in the following example:
+//runLengthEncoding("hello world!")
+// //=>      [[1,'h'], [1,'e'], [2,'l'], [1,'o'], [1,' '], [1,'w'], [1,'o'], [1,'r'], [1,'l'], [1,'d'], [1,'!']]
+//It's very effective if the same data value occurs in many consecutive data elements:
+//runLengthEncoding("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabbb")
+// // => [[34,'a'], [3,'b']]
+//
+//### **Кодирование длин серий**
+//Задача
+//Кодирование длин серий (RLE) - это очень простая форма сжатия данных, при которой серии данных
+//(то есть последовательности, в которых одно и то же значение данных встречается во многих последовательных
+//элементах данных) сохраняются как одно значение данных и счетчик, а не как оригинальный пробег. Википедия
+//Задача
+//Ваша задача написать такую ​​кодировку длин серий. Для данной строки вернуть список (или массив)
+//пар (или массивов) [(i 1 , s 1 ), (i 2 , s 2 ),…, (i n , s n )], чтобы можно было восстановить исходную строку,
+//реплицируя символ s x i x раз и объединяя все эти строки. Кодировка длины прогона должна быть минимальной,
+//т.е. для всех i значения s i и s i + 1 должны различаться.
+//Примеры
+//Как говорится в статье, RLE - это очень простая форма сжатия данных. Это подходит только для прогонов данных,
+//как показано в следующем примере:
+//runLengthEncoding("hello world!")
+// //=>      [[1,'h'], [1,'e'], [2,'l'], [1,'o'], [1,' '], [1,'w'], [1,'o'], [1,'r'], [1,'l'], [1,'d'], [1,'!']]
+//Это очень эффективно, если одно и то же значение данных встречается во многих последовательных элементах данных:
+//runLengthEncoding("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabbb")
+// // => [[34,'a'], [3,'b']]
+//---
+//---Solution---
+// var runLengthEncoding = function(str){
+//   let arr = [];
+//   str.split('').forEach(e => {
+//     (arr.length === 0 || arr[arr.length-1][1] !== e) ? arr.push([1,e]) : arr[arr.length-1][0] += 1;
+//   });
+//   return arr;
+// }
+// //--2--
+// var runLengthEncoding = function(str){
+//   return (str.match(/(.)\1*/g) || []).reduce(function(r, s){
+//     return r.push([s.length, s[0]]), r;
+//   }, []);
+// }
+// //--3--
+// function runLengthEncoding(str) {
+//   return (str.match(/(.)\1*/g)||[]).map(function(c) {
+//     return [c.length, c[0]];
+//   });
+// }
+//
+//---Test---
+// console.log( runLengthEncoding("") ); //, []);      
+// console.log( runLengthEncoding("abc") ); //, [[1,'a'],[1,'b'],[1,'c']]);
+// console.log( runLengthEncoding("aab") ); //, [[2,'a'],[1,'b']]);      
+// console.log( runLengthEncoding("hello world!") ); //[[1,'h'],[1,'e'],[2,'l'],[1,'o'],[1,' '],[1,'w'],[1,'o'],[1,'r'],[1,'l'],[1,'d'],[1,'!']]);
+// console.log( runLengthEncoding("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabbb") ); // [[34,'a'], [3,'b']]);
+// console.log( runLengthEncoding("WWWWWWWWWWWWBWWWWWWWWWWWWBBBWWWWWWWWWWWWWWWWWWWWWWWWBWWWWWWWWWWWWWW") ); // [[12,'W'],[1,'B'],[12,'W'],[3,'B'],[24,'W'],[1,'B'],[14,'W']]
+//
+//=== End ( Run-length encoding ) ===
+
+
 
  //----------No solution
 
