@@ -1282,6 +1282,55 @@
 //=== End ( Human readable duration format ) ===
 
 
+
+//---------------------------------------------------------------------------------------------------
+//  Objects
+//---------------------------------------------------------------------------------------------------
+
+//---------------------------------------------------------------------------------------------------
+// My Languages - Solution
+//7 kyu https://www.codewars.com/kata/mylanguages
+//---------------------------------------------------------------------------------------------------
+//---Task---
+//### **My Languages**
+//Task
+//You are given a dictionary/hash/object containing some languages and your test results in the given languages.
+//Return the list of languages where your test score is at least 60, in descending order of the results.
+//Note: the scores will always be unique (so no duplicate values)
+//Examples
+//{"Java": 10, "Ruby": 80, "Python": 65}    -->  ["Ruby", "Python"]
+//{"Hindi": 60, "Dutch" : 93, "Greek": 71}  -->  ["Dutch", "Greek", "Hindi"]
+//{"C++": 50, "ASM": 10, "Haskell": 20}     -->  []
+//My other katas
+//If you enjoyed this kata then please try my other katas! :-)
+//Translations are welcome!
+//
+//### **Мои языки**
+//Задача
+//Вам предоставляется словарь / хэш / объект, содержащий некоторые языки, и результаты вашего теста на этих языках.
+//Верните список языков, на которых ваш тестовый балл не ниже 60, в порядке убывания результатов.
+//Примечание: оценки всегда будут уникальными (чтобы не было повторяющихся значений).
+//Примеры
+//{"Java": 10, "Ruby": 80, "Python": 65}    -->  ["Ruby", "Python"]
+//{"Hindi": 60, "Dutch" : 93, "Greek": 71}  -->  ["Dutch", "Greek", "Hindi"]
+//{"C++": 50, "ASM": 10, "Haskell": 20}     -->  []
+//Мои другие каты
+//Если вам понравилось это ката, попробуйте другие мои ката ! :-)
+//Переводы приветствуются!
+//---
+//---Solution---
+// function myLanguages(results) {
+//   return Object.entries(results).filter(e=>e[1]>=60).sort((a,b)=>b[1]-a[1]).map(e=>e[0]);
+// }
+//
+//---Test---
+// console.log( myLanguages({"Java" : 10, "Ruby" : 80, "Python" : 65}) ); //, ["Ruby", "Python"])
+// console.log( myLanguages({"Hindi" : 60, "Greek" : 71, "Dutch" : 93}) ); //, ["Dutch", "Greek", "Hindi"])
+// console.log( myLanguages({"C++" : 50, "ASM" : 10, "Haskell" : 20}) ); //, [])
+//
+//=== End ( My Languages ) ===
+
+
  //----------No solution
 
 
@@ -2637,133 +2686,5 @@ runLengthEncoding("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabbb")
 
 
 
- 4 kyu https://www.codewars.com/kata/human-readable-duration-format
-
- Human readable duration format
-
- Your task in order to complete this Kata is to write a function which formats a duration, given as a number of seconds, in a human-friendly way.
-
- The function must accept a non-negative integer. If it is zero, it just returns "now". Otherwise, the duration is expressed as a combination of years, days, hours, minutes and seconds.
- 
- It is much easier to understand with an example:
- 
- formatDuration(62)    // returns "1 minute and 2 seconds"
- formatDuration(3662)  // returns "1 hour, 1 minute and 2 seconds"
- For the purpose of this Kata, a year is 365 days and a day is 24 hours.
- 
- Note that spaces are important.
- 
- Detailed rules
- The resulting expression is made of components like 4 seconds, 1 year, etc. In general, a positive integer and one of the valid units of time, separated by a space. The unit of time is used in plural if the integer is greater than 1.
- 
- The components are separated by a comma and a space (", "). Except the last component, which is separated by " and ", just like it would be written in English.
- 
- A more significant units of time will occur before than a least significant one. Therefore, 1 second and 1 year is not correct, but 1 year and 1 second is.
- 
- Different components have different unit of times. So there is not repeated units like in 5 seconds and 1 second.
- 
- A component will not appear at all if its value happens to be zero. Hence, 1 minute and 0 seconds is not valid, but it should be just 1 minute.
- 
- A unit of time must be used "as much as possible". It means that the function should not return 61 seconds, but 1 minute and 1 second instead. Formally, the duration specified by of a component must not be greater than any valid more significant unit of time.
- 
-
- function formatDuration (seconds) {
-  // Complete this function
-}
-
-
-describe("Tests", () => {
-  it("test", () => {
-Test.assertEquals(formatDuration(1), "1 second");
-Test.assertEquals(formatDuration(62), "1 minute and 2 seconds");
-Test.assertEquals(formatDuration(120), "2 minutes");
-Test.assertEquals(formatDuration(3600), "1 hour");
-Test.assertEquals(formatDuration(3662), "1 hour, 1 minute and 2 seconds");
-
-  });
-});
-
-Удобочитаемый формат продолжительности
-
-Ваша задача для выполнения этого Ката - написать функцию, которая форматирует длительность, заданную как количество секунд, удобным для человека способом.
-
-Функция должна принимать неотрицательное целое число. Если он равен нулю, он просто возвращается "now". В противном случае, длительность выражается в виде комбинации years, days, hours, minutesи seconds.
-
-Это намного проще понять на примере:
-
-formatDuration(62)    // returns "1 minute and 2 seconds"
-formatDuration(3662)  // returns "1 hour, 1 minute and 2 seconds"
-Для этого Ката год составляет 365 дней, а день - 24 часа.
-
-Обратите внимание, что пробелы важны.
-
-Подробные правила
-Результирующее выражение состоит из таких компонентов, как 4 seconds, 1 yearи т. Д. Как правило, положительное целое число и одна из допустимых единиц времени, разделенных пробелом. Единица времени используется во множественном числе, если целое число больше 1.
-
-Компоненты разделяются запятой и пробелом ( ", "). За исключением последнего компонента, который разделен значком " and ", как если бы он был написан на английском языке.
-
-Более значимые единицы времени наступят раньше, чем наименее значимые. Следовательно, 1 second and 1 yearне правильно, но 1 year and 1 secondесть.
-
-У разных компонентов разная единица времени. Так что нет повторяющихся единиц, как в 5 seconds and 1 second.
-
-Компонент вообще не появится, если его значение равно нулю. Следовательно, 1 minute and 0 secondsнедействительно, но это должно быть справедливо 1 minute.
-
-Единица времени должна использоваться «как можно больше». Это означает, что функция должна не возвращаться 61 seconds, а 1 minute and 1 secondвместо этого. Формально продолжительность, указанная в компоненте, не должна быть больше любой допустимой более значимой единицы времени.
-
-
-
-7 kyu https://www.codewars.com/kata/unlucky-days
-
-Unlucky Days
-
-Friday 13th or Black Friday is considered as unlucky day. Calculate how many unlucky days are in the given year.
-
-Find the number of Friday 13th in the given year.
-
-Input: Year in Gregorian calendar as integer.
-
-Output: Number of Black Fridays in the year as an integer.
-
-Examples:
-
-unluckyDays(2015) == 3
-unluckyDays(1986) == 1
-
-
-function unluckyDays(year){
-  //your code here
-}
-
-
-describe("Basic Tests",() =>{
-  Test.assertEquals(unluckyDays(1586), 1, "should be: 1");
-  Test.assertEquals(unluckyDays(1001), 3, "should be: 3");
-  Test.assertEquals(unluckyDays(2819), 2, "should be: 2");
-  Test.assertEquals(unluckyDays(2792), 2, "should be: 2");
-  Test.assertEquals(unluckyDays(2723), 2, "should be: 2");
-  Test.assertEquals(unluckyDays(1909), 1, "should be: 1");
-  Test.assertEquals(unluckyDays(1812), 2, "should be: 2");
-  Test.assertEquals(unluckyDays(1618), 2, "should be: 2");
-  Test.assertEquals(unluckyDays(2132), 1, "should be: 1");
-  Test.assertEquals(unluckyDays(2065), 3, "should be: 3");
-  }
-
-
-
-  Несчастливые дни
-
-
-  Пятница 13-е или Черная пятница считается несчастливым днем. Посчитайте, сколько неудачных дней в данном году.
-
-  Найдите число пятницы 13 числа в данном году.
-  
-  Ввод: год по григорианскому календарю в виде целого числа.
-  
-  Выходные данные: Число черных пятниц в году в виде целого числа.
-  
-  Примеры:
-  
-  unluckyDays(2015) == 3
-  unluckyDays(1986) == 1
 
 */
