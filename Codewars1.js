@@ -1610,13 +1610,75 @@
 //=== End ( Convert a linked list to a string ) ===
 
 
- //----------No solution
+//---------------------------------------------------------------------------------------------------
+// Fun with trees: array to tree - Solution
+//5 kyu https://www.codewars.com/kata/fun-with-trees-array-to-tree
+//---------------------------------------------------------------------------------------------------
+//---Task---
+//### **Fun with trees: array to tree**
+//You are given a non-null array of integers. Implement the method arrayToTree which creates a binary tree from
+//its values in accordance to their order, while creating nodes by depth from left to right.
+//For example, given the array [17, 0, -4, 3, 15] you should create the following tree:
+//    17
+//   /  \
+//  0   -4
+// / \
+//3   15 
+//The class TreeNode is available for you:
+//var TreeNode = function(value, left, right) {
+//  this.value = value;
+//  this.left = left;
+//  this.right = right;
+//};
+//This kata is part of fun with trees series:
+//Fun with trees: max sum
+//Fun with trees: array to tree
+//Fun with trees: is perfect
+//
+//### **Развлечение с деревьями: от массива к дереву**
+//Вам дан ненулевой массив целых чисел. Реализуйте метод arrayToTree,
+//который создает двоичное дерево из его значений в соответствии с их порядком, создавая узлы по глубине слева направо.
+//Например, имея массив [17, 0, -4, 3, 15], вы должны создать следующее дерево:
+//    17
+//   /  \
+//  0   -4
+// / \
+//3   15 
+//Вам доступен класс TreeNode:
+//var TreeNode = function(value, left, right) {
+//  this.value = value;
+//  this.left = left;
+//  this.right = right;
+//};
+//Это ката является частью серии « Веселье с деревьями »:
+//Развлечение с деревьями: максимальная сумма
+//Развлечение с деревьями: от массива к дереву
+//Развлечение с деревьями: идеально
+//
+//---
+//---Solution---
+// var TreeNode = function(value, left, right) {
+//   this.value = value;
+//   this.left = left;
+//   this.right = right;
+// };
+// function arrayToTree(array, i = 0) {
+//   if (i >= array.length) return;
+//   return new TreeNode(
+//     array[i],
+//     arrayToTree(array, 2 * i + 1),
+//     arrayToTree(array, 2 * i + 2)
+//   )
+// }
+//
+//---Test---
+// array = [17, 0, -4, 3, 15];
+// console.log( arrayToTree(array) ); // new TreeNode(17, new TreeNode(0, new TreeNode(3), new TreeNode(15)), new TreeNode(-4)));
+//
+//=== End ( Fun with trees: array to tree ) ===
 
-
-
-
-
-
+//---------------------------------------------------------------------------------------------------
+//===================================================================================================
 
 
 //---------------------------------------------------------------------------------------------------
