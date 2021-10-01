@@ -1030,16 +1030,16 @@
 //----------
 //
 //---Solution---
-function createSecretHolder(secret) {
-  return {
-    getSecret: function() {
-      return secret;
-    },
-    setSecret: function(value) {
-      secret = value;
-    }
-  }
-}
+// function createSecretHolder(secret) {
+//   return {
+//     getSecret: function() {
+//       return secret;
+//     },
+//     setSecret: function(value) {
+//       secret = value;
+//     }
+//   }
+// }
 //---Test---
 // const obj = createSecretHolder(5);
 // console.log( obj );// # returns 5
