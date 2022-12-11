@@ -190,3 +190,214 @@
 //=== End () ===
 
 
+//---------------------------------------------------------------------------------------------------
+// Array#reduce
+// (6 kyu) https://www.codewars.com/kata/array-number-reduce
+//---------------------------------------------------------------------------------------------------
+//---Task---
+//### **Array#reduce**
+// In this kata, you must define the Array.reduce method.
+// I have disabled the pre-existing reduce methods.
+// Here's how it works:
+// [1,2,3].reduce( function(sum, next){return sum+next}, 0) 
+// // => 6
+// ['a','b','a'].reduce( function(obj, elem){if(!obj[elem]) obj[elem] = 0; obj[elem] += 1; return obj}, {})
+// // => {'a':2, 'b':1}
+// Summary: The reduce method goes through each element of an array, applies the function to whatever the function returned last, and returns the last outcome. On the first iteration, it should pass the initial value to the function, as well as the first element of the array. If no initial value is passed, skip to the first element of the array.
+// Ruby methods should expect a lambda.
+//----------
+//---Solution---
+// Array.prototype.myReduce = function (process, initial) {
+//   if (initial === undefined)  {
+//     if (typeof this[0] === 'string') {
+//       initial = '';
+//     } else if (typeof this[0] === 'number') {
+//       initial = 0;
+//     }
+//   }
+//   this.forEach((e)=>initial=process(initial,e));
+//   return initial;
+// }
+//--- Best Solution ---
+// Array.prototype.reduce = function(process, memo = this.shift()) {
+//   this.forEach( (e) => memo = process(memo, e) );
+//   return memo;
+// }
+//---Test---
+// const result = ['a','y','!'].myReduce(function(x,y){return x+y}, 'y'); //, 'yay!'
+// console.log(result);
+//=== End () ===
+
+
+//---------------------------------------------------------------------------------------------------
+// Implementing Object.create
+// (6 kyu) https://www.codewars.com/kata/implementing-object-dot-create
+//---------------------------------------------------------------------------------------------------
+//---Task---
+//### **Implementing Object.create**
+//---Solution---
+// Object.create = function(prototype, properties) {
+//   if (typeof prototype !== 'object' && prototype !== null) {
+//     throw TypeError("Error");
+//   }
+//   const result = {
+//     __proto__: prototype,
+//   };
+//   if (typeof properties !== 'undefined') {
+//     Object.defineProperties(result, properties);
+//   }
+//   return result;
+// };
+//---Test---
+//=== End () ===
+
+
+//---------------------------------------------------------------------------------------------------
+// PaginationHelper
+// (5 kyu) https://www.codewars.com/kata/paginationhelper
+//---------------------------------------------------------------------------------------------------
+//---Task---
+//### **PaginationHelper**
+// For this exercise you will be strengthening your page-fu mastery.
+// You will complete the PaginationHelper class, which is a utility
+// class helpful for querying paging information related to an array.
+// The class is designed to take in an array of values and an integer
+// indicating how many items will be allowed per each page.
+// The types of values contained within the collection/array are not relevant.
+// The following are some examples of how this class is used:
+// var helper = new PaginationHelper(['a','b','c','d','e','f'], 4);
+// helper.pageCount(); //should == 2
+// helper.itemCount(); //should == 6
+// helper.pageItemCount(0); //should == 4
+// helper.pageItemCount(1); // last page - should == 2
+// helper.pageItemCount(2); // should == -1 since the page is invalid
+// // pageIndex takes an item index and returns the page that it belongs on
+// helper.pageIndex(5); //should == 1 (zero based index)
+// helper.pageIndex(2); //should == 0
+// helper.pageIndex(20); //should == -1
+// helper.pageIndex(-10); //should == -1
+//----------
+//---Solution---
+// class PaginationHelper {
+// 	constructor(collection, itemsPerPage) {
+//     this.collection = collection;
+//     this.itemsPerPage = itemsPerPage;
+// 	}
+// 	itemCount() {
+//     return this.collection.length;
+// 	}
+// 	pageCount() {
+//     return Math.ceil(this.collection.length / this.itemsPerPage);
+// 	}
+// 	pageItemCount(pageIndex) {
+//     return pageIndex < this.pageCount()
+//     ? Math.min(
+//         this.itemsPerPage,
+//         this.collection.length - pageIndex * this.itemsPerPage
+//       )
+//     : -1;
+// 	}
+// 	pageIndex(itemIndex) {
+//     return itemIndex < this.collection.length && itemIndex >= 0
+//     ? Math.floor(itemIndex / this.itemsPerPage)
+//     : -1;
+// 	}
+// }
+//---Test---
+// const collection = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24]
+// const helper = new PaginationHelper(collection, 10)
+// console.log(helper.pageCount()); //', 3);
+// console.log(helper.itemCount()); //', 24);
+// console.log(helper.pageItemCount(10)); //, 1);
+// console.log(helper.pageItemCount(4)); //, 2);
+// console.log(helper.pageItemCount(-1)); //, 3);
+// console.log(helper.pageIndex(-1)); //, 40);
+// console.log(helper.pageIndex(2)); //, 22);
+// console.log(helper.pageIndex(0)); //, 3);
+// console.log(helper.pageIndex(0)); //, 0);
+// console.log(helper.pageIndex(-1)); //, -1);
+// console.log(helper.pageIndex(-1)); //, -23);
+// console.log(helper.pageIndex(-1)); //, -15);
+//=== End () ===
+
+
+//---------------------------------------------------------------------------------------------------
+// Undo/Redo
+// (4 kyu) https://www.codewars.com/kata/undo-slash-redo
+//---------------------------------------------------------------------------------------------------
+//---Task---
+//### **Undo/Redo**
+// The purpose of this kata is to implement the undoRedo function.
+//  This function takes an object and returns an object that has these actions to be performed on the object
+//  passed as a parameter:
+// set(key, value) Assigns the value to the key. If the key does not exist, creates it.
+// get(key) Returns the value associated to the key.
+// del(key) removes the key from the object.
+// undo() Undo the last operation (set or del) on the object.
+//  Throws an exception if there is no operation to undo.
+// redo() Redo the last undo operation (redo is only possible after an undo).
+//  Throws an exception if there is no operation to redo.
+// After set() or del() are called, there is nothing to redo.
+// All actions must affect to the object passed to undoRedo(object) function.
+//  So you can not work with a copy of the object.
+// Any set/del after an undo should disallow new redos.
+//----------
+//---Solution---
+// function undoRedo(object) {
+//   let lastActions = [];
+//   let undoneActions = [];
+//   return {
+//     set (key, value) {
+//       if (object.hasOwnProperty(key) === true) {
+//         lastActions.push(['edit', key, object[key], value]);
+//       } else {
+//         lastActions.push(['set', key, value]);
+//       }
+//       object[key] = value;
+//       undoneActions = [];
+//     },
+//     get (key) {
+//       return object[key];
+//     },
+//     del (key) {
+//       if (object[key]) {
+//         lastActions.push(['del', key, object[key]]);
+//         delete object[key];
+//         undoneActions = [];
+//       };
+//     },
+//     undo () {
+//       if (lastActions.length === 0) {
+//         throw new Error("Error");
+//       }
+//       const popped = lastActions.pop();
+//       if (popped[0] === 'set') {
+//         delete object[popped[1]];
+//       } else if (popped[0] === 'edit') {
+//         object[popped[1]] = popped[2];
+//       } else if (popped[0] === 'del') {
+//         object[popped[1]] = popped[2];
+//       }
+//       undoneActions.push(popped);
+//     },
+//     redo () {
+//       if (undoneActions.length === 0) {
+//         throw new Error("Error");
+//       }
+//       const popped = undoneActions.pop();
+//       if (popped[0] === 'set') {
+//         object[popped[1]] = popped[2];
+//       } else if (popped[0] === 'edit') {
+//         object[popped[1]] = popped[3];
+//       } else if (popped[0] === 'del') {
+//         delete object[popped[1]];
+//       }
+//       lastActions.push(popped);
+//     }
+//   }
+// }
+//---Test---
+//=== End () ===
+
+
+
